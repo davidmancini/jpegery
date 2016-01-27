@@ -23,7 +23,14 @@
 				<div class="row">
 					<div class="col-md-6 personaborder">
 						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive center-block" height="300" width="300"><br>
-						<p class="text-center">Persona 1</p>
+						<p class="text-center">
+							<strong>Jason Holmes, 23</strong><br>Graduate Student, TA<br><br>
+							<strong>User Type:</strong> Non-professional, irregular poster.<br>
+							<strong>Goal:</strong> John has a casual interest in art, sketches of architecture in particular. He wishes to share his work for advice, inspiration, and praise. As such, he has posted content on jpegery three times, and is visiting the site to read any comments on his work.<br>
+							<strong>History:</strong> John was born into a middle-class family. He has one younger brother who is in his senior year of high-school. Both of his parents are employed. He majored in History two years ago and is currently working on his masters. He is somewhat bilingual, being relatively proficient with Russian. His parents probably thought they were very clever and ironic when they were naming him.
+
+						</p>
+
 					</div>
 					<div class="col-md-6 personaborder">
 						<img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive center-block"><br>
