@@ -22,7 +22,7 @@
 				<h3>Personas</h3><br>
 				<div class="row">
 					<div class="col-md-6 personaborder">
-						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive center-block"><br>
+						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive center-block" height="300" width="300"><br>
 						<p class="text-center">Persona 1</p>
 					</div>
 					<div class="col-md-6 personaborder">
