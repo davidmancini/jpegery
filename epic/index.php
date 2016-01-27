@@ -5,7 +5,7 @@
 		<title>jpegery Epic</title>
 		<!--Include Bootstrap Head Tags -->
 		<? include_once ("../lib/head-tags.html"); ?>
-		<link rel="stylesheet" href="../css/epicstyle.css">
+		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body>
 			<div class="container">
@@ -22,25 +22,25 @@
 				<h3>Personas</h3><br>
 				<div class="row">
 					<div class="col-md-6 personaborder">
-						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive"><br>
-						Persona 1
+						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive center-block"><br>
+						<p class="text-center">Persona 1</p>
 					</div>
 					<div class="col-md-6 personaborder">
-						<img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive"><br>
-						Persona 2
+						<img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive center-block"><br>
+						<p class="text-center">Persona 2</p>
 					</div>
 				</div><br>
 				<div class="row">
 					<div class="col-md-6 personaborder">
-						<img src="../images/persona3.jpg" alt="Persona 3" class="img-circle img-responsive"><br>
-						Persona 3
+						<img src="../images/persona3.jpg" alt="Persona 3" class="img-circle img-responsive center-block"><br>
+						<p class="text-center">Persona 3</p>
 					</div>
 					<div class="col-md-6 personaborder">
-						<img src="../images/persona4.jpg" alt="Persona 4" class="img-circle img-responsive"><br>
-						Persona 4
+						<img src="../images/persona4.jpg" alt="Persona 4" class="img-circle img-responsive center-block"><br>
+						<p class="text-center">Persona 4</p>
 					</div>
 				</div>
-
+<br><br>
 		</div>
 	</body>
 </html>
