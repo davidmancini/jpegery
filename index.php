@@ -2,6 +2,7 @@
 	<html lang="en">
 	<head>
 		<meta charset="utf-8"/>
+		<title>The Index</title>
 	</head>
 	<body>
 		<div>

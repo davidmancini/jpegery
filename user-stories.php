@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8"/>
+		<title>User Stories</title>
 	</head>
 	<body>
 		<div>

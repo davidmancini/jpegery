@@ -2,6 +2,7 @@
 	<html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<title>John Doe's Persona</title>
 	</head>
 	<body>
 		<div>
