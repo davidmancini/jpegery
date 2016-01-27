@@ -20,9 +20,9 @@
 
 
 			<div class="profile">
-				<h3>Meredith Offner</h3>
-				<h4>“I can’t wait to share the world of music with my son.”</h4>
-				<img src="https://bootcamp-coders.cnm.edu/~zleyba/clinstrument/img/meredith.JPG" alt="Meredith Offner">
+				<h3>John Doe</h3>
+				<h4>“wanna share picture”</h4>
+				<img src="https://bootcamp-coders.cnm.edu/~zleyba/clinstrument/img/meredith.JPG" alt="John Doe">
 			</div>
 
 			<div class="descript">
