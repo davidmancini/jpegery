@@ -11,20 +11,35 @@
 			<div class="container">
 
 				<h1 class="page-header">jpegery Epic</h1>
-				<div>
-					<h2>Executive Summary</h2>
-					<p>A website wherein users post and review media.</p>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Executive Summary</h3>
+						<p>A website wherein users post and review media.</p>
+					</div>
 				</div>
 
-				<div>
-				<h2>Links</h2>
-				<a href="system-goals.php">The System Goals</a><br/>
-				<a href="use-cases.php">The Use Cases</a><br/>
-				<a href="user-stories.php">The User Stories</a><br/>
-				<a href="personas/johndoe.php">Persona 1: John Doe</a><br/>
-				<a href="data-design/conceptual-model.php">The Conceptual Model</a><br/>
-				<a href="data-design/erd.php">The ERD</a><br/>
-			</div>
+				<h3>Personas</h3>
+				<div class="row">
+					<div class="col-md-6">
+						<img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive"><br>
+						Persona 1
+					</div>
+					<div class="col-md-6">
+						<img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive"><br>
+						Persona 2
+					</div>
+				</div><br>
+				<div class="row">
+					<div class="col-md-6">
+						<img src="../images/persona3.jpg" alt="Persona 3" class="img-circle img-responsive"><br>
+						Persona 3
+					</div>
+					<div class="col-md-6">
+						<img src="../images/persona4.jpg" alt="Persona 4" class="img-circle img-responsive"><br>
+						Persona 4
+					</div>
+				</div>
 
 		</div>
 	</body>
