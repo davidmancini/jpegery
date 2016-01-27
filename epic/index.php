@@ -16,7 +16,7 @@
 		</div>
 		<div>
 			<h1>Executive Summary:</h1>
-			<p>A website wherein users post and review images.</p>
+			<p>A website wherein users post and review media.</p>
 		</div>
 	</body>
 </html>
