@@ -17,7 +17,24 @@
 				<li>User: Write description and add tag, or leave text field blank</li>
 				<li>User: Click submit</li>
 				<li>Site: Display completed post</li>
+			</ul>
+			<h2>Commenting</h2>
+			<ul>
+				<li>User: Access webpage</li>
+				<li>Site: Show user homepage</li>
+				<li>User: View image</li>
+				<li>User: Click on the comment icon</li>
+				<li>Site: Open the comment text field</li>
+				<li>User: Write Comment</li>
+				<li>User: Click Submit</li>
 
+			</ul>
+			<h2>Following a contributor</h2>
+			<ul>
+				<li>User: Click on desired content</li>
+				<li>Site: Open content specific page</li>
+				<li>User: Click on follow contributor button</li>
+				<li>Site: Add contributor to users following list </li>
 			</ul>
 		</div>
 	</body>
