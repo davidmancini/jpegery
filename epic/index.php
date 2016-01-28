@@ -8,8 +8,8 @@
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body class="footerBody">
-			<div class="container footerContainer">
-
+			<div class="container">
+				<main class="footerMain">
 				<div class="row">
 					<div class="col-md-6">
 						<!-- NAV BAR -->
@@ -74,6 +74,7 @@
 						<a href="epic-jessica.php">Read Jessica's Story</a></p>
 					</div>
 				</div>
+				</main>
 
 				<footer>
 					<div class="col-md-12 footer text-center">
@@ -82,5 +83,5 @@
 				</footer>
 
 			</div>
-	</body>
+		</body>
 </html>
