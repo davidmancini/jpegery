@@ -15,7 +15,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h3>Executive Summary</h3>
-						<p>A website wherein users post and review media.</p>
+						<p>jpegery is a lightweight, web-based, image sharing platform with a focus on original content.
+							Our primary interest is giving credit to individuals who create compelling, unique, and viral visual content.  jpegery will provide users two primary methods to discover images that appeal to them. First they can search through hashtags and users, then they can follow the tags and accounts they like the most. While jpegery may not be able to stop content theft, our goal is to make it easier for creators to get the recognition they deserve.
+						</p>
 					</div>
 				</div>
 
