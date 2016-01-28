@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body class="footerBody">
-		<div class="container footerContainer">
+		<div class="container">
+			<main class="footerMain">
 
 			<div class="row">
 				<div class="col-md-6">
@@ -61,6 +62,7 @@
 					</ul>
 				</div>
 			</div>
+		</main>
 
 			<footer>
 				<div class="col-md-12 footer text-center">

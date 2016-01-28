@@ -34,11 +34,11 @@
 
 .footerBody {
 	display: flex;
-	min-height: 100hv;
-	flex-direcion: column;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
-.footerContainer {
-	flex: 1;
+.footerMain {
+	flex: 1 0 auto;
 }
 /* End Footer Styles */
