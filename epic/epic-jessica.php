@@ -10,13 +10,20 @@
 	<body>
 		<div class="container">
 
-			<!-- NAV BAR -->
-			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="index.php">Home</a></li>
-				<li role="presentation"><a href="epic-jason.php">Jason</a></li>
-				<li role="presentation"><a href="epic-dana.php">Dana</a></li>
-				<li role="presentation" class="active"><a href="#">Jessica</a></li>
-			</ul>
+			<div class="row">
+				<div class="col-md-6">
+					<!-- NAV BAR -->
+					<ul class="nav nav-tabs">
+						<li role="presentation"><a href="index.php">Home</a></li>
+						<li role="presentation"><a href="epic-jason.php">Jason</a></li>
+						<li role="presentation"><a href="epic-dana.php">Dana</a></li>
+						<li role="presentation" class="active"><a href="#">Jessica</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+					<h2>jpegery</h2>
+				</div>
+			</div>
 
 
 			<h1 class="page-header">Jessica Kelso</h1>
