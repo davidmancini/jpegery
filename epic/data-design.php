@@ -43,7 +43,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>ERD</h2>
-						<img src="/images/erd.svg" alt="ERD">
+						<img src="../images/erd.svg" alt="ERD" class="img-responsive center-block">
 					</div>
 				</div>
 			</div>
