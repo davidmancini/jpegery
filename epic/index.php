@@ -33,13 +33,13 @@
 						<img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive center-block"><br>
 						<p class="text-center"><strong>Dana McNeill, 26</strong><br>Accounting<br>
 						Frequent poster interested in the social aspect.<br><br>
-						<a href="dana.php">Read Dana's Story</a></p>
+						<a href="epic-dana.php">Read Dana's Story</a></p>
 					</div>
 					<div class="col-md-6 personaborder">
 						<img src="../images/persona3.jpg" alt="Persona 3" class="img-circle img-responsive center-block"><br>
 						<p class="text-center"><strong>Jessica Kelso, 14</strong><br>Student<br>
 						Frequent Commenter and Viewer, but does not post.<br><br>
-						<a href="jessica.php">Read Jessica's Story</a></p>
+						<a href="epic-jessica.php">Read Jessica's Story</a></p>
 					</div>
 				</div>
 
