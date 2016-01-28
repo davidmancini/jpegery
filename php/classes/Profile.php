@@ -36,12 +36,6 @@ class Profile implements JsonSerializable {
 	 */
 	private $profileName;
 
-	/**
-	 * the user's password
-	 *
-	 * @var string $profilePassword
-	 */
-	private $profilePassword;
 
 	/**
 	 * the user's phone number
@@ -59,9 +53,9 @@ class Profile implements JsonSerializable {
 	/**
 	 * Whether or not the user is an admin (Locked at null for now)
 	 *
-	 * @var bool $adminNull
+	 * @var bool $profileAdmin
 	 */
-	private $adminNull;
+	private $profileAdmin;
 
 	/**
 	 * accessor method for profile id
@@ -72,8 +66,92 @@ class Profile implements JsonSerializable {
 		return $this->profileId;
 	}
 
-	public function setProfileId( $profileId) {
-		$this->profileId = $profileId;
+	/**
+	 * mutator method for profile id
+	 *
+	 * @param int|null $newProfileId
+	 * @throws \RangeException if $newProfileId is not positive
+	 * @throws \TypeError if $newProfileId is not an integer
+	 */
+	public function setProfileId(int $newProfileId = null) {
+		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
+		if ($newProfileId === null) {
+			$this->profileId = null;
+			return;
+		}
+		//verify the profile id is positive
+		if ($newProfileId <= 0) {
+			throw(new \RangeException("Profile Id is not positive"));
+		}
+		// convert and store the profile id
+		$this->profileId = $newProfileId;
+	}
+
+	/**
+	 * accessor method for profile handle
+	 * @return string value of profile handle
+	 */
+	public function getProfileHandle() {
+		return $this->profileHandle;
+	}
+
+	/**
+	 * mutator method for profile handle
+	 *
+	 * @param string $newProfileHandle
+	 * @throws \InvalidArgumentException if profile handle is empty or insecure
+	 * @throws \RangeException if profile handle is too long
+	 * @throws \TypeError if profile handle is not a string
+	 */
+	public function setProfileHandle(string $newProfileHandle) {
+		// verify the profile handle is secure
+		$newProfileHandle = trim($newProfileHandle);
+		$newProfileHandle = filter_var($newProfileHandle, FILTER_SANITIZE_STRING);
+		if (empty($newProfileHandle) === true) {
+			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
+		}
+
+		// make sure the handle isn't too long
+		if(strlen($newProfileHandle) > 100) {
+			throw(new \RangeException("Stop fooling around."));
+		}
+		if (strlen($newProfileHandle) > 18) {
+			throw(new \RangeException("Profile handle is too long"));
+		}
+
+		//Store the handle
+		$this->profileHandle = $newProfileHandle;
+	}
+
+	/**
+	 * accessor method for profile name
+	 * @return string value of profile name
+	 */
+	public function getProfileName() {
+		return $this->profileName;
+	}
+
+	/**
+	 * mutator method for profile name
+	 * 
+	 * @param string $newProfileName
+	 * @throws \InvalidArgumentException if profile name is empty or insecure
+	 * @throws \RangeException if profile name is too long
+	 * @throws \TypeError if profile name is not a string
+	 */
+	public function setProfileName(string $newProfileName) {
+		// verify the profile name is secure
+		$newProfileName = trim($newProfileName);
+		$newProfileName = filter_var($newProfileName, FILTER_SANITIZE_STRING);
+		if(empty($newProfileName) === true) {
+			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
+		}
+
+		//Make sure the name isn't too long
+		if(strlen($newProfileName) > 50) {
+			throw(new \RangeException("Your name is too long"));
+		}
+		$this->profileName = $newProfileName;
 	}
 
 	public function jsonSerialize() {
