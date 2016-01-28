@@ -19,7 +19,7 @@
 							<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
 						</ul>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 text-right">
 						<h2>jpegery</h2>
 					</div>
 				</div>
