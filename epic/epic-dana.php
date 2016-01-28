@@ -47,10 +47,17 @@
 			<!-- USE CASE & USER STORIES -->
 			<div class="row">
 				<div class="col-md-6">
-					<h2>Use Case</h2>
+					<h2>User Story</h2>
+					<blockquote>“As a user, I want to view the images in my feed.”</blockquote>
 				</div>
 				<div class="col-md-6">
-					<h2>User Stories</h2>
+					<h2>Use Case</h2>
+					<strong>View Content in Feed</strong>
+					<ul>
+						<li>Dana: Access site</li>
+						<li>Site: Open user profile</li>
+						<li>Dana: View content in feed</li>
+					</ul>
 				</div>
 			</div>
 
