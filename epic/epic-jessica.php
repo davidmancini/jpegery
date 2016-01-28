@@ -10,13 +10,20 @@
 	<body>
 		<div class="container">
 
-			<!-- NAV BAR -->
-			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="index.php">Home</a></li>
-				<li role="presentation"><a href="epic-jason.php">Jason</a></li>
-				<li role="presentation"><a href="epic-dana.php">Dana</a></li>
-				<li role="presentation" class="active"><a href="#">Jessica</a></li>
-			</ul>
+			<div class="row">
+				<div class="col-md-6">
+					<!-- NAV BAR -->
+					<ul class="nav nav-tabs">
+						<li role="presentation"><a href="index.php">Home</a></li>
+						<li role="presentation"><a href="epic-jason.php">Jason</a></li>
+						<li role="presentation"><a href="epic-dana.php">Dana</a></li>
+						<li role="presentation" class="active"><a href="#">Jessica</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+					<h2>jpegery</h2>
+				</div>
+			</div>
 
 
 			<h1 class="page-header">Jessica Kelso</h1>
@@ -42,10 +49,27 @@
 			<!-- USE CASE & USER STORIES -->
 			<div class="row">
 				<div class="col-md-6">
-					<h2>Use Case</h2>
+					<h2>User Story</h2>
+					<blockquote>“As a user, I want to follow a contributor.”</blockquote>
+					<blockquote>"As a user, I want to comment on a user's image."</blockquote>
 				</div>
 				<div class="col-md-6">
-					<h2>User Stories</h2>
+					<h2>Use Case</h2>
+					<strong>Comment</strong>
+					<ul>
+						<li>Jessica: Click on the comment icon</li>
+						<li>Site: Open the comment text field</li>
+						<li>Jessica: Write Comment</li>
+						<li>Jessica: Click Submit</li>
+						<li>Site: Display comment in logical order</li>
+					</ul><br>
+					<strong>Follow a Contributor</strong>
+					<ul>
+						<li>Jessica: Click on desired content</li>
+						<li>Site: Open content specific page</li>
+						<li>Jessica: Click on follow contributor button</li>
+						<li>Site: Add contributor to users following list</li>
+					</ul>
 				</div>
 			</div>
 

@@ -10,13 +10,20 @@
 	<body>
 		<div class="container">
 
-			<!-- NAV BAR -->
-			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="index.php">Home</a></li>
-				<li role="presentation"><a href="epic-jason.php">Jason</a></li>
-				<li role="presentation"  class="active"><a href="#">Dana</a></li>
-				<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
-			</ul>
+			<div class="row">
+				<div class="col-md-6">
+					<!-- NAV BAR -->
+					<ul class="nav nav-tabs">
+						<li role="presentation"><a href="index.php">Home</a></li>
+						<li role="presentation"><a href="epic-jason.php">Jason</a></li>
+						<li role="presentation" class="active"><a href="#">Dana</a></li>
+						<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
+					</ul>
+				</div>
+				<div class="col-md-6 text-right">
+					<h2>jpegery</h2>
+				</div>
+			</div>
 
 			<h1 class="page-header">Dana McNeill</h1>
 
@@ -40,10 +47,17 @@
 			<!-- USE CASE & USER STORIES -->
 			<div class="row">
 				<div class="col-md-6">
-					<h2>Use Case</h2>
+					<h2>User Story</h2>
+					<blockquote>“As a user, I want to view the images in my feed.”</blockquote>
 				</div>
 				<div class="col-md-6">
-					<h2>User Stories</h2>
+					<h2>Use Case</h2>
+					<strong>View Content in Feed</strong>
+					<ul>
+						<li>Dana: Access site</li>
+						<li>Site: Open user profile</li>
+						<li>Dana: View content in feed</li>
+					</ul>
 				</div>
 			</div>
 

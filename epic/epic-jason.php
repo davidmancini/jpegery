@@ -10,13 +10,20 @@
 	<body>
 			<div class="container">
 
-				<!-- NAV BAR -->
-				<ul class="nav nav-tabs">
-					<li role="presentation"><a href="index.php">Home</a></li>
-					<li role="presentation" class="active"><a href="#">Jason</a></li>
-					<li role="presentation"><a href="epic-dana.php">Dana</a></li>
-					<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
-				</ul>
+				<div class="row">
+					<div class="col-md-6">
+						<!-- NAV BAR -->
+						<ul class="nav nav-tabs">
+							<li role="presentation"><a href="index.php">Home</a></li>
+							<li role="presentation" class="active"><a href="#">Jason</a></li>
+							<li role="presentation"><a href="epic-dana.php">Dana</a></li>
+							<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 text-right">
+						<h2>jpegery</h2>
+					</div>
+				</div>
 
 
 				<h1 class="page-header">Jason Holmes</h1>
@@ -43,10 +50,31 @@
 				<!-- USE CASE & USER STORIES -->
 				<div class="row">
 					<div class="col-md-6">
-						<h2>Use Case</h2>
+						<h2>User Story</h2>
+						<blockquote>"As a user, I want to post images on the site."</blockquote>
+						<blockquote>“As a user, I want to see new content.”</blockquote>
+
 					</div>
 					<div class="col-md-6">
-						<h2>User Stories</h2>
+						<h2>Use Case</h2>
+						<strong>Upload a Photo</strong>
+						<ul>
+							<li>Jason: Click on the upload icon</li>
+							<li>Site: Open the upload window and ask user which file they would like to upload</li>
+							<li>Jason: Select appropriate file </li>
+							<li>Jason: Click Upload</li>
+							<li>Site: Display uploaded file</li>
+							<li>Site: Open text field and prompt user to add a text description about their content</li>
+							<li>Jason: Write description and add tag, or leave text field blank</li>
+							<li>Jason: Click submit</li>
+							<li>Site: Display completed post</li>
+						</ul><br>
+						<strong>View New Content</strong>
+						<ul>
+							<li>Jason: Access site</li>
+							<li>Site: Show user homepage</li>
+							<li>Jason: Click button titled, “New content”</li>
+						</ul>
 					</div>
 				</div>
 
