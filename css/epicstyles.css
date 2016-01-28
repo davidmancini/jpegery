@@ -1,9 +1,22 @@
+/***************************************************
+ * CSS Stylesheet for Epics in jpegery
+ * *************************************************
+ *
+ * Built to be loaded after Bootstrap
+ *
+ * This Stylesheet is not for main jpegery site,
+ * only for internal documentation.
+ *
+ ***************************************************/
+
+/* Adds gray border around personas */
 .personaborder {
 	border: 5px solid dimgray;
 	padding: 10px;
 	margin: 10px;
 }
 
+/* Makes persona rows equal height despite content length */
 .row-eq-height {
 	display: -webkit-box;
 	display: -webkit-flex;
