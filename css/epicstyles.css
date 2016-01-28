@@ -23,3 +23,21 @@
 	display: -ms-flexbox;
 	display: flex;
 }
+
+/* Begin Footer Styles */
+.footer {
+	color: cornflowerblue;
+	margin: 10px;
+	padding: 2px;
+}
+
+.footerBody {
+	display: flex;
+	min-height: 100hv;
+	flex-direcion: column;
+}
+
+.footerContainer {
+	flex: 1;
+}
+/* End Footer Styles */

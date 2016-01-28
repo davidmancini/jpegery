@@ -7,8 +7,8 @@
 		<?php require_once(dirname(__DIR__) . "/lib/head-tags.html"); ?>
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
-	<body>
-		<div class="container">
+	<body class="footerBody">
+		<div class="container footerContainer">
 
 			<div class="row">
 				<div class="col-md-6">
@@ -73,6 +73,11 @@
 				</div>
 			</div>
 
+			<footer>
+				<div class="col-md-12 footer text-center">
+					Copyright © 2016 jpegery
+				</div>
+			</footer>
 
 		</div>
 	</body>
