@@ -56,7 +56,7 @@
 
 					</div>
 					<div class="col-md-6">
-						<h2>Use Case</h2>
+						<h2>Use Cases</h2>
 						<strong>Upload a Photo</strong>
 						<ul>
 							<li>Jason: Click on the upload icon</li>

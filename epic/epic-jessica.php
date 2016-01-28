@@ -54,7 +54,7 @@
 					<blockquote>"As a user, I want to comment on a user's image."</blockquote>
 				</div>
 				<div class="col-md-6">
-					<h2>Use Case</h2>
+					<h2>Use Cases</h2>
 					<strong>Comment</strong>
 					<ul>
 						<li>Jessica: Click on the comment icon</li>
