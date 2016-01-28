@@ -1,4 +1,12 @@
 .personaborder {
 	border: 5px solid dimgray;
 	padding: 10px;
+	margin: 10px;
+}
+
+.row-eq-height {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
 }
