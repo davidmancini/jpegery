@@ -33,7 +33,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Conceptual Model</h2>
-
+						A user posts an image and can include a caption and tags.<br>
+						Other users can view the content and post comments.<br>
+						All users can view the content and associated comments.
 					</div>
 				</div>
 
@@ -41,6 +43,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>ERD</h2>
+						<img src="/images/erd.svg" alt="ERD">
 					</div>
 				</div>
 			</div>
