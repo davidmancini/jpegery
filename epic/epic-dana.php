@@ -18,6 +18,7 @@
 						<li role="presentation"><a href="epic-jason.php">Jason</a></li>
 						<li role="presentation" class="active"><a href="#">Dana</a></li>
 						<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
+						<li role="presentation"><a href="data-design.php">Data Design</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 text-right">

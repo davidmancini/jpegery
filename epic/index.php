@@ -9,16 +9,19 @@
 	</head>
 	<body class="footerBody">
 			<div class="container footerContainer">
+
 				<div class="row">
 					<div class="col-md-6">
-					<!-- NAV BAR -->
+						<!-- NAV BAR -->
 						<ul class="nav nav-tabs">
 							<li role="presentation" class="active"><a href="#">Home</a></li>
-							<li role="presentation"><a href="epic-jason.php">Jason</a></li>
+							<li role="presentation"><a href="#">Jason</a></li>
 							<li role="presentation"><a href="epic-dana.php">Dana</a></li>
 							<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
+							<li role="presentation"><a href="data-design.php">Data Design</a></li>
 						</ul>
 					</div>
+
 					<div class="col-md-6 text-right">
 						<h2>jpegery</h2>
 					</div>
