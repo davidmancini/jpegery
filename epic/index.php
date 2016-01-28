@@ -9,23 +9,44 @@
 	</head>
 	<body>
 			<div class="container">
-
-				<!-- NAV BAR -->
-				<ul class="nav nav-tabs">
-					<li role="presentation" class="active"><a href="#">Home</a></li>
-					<li role="presentation"><a href="epic-jason.php">Jason</a></li>
-					<li role="presentation"><a href="epic-dana.php">Dana</a></li>
-					<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
-				</ul>
+				<div class="row">
+					<div class="col-md-6">
+					<!-- NAV BAR -->
+						<ul class="nav nav-tabs">
+							<li role="presentation" class="active"><a href="#">Home</a></li>
+							<li role="presentation"><a href="epic-jason.php">Jason</a></li>
+							<li role="presentation"><a href="epic-dana.php">Dana</a></li>
+							<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
+						</ul>
+					</div>
+					<div class="col-md-6 text-right">
+						<h2>jpegery</h2>
+					</div>
+				</div>
 
 				<h1 class="page-header">jpegery Epic</h1>
 
 				<div class="row" >
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<h3>Executive Summary</h3>
 						<p>jpegery is a web-based, image-sharing platform.  Our goals are to make it easier for creators of original content to get the recognition they deserve and to make it easier for users to discover new images.<br>
 							jpegery will provide users with two primary methods of discovering images that appeal to them. First, they can search through hashtags and users.  Then, they can follow the tags and accounts they like the most.
 						</p>
+					</div>
+					<div class="col-md-6">
+						<h3>System Goals</h3>
+						<p>By using this site, the end user will be able to:</p>
+						<ul>
+							<li>Create a unique profile</li>
+							<li>Upload original content (images)</li>
+							<li>View content that others have submitted</li>
+							<li>Comment on content</li>
+							<li>Include other content in the commenting system</li>
+							<li>Tag content</li>
+							<li>Up or down vote posted images</li>
+							<li>Follow the creators of images they like</li>
+							<li>Utilize facebook log in</li>
+						</ul>
 					</div>
 				</div>
 
