@@ -226,9 +226,69 @@ class Profile implements JsonSerializable {
 		return $this->profileAdmin;
 	}
 
+	/**
+	 * mutator method for profile admin
+	 *
+	 * @param bool $newProfileAdmin
+	 * @throws \TypeError if $newProfileAdmin is not a bool
+	 */
 	public function setProfileAdmin(bool $newProfileAdmin) {
 
 		$this->profileAdmin = $newProfileAdmin;
+	}
+
+	/**
+	 * accessor method for profile hash
+	 *
+	 * @return string the value of profile hash
+	 */
+	public function getProfileHash() {
+		return $this->profileHash;
+	}
+
+	/**
+	 * mutator method for profile hash
+	 *
+	 * @param string $newProfileHash the value of profile hash
+	 * @throws \InvalidArgumentException if $newProfileHash is empty or insecure
+	 * @throws \TypeError if $newProfileHash is not a string
+	 */
+	public function setProfileHash(string $newProfileHash) {
+		//verify that the profile hash is valid
+		$newProfileHash = trim($newProfileHash);
+		$newProfileHash = filter_var($newProfileHash, FILTER_SANITIZE_STRING);
+		if(empty($newProfileHash) === true) {
+			throw(new \InvalidArgumentException("Profile hash is either empty or insecure"));
+		}
+
+		$this->profileHash = $newProfileHash;
+	}
+
+	/**
+	 * accessor method for profile salt
+	 *
+	 * @return string the value of profile salt
+	 */
+	public function getProfileSalt() {
+		return $this->profileSalt;
+	}
+
+	/**
+	 * mutator method for profile salt
+	 *
+	 * @param string $newProfileSalt
+	 * @throws \InvalidArgumentException if $newProfileSalt is empty or insecure
+	 * @throws \TypeError if $newProfileSalt is not a string
+	 */
+	public function setProfileSalt(string $newProfileSalt) {
+		//verify that the profile salt is valid
+		$newProfileSalt = trim($newProfileSalt);
+		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
+		if(empty($newProfileSalt) === true) {
+			throw(new \InvalidArgumentException("Profile salt is either empty or insecure"));
+		}
+
+		$this->profileSalt = $newProfileSalt;
 	}
 	public function jsonSerialize() {
 		//TODO finish this
