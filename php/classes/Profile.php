@@ -313,6 +313,47 @@ class Profile implements JsonSerializable {
 
 		$this->profileSalt = $newProfileSalt;
 	}
+
+	public function insert(\PDO $pdo) {
+		//Enforce that the profile id is null
+		if($this->profileId !== null) {
+			throw(new \PDOException("Not a new profile."));
+		}
+		//create query template
+		$query = "INSERT INTO profile(profileHandle, profileName, profilePhone, profileEmail, profileAdmin, profileHash, profileSalt) VALUES(:profileHandle, :profileName, :profilePhone, :profileEmail, :profileAdmin, :profileHash, :profileSalt)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holder in the template
+		$parameters = ["profileHandle" => $this->profileHandle, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileEmail" => $this->profileEmail, "profileAdmin" => $this->profileAdmin, "profileHash" => $this->profileHash, "profileSalt" => $this->profileSalt];
+		$statement->execute($parameters);
+
+		//Update the profileId to the newest available id
+		$this->profileId = intval($pdo->lastInsertId());
+	}
+
+	public function delete(\PDO $pdo) {
+		//Enforce that the profile id is not null
+		if($this->profileId === null) {
+			throw(new \PDOException("The profile you are attempting to delete does not exist."));
+		}
+		//Create the query template
+		$query = "DELETE FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holder in the template
+		$parameters = ["profileId" => $this->profileId];
+		$statement->execute($parameters);
+	}
+
+	public function update(\PDO $pdo) {
+		//Enforce that the profile id is not null
+		if($this->profileId === null) {
+			throw(new \PDOException("The profile you are attempting to update does not exist."));
+		}
+
+		//Create a query template
+		$query = "UPDATE profile SET profileHandle = :profileHandle, profileName = :profileName, profilePhone = :profilePhone, profile";
+	}
 	public function jsonSerialize() {
 		//TODO finish this
 		return(null);
