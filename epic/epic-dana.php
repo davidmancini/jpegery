@@ -57,8 +57,11 @@
 					<strong>View Content in Feed</strong>
 					<ul>
 						<li>Dana: Access site</li>
-						<li>Site: Open user profile</li>
-						<li>Dana: View content in feed</li>
+						<li>Site: Displays generic welcome page with authentication fields</li>
+						<li>Dana: Enters username and password</li>
+						<li>Site: Queries database and verifies dana is a registered user and has entered the correct password</li>
+						<li>Site: Displays user profile</li>
+						<li>Dana: Views content in feed</li>
 					</ul>
 				</div>
 			</div>
