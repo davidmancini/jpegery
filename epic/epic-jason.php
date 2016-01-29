@@ -76,6 +76,8 @@
 							<li>Jason: Access site</li>
 							<li>Site: Show user homepage</li>
 							<li>Jason: Click button titled, “New content”</li>
+							<li>Site: Displays feed of content with newest on top</li>
+							<li>Jason: Scrolls through new content</li>
 						</ul>
 					</div>
 				</div>
