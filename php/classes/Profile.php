@@ -58,6 +58,19 @@ class Profile implements JsonSerializable {
 	private $profileAdmin;
 
 	/**
+	 * The hash for the password
+	 *
+	 * @var string $profileHash
+	 */
+	private $profileHash;
+
+	/**
+	 * The salt for the password
+	 *
+	 * @var string $profileSalt
+	 */
+	private $profileSalt;
+	/**
 	 * accessor method for profile id
 	 *
 	 * @return int|null value of profile id
@@ -154,6 +167,69 @@ class Profile implements JsonSerializable {
 		$this->profileName = $newProfileName;
 	}
 
+	/**
+	 * accessor method for profile phone number
+	 *
+	 * @return string value of profile phone number
+	 */
+	public function getProfilePhone() {
+		return $this->profilePhone;
+	}
+
+	/**
+	 * @param string $newProfilePhone
+	 * @throws \InvalidArgumentException if $newProfilePhone is empty or insecure
+	 * @throws \
+	 */
+	public function setProfilePhone(string $newProfilePhone) {
+		//verify the profile phone number is a proper phone number
+		$newProfilePhone = trim($newProfilePhone);
+		$newProfilePhone = filter_var($newProfilePhone, FILTER_SANITIZE_STRING);
+		if(empty($newProfilePhone) === true) {
+			throw(new \InvalidArgumentException("Phone is empty or insecure"));
+		}
+		$this->profilePhone = $newProfilePhone;
+	}
+
+	/**
+	 * accessor method for profile email
+	 *
+	 * @return string value of profile email
+	 */
+	public function getProfileEmail() {
+		return $this->profileEmail;
+	}
+
+	/**
+	 * mutator method for $profileEmail
+	 *
+	 * @param string $newProfileEmail
+	 * @throws \InvalidArgumentException if email is empty or insecure or not a proper email
+	 * @throws \TypeError if $newProfileEmail is not a string
+	 */
+	public function setProfileEmail(string $newProfileEmail) {
+		//verify the email is a proper email
+		$newProfileEmail = trim($newProfileEmail);
+		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
+		if(empty($newProfileEmail) === true) {
+			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
+		}
+		$this->profileEmail = $newProfileEmail;
+	}
+
+	/**
+	 * accessor method for profile admin
+	 *
+	 * @return bool the value of profile admin
+	 */
+	public function isProfileAdmin() {
+		return $this->profileAdmin;
+	}
+
+	public function setProfileAdmin(bool $newProfileAdmin) {
+
+		$this->profileAdmin = $newProfileAdmin;
+	}
 	public function jsonSerialize() {
 		//TODO finish this
 		return(null);
