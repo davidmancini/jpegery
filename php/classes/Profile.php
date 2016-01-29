@@ -70,6 +70,29 @@ class Profile implements JsonSerializable {
 	 * @var string $profileSalt
 	 */
 	private $profileSalt;
+
+	public function __construct(int $newProfileId = null, string $newProfileHandle, string $newProfileName, string $newProfilePhone, string $newProfileEmail, bool $newProfileAdmin = null, string $newProfileHash, string $newProfileSalt) {
+		try {
+			$this->setProfileId($newProfileId);
+			$this->setProfileHandle($newProfileHandle);
+			$this->setProfileName($newProfileName);
+			$this->setProfilePhone($newProfilePhone);
+			$this->setProfileEmail($newProfileEmail);
+			$this->setProfileAdmin($newProfileAdmin);
+			$this->setProfileHash($newProfileHash);
+			$this->setProfileSalt($newProfileSalt);
+		} //Rethrow the exception to the caller
+		catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		} catch(\TypeError $typeError) {
+			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
+		} catch(\Exception $exception) {
+			throw(new \Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
 	/**
 	 * accessor method for profile id
 	 *
