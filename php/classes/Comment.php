@@ -186,11 +186,55 @@ class Comment implements JsonSerializable {
 		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentText) VALUES(:commentImageId, :commentProfileId, :commentText)";
 		$statement = $pdo->prepare($query);
 
-		//Bind the member variables to the place holder in the template
+		//Bind the member variables to the placeholder in the template
 		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText];
 		$statement->execute($parameters);
 		//Update comment id to the newest available id
 		$this->commentId = intval($pdo->lastInsertId());
+	}
+
+	/**
+	 * deletes this comment in mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function delete(\PDO $pdo) {
+		//Enforce that comment id is not null
+		if($this->commentId === null) {
+			throw(new \PDOException("Cannot delete a comment that does not exist"));
+		}
+
+		//Create a query template
+		$query = "DELETE FROM comment WHERE commentId = :commentId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the placeholder in the template
+		$parameters = ["commentId" => $this->commentId];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * Updates this comment in mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function update(\PDO $pdo) {
+		//Enforce that comment id is not null
+		if($this->commentId === null) {
+			throw(new \PDOException("Cannot update a comment that does not exist"));
+		}
+
+		//Create a query template
+		$query = "UPDATE comment SET commentImageId = :commentImageId, commentProfileId = :commentProfileId, commentText = :commentText WHERE commentId = :commentId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holders in this template
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentId" => $this->commentId];
+		$statement->execute($parameters);
 	}
 
 	public function jsonSerialize() {

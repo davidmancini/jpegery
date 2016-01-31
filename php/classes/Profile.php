@@ -360,6 +360,7 @@ class Profile implements JsonSerializable {
 
 		//Create a query template
 		$query = "UPDATE profile SET profileHandle = :profileHandle, profileName = :profileName, profilePhone = :profilePhone, profile";
+		//TODO finish this
 	}
 	public function jsonSerialize() {
 		//TODO finish this
