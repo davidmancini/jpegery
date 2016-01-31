@@ -47,6 +47,37 @@ class Comment implements JsonSerializable {
 	//private $commentDate;
 
 	/**
+	 * Comment constructor.
+	 *
+	 * @param int|null $newCommentId, private key
+	 * @param int $newCommentImageId, foreign key
+	 * @param int $newCommentProfileId, foreign key
+	 * @param string $newCommentText
+	 * @throws \InvalidArgumentException if the data types are not valid
+	 * @throws \RangeException if the data values are out of bounds
+	 * @throws \TypeError if data types violate type hints
+	 * @throws \Exception if some other exception occurs
+	 */
+	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, string $newCommentText) {
+		try {
+			$this->setCommentId($newCommentId);
+			$this->setCommentImageId($newCommentImageId);
+			$this->setCommentProfileId($newCommentProfileId);
+			$this->setCommentText($newCommentText);
+		}
+		//Rethrow the exception to the caller
+		catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		} catch(\TypeError $typeError) {
+			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
+		} catch(\Exception $exception) {
+			throw(new \Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
+	/**
 	 * accessor method for comment id
 	 *
 	 * @return int value of comment id
