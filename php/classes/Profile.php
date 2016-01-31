@@ -314,6 +314,13 @@ class Profile implements JsonSerializable {
 		$this->profileSalt = $newProfileSalt;
 	}
 
+	/**
+	 * inserts this comment into mySQL
+	 *
+	 * @param PDO $pdo PDO profile object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
 	public function insert(\PDO $pdo) {
 		//Enforce that the profile id is null
 		if($this->profileId !== null) {

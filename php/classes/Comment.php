@@ -38,7 +38,7 @@ class Comment implements JsonSerializable {
 	 * the date the comment was posted
 	 * @var \DateTime $commentDate
 	 */
-	private $commentDate;
+	//private $commentDate;
 
 	/**
 	 * accessor method for comment id
@@ -148,7 +148,7 @@ class Comment implements JsonSerializable {
 	 *
 	 * @return \DateTime value of comment date
 	 */
-	public function getCommentDate() {
+	/**public function getCommentDate() {
 		return $this->commentDate;
 	}
 
@@ -166,9 +166,37 @@ class Comment implements JsonSerializable {
 		}
 		$this->commentDate = $newCommentDate;
 	}
+	 * */
+
+	/**
+	 * inserts this comment into mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+
+	public function insert(\PDO $pdo) {
+		//Enforce that the comment id is null
+		if($this->commentId !== null) {
+			throw(new \PDOException("Not a new comment"));
+		}
+
+		//Create a query template
+		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentText) VALUES(:commentImageId, :commentProfileId, :commentText)";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the place holder in the template
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText];
+		$statement->execute($parameters);
+		//Update comment id to the newest available id
+		$this->commentId = intval($pdo->lastInsertId());
+	}
 
 	public function jsonSerialize() {
 		//TODO finish this
 		return(null);
+
 	}
+
 }
