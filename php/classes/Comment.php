@@ -116,6 +116,57 @@ class Comment implements JsonSerializable {
 		$this->commentProfileId = $newCommentProfileId;
 	}
 
+	/**
+	 * accessor method for comment text
+	 *
+	 * @return string value of comment text
+	 */
+	public function getCommentText() {
+		return $this->commentText;
+	}
+
+	/**
+	 * mutator method for $newCommentText
+	 *
+	 * @param string $newCommentText
+	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
+	 * @throws \TypeError if $newCommentText is not a string
+	 */
+	public function setCommentText(string $newCommentText) {
+		//verify the comment text is secure
+		$newCommentText = trim($newCommentText);
+		$newCommentText = filter_var($newCommentText, FILTER_SANITIZE_STRING);
+		if(empty($newCommentText) === true) {
+			throw(new \InvalidArgumentException("comment content is empty or insecure"));
+		}
+
+		$this->commentText = $newCommentText;
+	}
+
+	/**
+	 * accessor method for comment date
+	 *
+	 * @return \DateTime value of comment date
+	 */
+	public function getCommentDate() {
+		return $this->commentDate;
+	}
+
+	public function setCommentDate($newCommentDate = null) {
+		//base case: if $newCommentDate is null, use current date and time
+		if($newCommentDate === null) {
+			$this->commentDate = new \DateTime();
+			return;
+		}
+		//store the comment date
+		try {
+			$newCommentDate;
+		} catch (\InvalidArgumentException $invalidArgument) {
+
+		}
+		$this->commentDate = $newCommentDate;
+	}
+
 	public function jsonSerialize() {
 		//TODO finish this
 		return(null);
