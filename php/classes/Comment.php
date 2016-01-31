@@ -9,6 +9,12 @@
 include_once("autoload.php");
 
 
+/**
+ * Class Comment
+ * @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
+ *
+ * A comment on an image
+ */
 class Comment implements JsonSerializable {
 	/**
 	 * id for comment, the primary key
