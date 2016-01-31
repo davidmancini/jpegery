@@ -16,6 +16,37 @@ class Follower implements JsonSerializable {
 	 */
 	private $followedId;
 
+
+	/**
+	 * Follower constructor.
+	 *
+	 * @param int $newFollowerId A composite id, specifically that of the follower
+	 * @param int $newFollowedId A composite id, specifically that of the followed
+	 * @throws \InvalidArgumentException if the data types are not valid
+	 * @throws \RangeException if the ids are not positive numbers
+	 * @throws \TypeError if the ids are not ints
+	 * @throws \Exception if some other problem occurs
+	 */
+	public function __construct(int $newFollowerId, int $newFollowedId) {
+		try {
+			$this->setFollowerId($newFollowerId);
+			$this->setFollowedId($newFollowedId);
+		}
+		//Rethrow the exception to the caller
+		catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		}
+		catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		}
+		catch(\TypeError $typeError) {
+			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
+		}
+		catch(\Exception $exception) {
+			throw(new \Exception($exception->getMessage(), 0, $exception));
+		}
+	}
+
 	/**
 	 * accessor method for follower id
 	 *
