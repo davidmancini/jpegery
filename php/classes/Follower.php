@@ -109,6 +109,31 @@ class Follower implements JsonSerializable {
 
 	}
 
+	/**
+	 * delete this follower relationship from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when $pdo is not a PDO connection object
+	 */
+	public function delete(\PDO $pdo) {
+		//Enforce that the relationship can exist
+		if($this->followedId === null) {
+			throw(new \PDOException("The id of the followed does not exist"));
+		}
+		if($this->followerId === null) {
+			throw(new \PDOException("The id of the follower does not exist"));
+		}
+
+		//Create query template
+		$query = "DELETE FROM follower WHERE followerId = :followerId AND followedId = :followedId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the member variables to the placeholder in the template
+		$parameters = ["followerId" => $this->followerId, "followedId" => $this->followedId];
+		$statement->execute($parameters);
+	}
+
 	public function jsonSerialize() {
 		//TODO finish this
 		return(null);
