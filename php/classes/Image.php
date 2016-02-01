@@ -175,7 +175,7 @@ class Image {
 
 		//Exception if input will not fit in the database
 		if(strlen($newImageType) > 128){
-			throw(new \RangeException("image type (string) is too large"));
+			throw(new \RangeException("image type is too large"));
 		}
 
 		//Save the input
@@ -184,8 +184,35 @@ class Image {
 
 	/*
 	 * Accessor method for imageFileName
-	 * @return
+	 * @return string of imageFileNmae
 	 */
+	public function getImageFileName(){
+		return($this->imageFileName);
+	}
+
+	/*
+	 * Mutator method for imageFileName
+	 * @param string for imageFileName
+	  @throws InvalidArgumentException if type is only non-sanitized values
+	 * @throws RangeException if image file name will not fit in database
+	 */
+	public function setImageFileName($newImageFileName) {
+		//Sanitize
+		$newImageFileName = filter_var($newImageFileName, FILTER_SANITIZE_STRING);
+
+		//Exception if only non-standardized values (and is now empty)
+		if($newImageFileName === false){
+			throw(new \InvalidArgumentException("image file name is not a valid string"));
+		}
+
+		//Exception if input will not fit in the database
+		if(strlen($newImageFileName) > 128){
+			throw(new \RangeException("image file name is too large"));
+		}
+
+		//Save the input
+		$this->imageFileName = $newImageFileName;
+	}
 
 
 
