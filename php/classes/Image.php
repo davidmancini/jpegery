@@ -248,10 +248,10 @@ class Image {
 
 	/*
 	 * Inserts image into database
-	 * @param PDO $pdo PDO connection object
-	 * @throws PDOException when MySQL-related error occurs
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when MySQL-related error occurs
 	 */
-	public function insert(PDO $pdo){
+	public function insert(\PDO $pdo){
 		//Only inserts if new image id
 		if($this->imageId !== null){
 			throws(new \PDOException("not a new image id"));
@@ -270,10 +270,10 @@ class Image {
 
 	/*
 	 * Updates image in database
-	 * @param PDO $pdo PDO connection object
-	 * @throws PDOException when MySQL-related error occurs
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when MySQL-related error occurs
 	 */
-	public function update(PDO $pdo){
+	public function update(\PDO $pdo){
 		//Only updates if not new id
 		if($this->imageId === null) {
 			throw(new \PDOException("unable to update, image id does not exist"));
@@ -290,11 +290,10 @@ class Image {
 
 	/*
 	 * Delete image in database
-	 * @param PDO $pdo PDO connection object
-	 * @param PDO $pdo PDO connection object
+	 * @param \PDO $pdo PDO connection object
 	 * @throws PDOException when MySQL-related error occurs
 	 */
-	public function delete(PDO $pdo){
+	public function delete(\PDO $pdo){
 		//Only deletes if image id exists
 		if($this->imageId === null){
 			throw(new \PDOException("Unable to delete, image id does not exist."));
@@ -309,6 +308,18 @@ class Image {
 		$statement->execute($parameters);
 	}
 
+	/*
+	 * Gets image by imageId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $imageId id to search for
+	 * @return Image or null if not found
+	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+
+
 
 
 
@@ -322,4 +333,6 @@ class Image {
  * imageType
  * imageFileName
  * imageText
+ *
+ * get image by ^
  */
