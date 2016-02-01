@@ -101,7 +101,7 @@ class Image {
 			return;
 		}
 
-		//filter
+		//Filter
 		$newImageId = filter_var($newImageId, FILTER_VALIDATE_INT);
 
 		//Exception if not int
@@ -109,8 +109,46 @@ class Image {
 			throw(new \InvalidArgumentException("image id is not an integer"));
 		}
 
-		//save the object
+		//Exception if negative
+		if($newImageId <= 0) {
+			throw(new \RangeException("image id must be positive"));
+		}
+		)
+
+		//Save the object
 		$this->imageId = $newImageId;
+	}
+
+	/*
+	 * Accessor method for imageProfileId
+	 * @return int value of imageProfileId
+	 */
+	public function getImageProfileId(){
+		return($this->imageProfileId);
+	}
+
+	/*
+	 * Mutator method for imageProfileId
+	 * @param int $newImageProfileId of new profileId
+	 * @throws InvalidArgumentException if profile id is not an integer
+	 * @throws RangeException if profile id is negative
+	 */
+	public function setImageProfileId($newImageProfileId){
+		//Filter
+		$newImageProfileId = filter_var($newImageProfileId, FILTER_VALIDATE_INT);
+
+		//Exception if not int
+		if($newImageProfileId === false) {
+			throw(new \InvalidArgumentException("imageProfileId is not an integer"));
+		}
+
+		//Exception if negative
+		if($newImageProfileId <= 0) {
+			throw(new \RangeException("imageProfileId must be positive"));
+		}
+
+		//Save the object
+		$this->imageProfileId = $newImageProfileId;
 	}
 
 	/*
