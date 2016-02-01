@@ -3,12 +3,12 @@
 require_once("autoload.php");
 
 ///*/**
-// * Class FollowerFollowed
+// * Class Follower
 // *  @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
 // *
-// * Represents the Following relationship
+// * Represents the Follower relationship
 // *
-//class FollowerFollowed implements JsonSerializable {
+//class Follower implements JsonSerializable {
 //
 //	/**
 //	 * id for the follower (One who is following another), this is a composite primary key
@@ -103,7 +103,7 @@ require_once("autoload.php");
 //
 //
 //	/**
-//	 * inserts this FollowerFollowed relationship into mySQL
+//	 * inserts this Follower relationship into mySQL
 //	 *
 //	 * @param PDO $pdo PDO connection object
 //	 * @throws \PDOException when mySQL related error occurs
@@ -119,7 +119,7 @@ require_once("autoload.php");
 //		}
 //
 //		//Create a query template
-//		$query = "INSERT INTO followerfollowed (followerId, followedId) VALUES (:followerId, :followedId)";
+//		$query = "INSERT INTO follower (followerId, followedId) VALUES (:followerId, :followedId)";
 //		$statement = $pdo->prepare($query);
 //		//Bind the member variables to the place holders in the template
 //		$parameters = ["followerId" => $this->followerId, "followedId" => $this->followedId];
@@ -127,7 +127,7 @@ require_once("autoload.php");
 //	}
 //
 //	/**
-//	 * delete this FollowerFollowed relationship from mySQL
+//	 * delete this Follower relationship from mySQL
 //	 *
 //	 * @param PDO $pdo PDO connection object
 //	 * @throws \PDOException when mySQL related errors occur
@@ -143,7 +143,7 @@ require_once("autoload.php");
 //		}
 //
 //		//Create query template
-//		$query = "DELETE FROM followerfollowed WHERE followerId = :followerId AND followedId = :followedId";
+//		$query = "DELETE FROM follower WHERE followerId = :followerId AND followedId = :followedId";
 //		$statement = $pdo->prepare($query);
 //
 //		//Bind the member variables to the placeholder in the template
