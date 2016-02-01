@@ -1,4 +1,5 @@
 <?php
+namespace EDU\CNM\Jpegery;
 /**
  * Created by PhpStorm.
  * User: zleyba

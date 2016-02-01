@@ -1,7 +1,8 @@
 <?php
 
-require_once("autoload.php");
+namespace EDU\CNM\Jpegery;
 
+require_once("autoload.php");
 
 /**
  * Class Follower
