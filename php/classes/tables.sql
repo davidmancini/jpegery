@@ -57,7 +57,7 @@ CREATE TABLE image (
 	iamgeId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	imageProfileId INT UNSIGNED NOT NULL,
 	imageType VARCHAR(128) NOT NULL,
-	imageFileName VARCHAR(128) NOT NULL,
+	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
 	PRIMARY KEY(iamgeId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId);
