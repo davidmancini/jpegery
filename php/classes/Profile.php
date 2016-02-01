@@ -1,12 +1,18 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: zleyba
  * Date: 1/28/16
  * Time: 1:35 PM
+
+
+
  */
-//namespace Edu\Cnm\
-include_once("autoload.php");
+
+namespace Edu\Cnm\Jpegery\;
+
+require_once("autoload.php");
 
 /**
  * Class Profile
@@ -14,12 +20,14 @@ include_once("autoload.php");
  *
  *The User's profile
  */
+
 class Profile implements JsonSerializable {
 
 	/**
 	 * id for profile, the primary key
 	 * @var int $profileId
 	 */
+
 	private $profileId;
 
 	/**
@@ -27,6 +35,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var string $profileHandle
 	 */
+
 	private $profileHandle;
 
 	/**
@@ -34,6 +43,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var string $profileName
 	 */
+
 	private $profileName;
 
 
@@ -42,12 +52,14 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var string $profilePhone
 	 */
+
 	private $profilePhone;
 
 	/**
 	 * the user's email address
 	 * @var string $profileEmail
 	 */
+
 	private $profileEmail;
 
 	/**
@@ -55,6 +67,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var bool $profileAdmin
 	 */
+
 	private $profileAdmin;
 
 	/**
@@ -62,6 +75,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var string $profileHash
 	 */
+
 	private $profileHash;
 
 	/**
@@ -69,6 +83,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var string $profileSalt
 	 */
+
 	private $profileSalt;
 
 	public function __construct(int $newProfileId = null, string $newProfileHandle, string $newProfileName, string $newProfilePhone, string $newProfileEmail, bool $newProfileAdmin = null, string $newProfileHash, string $newProfileSalt) {
@@ -96,8 +111,9 @@ class Profile implements JsonSerializable {
 	/**
 	 * accessor method for profile id
 	 *
-	 * @return int|null value of profile id
+	 * @return int value of profile id
 	 */
+
 	public function getProfileId() {
 		return $this->profileId;
 	}
@@ -109,6 +125,7 @@ class Profile implements JsonSerializable {
 	 * @throws \RangeException if $newProfileId is not positive
 	 * @throws \TypeError if $newProfileId is not an integer
 	 */
+
 	public function setProfileId(int $newProfileId = null) {
 		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
 		if ($newProfileId === null) {
@@ -127,6 +144,7 @@ class Profile implements JsonSerializable {
 	 * accessor method for profile handle
 	 * @return string value of profile handle
 	 */
+
 	public function getProfileHandle() {
 		return $this->profileHandle;
 	}
@@ -139,6 +157,7 @@ class Profile implements JsonSerializable {
 	 * @throws \RangeException if profile handle is too long
 	 * @throws \TypeError if profile handle is not a string
 	 */
+
 	public function setProfileHandle(string $newProfileHandle) {
 		// verify the profile handle is secure
 		$newProfileHandle = trim($newProfileHandle);
@@ -147,10 +166,7 @@ class Profile implements JsonSerializable {
 			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
 		}
 
-		// make sure the handle isn't too long
-		if(strlen($newProfileHandle) > 100) {
-			throw(new \RangeException("Stop fooling around."));
-		}
+		// verify that the handle isn't too long
 		if (strlen($newProfileHandle) > 18) {
 			throw(new \RangeException("Profile handle is too long"));
 		}
@@ -163,6 +179,7 @@ class Profile implements JsonSerializable {
 	 * accessor method for profile name
 	 * @return string value of profile name
 	 */
+
 	public function getProfileName() {
 		return $this->profileName;
 	}
@@ -175,6 +192,7 @@ class Profile implements JsonSerializable {
 	 * @throws \RangeException if profile name is too long
 	 * @throws \TypeError if profile name is not a string
 	 */
+
 	public function setProfileName(string $newProfileName) {
 		// verify the profile name is secure
 		$newProfileName = trim($newProfileName);
@@ -195,6 +213,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @return string value of profile phone number
 	 */
+
 	public function getProfilePhone() {
 		return $this->profilePhone;
 	}
@@ -204,6 +223,7 @@ class Profile implements JsonSerializable {
 	 * @throws \InvalidArgumentException if $newProfilePhone is empty or insecure
 	 * @throws \
 	 */
+
 	public function setProfilePhone(string $newProfilePhone) {
 		//verify the profile phone number is a proper phone number
 		$newProfilePhone = trim($newProfilePhone);
@@ -219,6 +239,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @return string value of profile email
 	 */
+
 	public function getProfileEmail() {
 		return $this->profileEmail;
 	}
@@ -230,6 +251,7 @@ class Profile implements JsonSerializable {
 	 * @throws \InvalidArgumentException if email is empty or insecure or not a proper email
 	 * @throws \TypeError if $newProfileEmail is not a string
 	 */
+
 	public function setProfileEmail(string $newProfileEmail) {
 		//verify the email is a proper email
 		$newProfileEmail = trim($newProfileEmail);
@@ -245,6 +267,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @return bool the value of profile admin
 	 */
+
 	public function isProfileAdmin() {
 		return $this->profileAdmin;
 	}
@@ -255,6 +278,7 @@ class Profile implements JsonSerializable {
 	 * @param bool $newProfileAdmin
 	 * @throws \TypeError if $newProfileAdmin is not a bool
 	 */
+
 	public function setProfileAdmin(bool $newProfileAdmin) {
 
 		$this->profileAdmin = $newProfileAdmin;
@@ -265,6 +289,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @return string the value of profile hash
 	 */
+
 	public function getProfileHash() {
 		return $this->profileHash;
 	}
@@ -276,6 +301,7 @@ class Profile implements JsonSerializable {
 	 * @throws \InvalidArgumentException if $newProfileHash is empty or insecure
 	 * @throws \TypeError if $newProfileHash is not a string
 	 */
+
 	public function setProfileHash(string $newProfileHash) {
 		//verify that the profile hash is valid
 		$newProfileHash = trim($newProfileHash);
@@ -292,6 +318,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @return string the value of profile salt
 	 */
+
 	public function getProfileSalt() {
 		return $this->profileSalt;
 	}
@@ -303,6 +330,7 @@ class Profile implements JsonSerializable {
 	 * @throws \InvalidArgumentException if $newProfileSalt is empty or insecure
 	 * @throws \TypeError if $newProfileSalt is not a string
 	 */
+
 	public function setProfileSalt(string $newProfileSalt) {
 		//verify that the profile salt is valid
 		$newProfileSalt = trim($newProfileSalt);
@@ -321,6 +349,7 @@ class Profile implements JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
+
 	public function insert(\PDO $pdo) {
 		//Enforce that the profile id is null
 		if($this->profileId !== null) {
