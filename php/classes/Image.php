@@ -113,7 +113,6 @@ class Image {
 		if($newImageId <= 0) {
 			throw(new \RangeException("image id must be positive"));
 		}
-		)
 
 		//Save the object
 		$this->imageId = $newImageId;
@@ -182,6 +181,11 @@ class Image {
 		//Save the input
 		$this->imageType = $newImageType;
 	}
+
+	/*
+	 * Accessor method for imageFileName
+	 * @return
+	 */
 
 
 
