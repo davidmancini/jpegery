@@ -16,7 +16,7 @@ require_once("autoload.php");
  *
  * A comment on an image
  */
-class Comment implements JsonSerializable {
+class Comment implements \JsonSerializable {
 	use \Edu\Cnm\Jpegery\ValidateDate;
 	/**
 	 * id for comment, the primary key

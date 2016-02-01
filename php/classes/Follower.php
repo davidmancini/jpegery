@@ -11,7 +11,7 @@ require_once("autoload.php");
  * Represents the Follower relationship
  *
  */
-class Follower implements JsonSerializable {
+class Follower implements \JsonSerializable {
 
 	/**
 	 * id for the follower (One who is following another), this is a composite primary key
