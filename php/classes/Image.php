@@ -23,7 +23,15 @@ class Image {
 
 	private $imageProfileId;
 
-	/**
 
 
 }
+
+/*
+ * TODO:
+ * imageId
+ * imageProfileId
+ * imageType
+ * imageFileName
+ * imageText
+ */
