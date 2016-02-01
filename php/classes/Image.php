@@ -80,6 +80,75 @@ class Image {
 		}
 	}
 
+	/*
+	 * Accessor method for image id
+	 * @return int value of image id
+	 */
+	public function getImageId(){
+		return ($this->imageId);
+	}
+
+	/*
+	 * Mutator method for image id
+	 * @param int $newImageId of new image
+	 * @throws InvalidArgumentException if image id is not an integer
+	 * @throws RangeException if image id is negative
+	 */
+	public function setImageId($newImageId) {
+		//If empty image id, allow MySQL to auto-increment
+		if($newImageId === null) {
+			$this->imageId = null;
+			return;
+		}
+
+		//filter
+		$newImageId = filter_var($newImageId, FILTER_VALIDATE_INT);
+
+		//Exception if not int
+		if($newImageId === false) {
+			throw(new \InvalidArgumentException("image id is not an integer"));
+		}
+
+		//save the object
+		$this->imageId = $newImageId;
+	}
+
+	/*
+	 * Accessor method for imageType
+	 * @return string of image type
+	 */
+	public function getImageType() {
+		return ($this->imageType);
+	}
+
+	/*
+	 * Mutator method for imageType
+	 * @param string for image type
+	 * @throws InvalidArgumentException if type is only non-sanitized values
+	 * @throws RangeException if image type will not fit in database
+	 */
+	public function setImageType($newImageType){
+		//Sanitize
+		$newImageType = filter_var($newImageType, FILTER_SANITIZE_STRING);
+
+		//Exception if only non-sanitized values (and is now empty)
+		if($newImageType === false) {
+			throw(new \InvalidArgumentException("image type is not a valid string"));
+		}
+
+		//Exception if input will not fit in the database
+		if(strlen($newImageType) > 128){
+			throw(new \RangeException("image type (string) is too large"));
+		}
+
+		//Save the input
+		$this->imageType = $newImageType;
+	}
+
+
+
+
+
 
 }
 
