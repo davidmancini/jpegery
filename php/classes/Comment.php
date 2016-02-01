@@ -16,6 +16,7 @@ require_once("autoload.php");
  * A comment on an image
  */
 class Comment implements JsonSerializable {
+	use \Edu\Cnm\Jpegery\ValidateDate;
 	/**
 	 * id for comment, the primary key
 	 * @var int $commentId
@@ -44,7 +45,7 @@ class Comment implements JsonSerializable {
 	 * the date the comment was posted
 	 * @var \DateTime $commentDate
 	 */
-	//private $commentDate;
+	private $commentDate;
 
 	/**
 	 * Comment constructor.
@@ -53,17 +54,19 @@ class Comment implements JsonSerializable {
 	 * @param int $newCommentImageId, foreign key
 	 * @param int $newCommentProfileId, foreign key
 	 * @param string $newCommentText
+	 * @param \DateTime|string|null $newCommentDate date and time comment was posted, or current time if null
 	 * @throws \InvalidArgumentException if the data types are not valid
 	 * @throws \RangeException if the data values are out of bounds
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, string $newCommentText) {
+	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, string $newCommentText, $newCommentDate = null) {
 		try {
 			$this->setCommentId($newCommentId);
 			$this->setCommentImageId($newCommentImageId);
 			$this->setCommentProfileId($newCommentProfileId);
 			$this->setCommentText($newCommentText);
+			$this->setCommentDate($newCommentDate);
 		}
 		//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
@@ -185,10 +188,17 @@ class Comment implements JsonSerializable {
 	 *
 	 * @return \DateTime value of comment date
 	 */
-	/**public function getCommentDate() {
+	public function getCommentDate() {
 		return $this->commentDate;
 	}
 
+	/**
+	 * mutator method for comment date
+	 *
+	 * @param null $newCommentDate
+	 * @throws \InvalidArgumentException if $newCommentDate is not a valid object or string
+	 * @throws \RangeException if $newCommentDate is a date that cannot exist
+	 */
 	public function setCommentDate($newCommentDate = null) {
 		//base case: if $newCommentDate is null, use current date and time
 		if($newCommentDate === null) {
@@ -197,13 +207,14 @@ class Comment implements JsonSerializable {
 		}
 		//store the comment date
 		try {
-			$newCommentDate;
+			$newCommentDate = $this->validateDate($newCommentDate);
 		} catch (\InvalidArgumentException $invalidArgument) {
-
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch (\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range);
 		}
 		$this->commentDate = $newCommentDate;
 	}
-	 * */
 
 	/**
 	 * inserts this comment into mySQL
@@ -220,11 +231,12 @@ class Comment implements JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentText) VALUES(:commentImageId, :commentProfileId, :commentText)";
+		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentText, commentDate) VALUES(:commentImageId, :commentProfileId, :commentText, :commentDate)";
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the placeholder in the template
-		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText];
+		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentDate" => $formattedDate];
 		$statement->execute($parameters);
 		//Update comment id to the newest available id
 		$this->commentId = intval($pdo->lastInsertId());
@@ -266,17 +278,18 @@ class Comment implements JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "UPDATE comment SET commentImageId = :commentImageId, commentProfileId = :commentProfileId, commentText = :commentText WHERE commentId = :commentId";
+		$query = "UPDATE comment SET commentImageId = :commentImageId, commentProfileId = :commentProfileId, commentText = :commentText, commentDate = :commentDate WHERE commentId = :commentId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the place holders in this template
-		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentId" => $this->commentId];
+		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentDate" => $formattedDate, "commentId" => $this->commentId];
 		$statement->execute($parameters);
 	}
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
-		//$fields["$commentDate"] = intval($this->commentDate->format("U")) * 1000;
+		$fields["commentDate"] = intval($this->commentDate->format("U")) * 1000;
 		return($fields);
 	}
 }
