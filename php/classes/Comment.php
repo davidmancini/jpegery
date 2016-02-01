@@ -1,5 +1,5 @@
 <?php
-namespace EDU\CNM\Jpegery;
+namespace Edu\Cnm\Jpegery;
 /**
  * Created by PhpStorm.
  * User: zleyba
