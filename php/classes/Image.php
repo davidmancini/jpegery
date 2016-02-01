@@ -429,7 +429,7 @@ class Image {
  *
  * @param \PDO $pdo PDO connection object
  * @param string $imageText string to search for
- * @return Image or null if not found
+ * @return \SplFixedArray SplFixedArray of images or null if not found
  * @throws PDOException when MySQL-related error occurs
  * @throws \TypeError when variables are not the correct data type
  */
@@ -454,6 +454,36 @@ class Image {
 		$images = new \SplFixedArray($statement->rowCount());
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false){
+			try {
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"]. $row["imageFileName"], $row["imageText"]);
+				$images[$images->key()] = $image;
+				$images->next();
+			} catch(\Exception $exception) {
+				//If the row couldn't be converted, rethrow
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($images);
+	}
+
+	/*
+	 * Gets all Images
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray SplFixedArray of images found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getAllImages (\PDO $pdo) {
+		//Query
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		//Build array
+		$images = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
 			try {
 				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"]. $row["imageFileName"], $row["imageText"]);
 				$images[$images->key()] = $image;
