@@ -2,6 +2,12 @@
 
 require_once("autoload.php");
 
+/**
+ * Class Follower
+ *  @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
+ *
+ * Represents the Follower relationship
+ */
 class Follower implements JsonSerializable {
 
 	/**
@@ -104,9 +110,29 @@ class Follower implements JsonSerializable {
 		$this->followedId = $newFollowedId;
 	}
 
-	//Not sure how to do the insert just yet
-	public function insert(\PDO $pdo) {
 
+	/**
+	 * inserts this Follower relationship into mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related error occurs
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+	public function insert(\PDO $pdo) {
+		//Make sure that followerId and followedId are not null
+		if($this->followerId === null) {
+			throw(new \PDOException("The follower id is not assigned"));
+		}
+		if($this->followedId === null) {
+			throw(new \PDOException("The followed id is not assigned"));
+		}
+
+		//Create a query template
+		$query = "INSERT INTO follower (followerId, followedId) VALUES (:followerId, :followedId)";
+		$statement = $pdo->prepare($query);
+		//Bind the member variables to the place holders in the template
+		$parameters = ["followerId" => $this->followerId, "followedId" => $this->followedId];
+		$statement->execute($parameters);
 	}
 
 	/**
