@@ -317,6 +317,34 @@ class Image {
 	 * @throws PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 */
+	public static function getImageByImageId (\PDO $pdo, int $imageId){
+		//Sanitize
+		if($imageId <= 0){
+			throw(new \PDOException("image id must be positive"));
+		}
+
+		//Create query
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageId = :imageId";
+		$statement = $pdo->prepare($query);
+
+		//Binds
+		$parameters = array("imageId" => $this->imageId);
+		$statement->execute($parameters);
+
+		//grab image from MySQL
+		try {
+			$image = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false){
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+			}
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($iamge);
+	}
 
 
 
