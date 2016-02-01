@@ -346,6 +346,131 @@ class Image {
 		return($image);
 	}
 
+	/*
+	 * Gets image by image profile id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $imageProfileId id to search for
+	 * @return Image or null if not found
+	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getImageByImageProfileId (\PDO $pdo, int $imageProfileId){
+		//Sanitize
+		if($imageProfileId <= 0){
+			throw(new \PDOException("image profile id must be positive"));
+		}
+
+		//Create query
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageProfileId = :imageProfileId";
+		$statement = $pdo->prepare($query);
+
+		//Binds
+		$parameters = array("imageProfileId" => $imageProfileId);
+		$statement->execute($parameters);
+
+		//grab image from MySQL
+		try {
+			$image = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false){
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+			}
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($image);
+	}
+
+	/*
+	 * Gets image by image file name
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $imageFileName string to search for
+	 * @return Image or null if not found
+	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getImageByImageFileName (\PDO $pdo, string $imageFileName){
+		//Sanitize
+		$imageFileName = trim($imageFileName);
+		$imageFileName = filter_var($imageFileName, FILTER_SANITIZE_STRING);
+		if(empty($imageFileName) === true) {
+			throw(new \PDOException("image file name is invalid"));
+		}
+
+		//Create query
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageFileName = :imageFileName";
+		$statement = $pdo->prepare($query);
+
+		//Binds
+		$parameters = array("imageFileName" => $imageFileName);
+		$statement->execute($parameters);
+
+		//Grabs image from MySQL
+		try {
+			$image = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false){
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+			}
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($image);
+	}
+
+	/*
+ * Gets image by image text
+ *
+ * @param \PDO $pdo PDO connection object
+ * @param string $imageText string to search for
+ * @return Image or null if not found
+ * @throws PDOException when MySQL-related error occurs
+ * @throws \TypeError when variables are not the correct data type
+ */
+	public static function getImageByImageText (\PDO $pdo, string $imageText){
+		//Sanitize
+		$imageText = trim($imageText);
+		$imageText = filter_var($imageText, FILTER_SANITIZE_STRING);
+		if(empty($imageText) === true) {
+			throw(new \PDOException("image text is invalid"));
+		}
+
+		//Create query
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageText LIKE :imageFileName";
+		$statement = $pdo->prepare($query);
+
+		//Binds
+		$imageText = "%$imageText%";
+		$parameters = array("imageText" => $imageText);
+		$statement->execute($parameters);
+
+		//Builds array from MySQL
+		$images = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false){
+			try {
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"]. $row["imageFileName"], $row["imageText"]);
+				$images[$images->key()] = $image;
+				$images->next();
+			} catch(\Exception $exception) {
+				//If the row couldn't be converted, rethrow
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($images);
+	}
+
+
+
+
+
+
 
 
 
@@ -363,4 +488,5 @@ class Image {
  * imageText
  *
  * get image by ^
+ * get all images
  */
