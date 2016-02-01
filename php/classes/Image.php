@@ -160,7 +160,7 @@ class Image {
 
 	/*
 	 * Mutator method for imageType
-	 * @param string for image type
+	 * @param string $newImageType string for image type
 	 * @throws InvalidArgumentException if type is only non-sanitized values
 	 * @throws RangeException if image type will not fit in database
 	 */
@@ -192,8 +192,8 @@ class Image {
 
 	/*
 	 * Mutator method for imageFileName
-	 * @param string for imageFileName
-	  @throws InvalidArgumentException if type is only non-sanitized values
+	 * @param string $newimageFileName string for newImageFileName
+	 * @throws InvalidArgumentException if type is only non-sanitized values
 	 * @throws RangeException if image file name will not fit in database
 	 */
 	public function setImageFileName($newImageFileName) {
@@ -214,6 +214,37 @@ class Image {
 		$this->imageFileName = $newImageFileName;
 	}
 
+	/*
+	 * Accessor method for imageText
+	 * @return string for an image's text
+	 */
+	public function getImageText(){
+		return($this->imageText);
+	}
+
+	/*
+	 * Mutator method for imageText
+	 * @param string $newImageText string for new image's text
+	 * @throws InvalidArgumentException if type is only non-sanitized values
+	 * @throws RangeException if image's text will not fit in database
+	 */
+	public function setImageText($newImageText){
+		//Sanitize
+		$newImageText = filter_var($newImageText, FILTER_SANITIZE_STRING);
+
+		//Exception if only non-standardized values (and is now empty)
+		if($newImageText === false){
+			throw(new \InvalidArgumentException("image text is not a valid string"));
+		}
+
+		//Exception if input will not fit in the database
+		if(strlen($newImageText <= 0)){
+			throw(new \RangeException("image text is too large"));
+		}
+
+		//Save the input
+		$this->imageText = $newImageText;
+	}
 
 
 
