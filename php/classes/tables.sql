@@ -49,3 +49,15 @@ CREATE TABLE follower (
 	FOREIGN KEY(followedId) REFERENCES profile(profileId),
 	PRIMARY KEY(followerId, followedId)
 );
+
+-- This needs to be in correct order.  I just needed to add my table so I could work on my Class file.
+-- If you need to change the Image table, let me know so I can update my Class.  -David
+
+CREATE TABLE image (
+	iamgeId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	imageProfileId INT UNSIGNED NOT NULL,
+	imageType VARCHAR(128) NOT NULL,
+	imageFileName VARCHAR(128) NOT NULL,
+	imageText VARCHAR(500),
+	PRIMARY KEY(iamgeId),
+	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId);
