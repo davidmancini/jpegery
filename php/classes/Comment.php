@@ -6,7 +6,7 @@
  * Time: 1:38 PM
  */
 
-include_once("autoload.php");
+require_once("autoload.php");
 
 
 /**
@@ -275,9 +275,7 @@ class Comment implements JsonSerializable {
 	}
 
 	public function jsonSerialize() {
-		//TODO finish this
-		return(null);
-
+		$fields = get_object_vars($this);
+		return($fields);
 	}
-
 }

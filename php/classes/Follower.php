@@ -1,6 +1,6 @@
 <?php
 
-include_once("autoload.php");
+require_once("autoload.php");
 
 class Follower implements JsonSerializable {
 
@@ -135,8 +135,8 @@ class Follower implements JsonSerializable {
 	}
 
 	public function jsonSerialize() {
-		//TODO finish this
-		return(null);
+		$fields = get_object_vars($this);
+		return($fields);
 
 	}
 }
