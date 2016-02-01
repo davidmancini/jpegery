@@ -12,9 +12,12 @@ require_once("autoload.php");
 
 /**
  * Class Comment
- * @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
  *
  * A comment on an image
+ * @author David Mancini <
+ * @author Jacob Findley <jfindley2@cnm.edu>
+ * @author Michael Kemm
+ * @author Zach Leyba
  */
 class Comment implements \JsonSerializable {
 	use \Edu\Cnm\Jpegery\ValidateDate;
@@ -246,7 +249,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * deletes this comment in mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
+	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
@@ -268,7 +271,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * Updates this comment in mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
+	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
