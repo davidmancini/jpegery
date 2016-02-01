@@ -12,7 +12,7 @@ CREATE TABLE profile (
 	profileName VARCHAR (128),
 
 	email VARCHAR(128),
-	PRIMARY KEY(userId)
+	PRIMARY KEY(profileId)
 );
 
 CREATE TABLE item (
