@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS followerfollowed;
+DROP TABLE IF EXISTS follower;
 DROP TABLE IF EXISTS imagetag;
 DROP TABLE IF EXISTS profileimage;
 DROP TABLE IF EXISTS comment;
@@ -10,9 +10,22 @@ DROP TABLE IF EXISTS profile;
 CREATE TABLE profile (
 	profileId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileName VARCHAR (128),
-
 	email VARCHAR(128),
 	PRIMARY KEY(profileId)
+);
+
+CREATE TABLE comment (
+	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	commentImageId INT UNSIGNED NOT NULL,
+	commentProfileId INT UNSIGNED NOT NULL,
+	commentText VARCHAR(1023) NOT NULL,
+	commentDate DATETIME NOT NULL,
+	INDEX(profileId),
+	INDEX(imageId),
+	FOREIGN KEY(profileId) REFERENCES profile(profileId),
+	FOREIGN KEY(imageId) REFERENCES image(imageId),
+	PRIMARY KEY(commentId)
+
 );
 
 CREATE TABLE item (
@@ -25,4 +38,14 @@ CREATE TABLE item (
 	location VARCHAR (64) NOT NULL,
 	PRIMARY KEY(itemId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId)
+);
+
+CREATE TABLE follower (
+	followerId INT UNSIGNED NOT NULL,
+	followedId INTE UNSIGNED NOT NULL,
+	INDEX(followerId),
+	INDEX(followedId),
+	FOREIGN KEY(followerId) REFERENCES profile(profileId),
+	FOREIGN KEY(followedId) REFERENCES profile(profileId),
+	PRIMARY KEY(followerId, followedId)
 );
