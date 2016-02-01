@@ -104,7 +104,7 @@ class Follower implements JsonSerializable {
 	/**
 	 * inserts this Follower relationship into mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
+	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related error occurs
 	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
@@ -128,7 +128,7 @@ class Follower implements JsonSerializable {
 	/**
 	 * delete this Follower relationship from mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
+	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when $pdo is not a PDO connection object
 	 */

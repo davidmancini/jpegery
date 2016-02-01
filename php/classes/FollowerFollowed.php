@@ -105,7 +105,7 @@ require_once("autoload.php");
 //	/**
 //	 * inserts this FollowerFollowed relationship into mySQL
 //	 *
-//	 * @param PDO $pdo PDO connection object
+//	 * @param \PDO $pdo PDO connection object
 //	 * @throws \PDOException when mySQL related error occurs
 //	 * @throws \TypeError if $pdo is not a PDO connection object
 //	 */
@@ -129,7 +129,7 @@ require_once("autoload.php");
 //	/**
 //	 * delete this FollowerFollowed relationship from mySQL
 //	 *
-//	 * @param PDO $pdo PDO connection object
+//	 * @param \PDO $pdo PDO connection object
 //	 * @throws \PDOException when mySQL related errors occur
 //	 * @throws \TypeError when $pdo is not a PDO connection object
 //	 */
