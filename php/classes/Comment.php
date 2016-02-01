@@ -276,6 +276,7 @@ class Comment implements JsonSerializable {
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
+		//$fields["$commentDate"] = intval($this->commentDate->format("U")) * 1000;
 		return($fields);
 	}
 }
