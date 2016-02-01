@@ -17,7 +17,7 @@ namespace Edu\Cnm\Jpegery;
 //$pdo = connectToEncryptedMySQL("/etc/apache2/data-design/dmancini1.ini");
 
 //LOCAL DEVELOPMENT Connection
-$pdo = new PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
+$pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
 
 class Image {
 
@@ -67,7 +67,7 @@ class Image {
 	public function __construct($newImageId, $newProfileId, $newImageType, $newImageFileName, $newImageText) {
 		try {
 			$this->setImageId($newImageId);
-			$this->setProfileId($newProfileId);
+			$this->setImageProfileId($newProfileId);
 			$this->setImageType($newImageType);
 			$this->setImageFileName($newImageFileName);
 			$this->setImageText($newImageText);
@@ -254,7 +254,7 @@ class Image {
 	public function insert(\PDO $pdo){
 		//Only inserts if new image id
 		if($this->imageId !== null){
-			throws(new \PDOException("not a new image id"));
+			throw(new \PDOException("not a new image id"));
 		}
 		//Creates query
 		$query = "INSERT INTO image(imageProfileId, imageType, imageFileName, imageText) VALUES (:imageProfileId, :imageType, :imageFileName, :imageText)";
@@ -328,7 +328,7 @@ class Image {
 		$statement = $pdo->prepare($query);
 
 		//Binds
-		$parameters = array("imageId" => $this->imageId);
+		$parameters = array("imageId" => $imageId);
 		$statement->execute($parameters);
 
 		//grab image from MySQL
@@ -343,7 +343,7 @@ class Image {
 			//if the row couldn't be converted
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($iamge);
+		return($image);
 	}
 
 
