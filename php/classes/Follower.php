@@ -70,11 +70,6 @@ require_once("autoload.php");
 //	 * @throws \TypeError if $newFollowerId is not an int
 //	 */
 //	public function setFollowerId(int $newFollowerId) {
-//		//If the follower id is null, throw error
-//		if($newFollowerId === null) {
-//			throw(new \RangeException("The follower must exist"));
-//		}
-//
 //		//Out of bounds error
 //		if($newFollowerId <= 0) {
 //			throw(new \RangeException("The follower has a negative number or zero for their id"));
@@ -99,11 +94,7 @@ require_once("autoload.php");
 //	 * @throws \TypeError if $newFollowedId is not an int
 //	 */
 //	public function setFollowedId($newFollowedId) {
-//		//If the followed id is null, throw error
-//		if($newFollowedId === null) {
-//			throw(new \RangeException("The followed must exist"));
-//		}
-//		//out of bounds error
+//		//Out of bounds error
 //		if($newFollowedId <= 0) {
 //			throw(new \RangeException("The followed has a negative number or zero for their id"));
 //		}
