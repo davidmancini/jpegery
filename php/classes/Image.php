@@ -246,6 +246,68 @@ class Image {
 		$this->imageText = $newImageText;
 	}
 
+	/*
+	 * Inserts image into database
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when MySQL-related error occurs
+	 */
+	public function insert(PDO $pdo){
+		//Only inserts if new image id
+		if($this->imageId !== null){
+			throws(new \PDOException("not a new image id"));
+		}
+		//Creates query
+		$query = "INSERT INTO image(imageProfileId, imageType, imageFileName, imageText) VALUES (:imageProfileId, :imageType, :imageFileName, :imageText)";
+		$statement = $pdo->prepare($query);
+
+		//Binds variables to placeholders
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText);
+		$statement->execute($parameters);
+
+		//Updates null image id with the auto-incremented value just created
+		$this->imageId = intval($pdo->lastInsertId());
+	}
+
+	/*
+	 * Updates image in database
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when MySQL-related error occurs
+	 */
+	public function update(PDO $pdo){
+		//Only updates if not new id
+		if($this->imageId === null) {
+			throw(new \PDOException("unable to update, image id does not exist"));
+		}
+
+		//Create query template
+		$query = "UPDATE image SET imageProfileId = :imageProfileId, imageType = :imageType, imageFileName = :imageFileName, imageText = :imageText WHERE imageId = :imageId";
+		$statement = $pdo->prepare($query);
+
+		//Binds variables to placeholders
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageId" => $this->imageId);
+		$statement->execute($parameters);
+	}
+
+	/*
+	 * Delete image in database
+	 * @param PDO $pdo PDO connection object
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when MySQL-related error occurs
+	 */
+	public function delete(PDO $pdo){
+		//Only deletes if image id exists
+		if($this->imageId === null){
+			throw(new \PDOException("Unable to delete, image id does not exist."));
+		}
+
+		//Create query
+		$query = "DELETE FROM image WHERE imageId = :imageId";
+		$statement = $pdo->prepare($query);
+
+		//Binds variables to placeholders
+		$parameters = array("imageId" => $this->imageId);
+		$statement->execute($parameters);
+	}
 
 
 
