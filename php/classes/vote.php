@@ -109,7 +109,7 @@ class vote {
 	public function setVoteValue(int $newVoteValue) {
 		// verify vote value
 		if($newVoteValue !== 1 && $newVoteValue !== -1) {
-			throw(new \RangeException("there is no vote"))
+			throw(new \RangeException("there is no vote"));
 		}
 
 		// save vote value
@@ -132,10 +132,14 @@ class vote {
 
 		// create query template
 		$query = "INSERT INTO vote(profileId, imageId, voteValue ) VALUES (:profileId : imageId :voteValue)";
-		$statment = $pdo->prepare($query);
+		$statement = $pdo->prepare($query);
 
 		// bind the member variable to the place holders in the template
-		$parameters = ["profileId" => $this->profileId]
+		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$statement->execute($parameters);
+
+		// update the null vote value with the value provided by mySQL
+		$this->voteValue = intval($pdo->lastInsertId());
 
 
 
