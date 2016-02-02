@@ -15,9 +15,9 @@ class Follower implements \JsonSerializable {
 
 	/**
 	 * id for the follower (One who is following another), this is a composite primary key
-	 * @var int $followerId
+	 * @var int $followerFollowerId
 	 */
-	private $followerId;
+	private $followerFollowerId;
 
 	/**
 	 * id for the followed (One who is being followed by another), this is a composite primary key
@@ -38,7 +38,7 @@ class Follower implements \JsonSerializable {
 	 */
 	public function __construct(int $newFollowerId, int $newFollowedId) {
 		try {
-			$this->setFollowerId($newFollowerId);
+			$this->setFollowerFollowerId($newFollowerId);
 			$this->setFollowedId($newFollowedId);
 		} //Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
@@ -57,8 +57,8 @@ class Follower implements \JsonSerializable {
 	 *
 	 * @return int value of follower id
 	 */
-	public function getFollowerId() {
-		return $this->followerId;
+	public function getFollowerFollowerId() {
+		return $this->followerFollowerId;
 	}
 
 	/**
@@ -68,12 +68,12 @@ class Follower implements \JsonSerializable {
 	 * @throws \RangeException if $newFollowerId is not a positive number
 	 * @throws \TypeError if $newFollowerId is not an int
 	 */
-	public function setFollowerId(int $newFollowerId) {
+	public function setFollowerFollowerId(int $newFollowerId) {
 		//Out of bounds error
 		if($newFollowerId <= 0) {
 			throw(new \RangeException("The follower has a negative number or zero for their id"));
 		}
-		$this->followerId = $newFollowerId;
+		$this->followerFollowerId = $newFollowerId;
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Follower implements \JsonSerializable {
 	 */
 	public function insert(\PDO $pdo) {
 		//Make sure that followerId and followedId are not null
-		if($this->followerId === null) {
+		if($this->followerFollowerId === null) {
 			throw(new \PDOException("The follower id is not assigned"));
 		}
 		if($this->followedId === null) {
@@ -121,7 +121,7 @@ class Follower implements \JsonSerializable {
 		$query = "INSERT INTO follower (followerId, followedId) VALUES (:followerId, :followedId)";
 		$statement = $pdo->prepare($query);
 		//Bind the member variables to the place holders in the template
-		$parameters = ["followerId" => $this->followerId, "followedId" => $this->followedId];
+		$parameters = ["followerId" => $this->followerFollowerId, "followedId" => $this->followedId];
 		$statement->execute($parameters);
 	}
 
@@ -137,7 +137,7 @@ class Follower implements \JsonSerializable {
 		if($this->followedId === null) {
 			throw(new \PDOException("The id of the followed does not exist"));
 		}
-		if($this->followerId === null) {
+		if($this->followerFollowerId === null) {
 			throw(new \PDOException("The id of the follower does not exist"));
 		}
 
@@ -146,7 +146,7 @@ class Follower implements \JsonSerializable {
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the placeholder in the template
-		$parameters = ["followerId" => $this->followerId, "followedId" => $this->followedId];
+		$parameters = ["followerId" => $this->followerFollowerId, "followedId" => $this->followedId];
 		$statement->execute($parameters);
 	}
 
