@@ -40,16 +40,18 @@ class Comment implements \JsonSerializable {
 	private $commentProfileId;
 
 	/**
+	 * the date the comment was posted
+	 * @var \DateTime $commentDate
+	 */
+	private $commentDate;
+
+	/**
 	 * the text of the comment
 	 * @var string $commentText
 	 */
 	private $commentText;
 
-	/**
-	 * the date the comment was posted
-	 * @var \DateTime $commentDate
-	 */
-	private $commentDate;
+
 
 	/**
 	 * Comment constructor.
@@ -64,13 +66,13 @@ class Comment implements \JsonSerializable {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, string $newCommentText, $newCommentDate = null) {
+	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, $newCommentDate = null,  string $newCommentText) {
 		try {
 			$this->setCommentId($newCommentId);
 			$this->setCommentImageId($newCommentImageId);
 			$this->setCommentProfileId($newCommentProfileId);
-			$this->setCommentText($newCommentText);
 			$this->setCommentDate($newCommentDate);
+			$this->setCommentText($newCommentText);
 		}
 		//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
@@ -161,33 +163,6 @@ class Comment implements \JsonSerializable {
 	}
 
 	/**
-	 * accessor method for comment text
-	 *
-	 * @return string value of comment text
-	 */
-	public function getCommentText() {
-		return $this->commentText;
-	}
-
-	/**
-	 * mutator method for $newCommentText
-	 *
-	 * @param string $newCommentText
-	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
-	 * @throws \TypeError if $newCommentText is not a string
-	 */
-	public function setCommentText(string $newCommentText) {
-		//verify the comment text is secure
-		$newCommentText = trim($newCommentText);
-		$newCommentText = filter_var($newCommentText, FILTER_SANITIZE_STRING);
-		if(empty($newCommentText) === true) {
-			throw(new \InvalidArgumentException("comment content is empty or insecure"));
-		}
-
-		$this->commentText = $newCommentText;
-	}
-
-	/**
 	 * accessor method for comment date
 	 *
 	 * @return \DateTime value of comment date
@@ -221,6 +196,35 @@ class Comment implements \JsonSerializable {
 	}
 
 	/**
+	 * accessor method for comment text
+	 *
+	 * @return string value of comment text
+	 */
+	public function getCommentText() {
+		return $this->commentText;
+	}
+
+	/**
+	 * mutator method for $newCommentText
+	 *
+	 * @param string $newCommentText
+	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
+	 * @throws \TypeError if $newCommentText is not a string
+	 */
+	public function setCommentText(string $newCommentText) {
+		//verify the comment text is secure
+		$newCommentText = trim($newCommentText);
+		$newCommentText = filter_var($newCommentText, FILTER_SANITIZE_STRING);
+		if(empty($newCommentText) === true) {
+			throw(new \InvalidArgumentException("comment content is empty or insecure"));
+		}
+
+		$this->commentText = $newCommentText;
+	}
+
+
+
+	/**
 	 * inserts this comment into mySQL
 	 *
 	 * @param \PDO $pdo PDO connection object
@@ -235,12 +239,12 @@ class Comment implements \JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentText, commentDate) VALUES(:commentImageId, :commentProfileId, :commentText, :commentDate)";
+		$query = "INSERT INTO comment(commentImageId, commentProfileId, commentDate, commentText) VALUES(:commentImageId, :commentProfileId, :commentDate, :commentText)";
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the placeholder in the template
 		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
-		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentDate" => $formattedDate];
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentDate" => $formattedDate, "commentText" => $this->commentText];
 		$statement->execute($parameters);
 		//Update comment id to the newest available id
 		$this->commentId = intval($pdo->lastInsertId());
@@ -282,23 +286,23 @@ class Comment implements \JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "UPDATE comment SET commentImageId = :commentImageId, commentProfileId = :commentProfileId, commentText = :commentText, commentDate = :commentDate WHERE commentId = :commentId";
+		$query = "UPDATE comment SET commentImageId = :commentImageId, commentProfileId = :commentProfileId, commentDate = :commentDate, commentText = :commentText WHERE commentId = :commentId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the member variables to the place holders in this template
 		$formattedDate = $this->commentDate->format("Y-m-d H:i:s");
-		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentText" => $this->commentText, "commentDate" => $formattedDate, "commentId" => $this->commentId];
+		$parameters = ["commentImageId" => $this->commentImageId, "commentProfileId" => $this->commentProfileId, "commentDate" => $formattedDate, "commentText" => $this->commentText, "commentId" => $this->commentId];
 		$statement->execute($parameters);
 	}
 
 	public static function getCommentByCommentId(\PDO $pdo, int $commentId) {
 		//Sanitize the comment id before seaching
-		if(commentId <= 0) {
+		if($commentId <= 0) {
 			throw(new \PDOException("Comment id is not positive"));
 		}
 
 		//Create query template
-		$query = "SELECT commentId, commentImageId, commentProfileId, commentText, commentDate FROM comment WHERE commentId = :commentId";
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentId = :commentId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the comment id to the place holder in the template
@@ -311,13 +315,19 @@ class Comment implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentText"], $row["commentDate"]);
+				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentDate"], $row["commentText"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		return($comment);
+	}
+
+	public static function getCommentByImageId(\PDO $pdo, int $imageId) {
+		//Create a query template
+
+		$query = "SELECT commentId, commentImageId, commentProfileId, ";
 	}
 
 	public function jsonSerialize() {

@@ -1,7 +1,7 @@
 <?php
 namespace Edu\Cnm\Jpegery;
 
-use Edu\Cnm\Jpegery\Comment;
+use Edu\Cnm\Jpegery\{Comment, Image, Profile};
 
 //Grab the project test parameters
 require_once("JpegeryTest.php");
@@ -42,6 +42,16 @@ class CommentTest extends JpegeryTest {
 	 */
 	protected $image = null;
 
+	public final function setUp() {
+		//Run the default setUp() method first
+		parent::setUp();
+
+		//Create and insert a Profile to post the test Comment
+		//TODO: Finish this.
+		$this->profile = new Profile(null, "John Public", "John", "867-5309");
+
+	}
+
 	public function testInsertValidComment () {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -51,5 +61,7 @@ class CommentTest extends JpegeryTest {
 		$comment->insert($this->getPDO());
 
 		//Grab the data from mySQL and ensure that the fields match our expectations
+		$pdoComment = Comment::getCommentByCommentId($this->getPDO(), $comment->getCommentId());
+
 	}
 }
