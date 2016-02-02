@@ -11,10 +11,9 @@ namespace Edu\Cnm\Jpegery;
  * @author David Mancini <mancini.david@gmail.com>
  */
 
-//!!  This needs to be changed to jpegery DB!
 //Secure and Encrypted PDO Database Connection
 //require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
-//$pdo = connectToEncryptedMySQL("/etc/apache2/data-design/dmancini1.ini");
+//$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
 //LOCAL DEVELOPMENT Connection
 $pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
