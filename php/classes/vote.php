@@ -117,16 +117,17 @@ class vote {
 	}
 
 /**
- * inserts this vote into mySQL
+ * insert this vote into mySQL
  *
  * @param \PDO $pdo connects object to PDO
- *
+ * @throws \PDOException when mySQL errors occur
+ * @throws \TypeError if $pdo is not a PDO connection object
  *
  */
 
 	public function insert(\PDO $pdo) {
 		// enforce that vote is null
-		if($this->voteValue !== null) {
+		if($this->profileId === null || $this->imageId === null) {
 			throw(new \PDOException("this is not a new vote"));
 		}
 
@@ -140,15 +141,52 @@ class vote {
 
 		// update the null vote value with the value provided by mySQL
 		$this->voteValue = intval($pdo->lastInsertId());
+	}
 
+/**
+ * delete this vote from my SQL
+ * \PDOException when mySQL errors occur
+ * \TypeError if $pdo is not a PDO connection object
+ */
 
+	public function delete(\PDO $pdo) {
+		// enforce that this vote is not null
+		if($this->voteValue === null) {
+			throw(new \PDOException("vote does not exist"));
+		}
 
+		// create query template
+		$query = "DELETE FROM votevalue WHERE voteValue = :voteValue";
+		$statement = $pdo->prepare($query);
 
+		// bind member variable to the placeholders
+		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$statement->execute($parameters);
+	}
+
+	/**
+	 * update this vote in mySQL
+	 *
+	 * PDOException when mySQL errors occur
+	 * \TypeError if $pdo is not a PDO connection object
+	 */
+
+	public function update(\PDO $pdo) {
+		// enforce that this vote in not null
+		if($this->voteValue === null) {
+			throw(new \PDOException("cannot update, vote does not exist"));
+		}
+		// create query template
+		$query = "UPDATE voteValue SET profileId = :profileId, imageId = :imageId, voteValue = :voteValue";
+		$statement = $pdo->prepare($query);
+
+		// bind member variables to the placeholders
+
+		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$statement->execute($parameters);
 
 
 	}
-
-
 
 
 
