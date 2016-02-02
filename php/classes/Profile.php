@@ -34,13 +34,6 @@ class Profile implements JsonSerializable {
 	private $profileId;
 
 	/**
-	 * user's profile picture
-	 *
-	 * @var $profileImage
-	 */
-	private $profileImageId;
-
-	/**
 	 * Whether or not the user is an admin (Locked at null for now)
 	 *
 	 * @var bool $profileAdmin
@@ -70,6 +63,13 @@ class Profile implements JsonSerializable {
 	 */
 
 	private $profileHash;
+
+	/**
+	 * user's profile picture
+	 *
+	 * @var $profileImage
+	 */
+	private $profileImageId;
 
 	/**
 	 * user's name
