@@ -237,7 +237,7 @@ class Profile implements JsonSerializable {
 	/**
 	 * accessor method for profile hash
 	 *
-	 * @return string the value of profile hash
+	 * @return string value of profile hash
 	 */
 
 	public function getProfileHash() {
@@ -262,6 +262,21 @@ class Profile implements JsonSerializable {
 
 		$this->profileHash = $newProfileHash;
 	}
+
+	/**
+	 * accessor method for profile image
+	 * @return image content
+	 */
+
+	public function getProfileImage() {
+		return $this->profileImage;
+	}
+
+
+
+
+
+
 
 	/**
 	 * accessor method for profile name

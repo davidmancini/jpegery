@@ -40,7 +40,7 @@ class vote {
 
 	/**
 	 * accessor method for profile id
-	 * return int value for profile id
+	 * @return int value for profile id
 	 */
 
 	public function getVoteProfileId() {
@@ -66,7 +66,7 @@ class vote {
 
 	/**
 	 * accessor method for vote image id
-	 * return int value for vote image id
+	 * @return int value for vote image id
 	 */
 
 	public function getImageId() {
@@ -92,7 +92,7 @@ class vote {
 
 	/**
 	 * accessor method for vote type
-	 * return int value for vote type
+	 * @return int value for vote type
 	 */
 
 	public function getVoteValue() {
