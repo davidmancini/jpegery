@@ -1,4 +1,9 @@
 <?php
+
+namespace EDU\CNM\Jpegery;
+
+require_once("autoload.php");
+
 /**
  * Tag is the hashtag that can be assigned to an image
  *
@@ -12,7 +17,9 @@
 
  **/
 
-class Tag {
+class Tag implements JsonSerializable {
+	use \Edu\Cnm\Jpegery\ValidateDate;
+
 	/**ID# of a given tag
 	 * @var int $tagId
 	 */
@@ -55,7 +62,7 @@ class Tag {
 			}
 
 	}
-}
+
 
 /** accessor method for Tag ID
  *
@@ -183,6 +190,13 @@ public function update(PDO $pdo) {
 	$statement->execute($parameters);
 }
 
-
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() {
+		return(get_object_vars($this));
+	}
 
 }
