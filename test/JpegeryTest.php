@@ -2,7 +2,8 @@
 namespace Edu\CNM\Jpegery;
 
 //grab the encrypted properties file
-//TODO: discretely figure out what the encrypted properties file is without revealing my ignorance
+
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 
 abstract class JpegeryTest extends \PHPUnit_Extensions_Database_TestCase {
 
@@ -63,9 +64,8 @@ abstract class JpegeryTest extends \PHPUnit_Extensions_Database_TestCase {
 		if($this->connection === null) {
 			//connect to mySQL and provide the interface to PHPUnit
 
-			//TODO: Finish that which is below. Insert ini files.
-			$config = readConfig("");
-			$pdo = connectToEncryptedMySQL("");
+			$config = readConfig("/etc/apache2/capstone-mysql/jpegery.ini");
+			$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 			$this->connection = $this->createDefaultDBConnection($pdo, $config["database"]);
 		}
 		return($this->connection);
