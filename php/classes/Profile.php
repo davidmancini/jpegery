@@ -69,7 +69,7 @@ class Profile implements JsonSerializable {
 	 *
 	 * @var $profileImage
 	 */
-	private $profileImage;
+	private $profileImageId;
 
 	/**
 	 * user's name
@@ -260,6 +260,7 @@ class Profile implements JsonSerializable {
 			throw(new \InvalidArgumentException("Profile hash is either empty or insecure"));
 		}
 
+		// save profile hash
 		$this->profileHash = $newProfileHash;
 	}
 
@@ -268,8 +269,24 @@ class Profile implements JsonSerializable {
 	 * @return image content
 	 */
 
-	public function getProfileImage() {
-		return $this->profileImage;
+	public function getProfileImageId() {
+		return $this->profileImageId;
+	}
+
+	/**
+	 * mutator method for profile image
+	 * @param
+	 * @throws
+	 */
+
+	public function setProfileImageId(int $newProfileImageId) {
+		//verify that the image id is positive
+		if($newProfileImageId <= 0) {
+			throw(new \RangeException("image id is not positive"));
+		}
+
+		//save profile image  id
+		$this->profileImageId = $newProfileImageId;
 	}
 
 
