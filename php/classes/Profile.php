@@ -149,27 +149,28 @@ class Profile implements JsonSerializable {
 		$this->profileId = $newProfileId;
 	}
 
-	/**
-	 * accessor method for profile admin
-	 *
-	 * @return bool the value of profile admin
-	 */
+			/**
+			 * accessor method for profile admin
+			 *
+			 * @return bool the value of profile admin
+			 */
 
-	public function getProfileAdmin() {
-		return $this->profileAdmin;
-	}
+			public function getProfileAdmin() {
+				return $this->profileAdmin;
+			}
 
-	/**
-	 * mutator method for profile admin
-	 *
-	 * @param bool $newProfileAdmin
-	 * @throws \TypeError if $newProfileAdmin is not a bool
-	 */
+			/**
+			 * mutator method for profile admin
+			 *
+			 * @param bool $newProfileAdmin
+			 * @throws \TypeError if $newProfileAdmin is not a bool
+			 */
 
-	public function setProfileAdmin(bool $newProfileAdmin) {
 
-		$this->profileAdmin = $newProfileAdmin;
-	}
+			public function setProfileAdmin(bool $newProfileAdmin) {
+
+				$this->profileAdmin = $newProfileAdmin;
+			}
 
 	/**
 	 * accessor method for profile email
@@ -196,6 +197,7 @@ class Profile implements JsonSerializable {
 		if(empty($newProfileEmail) === true) {
 			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
 		}
+		// save email
 		$this->profileEmail = $newProfileEmail;
 	}
 
@@ -225,12 +227,12 @@ class Profile implements JsonSerializable {
 			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
 		}
 
-		// verify that the handle isn't too long
+		// verify handle length
 		if (strlen($newProfileHandle) > 18) {
 			throw(new \RangeException("Profile handle is too long"));
 		}
 
-		//Store the handle
+		// save handle
 		$this->profileHandle = $newProfileHandle;
 	}
 
@@ -266,8 +268,7 @@ class Profile implements JsonSerializable {
 
 	/**
 	 * accessor method for profile image
-	 * @return image content
-	 */
+	 * @return int value of image id
 
 	public function getProfileImageId() {
 		return $this->profileImageId;
@@ -280,12 +281,12 @@ class Profile implements JsonSerializable {
 	 */
 
 	public function setProfileImageId(int $newProfileImageId) {
-		//verify that the image id is positive
+		// verify that the image id is positive
 		if($newProfileImageId <= 0) {
 			throw(new \RangeException("image id is not positive"));
 		}
 
-		//save profile image  id
+		// save profile image id
 		$this->profileImageId = $newProfileImageId;
 	}
 
@@ -321,10 +322,11 @@ class Profile implements JsonSerializable {
 			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
 		}
 
-		//Make sure the name isn't too long
+		// verify valid name length
 		if(strlen($newProfileName) > 50) {
 			throw(new \RangeException("Your name is too long"));
 		}
+		// save profile name
 		$this->profileName = $newProfileName;
 	}
 
@@ -345,12 +347,13 @@ class Profile implements JsonSerializable {
 	 */
 
 	public function setProfilePhone(string $newProfilePhone) {
-		//verify the profile phone number is a proper phone number
+		// verify the profile phone number is a proper phone number
 		$newProfilePhone = trim($newProfilePhone);
 		$newProfilePhone = filter_var($newProfilePhone, FILTER_SANITIZE_STRING);
 		if(empty($newProfilePhone) === true) {
 			throw(new \InvalidArgumentException("Phone is empty or insecure"));
 		}
+		// save profile phone #
 		$this->profilePhone = $newProfilePhone;
 	}
 
@@ -373,7 +376,7 @@ class Profile implements JsonSerializable {
 	 */
 
 	public function setProfileSalt(string $newProfileSalt) {
-		//verify that the profile salt is valid
+		// verify that the profile salt is valid
 		$newProfileSalt = trim($newProfileSalt);
 		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
 		if(empty($newProfileSalt) === true) {
@@ -392,48 +395,39 @@ class Profile implements JsonSerializable {
 	 */
 
 	public function insert(\PDO $pdo) {
-		//Enforce that the profile id is null
+		// enforce that the profile id is null
 		if($this->profileId !== null) {
 			throw(new \PDOException("Not a new profile."));
 		}
-		//create query template
+		// create query template
 		$query = "INSERT INTO profile(profileHandle, profileName, profilePhone, profileEmail, profileAdmin, profileHash, profileSalt) VALUES(:profileHandle, :profileName, :profilePhone, :profileEmail, :profileAdmin, :profileHash, :profileSalt)";
 		$statement = $pdo->prepare($query);
 
-		//Bind the member variables to the place holder in the template
+		// bind the member variables to the placeholder
 		$parameters = ["profileHandle" => $this->profileHandle, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileEmail" => $this->profileEmail, "profileAdmin" => $this->profileAdmin, "profileHash" => $this->profileHash, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
-		//Update the profileId to the newest available id
+		// save profile id given by mySQL
 		$this->profileId = intval($pdo->lastInsertId());
 	}
 
 	public function delete(\PDO $pdo) {
-		//Enforce that the profile id is not null
+		//enforce that the profile id is not null
 		if($this->profileId === null) {
 			throw(new \PDOException("The profile you are attempting to delete does not exist."));
 		}
-		//Create the query template
+		// create query template
 		$query = "DELETE FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
-		//Bind the member variables to the place holder in the template
+		// bind the member variables to the placeholder
 		$parameters = ["profileId" => $this->profileId];
 		$statement->execute($parameters);
 	}
 
 	public function update(\PDO $pdo) {
-		//Enforce that the profile id is not null
+		// enforce that the profile id is not null
 		if($this->profileId === null) {
 			throw(new \PDOException("The profile you are attempting to update does not exist."));
 		}
-
-		//Create a query template
-		$query = "UPDATE profile SET profileHandle = :profileHandle, profileName = :profileName, profilePhone = :profilePhone, profile";
-		//TODO finish this
 	}
-	public function jsonSerialize() {
-		//TODO finish this
-		return(null);
-	}
-}
