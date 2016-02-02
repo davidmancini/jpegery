@@ -291,6 +291,35 @@ class Comment implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+	public static function getCommentByCommentId(\PDO $pdo, int $commentId) {
+		//Sanitize the comment id before seaching
+		if(commentId <= 0) {
+			throw(new \PDOException("Comment id is not positive"));
+		}
+
+		//Create query template
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentText, commentDate FROM comment WHERE commentId = :commentId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the comment id to the place holder in the template
+		$parameters = ["commentId" => $commentId];
+		$statement->execute($parameters);
+
+		//Grab the comment from mySQL
+		try {
+			$comment = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentText"], $row["commentDate"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($comment);
+	}
+
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields["commentDate"] = intval($this->commentDate->format("U")) * 1000;
