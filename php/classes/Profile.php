@@ -16,7 +16,10 @@ require_once("autoload.php");
 
 /**
  * Class Profile
- * @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
+ * @suthor Michael Kemm
+ * @author David Mancini
+ * @author Jacob Findley
+ * @author Zach Leyba
  *
  *The User's profile
  */
@@ -31,38 +34,6 @@ class Profile implements JsonSerializable {
 	private $profileId;
 
 	/**
-	 * what the user goes by
-	 *
-	 * @var string $profileHandle
-	 */
-
-	private $profileHandle;
-
-	/**
-	 * the user's name
-	 *
-	 * @var string $profileName
-	 */
-
-	private $profileName;
-
-
-	/**
-	 * the user's phone number
-	 *
-	 * @var string $profilePhone
-	 */
-
-	private $profilePhone;
-
-	/**
-	 * the user's email address
-	 * @var string $profileEmail
-	 */
-
-	private $profileEmail;
-
-	/**
 	 * Whether or not the user is an admin (Locked at null for now)
 	 *
 	 * @var bool $profileAdmin
@@ -71,12 +42,50 @@ class Profile implements JsonSerializable {
 	private $profileAdmin;
 
 	/**
+	 * user's email address
+	 * @var string $profileEmail
+	 */
+
+	private $profileEmail;
+
+	/**
+	 * user's @handle
+	 *
+	 * @var string $profileHandle
+	 */
+
+	private $profileHandle;
+
+	/**
 	 * The hash for the password
 	 *
 	 * @var string $profileHash
 	 */
 
 	private $profileHash;
+
+	/**
+	 * user's profile picture
+	 *
+	 * @var $profileImage
+	 */
+	private $profileImage;
+
+	/**
+	 * user's name
+	 *
+	 * @var string $profileName
+	 */
+
+	private $profileName;
+
+	/**
+	 * user's phone number
+	 *
+	 * @var string $profilePhone
+	 */
+
+	private $profilePhone;
 
 	/**
 	 * The salt for the password
