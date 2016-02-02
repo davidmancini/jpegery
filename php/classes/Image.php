@@ -495,28 +495,4 @@ class Image {
 		}
 		return($images);
 	}
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-/*
- * TODO:
- * imageId
- * imageProfileId
- * imageType
- * imageFileName
- * imageText
- *
- * get image by ^
- * get all images
- */
