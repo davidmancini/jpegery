@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS follower;
 DROP TABLE IF EXISTS imagetag;
-DROP TABLE IF EXISTS profileimage;
+DROP TABLE IF EXISTS vote;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS tag;
 DROP TABLE IF EXISTS image;
@@ -54,10 +54,10 @@ CREATE TABLE follower (
 -- If you need to change the Image table, let me know so I can update my Class.  -David
 
 CREATE TABLE image (
-	iamgeId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	imageId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	imageProfileId INT UNSIGNED NOT NULL,
 	imageType VARCHAR(128) NOT NULL,
 	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
-	PRIMARY KEY(iamgeId),
+	PRIMARY KEY(imageId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId);
