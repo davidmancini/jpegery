@@ -150,6 +150,56 @@ class Profile implements JsonSerializable {
 	}
 
 	/**
+	 * accessor method for profile admin
+	 *
+	 * @return bool the value of profile admin
+	 */
+
+	public function getProfileAdmin() {
+		return $this->profileAdmin;
+	}
+
+	/**
+	 * mutator method for profile admin
+	 *
+	 * @param bool $newProfileAdmin
+	 * @throws \TypeError if $newProfileAdmin is not a bool
+	 */
+
+	public function setProfileAdmin(bool $newProfileAdmin) {
+
+		$this->profileAdmin = $newProfileAdmin;
+	}
+
+	/**
+	 * accessor method for profile email
+	 *
+	 * @return string value of profile email
+	 */
+
+	public function getProfileEmail() {
+		return $this->profileEmail;
+	}
+
+	/**
+	 * mutator method for $profileEmail
+	 *
+	 * @param string $newProfileEmail
+	 * @throws \InvalidArgumentException if email is empty or insecure or not a proper email
+	 * @throws \TypeError if $newProfileEmail is not a string
+	 */
+
+	public function setProfileEmail(string $newProfileEmail) {
+		//verify the email is a proper email
+		$newProfileEmail = trim($newProfileEmail);
+		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
+		if(empty($newProfileEmail) === true) {
+			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
+		}
+		$this->profileEmail = $newProfileEmail;
+	}
+
+	/**
 	 * accessor method for profile handle
 	 * @return string value of profile handle
 	 */
@@ -182,6 +232,35 @@ class Profile implements JsonSerializable {
 
 		//Store the handle
 		$this->profileHandle = $newProfileHandle;
+	}
+
+	/**
+	 * accessor method for profile hash
+	 *
+	 * @return string the value of profile hash
+	 */
+
+	public function getProfileHash() {
+		return $this->profileHash;
+	}
+
+	/**
+	 * mutator method for profile hash
+	 *
+	 * @param string $newProfileHash the value of profile hash
+	 * @throws \InvalidArgumentException if $newProfileHash is empty or insecure
+	 * @throws \TypeError if $newProfileHash is not a string
+	 */
+
+	public function setProfileHash(string $newProfileHash) {
+		//verify that the profile hash is valid
+		$newProfileHash = trim($newProfileHash);
+		$newProfileHash = filter_var($newProfileHash, FILTER_SANITIZE_STRING);
+		if(empty($newProfileHash) === true) {
+			throw(new \InvalidArgumentException("Profile hash is either empty or insecure"));
+		}
+
+		$this->profileHash = $newProfileHash;
 	}
 
 	/**
@@ -241,85 +320,6 @@ class Profile implements JsonSerializable {
 			throw(new \InvalidArgumentException("Phone is empty or insecure"));
 		}
 		$this->profilePhone = $newProfilePhone;
-	}
-
-	/**
-	 * accessor method for profile email
-	 *
-	 * @return string value of profile email
-	 */
-
-	public function getProfileEmail() {
-		return $this->profileEmail;
-	}
-
-	/**
-	 * mutator method for $profileEmail
-	 *
-	 * @param string $newProfileEmail
-	 * @throws \InvalidArgumentException if email is empty or insecure or not a proper email
-	 * @throws \TypeError if $newProfileEmail is not a string
-	 */
-
-	public function setProfileEmail(string $newProfileEmail) {
-		//verify the email is a proper email
-		$newProfileEmail = trim($newProfileEmail);
-		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
-		if(empty($newProfileEmail) === true) {
-			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
-		}
-		$this->profileEmail = $newProfileEmail;
-	}
-
-	/**
-	 * accessor method for profile admin
-	 *
-	 * @return bool the value of profile admin
-	 */
-
-	public function isProfileAdmin() {
-		return $this->profileAdmin;
-	}
-
-	/**
-	 * mutator method for profile admin
-	 *
-	 * @param bool $newProfileAdmin
-	 * @throws \TypeError if $newProfileAdmin is not a bool
-	 */
-
-	public function setProfileAdmin(bool $newProfileAdmin) {
-
-		$this->profileAdmin = $newProfileAdmin;
-	}
-
-	/**
-	 * accessor method for profile hash
-	 *
-	 * @return string the value of profile hash
-	 */
-
-	public function getProfileHash() {
-		return $this->profileHash;
-	}
-
-	/**
-	 * mutator method for profile hash
-	 *
-	 * @param string $newProfileHash the value of profile hash
-	 * @throws \InvalidArgumentException if $newProfileHash is empty or insecure
-	 * @throws \TypeError if $newProfileHash is not a string
-	 */
-
-	public function setProfileHash(string $newProfileHash) {
-		//verify that the profile hash is valid
-		$newProfileHash = trim($newProfileHash);
-		$newProfileHash = filter_var($newProfileHash, FILTER_SANITIZE_STRING);
-		if(empty($newProfileHash) === true) {
-			throw(new \InvalidArgumentException("Profile hash is either empty or insecure"));
-		}
-
-		$this->profileHash = $newProfileHash;
 	}
 
 	/**
