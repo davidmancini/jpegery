@@ -17,7 +17,7 @@ require_once("autoload.php");
 
  **/
 
-class Tag implements JsonSerializable {
+class Tag implements \JsonSerializable {
 	use \Edu\Cnm\Jpegery\ValidateDate;
 
 	/**ID# of a given tag
