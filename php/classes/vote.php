@@ -6,7 +6,7 @@
  * Time: 12:21 PM
  */
 
-namespace Edu\Cnm\Jpegery\;
+namespace Edu\Cnm\Jpegery;
 
 require_once("autoload.php");
 
