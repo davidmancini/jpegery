@@ -21,14 +21,14 @@ class vote {
 	 * @var $voteProfileId
 	 */
 
-	private $profileId;
+	private $voteProfileId;
 
 	/**
 	 * image id associated with vote
 	 * @var $voteImageId
 	 */
 
-	private $imageId;
+	private $voteImageId;
 
 	/**
 	 * vote type: up/down vote
@@ -44,7 +44,7 @@ class vote {
 	 */
 
 	public function getVoteProfileId() {
-		return $this->profileId;
+		return $this->voteProfileId;
 	}
 
 	/**
@@ -54,14 +54,14 @@ class vote {
 	 * @throws \TypeError if id is not an integer
 	 */
 
-	public function setVoteProfileId(int $newProfileId) {
+	public function setVoteProfileId(int $newVoteProfileId) {
 		// verify that the profile id is positive
-		if($newProfileId <= 0) {
+		if($newVoteProfileId <= 0) {
 			throw (new \RangeException("vote profile id is not positive"));
 		}
 
 		// save valid id
-		$this->profileId = $newProfileId;
+		$this->VoteProfileId = $newVoteProfileId;
 	}
 
 	/**
@@ -70,7 +70,7 @@ class vote {
 	 */
 
 	public function getImageId() {
-		return $this->imageId;
+		return $this->voteImageId;
 	}
 
 	/**
@@ -80,14 +80,14 @@ class vote {
 	 * @throws \TypeError if image id is not positive
 	 */
 
-	public function setImageId(int $newImageId) {
+	public function setImageId(int $newVoteImageId) {
 		// verify that the image id is positive
-		if($newImageId <= 0) {
+		if($newVoteImageId <= 0) {
 			throw(new \RangeException("image id is not positive"));
 		}
 
 		// save valid id
-		$this->imageId = $newImageId;
+		$this->voteImageId = $newVoteImageId;
 	}
 
 	/**
@@ -127,16 +127,16 @@ class vote {
 
 	public function insert(\PDO $pdo) {
 		// enforce that vote is null
-		if($this->profileId === null || $this->imageId === null) {
+		if($this->voteProfileId === null || $this->voteImageId === null) {
 			throw(new \PDOException("this is not a new vote"));
 		}
 
 		// create query template
-		$query = "INSERT INTO vote(profileId, imageId, voteValue ) VALUES (:profileId : imageId :voteValue)";
+		$query = "INSERT INTO vote(voteProfileId, voteImageId, voteValue ) VALUES (:voteProfileId : voteImageId :voteValue)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variable to the place holders in the template
-		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
 		$statement->execute($parameters);
 
 		// update the null vote value with the value provided by mySQL
@@ -160,7 +160,7 @@ class vote {
 		$statement = $pdo->prepare($query);
 
 		// bind member variable to the placeholders
-		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
 		$statement->execute($parameters);
 	}
 
@@ -177,12 +177,12 @@ class vote {
 			throw(new \PDOException("cannot update, vote does not exist"));
 		}
 		// create query template
-		$query = "UPDATE voteValue SET profileId = :profileId, imageId = :imageId, voteValue = :voteValue";
+		$query = "UPDATE voteValue SET voteProfileId = :voteVrofileId, voteImageId = :voteImageId, voteValue = :voteValue";
 		$statement = $pdo->prepare($query);
 
 		// bind member variables to the placeholders
 
-		$parameters = ["profileId" => $this->profileId, "imageId" => $this->imageId, "voteValue" => $this->voteValue];
+		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
 		$statement->execute($parameters);
 
 
