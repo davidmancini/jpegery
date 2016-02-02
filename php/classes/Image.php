@@ -33,6 +33,13 @@ class Image {
 	 */
 	private $imageProfileId;
 
+	/**
+	 * imageDate is the date the image was posted
+	 *
+	 * @var \DateTime $imageDate
+	 */
+	private $imageDate;
+
 	/*
 	 * imageType is the file type of the image
 	 * @var string $imageType
