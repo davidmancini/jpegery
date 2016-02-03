@@ -9,6 +9,16 @@ DROP TABLE IF EXISTS profile;
 
 CREATE TABLE profile (
 	profileId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	profileAdmin BIT NOT NULL,
+	profileCreateDate DATETIME NOT NULL,
+	profileEmail VARCHAR(32) NOT NULL,
+	profileHandle VARCHAR(32) NOT NULL,
+	profileHash VARCHAR() NOT NULL,
+	profileImageId,
+	profileName VARCHAR(32),
+	profilePhone VARCHAR(16),
+	profileSalt VARCHAR(),
+	profileVerify,
 	profileName VARCHAR (128),
 	email VARCHAR(128),
 	PRIMARY KEY(profileId)
