@@ -2,7 +2,6 @@
 namespace Edu\Cnm\Jpegery\Test;
 
 use Edu\Cnm\Jpegery\{Profile, Image};
-//use Edu\CNM\Jpegery\JpegeryTest;
 
 //Grab test parameters
 require_once ("JpegeryTest.php");
@@ -18,9 +17,69 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
  */
 
 class ImageTest extends JpegeryTest {
+	/*
+	 * Timestamp of the image; starts as null and is assigned later
+	 * @var DateTime $VALID_IMAGEDATE
+	 */
+	protected $VALID_IMAGEDATE = null;
 
 	/*
-	 * Content of Image
-	 * @var
+	 * String of image file name
+	 * @var String $VALID_IMAGEFILENAME
 	 */
+	protected $VALID_IMAGEFILENAME = null;
+
+	/*
+	 * String of image text
+	 * @var String $VALID_IMAGETEXT
+	 */
+	protected $VALID_IMAGETEXT = null;
+
+	/*
+ * String of image type
+ * @var String $VALID_IMAGETYPE
+ */
+	protected $VALID_IMAGETYPE = null;
+
+	/*
+	 * Create dependent objects before running each test
+	 */
+	public final function setUp() {
+		//run the decault setUp method first
+		parent::setUp();
+
+		//Create and insert a profile to own the test image
+		//profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify
+		$this->profile = new Profile(null, null, null, "test@example.com", "testGuy", null, null, "Test", "Guy", "800-555-1234", null, "true");
+		$this->profile->insert($this->getPDO());
+
+		//Calculate the date that was just set up
+		$this->VALID_IMAGEDATE = new \DateTime();
+	}
+
+	/*
+	 * Test inserting a valid image and verify tha the actual MySQL data matches
+	 */
+	public function testInsertValidImage() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create a new Image and insert into MySQL
+		//newImageId, newProfileId, newImageType, newImageFileName, newImageText, newImageDate
+		$image = new Image (null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
