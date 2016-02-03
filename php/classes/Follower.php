@@ -150,9 +150,124 @@ class Follower implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
-	public function getFollowerByFollowerFollowerId(\PDO $pdo, int $followerFollowerId) {
+	/**
+	 * get the Follower relationship by follower id (The one doing the following)
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $followerFollowerId the person doing the following
+	 * @return \SplFixedArray SplFixedArray of Follower relationships found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not of the correct data type
+	 */
+	public function getFollowerByFollowerId(\PDO $pdo, int $followerFollowerId) {
+		//Sanitize the follower id
+		if($followerFollowerId <= 0) {
+			throw(new \PDOException("Get Follower by Follower: Follower id is not positive"));
+		}
 
+		//Create a query template
+		$query = "SELECT followerFollowerId, followerFollowedId FROM follower WHERE followerFollowerId = :followerFollowerId";
+		$statement = $pdo->prepare($query);
+
+		//Search based on the one following
+		$parameters = ["followerFollowerId" => $followerFollowerId];
+		$statement->execute($parameters);
+
+		//Build an array of follower relationships
+		$followers = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$follower = new Follower($row["followerFollowerId"], $row["followerFollowedId"]);
+				$followers[$followers->key()] = $follower;
+				$followers->next();
+			} catch(\Exception $exception) {
+				//If the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($followers);
 	}
+
+	/**
+	 * gets the Follower relationship by the person being followed
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $followerFollowedId the person being followed
+	 * @return \SplFixedArray SplFixedArray of Follower relationships found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public function getFollowerByFollowedId(\PDO $pdo, int $followerFollowedId) {
+		//Sanitize the followed id
+		if($followerFollowedId <= 0) {
+			throw(new \PDOException("Get Follower by Followed: Followed Id is not positive"));
+		}
+		//Create a query template
+		$query = "SELECT followerFollowerId, followerFollowedId FROM follower WHERE followerFollowedId = :followerFollowedId";
+		$statement = $pdo->prepare($query);
+
+		//Search based on the one being followed
+		$parameters = ["followerFollowerId" => $followerFollowedId];
+		$statement->execute($parameters);
+
+		//Build an array of follower relationships
+		$followers = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$follower = new Follower($row["followerFollowerId"], $row["followerFollowedId"]);
+				$followers[$followers->key()] = $follower;
+				$followers->next();
+			} catch(\Exception $exception) {
+				//If the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return($followers);
+	}
+
+	/**
+	 * determines whether or not a Follower relationship between two profiles exists, and if so returns said relationship
+	 *
+	 * @param \PDO $pdo
+	 * @param int $followerFollowerId the one doing the following
+	 * @param int $followerFollowedId the one being followed
+	 * @return Follower|null Follower found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public function getFollowerByFollowerIdAndFollowedId(\PDO $pdo, int $followerFollowerId, int $followerFollowedId) {
+		//Sanitize the follower id
+		if($followerFollowerId <= 0) {
+			throw(new \PDOException("Follower id is not positive"));
+		}
+		//Sanitize the followed id
+		if($followerFollowedId <= 0) {
+			throw(new \PDOException("Followed Id is not positive"));
+		}
+		//Create a query template
+		$query = "SELECT followerFollowerId, followerFollowedId FROM follower WHERE followerFollowerId = :followerFollowerId AND followerFollowedId = :followerFollowedId";
+		$statement = $pdo->prepare($query);
+
+		//Search based on both parties
+		$parameters = ["followerFollowerId" => $followerFollowerId, "followerFollowedId" => $followerFollowedId];
+		$statement->execute($parameters);
+
+		//Grab the follower relationship from mySQL
+		try {
+			$follower = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$follower = new Follower($row["followerFollowerId"], $row["followerFollowedId"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($follower);
+}
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
