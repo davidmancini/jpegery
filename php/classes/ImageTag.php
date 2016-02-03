@@ -157,6 +157,7 @@ class imageTag implements \JsonSerializable {
 		//enforce tagId and tagName are not null
 		if($this->imageId === null || $this->tagId === null) {
 			throw(new \PDOException("not an existing tag"));
+		}
 
 			// create query template
 			$query = "DELETE FROM imageTag WHERE imageId = :imageId, tagId = :tagId";
@@ -167,7 +168,6 @@ class imageTag implements \JsonSerializable {
 			$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
 			$statement->execute($parameters);
 		}
-	}
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return($fields);
