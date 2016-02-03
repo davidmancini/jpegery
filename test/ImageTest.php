@@ -2,13 +2,13 @@
 namespace Edu\Cnm\Jpegery\Test;
 
 use Edu\Cnm\Jpegery\{Profile, Image};
-use Edu\CNM\Jpegery\JpegeryTest;
+//use Edu\CNM\Jpegery\JpegeryTest;
 
 //Grab test parameters
 require_once ("JpegeryTest.php");
 
 //Grab the class we're testing
-require_once(dirname(__DIR__, 1) . "/php/classes/autoload.php");
+require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 /*
  * PHPUnit test for Image class
