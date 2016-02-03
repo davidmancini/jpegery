@@ -68,13 +68,13 @@ CREATE TABLE imageTag (
 );
 
 CREATE TABLE follower (
-	followerId INT UNSIGNED NOT NULL,
-	followedId INTE UNSIGNED NOT NULL,
-	INDEX(followerId),
-	INDEX(followedId),
-	FOREIGN KEY(followerId) REFERENCES profile(profileId),
-	FOREIGN KEY(followedId) REFERENCES profile(profileId),
-	PRIMARY KEY(followerId, followedId)
+	followerFollowerId INT UNSIGNED NOT NULL,
+	followerFollowedId INT UNSIGNED NOT NULL,
+	INDEX(followerFollowerId),
+	INDEX(followerFollowedId),
+	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
+	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
+	PRIMARY KEY(followerFollowerId, followerFollowedId)
 );
 
 -- CREATE TABLE item (
