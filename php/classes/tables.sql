@@ -29,7 +29,7 @@ CREATE TABLE image (
 	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
 	imageType VARCHAR(128) NOT NULL,
-	INDEX(profileId),
+	INDEX(imageProfileId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
 );
@@ -46,8 +46,8 @@ CREATE TABLE comment (
 	commentProfileId INT UNSIGNED NOT NULL,
 	commentDate DATETIME NOT NULL,
 	commentText VARCHAR(1023) NOT NULL,
-	INDEX(profileId),
-	INDEX(imageId),
+	INDEX(commentProfileId),
+	INDEX(commentImageId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(imageId) REFERENCES image(imageId),
 	PRIMARY KEY(commentId)
@@ -59,8 +59,8 @@ CREATE TABLE vote (
 	voteValue BIT NOT NULL,
 -- 	INDEX(voteProfileId),
 -- 	INDEX(voteImageId),
-	FOREIGN KEY(profileId) REFERENCES profile(profileId),
-	FOREIGN KEY(imageId) REFERENCES image(imageId),
+	FOREIGN KEY(voteProfileId) REFERENCES profile(profileId),
+	FOREIGN KEY(voteImageId) REFERENCES image(imageId),
 	PRIMARY KEY(voteProfileId, voteImageId)
 );
 
