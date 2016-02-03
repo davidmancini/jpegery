@@ -6,7 +6,7 @@ require_once("JpegeryTest.php");
 
 //Grab Comment.php
 //Not sure if there's an error below?
-require_once(dirname(__DIR__, 1) . "/php/classes/autoload.php");
+require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 class CommentTest extends JpegeryTest {
 
