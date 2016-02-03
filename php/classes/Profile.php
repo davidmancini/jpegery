@@ -10,7 +10,7 @@
 
  */
 
-namespace Edu\Cnm\Jpegery\;
+namespace Edu\Cnm\Jpegery;
 
 require_once("autoload.php");
 
@@ -24,7 +24,8 @@ require_once("autoload.php");
  *The User's profile
  */
 
-class Profile implements JsonSerializable {
+class Profile implements \JsonSerializable {
+	use \ValidateDate;
 
 	/**
 	 * id for profile, the primary key
@@ -34,7 +35,7 @@ class Profile implements JsonSerializable {
 	private $profileId;
 
 	/**
-	 * Whether or not the user is an admin (Locked at null for now)
+	 * profile admin (null)
 	 *
 	 * @var bool $profileAdmin
 	 */
@@ -42,7 +43,16 @@ class Profile implements JsonSerializable {
 	private $profileAdmin;
 
 	/**
+	 * date the user created the profile
+	 *
+	 * @var $profileCreateDate
+	 */
+
+	private $profileCreateDate;
+
+	/**
 	 * user's email address
+	 *
 	 * @var string $profileEmail
 	 */
 
@@ -57,7 +67,7 @@ class Profile implements JsonSerializable {
 	private $profileHandle;
 
 	/**
-	 * The hash for the password
+	 * hash for the password
 	 *
 	 * @var string $profileHash
 	 */
@@ -88,24 +98,37 @@ class Profile implements JsonSerializable {
 	private $profilePhone;
 
 	/**
-	 * The salt for the password
+	 * salt for the password
 	 *
 	 * @var string $profileSalt
 	 */
 
 	private $profileSalt;
 
-	public function __construct(int $newProfileId = null, string $newProfileHandle, string $newProfileName, string $newProfilePhone, string $newProfileEmail, bool $newProfileAdmin = null, string $newProfileHash, string $newProfileSalt) {
+	/**
+	* verification method for profile
+	*
+	* @var $profileVerify
+	*/
+
+	private $profileVerify;
+
+
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  $newProfileImageId = null, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
+			$this->setProfileAdmin($newProfileAdmin);
+			$this->setProfileCreateDate($newProfileCreateDate);
+			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
+			$this->setProfileHash($newProfileHash);
+			$this->setprofileImageId($newProfileImageId);
 			$this->setProfileName($newProfileName);
 			$this->setProfilePhone($newProfilePhone);
-			$this->setProfileEmail($newProfileEmail);
-			$this->setProfileAdmin($newProfileAdmin);
-			$this->setProfileHash($newProfileHash);
 			$this->setProfileSalt($newProfileSalt);
-		} //Rethrow the exception to the caller
+			$this->setProfileVerify($newProfileVerify);
+		}
+			//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
@@ -137,40 +160,79 @@ class Profile implements JsonSerializable {
 
 	public function setProfileId(int $newProfileId = null) {
 		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
-		if ($newProfileId === null) {
+		if($newProfileId === null) {
 			$this->profileId = null;
 			return;
 		}
 		//verify the profile id is positive
-		if ($newProfileId <= 0) {
+		if($newProfileId <= 0) {
 			throw(new \RangeException("Profile Id is not positive"));
 		}
 		// convert and store the profile id
 		$this->profileId = $newProfileId;
 	}
 
-			/**
-			 * accessor method for profile admin
-			 *
-			 * @return bool the value of profile admin
-			 */
+	/**
+	 * accessor method for profile admin
+	 *
+	 * @return bool the value of profile admin
+	 */
 
-			public function getProfileAdmin() {
-				return $this->profileAdmin;
-			}
+	public function getProfileAdmin() {
+		return $this->profileAdmin;
+	}
 
-			/**
-			 * mutator method for profile admin
-			 *
-			 * @param bool $newProfileAdmin
-			 * @throws \TypeError if $newProfileAdmin is not a bool
-			 */
+	/**
+	 * mutator method for profile admin
+	 *
+	 * @param bool $newProfileAdmin
+	 * @throws \TypeError if $newProfileAdmin is not a bool
+	 */
 
 
-			public function setProfileAdmin(bool $newProfileAdmin) {
+	public function setProfileAdmin(bool $newProfileAdmin) {
 
-				$this->profileAdmin = $newProfileAdmin;
-			}
+		$this->profileAdmin = $newProfileAdmin;
+	}
+
+	/**
+	 * accessor method for profile creation date
+	 *
+	 * @return \DateTime value of profile creation date
+	 */
+
+	public function getProfileCreateDate() {
+		return($this->profileCreateDate);
+	}
+
+	/**
+	 * mutator method for profile creation date
+	 *
+	 * @param \DateTime|null $newProfileCreateDate
+	 *
+	 *
+	 */
+
+	public function setProfileCreateDate($newProfileCreateDate = null) {
+
+		if($newProfileCreateDate === null) {
+			$this->profileCreateDate = new \DateTime();
+		}
+
+		// save the profile creation date
+		try {
+			$newProfileCreateDate = $this->validateDate($newProfileCreateDate);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		}
+
+		// save date
+		$this->profileCreateDate = $newProfileCreateDate;
+	}
+
+
 
 	/**
 	 * accessor method for profile email
@@ -195,7 +257,7 @@ class Profile implements JsonSerializable {
 		$newProfileEmail = trim($newProfileEmail);
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
 		if(empty($newProfileEmail) === true) {
-			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
+			throw(new \InvalidArgumentException("email is empty, insecure, or not a valid email"));
 		}
 		// save email
 		$this->profileEmail = $newProfileEmail;
@@ -223,13 +285,13 @@ class Profile implements JsonSerializable {
 		// verify the profile handle is secure
 		$newProfileHandle = trim($newProfileHandle);
 		$newProfileHandle = filter_var($newProfileHandle, FILTER_SANITIZE_STRING);
-		if (empty($newProfileHandle) === true) {
-			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
+		if(empty($newProfileHandle) === true) {
+			throw(new \InvalidArgumentException("profile handle is empty or insecure"));
 		}
 
 		// verify handle length
-		if (strlen($newProfileHandle) > 18) {
-			throw(new \RangeException("Profile handle is too long"));
+		if(strlen($newProfileHandle) > 18) {
+			throw(new \RangeException("profile handle is too long"));
 		}
 
 		// save handle
@@ -269,10 +331,12 @@ class Profile implements JsonSerializable {
 	/**
 	 * accessor method for profile image
 	 * @return int value of image id
+	 */
 
 	public function getProfileImageId() {
 		return $this->profileImageId;
 	}
+
 
 	/**
 	 * mutator method for profile image
@@ -290,12 +354,6 @@ class Profile implements JsonSerializable {
 		$this->profileImageId = $newProfileImageId;
 	}
 
-
-
-
-
-
-
 	/**
 	 * accessor method for profile name
 	 * @return string value of profile name
@@ -307,7 +365,7 @@ class Profile implements JsonSerializable {
 
 	/**
 	 * mutator method for profile name
-	 * 
+	 *
 	 * @param string $newProfileName
 	 * @throws \InvalidArgumentException if profile name is empty or insecure
 	 * @throws \RangeException if profile name is too long
@@ -351,7 +409,7 @@ class Profile implements JsonSerializable {
 		$newProfilePhone = trim($newProfilePhone);
 		$newProfilePhone = filter_var($newProfilePhone, FILTER_SANITIZE_STRING);
 		if(empty($newProfilePhone) === true) {
-			throw(new \InvalidArgumentException("Phone is empty or insecure"));
+			throw(new \InvalidArgumentException("phone content is empty or insecure"));
 		}
 		// save profile phone #
 		$this->profilePhone = $newProfilePhone;
@@ -360,7 +418,7 @@ class Profile implements JsonSerializable {
 	/**
 	 * accessor method for profile salt
 	 *
-	 * @return string the value of profile salt
+	 * @return string value profile salt
 	 */
 
 	public function getProfileSalt() {
@@ -380,10 +438,40 @@ class Profile implements JsonSerializable {
 		$newProfileSalt = trim($newProfileSalt);
 		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
 		if(empty($newProfileSalt) === true) {
-			throw(new \InvalidArgumentException("Profile salt is either empty or insecure"));
+			throw(new \InvalidArgumentException("profile salt is empty or insecure"));
 		}
 
 		$this->profileSalt = $newProfileSalt;
+	}
+
+	/**
+	 * accessor method for profile verification
+	 *
+	 * @return string $profileVerify
+	 */
+
+	public function getProfileVerify() {
+		return $this->profileVerify;
+	}
+
+	/**
+	 * mutator method for profile verification
+	 *
+	 * @param $newProfileVerify the value of profile verification content
+	 * @throws \InvalidArgumentException if verification content is empty or insecure
+	 */
+
+	public function setProfileVerify(string $newProfileVerify) {
+		// verify that verification content is secure
+		$newProfileVerify = trim($newProfileVerify);
+		$newProfileVerify = filter_var($newProfileVerify, FILTER_SANITIZE_STRING);
+		if(empty($newProfileVerify) === true) {
+			throw(new\InvalidArgumentException("verification content is empty or insecure"));
+		}
+
+		// save the verification content
+		$this->profileVerify = $newProfileVerify;
+
 	}
 
 	/**
@@ -400,16 +488,24 @@ class Profile implements JsonSerializable {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileHandle, profileName, profilePhone, profileEmail, profileAdmin, profileHash, profileSalt) VALUES(:profileHandle, :profileName, :profilePhone, :profileEmail, :profileAdmin, :profileHash, :profileSalt)";
+		$query = "INSERT INTO profile(profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify) VALUES(:profileId, :profileAdmin, :profileCreateDate, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt, :profileverify)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
-		$parameters = ["profileHandle" => $this->profileHandle, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileEmail" => $this->profileEmail, "profileAdmin" => $this->profileAdmin, "profileHash" => $this->profileHash, "profileSalt" => $this->profileSalt];
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL
 		$this->profileId = intval($pdo->lastInsertId());
 	}
+
+	/**
+	 * delets this profile from mySQL
+	 *
+	 * @param \PDO $pdo PDO profile object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
 
 	public function delete(\PDO $pdo) {
 		//enforce that the profile id is not null
@@ -425,9 +521,42 @@ class Profile implements JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+
+	/**
+	 * update this profile in mySQL
+	 *
+	 * @param \PDO $pdo PDO profile object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+
 	public function update(\PDO $pdo) {
 		// enforce that the profile id is not null
 		if($this->profileId === null) {
 			throw(new \PDOException("The profile you are attempting to update does not exist."));
 		}
+
+		// create query template
+		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profilecreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileverify = :profileVerify";
+		$statement = $pdo->prepare($query);
+
+		// bind the number variables to the placeholders
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$statement->execute($parameters);
+
 	}
+
+	/**
+	 * formats the state variable for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 */
+
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		$fields [profileCreateDate] = intval($this->profileCreateDate->format("U")) * 1000;
+		return($fields);
+	}
+
+
+}

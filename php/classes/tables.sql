@@ -10,6 +10,16 @@ DROP TABLE IF EXISTS imageTag;
 
 CREATE TABLE profile (
 	profileId INT UNSIGNED AUTO_INCREMENT NOT NULL,
+	profileAdmin BIT NOT NULL,
+	profileCreateDate DATETIME NOT NULL,
+	profileEmail VARCHAR(32) NOT NULL,
+	profileHandle VARCHAR(32) NOT NULL,
+	profileHash VARCHAR() NOT NULL,
+	profileImageId,
+	profileName VARCHAR(32),
+	profilePhone VARCHAR(16),
+	profileSalt VARCHAR(),
+	profileVerify,
 	profileName VARCHAR (128),
 	email VARCHAR(128),
 	PRIMARY KEY(profileId)
@@ -17,9 +27,10 @@ CREATE TABLE profile (
 CREATE TABLE image (
 	imageId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	imageProfileId INT UNSIGNED NOT NULL,
-	imageType VARCHAR(128) NOT NULL,
+	imageDate DATETIME NOT NULL,
 	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
+	imageType VARCHAR(128) NOT NULL,
 	INDEX(profileId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
@@ -35,14 +46,13 @@ CREATE TABLE comment (
 	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	commentImageId INT UNSIGNED NOT NULL,
 	commentProfileId INT UNSIGNED NOT NULL,
-	commentText VARCHAR(1023) NOT NULL,
 	commentDate DATETIME NOT NULL,
+	commentText VARCHAR(1023) NOT NULL,
 	INDEX(profileId),
 	INDEX(imageId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(imageId) REFERENCES image(imageId),
 	PRIMARY KEY(commentId)
-
 );
 
 CREATE TABLE vote (
@@ -68,13 +78,13 @@ CREATE TABLE imageTag (
 );
 
 CREATE TABLE follower (
-	followerId INT UNSIGNED NOT NULL,
-	followedId INTE UNSIGNED NOT NULL,
-	INDEX(followerId),
-	INDEX(followedId),
-	FOREIGN KEY(followerId) REFERENCES profile(profileId),
-	FOREIGN KEY(followedId) REFERENCES profile(profileId),
-	PRIMARY KEY(followerId, followedId)
+	followerFollowerId INT UNSIGNED NOT NULL,
+	followerFollowedId INT UNSIGNED NOT NULL,
+	INDEX(followerFollowerId),
+	INDEX(followerFollowedId),
+	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
+	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
+	PRIMARY KEY(followerFollowerId, followerFollowedId)
 );
 
 -- CREATE TABLE item (
@@ -88,6 +98,4 @@ CREATE TABLE follower (
 -- 	PRIMARY KEY(itemId),
 -- 	FOREIGN KEY(profileId) REFERENCES profile(profileId)
 -- );
--- This needs to be in correct order.  I just needed to add my table so I could work on my Class file.
--- If you need to change the Image table, let me know so I can update my Class.  -David
 

@@ -1,5 +1,4 @@
 <?php
-namespace Edu\Cnm\Jpegery;
 /**
  * Created by PhpStorm.
  * User: zleyba
@@ -7,6 +6,7 @@ namespace Edu\Cnm\Jpegery;
  * Time: 1:38 PM
  */
 
+namespace Edu\Cnm\Jpegery;
 require_once("autoload.php");
 
 
@@ -209,6 +209,7 @@ class Comment implements \JsonSerializable {
 	 *
 	 * @param string $newCommentText
 	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
+	 * @throws \RangeException if $newCommentText is more than 1023 characters
 	 * @throws \TypeError if $newCommentText is not a string
 	 */
 	public function setCommentText(string $newCommentText) {
@@ -218,7 +219,9 @@ class Comment implements \JsonSerializable {
 		if(empty($newCommentText) === true) {
 			throw(new \InvalidArgumentException("comment content is empty or insecure"));
 		}
-
+		if(strlen($newCommentText>1023)) {
+			throw(new \RangeException("Your comment is too long."));
+		}
 		$this->commentText = $newCommentText;
 	}
 
@@ -295,6 +298,15 @@ class Comment implements \JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+	/**
+	 * gets the Comment by comment id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $commentId id of the comment we're searching for
+	 * @return Comment|null Comment found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
 	public static function getCommentByCommentId(\PDO $pdo, int $commentId) {
 		//Sanitize the comment id before seaching
 		if($commentId <= 0) {
@@ -324,9 +336,19 @@ class Comment implements \JsonSerializable {
 		return($comment);
 	}
 
+	/**
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $imageId id of the image on which the comment is posted
+	 * @return \SplFixedArray SplFixedArray of Comments found
+	 * @throws \PDOException when mySQL related error occurs
+	 * @throws \TypeError when variables are not the correct data type
+	 */
 	public static function getCommentByImageId(\PDO $pdo, int $imageId) {
+		//Sanitize the image id before searching
+		if($imageId <= 0) {
+			throw(new \PDOException("Get Comment by Image: Image Id is not valid"));
+		}
 		//Create a query template
-
 		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentImageId = :commentImageId";
 		$statement = $pdo->prepare($query);
 		//Search for the image given
@@ -349,7 +371,20 @@ class Comment implements \JsonSerializable {
 		return ($comments);
 	}
 
+	/**
+	 * gets the Comment by the profile that posted it
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $profileId the user whose comments we are searching for
+	 * @return \SplFixedArray SplFixedArray of Comments found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not of the correct data type
+	 */
 	public static function getCommentByProfileId(\PDO $pdo, int $profileId) {
+		//Sanitize the profile id before searching
+		if($profileId <= 0) {
+			throw(new \PDOException("Get Comment by Profile: Profile Id is not valid"));
+		}
 		//Create a query template
 		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentProfileId = :commentProfileId";
 		$statement = $pdo->prepare($query);
@@ -373,8 +408,45 @@ class Comment implements \JsonSerializable {
 		return ($comments);
 	}
 
-	public static function getCommentByCommentContent(\PDO $pdo) {
+	/**
+	 * gets Comments by content--Search for content
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $commentContent comment content to search for
+	 * @return \SplFixedArray SplFixedArray of Comments found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+	public static function getCommentByCommentContent(\PDO $pdo, string $commentContent) {
+		//Purge the string
+		$commentContent = trim($commentContent);
+		$commentContent = filter_var($commentContent, FILTER_SANITIZE_STRING);
+		if(empty($commentContent) === true) {
+			throw(new \PDOException("Get Comment by Content: Comment content is invalid"));
+		}
 
+		//Create a query template
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentContent LIKE :commentContent";
+		$statement = $pdo->prepare($query);
+
+		//Search for the text given
+		$commentContent = "%$commentContent%";
+		$parameters = ["commentContent" => $commentContent];
+		$statement->execute($parameters);
+
+		//Build an array of comments
+		$comments = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentDate"], $row["commentText"]);
+				$comments[$comments->key()] = $comment;
+				$comments->next();
+			} catch (\Exception $exception) {
+				//If the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($comments);
 	}
 
 	public function jsonSerialize() {

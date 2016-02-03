@@ -14,7 +14,7 @@ require_once("autoload.php");
  * Vote: Users can up/down vote content
  * @author Michael Kemm
  */
-class vote {
+class Vote {
 
 	/**
 	 * profile id associated with vote
