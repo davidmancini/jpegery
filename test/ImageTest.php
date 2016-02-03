@@ -39,7 +39,7 @@ class ImageTest extends JpegeryTest {
 	 * String of updated image text
 	 * @var String $VALID_IMAGETEXT2
 	 */
-	protected $VALID_IMAGETEXT2 = "This is updated image text."
+	protected $VALID_IMAGETEXT2 = "This is updated image text.";
 
 	/*
  * String of image type
@@ -64,7 +64,7 @@ class ImageTest extends JpegeryTest {
 	}
 
 	/*
-	 * Test inserting a valid image and verify tha the actual MySQL data matches
+	 * Test inserting a valid image and verify that the actual MySQL data matches
 	 */
 	public function testInsertValidImage() {
 		//Count the number of rows and save it for later
@@ -82,17 +82,6 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
-	}
-
-	/*
-	 * Test inserting an image that already exists
-	 *
-	 * @expectedException PDOException
-	 */
-	public function testInsertInvalidImage() {
-		//Create an image with a non-null image id and watch it fail
-		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->-$this->VALID_IMAGEDATE);
-		$image->insert($this->getPDO());
 	}
 
 	/*
@@ -120,7 +109,16 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-
+	/*
+		 * Test inserting an image that already exists
+		 *
+		 * @expectedException PDOException
+		 */
+		public function testInsertInvalidImage() {
+			//Create an image with a non-null image id and watch it fail
+			$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->-$this->VALID_IMAGEDATE);
+			$image->insert($this->getPDO());
+		}
 
 
 
