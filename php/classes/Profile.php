@@ -113,11 +113,11 @@ class Profile {
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin = null, $profileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin = null, $profileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  $newProfileImageId = null, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
-			$this->setProfileCreateDate($newProfileCreateDate);
+			$this->setProfileCreateDate($newprofileCreateDate);
 			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
 			$this->setProfileHash($newProfileHash);
@@ -125,6 +125,7 @@ class Profile {
 			$this->setProfileName($newProfileName);
 			$this->setProfilePhone($newProfilePhone);
 			$this->setProfileSalt($newProfileSalt);
+			$this->setProfileVerify($newProfileVerify);
 		}
 			//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
