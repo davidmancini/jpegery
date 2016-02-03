@@ -1,9 +1,10 @@
 <?php
-namespace Edu\Cnm\Jpegery;
+namespace Edu\Cnm\Jpegery\Test;
 
 use Edu\Cnm\Jpegery\{Profile, Image, Comment};
 //Grab the project test parameters
-require_once("phpunit.xml");
+//require_once("phpunit.xml");
+require_once("JpegeryTest.php");
 
 //Grab Comment.php
 //Not sure if there's an error below?

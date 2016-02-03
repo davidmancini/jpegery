@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\Jpegery;
+namespace Edu\Cnm\Jpegery\Test;
 
 use Edu\Cnm\Jpegery\{Profile, Image};
 //use Edu\CNM\Jpegery\JpegeryTest;
