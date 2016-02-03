@@ -54,7 +54,7 @@ class CommentTest extends JpegeryTest {
 
 		//Create and insert a Profile to post the test Comment
 		//TODO: Finish this.
-		$this->profile = new Profile(null, null, null, "Email", "myName", "passw0rd", "null", "mynameagain", "867", "456", "def");
+		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", true);
 		$this->profile->insert($this->getPDO());
 
 		//TODO: Finish this.
