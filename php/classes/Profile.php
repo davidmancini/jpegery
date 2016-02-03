@@ -24,7 +24,8 @@ require_once("autoload.php");
  *The User's profile
  */
 
-class Profile {
+class Profile implements \JsonSerializable {
+	use \ValidateDate;
 
 	/**
 	 * id for profile, the primary key
@@ -113,11 +114,11 @@ class Profile {
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin = null, $profileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  $newProfileImageId = null, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  $newProfileImageId = null, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
-			$this->setProfileCreateDate($newprofileCreateDate);
+			$this->setProfileCreateDate($newProfileCreateDate);
 			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
 			$this->setProfileHash($newProfileHash);
@@ -226,6 +227,8 @@ class Profile {
 		} catch(\RangeException $range) {
 			throw(new \RangeException($range->getMessage(), 0, $range));
 		}
+
+		// save date
 		$this->profileCreateDate = $newProfileCreateDate;
 	}
 
@@ -254,7 +257,7 @@ class Profile {
 		$newProfileEmail = trim($newProfileEmail);
 		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
 		if(empty($newProfileEmail) === true) {
-			throw(new \InvalidArgumentException("Email is empty, insecure, or not a valid email"));
+			throw(new \InvalidArgumentException("email is empty, insecure, or not a valid email"));
 		}
 		// save email
 		$this->profileEmail = $newProfileEmail;
@@ -283,12 +286,12 @@ class Profile {
 		$newProfileHandle = trim($newProfileHandle);
 		$newProfileHandle = filter_var($newProfileHandle, FILTER_SANITIZE_STRING);
 		if(empty($newProfileHandle) === true) {
-			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
+			throw(new \InvalidArgumentException("profile handle is empty or insecure"));
 		}
 
 		// verify handle length
 		if(strlen($newProfileHandle) > 18) {
-			throw(new \RangeException("Profile handle is too long"));
+			throw(new \RangeException("profile handle is too long"));
 		}
 
 		// save handle
@@ -406,7 +409,7 @@ class Profile {
 		$newProfilePhone = trim($newProfilePhone);
 		$newProfilePhone = filter_var($newProfilePhone, FILTER_SANITIZE_STRING);
 		if(empty($newProfilePhone) === true) {
-			throw(new \InvalidArgumentException("Phone is empty or insecure"));
+			throw(new \InvalidArgumentException("phone content is empty or insecure"));
 		}
 		// save profile phone #
 		$this->profilePhone = $newProfilePhone;
@@ -435,7 +438,7 @@ class Profile {
 		$newProfileSalt = trim($newProfileSalt);
 		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
 		if(empty($newProfileSalt) === true) {
-			throw(new \InvalidArgumentException("Profile salt is either empty or insecure"));
+			throw(new \InvalidArgumentException("profile salt is empty or insecure"));
 		}
 
 		$this->profileSalt = $newProfileSalt;
@@ -463,7 +466,7 @@ class Profile {
 		$newProfileVerify = trim($newProfileVerify);
 		$newProfileVerify = filter_var($newProfileVerify, FILTER_SANITIZE_STRING);
 		if(empty($newProfileVerify) === true) {
-			throw(new\InvalidArgumentException("verification content is empty ofr insecure"));
+			throw(new\InvalidArgumentException("verification content is empty or insecure"));
 		}
 
 		// save the verification content
@@ -543,11 +546,17 @@ class Profile {
 
 	}
 
+	/**
+	 * formats the state variable for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 */
 
-
-
-
-
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		$fields [profileCreateDate] = intval($this->profileCreateDate->format("U")) * 1000;
+		return($fields);
+	}
 
 
 }
