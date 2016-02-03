@@ -5,7 +5,7 @@ namespace Edu\Cnm\Jpegery;
 require_once("JpegeryTest.php");
 
 
-require_once(dirname(__DIR__, 1) . "/php/classes/autoload.php");
+require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 class FollowerTest extends JpegeryTest {
 
