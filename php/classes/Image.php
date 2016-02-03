@@ -2,14 +2,14 @@
 
 namespace Edu\Cnm\Jpegery;
 
-/*
- * Image
- *
- * The Image entity includes all information about the image itself (image type, file name, and text)
- * and also includes the associated owner of the image (profileId)
- *
- * @author David Mancini <mancini.david@gmail.com>
- */
+	/*
+	 * Image
+	 *
+	 * The Image entity includes all information about the image itself (image type, file name, and text)
+	 * and also includes the associated owner of the image (profileId)
+	 *
+	 * @author David Mancini <mancini.david@gmail.com>
+	 */
 
 //Secure and Encrypted PDO Database Connection
 //require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
@@ -40,12 +40,6 @@ class Image {
 	private $imageDate;
 
 	/*
-	 * imageType is the file type of the image
-	 * @var string $imageType
-	 */
-	private $imageType;
-
-	/*
 	 * imageFileName is the unique file name of the image
 	 * @var string $imageFileName
 	 */
@@ -57,7 +51,11 @@ class Image {
 	 */
 	private $imageText;
 
-
+	/*
+	 * imageType is the file type of the image
+	 * @var string $imageType
+	 */
+	private $imageType;
 
 	/*
 	 * Constructor for Image
@@ -90,7 +88,7 @@ class Image {
 	 * Accessor method for image id
 	 * @return int value of image id
 	 */
-	public function getImageId(){
+	public function getImageId() {
 		return ($this->imageId);
 	}
 
@@ -128,8 +126,8 @@ class Image {
 	 * Accessor method for imageProfileId
 	 * @return int value of imageProfileId
 	 */
-	public function getImageProfileId(){
-		return($this->imageProfileId);
+	public function getImageProfileId() {
+		return ($this->imageProfileId);
 	}
 
 	/*
@@ -138,7 +136,7 @@ class Image {
 	 * @throws InvalidArgumentException if profile id is not an integer
 	 * @throws RangeException if profile id is negative
 	 */
-	public function setImageProfileId($newImageProfileId){
+	public function setImageProfileId($newImageProfileId) {
 		//Filter
 		$newImageProfileId = filter_var($newImageProfileId, FILTER_VALIDATE_INT);
 
@@ -157,43 +155,15 @@ class Image {
 	}
 
 	/*
-	 * Accessor method for imageType
-	 * @return string of image type
+	 * Accessor and Mutator for imageDate
 	 */
-	public function getImageType() {
-		return ($this->imageType);
-	}
-
-	/*
-	 * Mutator method for imageType
-	 * @param string $newImageType string for image type
-	 * @throws InvalidArgumentException if type is only non-sanitized values
-	 * @throws RangeException if image type will not fit in database
-	 */
-	public function setImageType($newImageType){
-		//Sanitize
-		$newImageType = filter_var($newImageType, FILTER_SANITIZE_STRING);
-
-		//Exception if only non-sanitized values (and is now empty)
-		if($newImageType === false) {
-			throw(new \InvalidArgumentException("image type is not a valid string"));
-		}
-
-		//Exception if input will not fit in the database
-		if(strlen($newImageType) > 128){
-			throw(new \RangeException("image type is too large"));
-		}
-
-		//Save the input
-		$this->imageType = $newImageType;
-	}
 
 	/*
 	 * Accessor method for imageFileName
 	 * @return string of imageFileNmae
 	 */
-	public function getImageFileName(){
-		return($this->imageFileName);
+	public function getImageFileName() {
+		return ($this->imageFileName);
 	}
 
 	/*
@@ -207,12 +177,12 @@ class Image {
 		$newImageFileName = filter_var($newImageFileName, FILTER_SANITIZE_STRING);
 
 		//Exception if only non-standardized values (and is now empty)
-		if($newImageFileName === false){
+		if($newImageFileName === false) {
 			throw(new \InvalidArgumentException("image file name is not a valid string"));
 		}
 
 		//Exception if input will not fit in the database
-		if(strlen($newImageFileName) > 128){
+		if(strlen($newImageFileName) > 128) {
 			throw(new \RangeException("image file name is too large"));
 		}
 
@@ -224,8 +194,8 @@ class Image {
 	 * Accessor method for imageText
 	 * @return string for an image's text
 	 */
-	public function getImageText(){
-		return($this->imageText);
+	public function getImageText() {
+		return ($this->imageText);
 	}
 
 	/*
@@ -234,17 +204,17 @@ class Image {
 	 * @throws InvalidArgumentException if type is only non-sanitized values
 	 * @throws RangeException if image's text will not fit in database
 	 */
-	public function setImageText($newImageText){
+	public function setImageText($newImageText) {
 		//Sanitize
 		$newImageText = filter_var($newImageText, FILTER_SANITIZE_STRING);
 
 		//Exception if only non-standardized values (and is now empty)
-		if($newImageText === false){
+		if($newImageText === false) {
 			throw(new \InvalidArgumentException("image text is not a valid string"));
 		}
 
 		//Exception if input will not fit in the database
-		if(strlen($newImageText <= 0)){
+		if(strlen($newImageText <= 0)) {
 			throw(new \RangeException("image text is too large"));
 		}
 
@@ -253,13 +223,45 @@ class Image {
 	}
 
 	/*
+	 * Accessor method for imageType
+	 * @return string of image type
+	 */
+	public function getImageType() {
+		return ($this->imageType);
+	}
+
+	/*
+	 * Mutator method for imageType
+	 * @param string $newImageType string for image type
+	 * @throws InvalidArgumentException if type is only non-sanitized values
+	 * @throws RangeException if image type will not fit in database
+	 */
+	public function setImageType($newImageType) {
+		//Sanitize
+		$newImageType = filter_var($newImageType, FILTER_SANITIZE_STRING);
+
+		//Exception if only non-sanitized values (and is now empty)
+		if($newImageType === false) {
+			throw(new \InvalidArgumentException("image type is not a valid string"));
+		}
+
+		//Exception if input will not fit in the database
+		if(strlen($newImageType) > 128) {
+			throw(new \RangeException("image type is too large"));
+		}
+
+		//Save the input
+		$this->imageType = $newImageType;
+	}
+
+	/*
 	 * Inserts image into database
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when MySQL-related error occurs
 	 */
-	public function insert(\PDO $pdo){
+	public function insert(\PDO $pdo) {
 		//Only inserts if new image id
-		if($this->imageId !== null){
+		if($this->imageId !== null) {
 			throw(new \PDOException("not a new image id"));
 		}
 		//Creates query
@@ -279,7 +281,7 @@ class Image {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when MySQL-related error occurs
 	 */
-	public function update(\PDO $pdo){
+	public function update(\PDO $pdo) {
 		//Only updates if not new id
 		if($this->imageId === null) {
 			throw(new \PDOException("unable to update, image id does not exist"));
@@ -299,9 +301,9 @@ class Image {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws PDOException when MySQL-related error occurs
 	 */
-	public function delete(\PDO $pdo){
+	public function delete(\PDO $pdo) {
 		//Only deletes if image id exists
-		if($this->imageId === null){
+		if($this->imageId === null) {
 			throw(new \PDOException("Unable to delete, image id does not exist."));
 		}
 
@@ -323,9 +325,9 @@ class Image {
 	 * @throws PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public static function getImageByImageId (\PDO $pdo, int $imageId){
+	public static function getImageByImageId(\PDO $pdo, int $imageId) {
 		//Sanitize
-		if($imageId <= 0){
+		if($imageId <= 0) {
 			throw(new \PDOException("image id must be positive"));
 		}
 
@@ -342,14 +344,14 @@ class Image {
 			$image = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
-			if($row !== false){
+			if($row !== false) {
 				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($image);
+		return ($image);
 	}
 
 	/*
@@ -361,9 +363,9 @@ class Image {
 	 * @throws PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public static function getImageByImageProfileId (\PDO $pdo, int $imageProfileId){
+	public static function getImageByImageProfileId(\PDO $pdo, int $imageProfileId) {
 		//Sanitize
-		if($imageProfileId <= 0){
+		if($imageProfileId <= 0) {
 			throw(new \PDOException("image profile id must be positive"));
 		}
 
@@ -380,15 +382,19 @@ class Image {
 			$image = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
-			if($row !== false){
+			if($row !== false) {
 				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($image);
+		return ($image);
 	}
+
+	/*
+	 * Get image by date
+	 */
 
 	/*
 	 * Gets image by image file name
@@ -399,7 +405,7 @@ class Image {
 	 * @throws PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public static function getImageByImageFileName (\PDO $pdo, string $imageFileName){
+	public static function getImageByImageFileName(\PDO $pdo, string $imageFileName) {
 		//Sanitize
 		$imageFileName = trim($imageFileName);
 		$imageFileName = filter_var($imageFileName, FILTER_SANITIZE_STRING);
@@ -420,14 +426,14 @@ class Image {
 			$image = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
-			if($row !== false){
+			if($row !== false) {
 				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($image);
+		return ($image);
 	}
 
 	/*
@@ -439,7 +445,7 @@ class Image {
  * @throws PDOException when MySQL-related error occurs
  * @throws \TypeError when variables are not the correct data type
  */
-	public static function getImageByImageText (\PDO $pdo, string $imageText){
+	public static function getImageByImageText(\PDO $pdo, string $imageText) {
 		//Sanitize
 		$imageText = trim($imageText);
 		$imageText = filter_var($imageText, FILTER_SANITIZE_STRING);
@@ -459,9 +465,9 @@ class Image {
 		//Builds array from MySQL
 		$images = new \SplFixedArray($statement->rowCount());
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
-		while(($row = $statement->fetch()) !== false){
+		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"]. $row["imageFileName"], $row["imageText"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
@@ -469,7 +475,7 @@ class Image {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($images);
+		return ($images);
 	}
 
 	/*
@@ -480,7 +486,7 @@ class Image {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public static function getAllImages (\PDO $pdo) {
+	public static function getAllImages(\PDO $pdo) {
 		//Query
 		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image";
 		$statement = $pdo->prepare($query);
@@ -491,7 +497,7 @@ class Image {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"]. $row["imageFileName"], $row["imageText"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
@@ -499,6 +505,6 @@ class Image {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-		return($images);
+		return ($images);
 	}
 }
