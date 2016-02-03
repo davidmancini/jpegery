@@ -1,5 +1,5 @@
 <?php
-namespace Edu\CNM\Jpegery;
+namespace Edu\Cnm\Jpegery\Test;
 
 //grab the encrypted properties file
 

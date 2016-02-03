@@ -70,7 +70,7 @@ class Image {
 	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
 	 * @throws Exception if other exception is thrown
 	 */
-	public function __construct($newImageId, $newProfileId, $newImageType, $newImageFileName, $newImageText, $newImageDate) {
+	public function __construct(int $newImageId = null, int $newProfileId = null, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate) {
 		try {
 			$this->setImageId($newImageId);
 			$this->setImageProfileId($newProfileId);

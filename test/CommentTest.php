@@ -1,7 +1,9 @@
 <?php
-namespace Edu\Cnm\Jpegery;
+namespace Edu\Cnm\Jpegery\Test;
 
+use Edu\Cnm\Jpegery\{Profile, Image, Comment};
 //Grab the project test parameters
+//require_once("phpunit.xml");
 require_once("JpegeryTest.php");
 
 //Grab Comment.php
@@ -36,7 +38,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Profile that posted comment; a foreign key
-	 * @var \Edu\Cnm\Jpegery\Profile profile
+	 * @var \Edu\Cnm\Jpegery\Profile $profile
 	 */
 	protected $profile = null;
 
@@ -52,7 +54,7 @@ class CommentTest extends JpegeryTest {
 
 		//Create and insert a Profile to post the test Comment
 		//TODO: Finish this.
-		$this->profile = new Profile(null, null, null, "Email", "myName", "passw0rd", "null", "mynameagain", "867", "456", "def");
+		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", true);
 		$this->profile->insert($this->getPDO());
 
 		//TODO: Finish this.
@@ -80,7 +82,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentProfileId(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT);
 	}
 
 	/**

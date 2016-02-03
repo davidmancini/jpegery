@@ -16,7 +16,7 @@ require_once("autoload.php");
 
 /**
  * Class Profile
- * @suthor Michael Kemm
+ * @author Michael Kemm
  * @author David Mancini
  * @author Jacob Findley
  * @author Zach Leyba
@@ -25,7 +25,7 @@ require_once("autoload.php");
  */
 
 class Profile implements \JsonSerializable {
-	use \ValidateDate;
+	use ValidateDate;
 
 	/**
 	 * id for profile, the primary key
@@ -558,5 +558,5 @@ class Profile implements \JsonSerializable {
 		return($fields);
 	}
 
-
+// the end...
 }
