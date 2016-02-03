@@ -10,7 +10,7 @@
 
  */
 
-namespace Edu\Cnm\Jpegery\;
+namespace Edu\Cnm\Jpegery;
 
 require_once("autoload.php");
 
@@ -98,14 +98,16 @@ class Profile implements JsonSerializable {
 	public function __construct(int $newProfileId = null, string $newProfileHandle, string $newProfileName, string $newProfilePhone, string $newProfileEmail, bool $newProfileAdmin = null, string $newProfileHash, string $newProfileSalt) {
 		try {
 			$this->setProfileId($newProfileId);
+			$this->setProfileAdmin($newProfileAdmin);
+			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
+			$this->setProfileHash($newProfileHash);
+			$this->setprofileImageId($newProfileImageId);
 			$this->setProfileName($newProfileName);
 			$this->setProfilePhone($newProfilePhone);
-			$this->setProfileEmail($newProfileEmail);
-			$this->setProfileAdmin($newProfileAdmin);
-			$this->setProfileHash($newProfileHash);
 			$this->setProfileSalt($newProfileSalt);
-		} //Rethrow the exception to the caller
+		}
+			//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
@@ -137,40 +139,40 @@ class Profile implements JsonSerializable {
 
 	public function setProfileId(int $newProfileId = null) {
 		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
-		if ($newProfileId === null) {
+		if($newProfileId === null) {
 			$this->profileId = null;
 			return;
 		}
 		//verify the profile id is positive
-		if ($newProfileId <= 0) {
+		if($newProfileId <= 0) {
 			throw(new \RangeException("Profile Id is not positive"));
 		}
 		// convert and store the profile id
 		$this->profileId = $newProfileId;
 	}
 
-			/**
-			 * accessor method for profile admin
-			 *
-			 * @return bool the value of profile admin
-			 */
+	/**
+	 * accessor method for profile admin
+	 *
+	 * @return bool the value of profile admin
+	 */
 
-			public function getProfileAdmin() {
-				return $this->profileAdmin;
-			}
+	public function getProfileAdmin() {
+		return $this->profileAdmin;
+	}
 
-			/**
-			 * mutator method for profile admin
-			 *
-			 * @param bool $newProfileAdmin
-			 * @throws \TypeError if $newProfileAdmin is not a bool
-			 */
+	/**
+	 * mutator method for profile admin
+	 *
+	 * @param bool $newProfileAdmin
+	 * @throws \TypeError if $newProfileAdmin is not a bool
+	 */
 
 
-			public function setProfileAdmin(bool $newProfileAdmin) {
+	public function setProfileAdmin(bool $newProfileAdmin) {
 
-				$this->profileAdmin = $newProfileAdmin;
-			}
+		$this->profileAdmin = $newProfileAdmin;
+	}
 
 	/**
 	 * accessor method for profile email
@@ -223,12 +225,12 @@ class Profile implements JsonSerializable {
 		// verify the profile handle is secure
 		$newProfileHandle = trim($newProfileHandle);
 		$newProfileHandle = filter_var($newProfileHandle, FILTER_SANITIZE_STRING);
-		if (empty($newProfileHandle) === true) {
+		if(empty($newProfileHandle) === true) {
 			throw(new \InvalidArgumentException("Profile Handle is empty or insecure"));
 		}
 
 		// verify handle length
-		if (strlen($newProfileHandle) > 18) {
+		if(strlen($newProfileHandle) > 18) {
 			throw(new \RangeException("Profile handle is too long"));
 		}
 
@@ -269,10 +271,12 @@ class Profile implements JsonSerializable {
 	/**
 	 * accessor method for profile image
 	 * @return int value of image id
+	 */
 
 	public function getProfileImageId() {
 		return $this->profileImageId;
 	}
+
 
 	/**
 	 * mutator method for profile image
@@ -290,12 +294,6 @@ class Profile implements JsonSerializable {
 		$this->profileImageId = $newProfileImageId;
 	}
 
-
-
-
-
-
-
 	/**
 	 * accessor method for profile name
 	 * @return string value of profile name
@@ -307,7 +305,7 @@ class Profile implements JsonSerializable {
 
 	/**
 	 * mutator method for profile name
-	 * 
+	 *
 	 * @param string $newProfileName
 	 * @throws \InvalidArgumentException if profile name is empty or insecure
 	 * @throws \RangeException if profile name is too long
@@ -400,16 +398,24 @@ class Profile implements JsonSerializable {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileHandle, profileName, profilePhone, profileEmail, profileAdmin, profileHash, profileSalt) VALUES(:profileHandle, :profileName, :profilePhone, :profileEmail, :profileAdmin, :profileHash, :profileSalt)";
+		$query = "INSERT INTO profile(profileId, profileAdmin, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt) VALUES(:profileId, :profileAdmin, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
-		$parameters = ["profileHandle" => $this->profileHandle, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileEmail" => $this->profileEmail, "profileAdmin" => $this->profileAdmin, "profileHash" => $this->profileHash, "profileSalt" => $this->profileSalt];
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin,"profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL
 		$this->profileId = intval($pdo->lastInsertId());
 	}
+
+	/**
+	 * delets this profile from mySQL
+	 *
+	 * @param \PDO $pdo PDO profile object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
 
 	public function delete(\PDO $pdo) {
 		//enforce that the profile id is not null
@@ -425,9 +431,36 @@ class Profile implements JsonSerializable {
 		$statement->execute($parameters);
 	}
 
+
+	/**
+	 * update this profile in mySQL
+	 *
+	 * @param \PDO $pdo PDO profile object
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
+	 */
+
 	public function update(\PDO $pdo) {
 		// enforce that the profile id is not null
 		if($this->profileId === null) {
 			throw(new \PDOException("The profile you are attempting to update does not exist."));
 		}
+
+		// create query template
+		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt ";
+		$statement = $pdo->prepare($query);
+
+		// bind the number variables to the placeholders
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin,"profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
+		$statement->execute($parameters);
+
 	}
+
+
+
+
+
+
+
+
+}
