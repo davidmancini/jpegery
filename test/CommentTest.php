@@ -1,8 +1,8 @@
 <?php
-namespace Edu\Cnm\Jpegery;
+namespace Edu\Cnm\Jpegery\Test;
 
 //Grab the project test parameters
-require_once("JpegeryTest.php");
+require_once("phpunit.xml");
 
 //Grab Comment.php
 //Not sure if there's an error below?
