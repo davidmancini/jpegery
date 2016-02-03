@@ -19,6 +19,7 @@ CREATE TABLE image (
 	imageType VARCHAR(128) NOT NULL,
 	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
+	imageDate DATETIME NOT NULL,
 	INDEX(profileId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
