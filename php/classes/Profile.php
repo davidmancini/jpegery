@@ -34,7 +34,7 @@ class Profile implements JsonSerializable {
 	private $profileId;
 
 	/**
-	 * Whether or not the user is an admin (Locked at null for now)
+	 * profile admin (null)
 	 *
 	 * @var bool $profileAdmin
 	 */
@@ -42,7 +42,16 @@ class Profile implements JsonSerializable {
 	private $profileAdmin;
 
 	/**
+	 * date the user created the profile
+	 *
+	 * @var $profileCreateDate
+	 */
+
+	private $profileCreateDate;
+
+	/**
 	 * user's email address
+	 *
 	 * @var string $profileEmail
 	 */
 
@@ -57,7 +66,7 @@ class Profile implements JsonSerializable {
 	private $profileHandle;
 
 	/**
-	 * The hash for the password
+	 * hash for the password
 	 *
 	 * @var string $profileHash
 	 */
@@ -88,17 +97,18 @@ class Profile implements JsonSerializable {
 	private $profilePhone;
 
 	/**
-	 * The salt for the password
+	 * salt for the password
 	 *
 	 * @var string $profileSalt
 	 */
 
 	private $profileSalt;
 
-	public function __construct(int $newProfileId = null, string $newProfileHandle, string $newProfileName, string $newProfilePhone, string $newProfileEmail, bool $newProfileAdmin = null, string $newProfileHash, string $newProfileSalt) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin = null, $profileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
+			$this->setProfileCreateDate($newProfileCreateDate);
 			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
 			$this->setProfileHash($newProfileHash);
@@ -173,6 +183,43 @@ class Profile implements JsonSerializable {
 
 		$this->profileAdmin = $newProfileAdmin;
 	}
+
+	/**
+	 * accessor method for profile creation date
+	 *
+	 * @return \DateTime value of profile creation date
+	 */
+
+	public function getProfileCreateDate() {
+		return($this->profileCreateDate);
+	}
+
+	/**
+	 * mutator method for profile creation date
+	 *
+	 * @param \DateTime|null $newProfileCreateDate
+	 *
+	 *
+	 */
+
+	public function setProfileCreateDate($newProfileCreateDate = null) {
+
+		if($newProfileCreateDate === null) {
+			$this->profileCreateDate = new \DateTime();
+		}
+
+		// save the profile creation date
+		try {
+			$newProfileCreateDate = $this->validateDate($newProfileCreateDate);
+		} catch(\InvalidArgumentException $invalidArgument) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		}
+		$this->profileCreateDate = $newProfileCreateDate;
+	}
+
+
 
 	/**
 	 * accessor method for profile email
@@ -447,11 +494,11 @@ class Profile implements JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt ";
+		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profilecreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt ";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin,"profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
 	}
