@@ -1,6 +1,7 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
+require_once (dirname(__DIR__) . "lib/validate-date.php"); //Required for validation of imageDate
 
 	/*
 	 * Image
@@ -158,6 +159,30 @@ class Image {
 	/*  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * Accessor and Mutator for imageDate
 	 */
+
+	/*
+	 * Accessor for imageDate
+	 * @return datetime value for the image's date
+	 */
+	public function getImageDate() {
+		return ($this->imageDate);
+	}
+
+	/*
+	 * Mutator method for imageDate
+	 * @param datetime $newImageDate string for newImageDate or null to load current time
+	 * @throws InvalidArgumentException if $newImageDate is not a valid object or string
+	 * @throws RangeException if $newImageDate is a date that does not exist
+	 */
+	public function setImageDate($newImageDate) {
+		//If date is null, set current time and date
+		if($newImageDate === null) {
+			$this->imageDate = new DateTime();
+			return;
+		}
+
+		//Catch exceptions and d display correct error (refers to validate-date.php) and if no exceptions, safe the new time and date
+	}
 
 	/*
 	 * Accessor method for imageFileName
@@ -393,7 +418,7 @@ class Image {
 		return ($image);
 	}
 
-	/*
+	/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * Get image by date
 	 */
 
