@@ -68,13 +68,14 @@ class Image {
 	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
 	 * @throws Exception if other exception is thrown
 	 */
-	public function __construct($newImageId, $newProfileId, $newImageType, $newImageFileName, $newImageText) {
+	public function __construct($newImageId, $newProfileId, $newImageType, $newImageFileName, $newImageText, $newImageDate) {
 		try {
 			$this->setImageId($newImageId);
 			$this->setImageProfileId($newProfileId);
 			$this->setImageType($newImageType);
 			$this->setImageFileName($newImageFileName);
 			$this->setImageText($newImageText);
+			$this->setImageDate($newImageDate);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
@@ -154,7 +155,7 @@ class Image {
 		$this->imageProfileId = $newImageProfileId;
 	}
 
-	/*
+	/*  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	 * Accessor and Mutator for imageDate
 	 */
 
@@ -265,11 +266,11 @@ class Image {
 			throw(new \PDOException("not a new image id"));
 		}
 		//Creates query
-		$query = "INSERT INTO image(imageProfileId, imageType, imageFileName, imageText) VALUES (:imageProfileId, :imageType, :imageFileName, :imageText)";
+		$query = "INSERT INTO image(imageProfileId, imageType, imageFileName, imageText, imageDate) VALUES (:imageProfileId, :imageType, :imageFileName, :imageText, :imageDate)";
 		$statement = $pdo->prepare($query);
 
 		//Binds variables to placeholders
-		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText);
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageDate" => $this->imageDate);
 		$statement->execute($parameters);
 
 		//Updates null image id with the auto-incremented value just created
@@ -288,11 +289,11 @@ class Image {
 		}
 
 		//Create query template
-		$query = "UPDATE image SET imageProfileId = :imageProfileId, imageType = :imageType, imageFileName = :imageFileName, imageText = :imageText WHERE imageId = :imageId";
+		$query = "UPDATE image SET imageProfileId = :imageProfileId, imageType = :imageType, imageFileName = :imageFileName, imageText = :imageText, imageDate = :imageDate WHERE imageId = :imageId";
 		$statement = $pdo->prepare($query);
 
 		//Binds variables to placeholders
-		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageId" => $this->imageId);
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageId" => $this->imageId, "imageDate" => $this->imageDate);
 		$statement->execute($parameters);
 	}
 
@@ -332,7 +333,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageId = :imageId";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageId = :imageId";
 		$statement = $pdo->prepare($query);
 
 		//Binds
@@ -345,7 +346,7 @@ class Image {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
@@ -370,7 +371,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageProfileId = :imageProfileId";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageProfileId = :imageProfileId";
 		$statement = $pdo->prepare($query);
 
 		//Binds
@@ -383,7 +384,7 @@ class Image {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
@@ -414,7 +415,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageFileName = :imageFileName";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageFileName = :imageFileName";
 		$statement = $pdo->prepare($query);
 
 		//Binds
@@ -427,7 +428,7 @@ class Image {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"]);
+				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 			}
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted
@@ -454,7 +455,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image WHERE imageText LIKE :imageFileName";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageText LIKE :imageFileName";
 		$statement = $pdo->prepare($query);
 
 		//Binds
@@ -467,7 +468,7 @@ class Image {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
@@ -488,7 +489,7 @@ class Image {
 	 */
 	public static function getAllImages(\PDO $pdo) {
 		//Query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText FROM image";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image";
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
@@ -497,7 +498,7 @@ class Image {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
