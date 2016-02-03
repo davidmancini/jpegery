@@ -485,7 +485,7 @@ class Profile {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt) VALUES(:profileId, :profileAdmin, :profileCreateDate, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt)";
+		$query = "INSERT INTO profile(profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify) VALUES(:profileId, :profileAdmin, :profileCreateDate, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt, :profileverify)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
@@ -534,11 +534,11 @@ class Profile {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profilecreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt ";
+		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profilecreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileverify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 	}
