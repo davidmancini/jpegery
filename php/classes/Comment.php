@@ -327,7 +327,54 @@ class Comment implements \JsonSerializable {
 	public static function getCommentByImageId(\PDO $pdo, int $imageId) {
 		//Create a query template
 
-		$query = "SELECT commentId, commentImageId, commentProfileId, ";
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentImageId = :commentImageId";
+		$statement = $pdo->prepare($query);
+		//Search for the image given
+		$parameters = ["commentImageId" => $imageId];
+		$statement->execute($parameters);
+
+		//Build an array of comments
+		$comments = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentDate"], $row["commentText"]);
+				$comments[$comments->key()] = $comment;
+				$comments->next();
+			} catch (\Exception $exception) {
+				//If the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($comments);
+	}
+
+	public static function getCommentByProfileId(\PDO $pdo, int $profileId) {
+		//Create a query template
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentProfileId = :commentProfileId";
+		$statement = $pdo->prepare($query);
+		//Search for the profile given
+		$parameters = ["commentProfileId" => $profileId];
+		$statement->execute($parameters);
+
+		//Build an array of comments
+		$comments = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$comment = new Comment($row["commentId"], $row["commentImageId"], $row["commentProfileId"], $row["commentDate"], $row["commentText"]);
+				$comments[$comments->key()] = $comment;
+				$comments->next();
+			} catch (\Exception $exception) {
+				//If the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($comments);
+	}
+
+	public static function getCommentByCommentContent(\PDO $pdo) {
+
 	}
 
 	public function jsonSerialize() {
