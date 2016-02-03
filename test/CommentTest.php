@@ -1,5 +1,5 @@
 <?php
-namespace Edu\Cnm\Jpegery\Test;
+namespace Edu\Cnm\Jpegery;
 
 use Edu\Cnm\Jpegery\{Profile, Image, Comment};
 //Grab the project test parameters
