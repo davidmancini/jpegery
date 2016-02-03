@@ -48,8 +48,8 @@ CREATE TABLE comment (
 	commentText VARCHAR(1023) NOT NULL,
 	INDEX(commentProfileId),
 	INDEX(commentImageId),
-	FOREIGN KEY(profileId) REFERENCES profile(profileId),
-	FOREIGN KEY(imageId) REFERENCES image(imageId),
+	FOREIGN KEY(commentProfileId) REFERENCES profile(profileId),
+	FOREIGN KEY(commentImageId) REFERENCES image(imageId),
 	PRIMARY KEY(commentId)
 );
 
