@@ -25,6 +25,12 @@ class CommentTest extends JpegeryTest {
 	protected $VALID_COMMENTTEXT2 = "PHPUnit is still passing";
 
 	/**
+	 * This shall never be inserted
+	 * @var string $INVALID_COMMENTTEXT
+	 */
+	protected $INVALID_COMMENTTEXT;
+
+	/**
 	 * timestamp of the comment; starts as null
 	 * @var \DateTime $VALID_COMMENTDATE
 	 */
@@ -82,7 +88,7 @@ class CommentTest extends JpegeryTest {
 	 * Test inserting a comment that already exists
 	 */
 	public function testInsertInvalidComment() {
-		//Create a comment with a non null id and watch it fail
+		//Create a comment with an invalid id
 		$comment = new Comment(JpegeryTest::INVALID_KEY, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 		$comment->insert($this->getPDO());
 	}
@@ -152,7 +158,129 @@ class CommentTest extends JpegeryTest {
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 		$comment->delete($this->getPDO());
 	}
-	public function testGetValidCommentByCommentId() {
 
+	/**
+	 * Test finding a comment through its id
+	 */
+	public function testGetValidCommentByCommentId() {
+		//Count the number of rows for future use
+		$numRows = $this->getConnection()->getRowCount("comment");
+
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+
+		//Try to grab the comment in mySQL by its id
+		$pdoComment = Comment::getCommentByCommentId($this->getPDO(), $comment->getCommentId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
+		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
+		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+	}
+
+	/**
+	 * Test trying to grab a comment that does not exist
+	 */
+	public function testGetInvalidCommentByCommentId() {
+		//Attempt to grab a comment using an invalid comment id
+		$comment = Comment::getCommentByCommentId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$this->assertNull($comment);
+	}
+
+	/**
+	 * Testing Grabbing a comment by image id
+	 */
+	public function testGetValidCommentByImageId() {
+		//Count the number of rows for future use
+		$numRows = $this->getConnection()->getRowCount("comment");
+
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+
+		//Try to grab the comment in mySQL by its image id
+		$comments = Comment::getCommentByImageId($this->getPDO(), $comment->getCommentImageId());
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertCount(1, $comments);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
+
+		//Grab the result from the array and validate it (Note that the array could, in theory, hold multiple comments. This is just for testing.
+		$pdoComment = $comments[0];
+		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
+		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
+		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+	}
+
+	/**
+	 * Test grabbing a comment by an image id that does not exist
+	 */
+	public function testGetInvalidCommentByImageId() {
+		//Attempt to grab a comment using an invalid image id
+		$comment = Comment::getCommentByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$this->assertNull($comment);
+	}
+
+	/**
+	 * Testing Grabbing a comment by a profile Id
+	 */
+	public function testGetValidCommentByProfileId () {
+		//Count the number of rows for future use
+		$numRows = $this->getConnection()->getRowCount("comment");
+
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+
+		//Try to grab the comment in mySQL by its profile
+		$comments = Comment::getCommentByProfileId($this->getPDO(), $comment->getCommentProfileId());
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertCount(1, $comments);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
+
+		//Grab the result from the array and validate it (Could hold more)
+		$pdoComment = $comments[0];
+		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
+		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
+		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+	}
+
+	public function testGetInvalidCommentByProfileId() {
+		//Attempt to grab a comment using an invalid profile id
+		$comment = Comment::getCommentByProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$this->assertNull($comment);
+	}
+
+	public function testGetValidCommentByCommentContent() {
+		//Count the number of rows for future use
+		$numRows = $this->getConnection()->getRowCount("comment");
+
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+
+		//Try to grab the comment in mySQL by its content
+		$comments = Comment::getCommentByCommentContent($this->getPDO(), $comment->getCommentContent());
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertCount(1, $comments);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
+
+		//grab the result from the array and validate it (Could hold multiple comments)
+		$pdoComment = $comments[0];
+		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
+		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
+		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+	}
+
+	/**
+	 * Test grabbing a Comment by content that does not exist.
+	 */
+	public function testGetInvalidCommentByCommentContent() {
+		//Search for content we know does not exist
+		$comment = Comment::getCommentByCommentContent($this->getPDO(), $this->INVALID_COMMENTTEXT);
+		$this->assertCount(0, $comment);
 	}
 }
