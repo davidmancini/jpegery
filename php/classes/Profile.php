@@ -414,7 +414,7 @@ class Profile {
 	/**
 	 * accessor method for profile salt
 	 *
-	 * @return string the value of profile salt
+	 * @return string value profile salt
 	 */
 
 	public function getProfileSalt() {
@@ -438,6 +438,36 @@ class Profile {
 		}
 
 		$this->profileSalt = $newProfileSalt;
+	}
+
+	/**
+	 * accessor method for profile verification
+	 *
+	 * @return string $profileVerify
+	 */
+
+	public function getProfileVerify() {
+		return $this->profileVerify;
+	}
+
+	/**
+	 * mutator method for profile verification
+	 *
+	 * @param $newProfileVerify the value of profile verification content
+	 * @throws \InvalidArgumentException if verification content is empty or insecure
+	 */
+
+	public function setProfileVerify(string $newProfileVerify) {
+		// verify that verification content is secure
+		$newProfileVerify = trim($newProfileVerify);
+		$newProfileVerify = filter_var($newProfileVerify, FILTER_SANITIZE_STRING);
+		if(empty($newProfileVerify) === true) {
+			throw(new\InvalidArgumentException("verification content is empty ofr insecure"));
+		}
+
+		// save the verification content
+		$this->profileVerify = $newProfileVerify;
+
 	}
 
 	/**
