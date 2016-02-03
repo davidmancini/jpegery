@@ -16,10 +16,10 @@ CREATE TABLE profile (
 CREATE TABLE image (
 	imageId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	imageProfileId INT UNSIGNED NOT NULL,
-	imageType VARCHAR(128) NOT NULL,
+	imageDate DATETIME NOT NULL,
 	imageFileName VARCHAR(128) NOT NULL UNIQUE,
 	imageText VARCHAR(500),
-	imageDate DATETIME NOT NULL,
+	imageType VARCHAR(128) NOT NULL,
 	INDEX(profileId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
@@ -35,14 +35,13 @@ CREATE TABLE comment (
 	commentId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	commentImageId INT UNSIGNED NOT NULL,
 	commentProfileId INT UNSIGNED NOT NULL,
-	commentText VARCHAR(1023) NOT NULL,
 	commentDate DATETIME NOT NULL,
+	commentText VARCHAR(1023) NOT NULL,
 	INDEX(profileId),
 	INDEX(imageId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(imageId) REFERENCES image(imageId),
 	PRIMARY KEY(commentId)
-
 );
 
 CREATE TABLE vote (
