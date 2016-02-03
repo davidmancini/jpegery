@@ -1,7 +1,7 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
-require_once (dirname(__DIR__) . "lib/validate-date.php"); //Required for validation of imageDate
+require_once (dirname(__DIR__) . "../lib/validate-date.php"); //Required for validation of imageDate
 
 	/*
 	 * Image
