@@ -104,7 +104,7 @@ class CommentTest extends JpegeryTest {
 		$comment->insert($this->getPDO());
 
 		//Edit the Comment and update it in mySQL
-		$comment->setCommentContent($this->VALID_COMMENTTEXT2);
+		$comment->setCommentText($this->VALID_COMMENTTEXT2);
 		$comment->update($this->getPDO());
 
 		//Grab the data from mySQL and check it against our expectations
@@ -113,7 +113,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT2);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT2);
 	}
 
 	/**
@@ -175,7 +175,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT);
 	}
 
 	/**
@@ -261,7 +261,7 @@ class CommentTest extends JpegeryTest {
 		$comment->insert($this->getPDO());
 
 		//Try to grab the comment in mySQL by its content
-		$comments = Comment::getCommentByCommentContent($this->getPDO(), $comment->getCommentContent());
+		$comments = Comment::getCommentByCommentContent($this->getPDO(), $comment->getCommentText());
 		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
