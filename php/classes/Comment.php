@@ -1,5 +1,4 @@
 <?php
-namespace Edu\Cnm\Jpegery;
 /**
  * Created by PhpStorm.
  * User: zleyba
@@ -7,6 +6,7 @@ namespace Edu\Cnm\Jpegery;
  * Time: 1:38 PM
  */
 
+namespace Edu\Cnm\Jpegery;
 require_once("autoload.php");
 
 

@@ -38,13 +38,13 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Profile that posted comment; a foreign key
-	 * @var Profile profile
+	 * @var \Edu\Cnm\Jpegery\Profile profile
 	 */
 	protected $profile = null;
 
 	/**
 	 * Image that comment was regarding; a foreign key
-	 * @var Image $image
+	 * @var \Edu\Cnm\Jpegery\Image $image
 	 */
 	protected $image = null;
 
@@ -54,11 +54,12 @@ class CommentTest extends JpegeryTest {
 
 		//Create and insert a Profile to post the test Comment
 		//TODO: Finish this.
-		$this->profile = new Profile(null, "John Public", "John", "867-5309");
+		$this->profile = new Profile(null, null, null, "Email", "myName", "passw0rd", "null", "mynameagain", "867", "456", "def");
 		$this->profile->insert($this->getPDO());
 
 		//TODO: Finish this.
-		$this->image = new Image(null, $this->profile->getProfileId());
+		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
+		$this->image->insert($this->getPDO());
 		//Calculate the date
 		$this->VALID_COMMENTDATE = new \DateTime();
 	}
@@ -81,7 +82,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentProfileId(), $this->VALID_COMMENTTEXT);
 	}
 
 	/**
