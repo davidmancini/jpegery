@@ -13,6 +13,9 @@ require_once("autoload.php");
 /**
  * Vote: Users can up/down vote content
  * @author Michael Kemm
+ * @author David Mancini
+ * @author Jacob Findley
+ * @author Zach Leyba
  */
 class Vote {
 
