@@ -1,7 +1,7 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
-require_once (dirname(__DIR__) . "../lib/validate-date.php"); //Required for validation of imageDate
+require_once ("autoload.php"); //Required for validation of imageDate
 
 	/*
 	 * Image
@@ -20,6 +20,7 @@ require_once (dirname(__DIR__) . "../lib/validate-date.php"); //Required for val
 $pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
 
 class Image {
+	use ValidateDate;
 
 	/*
 	 * imageId is the primary key
@@ -173,15 +174,15 @@ class Image {
 	public function setImageDate($newImageDate) {
 		//If date is null, set current time and date
 		if($newImageDate === null) {
-			$this->imageDate = new DateTime();
+			$this->imageDate = new \DateTime();
 			return;
 		}
 
 		//Catch exceptions and d display correct error (refers to validate-date.php) and if no exceptions, safe the new time and date
 		try {
-			$newImageDate = validateDate($newImageDate);
+			$newImageDate = $this->validateDate($newImageDate);
 		} catch(\InvalidArgumentException $invalidArgument) {
-			throw (\InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+			throw (new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
 			throw (new \RangeException($range->getMessage(), 0, $range));
 		} catch(\Exception $exception) {
@@ -423,45 +424,6 @@ class Image {
 		}
 		return ($image);
 	}
-
-	/*
-	 * Gets image by imageDate
-	 *
-	 * @param \PDO $pdo connection object
-	 * @param string $imageDate DateTime to search for
-	 * @return Image or null if not found
-	 * @throws \PDOException when MySQL-related error occurs
-	 * @throws \TypeError when variables are not the correct data type
-	 */
-	public static function getImageByImageDate(\PDO $pdo, datetime $imageDate) {
-		//Sanitize
-		$newImageDate = validateDate($imageDate);
-		if(false($imageDate) === true) {
-			throw(new \PDOException("image date is invalid"));
-		}
-
-		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageDate = :imageDate";
-		$statement = $pdo->prepare($query);
-
-		//Binds
-		$parameters = array("imageDate" => $imageDate);
-		$statement->execute($parameters);
-
-		//Grabs image from MySQL
-		try {
-			$image = null;
-			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-			$row = $statement->fetch();
-			if($row !== false) {
-				$image = new Image($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
-			}
-		} catch (\Exception $exception) {
-			throw(new \PDOException($exception->getMessage(), 0, $exception));
-		}
-		return ($image);
-	}
-
 
 	/*
 	 * Gets image by image file name
