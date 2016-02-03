@@ -1,8 +1,6 @@
 <?php
 namespace Edu\Cnm\Jpegery;
 
-use Edu\Cnm\Jpegery\Profile;
-
 //Grab the project test parameters
 require_once("JpegeryTest.php");
 
@@ -43,6 +41,9 @@ class FollowerTest extends JpegeryTest {
 		//Create a new follower relationship and insert it into mySQL
 		$follow = new Follower($this->follower->getProfileId(), $this->followed->getProfileId());
 		$follow->insert($this->getPDO());
+
+		//Grab the data from mySQL and ensure that it was inserted properly
+		$pdoFollow = Follower::getFollowerByFollowerId($this->getPDO(), $this->follower->getProfileId());
 
 
 	}

@@ -159,7 +159,7 @@ class Follower implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not of the correct data type
 	 */
-	public function getFollowerByFollowerId(\PDO $pdo, int $followerFollowerId) {
+	public static function getFollowerByFollowerId(\PDO $pdo, int $followerFollowerId) {
 		//Sanitize the follower id
 		if($followerFollowerId <= 0) {
 			throw(new \PDOException("Get Follower by Follower: Follower id is not positive"));
@@ -198,7 +198,7 @@ class Follower implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public function getFollowerByFollowedId(\PDO $pdo, int $followerFollowedId) {
+	public static function getFollowerByFollowedId(\PDO $pdo, int $followerFollowedId) {
 		//Sanitize the followed id
 		if($followerFollowedId <= 0) {
 			throw(new \PDOException("Get Follower by Followed: Followed Id is not positive"));
@@ -237,7 +237,7 @@ class Follower implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
-	public function getFollowerByFollowerIdAndFollowedId(\PDO $pdo, int $followerFollowerId, int $followerFollowedId) {
+	public static function getFollowerByFollowerIdAndFollowedId(\PDO $pdo, int $followerFollowerId, int $followerFollowedId) {
 		//Sanitize the follower id
 		if($followerFollowerId <= 0) {
 			throw(new \PDOException("Follower id is not positive"));
