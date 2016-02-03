@@ -4,6 +4,10 @@
 			<file>CommentTest.php</file>
 			<file>FollowerTest.php</file>
 			<file>ImageTest.php</file>
+			<file>ImageTagTest.php</file>
+			<file>ProfileTest.php</file>
+			<file>TagTest.php</file>
+			<file>VoteTest.php</file>
 		</testsuite>
 	</testsuites>
 	<filter>
