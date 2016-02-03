@@ -13,7 +13,7 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
  * PHPUnit test for Image class
  *
  * @see Image
- * @author David Mancini <mancini.david@gmail.com>
+ * @author David Mancini <hello@davidmancini.xyz>
  */
 
 class ImageTest extends JpegeryTest {

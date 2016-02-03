@@ -14,7 +14,7 @@ require_once("autoload.php");
  * Class Comment
  *
  * A comment on an image
- * @author David Mancini <
+ * @author David Mancini <hello@davidmancini.xyz>
  * @author Jacob Findley <jfindley2@cnm.edu>
  * @author Michael Kemm
  * @author Zach Leyba

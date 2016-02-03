@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  This was created by jpegery.  Thanks for snooping! :)
+ -->
+
 	<html lang="en">
 	<head>
 		<meta charset="utf-8"/>
