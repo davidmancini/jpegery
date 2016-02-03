@@ -14,7 +14,7 @@ require_once("autoload.php");
  * @version 1.0
  */
 
-class imageTag implements \JsonSerializable {
+class ImageTag implements \JsonSerializable {
 
 	/**
 	 * id# of the Image that this tag is attached to
@@ -115,7 +115,7 @@ class imageTag implements \JsonSerializable {
 		}
 	}
 
-}
+
 
 /**
  * Inserts this Tag into mySQL
@@ -133,8 +133,9 @@ public function insert(\PDO $pdo) {
 	}
 
 	//create query template
-	$query = "INSERT INTO imageTag(imageID, tagId) WHERE imageId = (:imageId, tagId = :tagId");
-		$statement = $pdo->prepare($query);
+	$query = "INSERT INTO imageTag(imageId, tagId
+				VALUES(:imageId, :tagId))";
+	$statement = $pdo->prepare($query);
 
 		//bind the member variables to the place holders in the template
 	$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
@@ -161,8 +162,26 @@ public function delete(\PDO $pdo) {
 		throw(new \PDOException("not an existing tag"));
 	}
 		// create query template
-		$query = "DELETE FROM imageTag(imageID, tagId) WHERE imageId = (:imageId, tagId = :tagId");
-		$statement = $pdo->prepare($query);
+	$query = "DELETE FROM imageTag WHERE imageId = :imageId";
+	$statement = $pdo->prepare($query);
+
+
+		//bind the member variables to the place holders in the template
+		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
+		$statement->execute($parameters);
+
+
+
+	}
+
+public function update(\PDO $pdo) {
+	//enforce tagId and tagName are not null
+	if($this->imageId === null || $this->tagId === null) {
+		throw(new \PDOException("not an existing tag"));
+	}
+	// create query template
+	$query = "UPDATE imageTag SET tagName :tagName,
+ 		WHERE tagId = :tagId";
 
 
 		//bind the member variables to the place holders in the template
@@ -174,7 +193,15 @@ public function delete(\PDO $pdo) {
 	}
 
 
-
+/**
+ * formats the state variables for JSON serialization
+ *
+ * @return array resulting state variables to serialize
+ **/
+public function jsonSerialize() {
+	$fields = get_object_vars($this);
+	return($fields);
+}
 
 
 }

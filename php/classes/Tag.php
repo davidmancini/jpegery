@@ -18,7 +18,7 @@ require_once("autoload.php");
  **/
 
 class Tag implements \JsonSerializable {
-	use \Edu\Cnm\Jpegery\ValidateDate;
+
 
 	/**ID# of a given tag
 	 * @var int $tagId
@@ -60,10 +60,11 @@ class Tag implements \JsonSerializable {
 	}
 
 
-	/**
+	/***
 	 * Accesor method for tag id
 	 * @return int of tag id
-	 */
+	 *
+	 ***/
 
 public function getTagId() {
 		return($this->tagId);
@@ -127,7 +128,7 @@ public function setTagName(int $newTagName) {
 
 public function insert(PDO $pdo) {
 	//enformce the tagId is null (i.e. don't insert a tag that already exists)
-	if($this->tagId !=== null) {
+	if($this->tagId !== null) {
 		throw(new PDOException ("not a new Tag"));
 	}
 
@@ -182,7 +183,7 @@ public function update(PDO $pdo) {
 	$statement = $pdo->prepare($query);
 
 	// bind the member variables to the place holders in the template
-	$parameters = array("tagId" => $this->tagId, "tagName" => $this->tagName,
+	$parameters = array("tagId" => $this->tagId, "tagName" => $this->tagName);
 	$statement->execute($parameters);
 }
 
