@@ -24,7 +24,7 @@ require_once("autoload.php");
  *The User's profile
  */
 
-class Profile implements JsonSerializable {
+class Profile {
 
 	/**
 	 * id for profile, the primary key
@@ -103,6 +103,15 @@ class Profile implements JsonSerializable {
 	 */
 
 	private $profileSalt;
+
+	/**
+	* verification method for profile
+	*
+	* @var $profileVerify
+	*/
+
+	private $profileVerify;
+
 
 	public function __construct(int $newProfileId = null, bool $newProfileAdmin = null, $profileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt) {
 		try {
@@ -445,11 +454,11 @@ class Profile implements JsonSerializable {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileId, profileAdmin, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt) VALUES(:profileId, :profileAdmin, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt)";
+		$query = "INSERT INTO profile(profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt) VALUES(:profileId, :profileAdmin, :profileCreateDate, :profileEmail :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin,"profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL
