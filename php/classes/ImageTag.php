@@ -119,3 +119,65 @@ class imageTag implements \JsonSerializable {
 	}
 
 }
+
+/**
+ * Inserts this Tag into mySQL
+ *
+ * @param \PDO $pdo PDO connection object
+ * @throws \PDOException when mySQL related error occurs
+ * @throws \ TypeError if $pdo is not a PDO connection object
+ *
+ **/
+
+public function insert(\PDO $pdo) {
+	//enforce the ImageTag is not null (i.e. don't insert a tag that does not exist)
+	if(this->$imageId === null || this->$tagId === null) {
+		throw(new \PDOException("not an existing tag"));
+	}
+
+	//create query template
+	$query = "INSERT INTO imageTag(imageId, tagId) VALUES(:imageId, :tagId)";
+	$statement = $pdo->prepare($query)
+
+		//bind the member variables to the place holders in the template
+	$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
+	$statement->execute($parameters);
+
+	//update the null tagId with the value MySQL gives us
+	$this->tagId = intval($pdo - lastInsertId());
+
+	}
+
+/**
+ *
+ **Deletes tag from mySQL
+ *
+ * @param \PDO $pdo connection object
+ * @throws \PDOException when mySQL related errors occur
+ * @thows \TypeError if $pdo is not a PDO connection object
+ *
+ **/
+
+public function delete(\PDO $pdo) {
+	//enforce tagId and tagName are not null
+	if(this->$imageId === null || this->$tagId === null) {
+		throw(new \PDOException("not an existing tag"));
+
+		// create query template
+		$query = "DELETE FROM imageTag WHERE imageId = :imageId, tagId = :tagId";
+		$statement = $pdo->prepare($query);
+
+
+		//bind the member variables to the place holders in the template
+		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
+		$statement->execute($parameters);
+
+
+
+	}
+
+
+
+
+
+}
