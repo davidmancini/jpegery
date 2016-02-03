@@ -88,6 +88,4 @@ CREATE TABLE follower (
 -- 	PRIMARY KEY(itemId),
 -- 	FOREIGN KEY(profileId) REFERENCES profile(profileId)
 -- );
--- This needs to be in correct order.  I just needed to add my table so I could work on my Class file.
--- If you need to change the Image table, let me know so I can update my Class.  -David
 
