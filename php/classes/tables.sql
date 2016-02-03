@@ -14,14 +14,12 @@ CREATE TABLE profile (
 	profileCreateDate DATETIME NOT NULL,
 	profileEmail VARCHAR(32) NOT NULL,
 	profileHandle VARCHAR(32) NOT NULL,
-	profileHash VARCHAR() NOT NULL,
-	profileImageId,
+	profileHash VARCHAR(32) NOT NULL,
+	profileImageId INT UNSIGNED,
 	profileName VARCHAR(32),
 	profilePhone VARCHAR(16),
-	profileSalt VARCHAR(),
-	profileVerify,
-	profileName VARCHAR (128),
-	email VARCHAR(128),
+	profileSalt VARCHAR(32),
+	profileVerify BIT,
 	PRIMARY KEY(profileId)
 );
 CREATE TABLE image (
@@ -34,7 +32,7 @@ CREATE TABLE image (
 	INDEX(profileId),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
-	);
+);
 
 CREATE TABLE tag (
 	tagId INT UNSIGNED AUTO_INCREMENT NOT NULL,
@@ -56,14 +54,14 @@ CREATE TABLE comment (
 );
 
 CREATE TABLE vote (
-	profileId INT UNSIGNED NOT NULL,
-	imageId INT UNSIGNED NOT NULL,
+	voteProfileId INT UNSIGNED NOT NULL,
+	voteImageId INT UNSIGNED NOT NULL,
 	voteValue BIT NOT NULL,
-	INDEX(profileId),
-	INDEX(imageId),
+-- 	INDEX(voteProfileId),
+-- 	INDEX(voteImageId),
 	FOREIGN KEY(profileId) REFERENCES profile(profileId),
 	FOREIGN KEY(imageId) REFERENCES image(imageId),
-	PRIMARY KEY(profileId, imageId)
+	PRIMARY KEY(voteProfileId, voteImageId)
 );
 
 CREATE TABLE imageTag (
@@ -71,8 +69,8 @@ CREATE TABLE imageTag (
 	tagId INT UNSIGNED NOT NULL,
 	INDEX(imageId),
 	INDEX(tagId),
-	FOREIGN KEY(imageId) REFERENCES image(imageId),
-	FOREIGN KEY(tagId) REFERENCES tag(tagId),
+-- 	FOREIGN KEY(imageId) REFERENCES image(imageId),
+-- 	FOREIGN KEY(tagId) REFERENCES tag(tagId),
 	PRIMARY KEY(imageId, tagId)
 
 );
@@ -82,8 +80,8 @@ CREATE TABLE follower (
 	followerFollowedId INT UNSIGNED NOT NULL,
 	INDEX(followerFollowerId),
 	INDEX(followerFollowedId),
-	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
-	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
+-- 	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
+-- 	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
 	PRIMARY KEY(followerFollowerId, followerFollowedId)
 );
 

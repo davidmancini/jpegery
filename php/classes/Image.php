@@ -17,7 +17,7 @@ require_once ("autoload.php"); //Required for validation of imageDate
 //$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
 //LOCAL DEVELOPMENT Connection
-$pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
+//$pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
 
 class Image {
 	use ValidateDate;
