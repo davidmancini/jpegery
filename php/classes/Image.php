@@ -156,10 +156,6 @@ class Image {
 		$this->imageProfileId = $newImageProfileId;
 	}
 
-	/*  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	 * Accessor and Mutator for imageDate
-	 */
-
 	/*
 	 * Accessor for imageDate
 	 * @return datetime value for the image's date
@@ -182,6 +178,16 @@ class Image {
 		}
 
 		//Catch exceptions and d display correct error (refers to validate-date.php) and if no exceptions, safe the new time and date
+		try {
+			$newImageDate = validateDate($newImageDate);
+		} catch (\InvalidArgumentException $invalidArgument) {
+			throw (\InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch (\RangeException $range) {
+			throw (new \RangeException($range->getMessage(), 0, $range));
+		} catch (\Exception $exception) {
+			throw (new \Exception($exception->getMessage(), 0, $range));
+		}
+		$this->imageDate = $newImageDate;
 	}
 
 	/*
