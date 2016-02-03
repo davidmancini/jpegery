@@ -47,27 +47,23 @@ class Tag implements \JsonSerializable {
 		try {
 			$this->setTagId($newTagId);
 			$this->setTagName($newTagName);
-		}
-			catch(InvalidArgumentException $invalidArgument) {
+		} catch(InvalidArgumentException $invalidArgument) {
 			// rethrow the exception to the caller
 			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(RangeException $range) {
+			// rethrow the exception to the caller
+			throw(new RangeException($range->getMessage(), 0, $range));
+		} catch(Exception $exception) {
+			// rethrow generic exception
+			throw(new Exception($exception->getMessage(), 0, $exception));
 		}
-			catch(RangeException $range) {
-				// rethrow the exception to the caller
-				throw(new RangeException($range->getMessage(), 0, $range));
-			}
-			catch(Exception $exception) {
-				// rethrow generic exception
-				throw(new Exception($exception->getMessage(), 0, $exception));
-			}
-
 	}
 
 
-/** accessor method for Tag ID
- *
- *@return int value of tag id
- **/
+	/**
+	 * Accesor method for tag id
+	 * @return int of tag id
+	 */
 
 public function getTagId() {
 		return($this->tagId);
