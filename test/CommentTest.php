@@ -38,7 +38,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Profile that posted comment; a foreign key
-	 * @var \Edu\Cnm\Jpegery\Profile profile
+	 * @var \Edu\Cnm\Jpegery\Profile $profile
 	 */
 	protected $profile = null;
 
@@ -78,7 +78,7 @@ class CommentTest extends JpegeryTest {
 
 		//Grab the data from mySQL and ensure that the fields match our expectations
 		$pdoComment = Comment::getCommentByCommentId($this->getPDO(), $comment->getCommentId());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCoun ("comment"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
