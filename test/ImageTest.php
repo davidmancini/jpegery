@@ -72,7 +72,7 @@ class ImageTest extends JpegeryTest {
 
 		//Create a new Image and insert into MySQL
 		//newImageId, newProfileId, newImageType, newImageFileName, newImageText, newImageDate
-		$image = new Image (null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image = new Image (null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 		$image->insert($this->getPDO());
 
 		//Grab data from MySQL and enforce fields to match expectations
@@ -93,7 +93,7 @@ class ImageTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("image");
 
 		//Create a new image and insert it into MySQL
-		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 		$image->insert($this->getPDO());
 
 		//Edit the image and update it
@@ -116,7 +116,7 @@ class ImageTest extends JpegeryTest {
 		 */
 		public function testInsertInvalidImage() {
 			//Create an image with a non-null image id and watch it fail
-			$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->-$this->VALID_IMAGEDATE);
+			$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 			$image->insert($this->getPDO());
 		}
 

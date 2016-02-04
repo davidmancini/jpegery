@@ -483,7 +483,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageText LIKE :imageFileName";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageText LIKE :imageText";
 		$statement = $pdo->prepare($query);
 
 		//Binds
