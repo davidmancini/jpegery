@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: zleyba
- * Date: 1/28/16
- * Time: 1:35 PM
-
-
-
- */
-
 namespace Edu\Cnm\Jpegery;
 
 require_once("autoload.php");
@@ -547,7 +537,7 @@ class Profile implements \JsonSerializable {
 	}
 
 	/**
-	 * gets the Comment by comment id
+	 * get Comment by comment id
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $profileId primary key of the profile
@@ -555,6 +545,7 @@ class Profile implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 */
+
 	public static function getProfileByProfileId(\PDO $pdo, int $profileId) {
 		//Sanitize the profile id before seaching
 		if($profileId <= 0) {
