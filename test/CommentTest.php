@@ -97,7 +97,7 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * Test inserting a comment, editing it, and then updating it.
 	 */
-	public function testUpdateValidTweet() {
+	public function testUpdateValidComment() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("comment");
 
