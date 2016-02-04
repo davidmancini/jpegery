@@ -18,6 +18,12 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 class ImageTest extends JpegeryTest {
 	/*
+	 * Profile that created the image for foreign key relations
+	 * @var Profile profile
+	 */
+	protected $profile = null;
+
+	/*
 	 * Timestamp of the image; starts as null and is assigned later
 	 * @var DateTime $VALID_IMAGEDATE
 	 */
@@ -51,7 +57,7 @@ class ImageTest extends JpegeryTest {
 	 * Create dependent objects before running each test
 	 */
 	public final function setUp() {
-		//run the decault setUp method first
+		//run the default setUp method first
 		parent::setUp();
 
 		//Create and insert a profile to own the test image
@@ -110,17 +116,45 @@ class ImageTest extends JpegeryTest {
 	}
 
 	/*
-		 * Test inserting an image that already exists
-		 *
-		 * @expectedException PDOException
-		 */
-		public function testInsertInvalidImage() {
-			//Create an image with a non-null image id and watch it fail
-			$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
-			$image->insert($this->getPDO());
-		}
+	 * Test creating an image and then deleting it
+	 */
+	public function testDeleteValidImage() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
 
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
 
+		//Delete image from database
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$image->delete($this->getPDO());
+
+		//Grab data from database and ensure the image does not exist
+		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
+		$this->assertNull($pdoImage);
+		$this->assertEquals($numRows, $this->getConnection()->getRowCount("image"));
+	}
+
+	/*
+	 * Test inserting an image that already exists
+	 *
+	 * @expectedException PDOException
+	 */
+	public function testInsertInvalidImage() {
+		//Create an image with a non-null image id and watch it fail
+		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+	}
+
+	/*
+	 * Test deleting an image that does not exist
+	 *
+	 * @expectedException PDOException
+	 */
+	public function testDeleteInvalidImage() {
+
+}
 
 
 
