@@ -84,8 +84,9 @@ class ImageTest extends JpegeryTest {
 		//Grab data from MySQL and enforce fields to match expectations
 		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
@@ -109,8 +110,9 @@ class ImageTest extends JpegeryTest {
 		//Grab data from MySQL and ensure fields match expectations
 		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId);
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT2);
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
@@ -143,7 +145,7 @@ class ImageTest extends JpegeryTest {
 	 */
 	public function testInsertInvalidImage() {
 		//Create an image with a non-null image id and watch it fail
-		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 		$image->insert($this->getPDO());
 	}
 
@@ -153,8 +155,70 @@ class ImageTest extends JpegeryTest {
 	 * @expectedException PDOException
 	 */
 	public function testDeleteInvalidImage() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
 
-}
+		//Create an image and try to delete it without first inserting it
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->delete($this->getPDO());
+	}
+
+	/*
+	 * Test inserting an image and re-grabbing it from MySQL
+	 */
+	public function testGetValidImageByImageId() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
+		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
+		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
+	}
+
+	/*
+	 * Test grabbing an image that does not exist
+	 *
+	 * @expectedExpectation PDOException
+	 */
+	public function testGetInvalidImageByImageId() {
+		//Grab a profile id that exceeds the maximum allowable profile id
+		$image = Image::getImageByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$this->assertNull($image);
+	}
+
+	/*
+	 * Test grabbing all Images
+	 */
+	public function testGetAllValidImages() {
+		//count the number of rows and save for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+
+		//Grab data from database and ensure it matches our expectations
+		$results = Image::getAllImages($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+
+		//Grab the result from the array and validate it
+		$pdoImage = $results[0];
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
+		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
+		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
+	}
 
 
 
