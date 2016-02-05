@@ -31,9 +31,10 @@
 					</div>
 				</div>
 
-				<h1 class="page-header">jpegery Epic</h1>
+
 
 				<div class="row" >
+					<h1 class="page-header">jpegery Epic</h1>
 					<div class="col-md-6">
 						<h3>Executive Summary</h3>
 						<p>jpegery is a web-based, image-sharing platform.  Our goals are to make it easier for creators of original content to get the recognition they deserve and to make it easier for users to discover new images.<br>
@@ -59,19 +60,19 @@
 
 				<h3>Personas</h3><br>
 				<div class="row row-eq-height">
-					<div class="col-md-6 personaborder">
+					<div class="col-md-4 personaborder">
 						<a href="epic-jason.php"><img src="../images/persona1.jpg" alt="Persona 1" class="img-circle img-responsive center-block"></a><br>
 							<p class="text-center"><strong>Jason Holmes, 23</strong><br>Graduate Student, TA<br>
 							Infrequent poster interested in his images' comments.<br><br>
 							<a href="epic-jason.php">Read Jason's Story</a></p>
 						</div>
-					<div class="col-md-6 personaborder">
+					<div class="col-md-4 personaborder">
 						<a href="epic-dana.php"><img src="../images/persona2.jpg" alt="Persona 2" class="img-circle img-responsive center-block"></a><br>
 						<p class="text-center"><strong>Dana McNeill, 26</strong><br>Accounting<br>
 						Frequent poster interested in the social aspect.<br><br>
 						<a href="epic-dana.php">Read Dana's Story</a></p>
 					</div>
-					<div class="col-md-6 personaborder">
+					<div class="col-md-4 personaborder">
 						<a href="epic-jessica.php"><img src="../images/persona3.jpg" alt="Persona 3" class="img-circle img-responsive center-block"></a><br>
 						<p class="text-center"><strong>Jessica Kelso, 14</strong><br>Student<br>
 						Frequent Commenter and Viewer, but does not post.<br><br>

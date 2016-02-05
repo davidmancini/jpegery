@@ -186,8 +186,6 @@ class ImageTest extends JpegeryTest {
 
 	/*
 	 * Test grabbing an image that does not exist
-	 *
-	 * @expectedExpectation PDOException
 	 */
 	public function testGetInvalidImageByImageId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
@@ -219,6 +217,54 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
+
+	/*!!!!!TODO:This needs to be modified
+	 * Test grabbing an image by profile id
+	 */
+	public function testGetValidImageByImageId() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
+		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
+		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
+	}
+
+
+
+	/*!!!!!TODO:This needs to be modified
+	 * Test grabbing an image by invalid profile id
+	 */
+	public function testGetInvalidImageByImageId() {
+		//Grab a profile id that exceeds the maximum allowable profile id
+		$image = Image::getImageByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$this->assertNull($image);
+	}
+
+	/*
+	 * Test grabbing an image by file name
+	 */
+
+	/*
+	 * Test grabbing an image by file name that does not exist
+	 */
+
+	/*
+	 * Test grabbing an image by image text
+	 */
+
+	/*
+	 * Test grabbing an image by text that does not exist
+	 */
 
 
 
