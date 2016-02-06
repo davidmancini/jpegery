@@ -187,7 +187,7 @@ class ImageTest extends JpegeryTest {
 	/*
 	 * Test grabbing an image that does not exist
 	 */
-	public function testGetInvalidImageByImageId() {
+	public function testGetImageByInvalidImageId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
 		$image = Image::getImageByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($image);
@@ -218,10 +218,10 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*!!!!!TODO:This needs to be modified
+	/*
 	 * Test grabbing an image by profile id
 	 */
-	public function testGetValidImageByImageId() {
+	public function testGetValidImageByProfileId() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
 
@@ -230,8 +230,13 @@ class ImageTest extends JpegeryTest {
 		$image->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
-		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
+		$results = Image::getImageByProfileId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertEquals(1, $results);
+		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+
+		//Grabs results from array and validate it
+		$pdoImage = $results[0];
 		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
@@ -239,14 +244,12 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-
-
-	/*!!!!!TODO:This needs to be modified
+	/*!!!!! TODO: This needs to be modified
 	 * Test grabbing an image by invalid profile id
 	 */
-	public function testGetInvalidImageByImageId() {
+	public function testGetImageByInvalidProfileId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
-		$image = Image::getImageByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$image = Image::getImageByProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($image);
 	}
 
