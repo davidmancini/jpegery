@@ -244,7 +244,7 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*!!!!! TODO: This needs to be modified
+	/*!!!!!
 	 * Test grabbing an image by invalid profile id
 	 */
 	public function testGetImageByInvalidProfileId() {
@@ -256,25 +256,72 @@ class ImageTest extends JpegeryTest {
 	/*
 	 * Test grabbing an image by file name
 	 */
+	public function testGetValidImageByImageFileName() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$results = Image::getImageByImageFileName($this->getPDO(), $image->getImageFileName());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertEquals(1, $results);
+		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+
+		//Grabs results from array and validate it
+		$pdoImage = $results[0];
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
+		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
+		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
+	}
 
 	/*
 	 * Test grabbing an image by file name that does not exist
 	 */
+	public function testGetImageByInvalidImageFileName() {
+		//Grab profile id by a file name that doesn't exist
+		$image = Image::getImageByImageFileName($this->getPDO(), "this is not a real file name");
+		$this->assertCount(0, $image);
+	}
 
 	/*
 	 * Test grabbing an image by image text
 	 */
+	public function testGetImageByImageText() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("image");
+
+		//Create new image and insert into database
+		$image = new Image(null, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
+		$image->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$results = Image::getImageByImageText($this->getPDO(), $image->getImageText());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$this->assertEquals(1, $results);
+		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+
+		//Grabs results from array and validate it
+		$pdoImage = $results[0];
+		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
+		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
+		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
+		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
+	}
+
+
 
 	/*
 	 * Test grabbing an image by text that does not exist
 	 */
-
-
-
-
-
-
-
-
-
+	public function testGetImageByInvalidImageText() {
+		//Grab profile id by a file name that doesn't exist
+		$image = Image::getImageByImageText($this->getPDO(), "this text doesn't exist, nobody wrote this");
+		$this->assertCount(0, $image);
+	}
 }
