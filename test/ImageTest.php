@@ -230,7 +230,7 @@ class ImageTest extends JpegeryTest {
 		$image->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
-		$results = Image::getImageByProfileId($this->getPDO(), $image->getImageId());
+		$results = Image::getImageByProfileId($this->getPDO(), $image->getProfileId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
 		$this->assertEquals(1, $results);
 		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
@@ -267,11 +267,6 @@ class ImageTest extends JpegeryTest {
 		//Get data from database and ensure the fields match our expectations
 		$results = Image::getImageByImageFileName($this->getPDO(), $image->getImageFileName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals(1, $results);
-		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
-
-		//Grabs results from array and validate it
-		$pdoImage = $results[0];
 		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
