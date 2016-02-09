@@ -185,6 +185,14 @@ public function testDeleteInvalidVote() {
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
+	/**
+	 * test grabbing a vote that does not exist
+	 **/
+	public function testGetInvalidVoteByVoteId() {
+		// grab a profile id that exceeds the maximum allowable profile id
+		$vote = Vote::getVoteByVoteId($this->getPDO(), DataDesignTest::INVALID_KEY);
+		$this->assertNull($vote);
+	}
 
 
 
