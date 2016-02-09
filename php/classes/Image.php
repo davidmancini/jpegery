@@ -9,7 +9,7 @@ require_once ("autoload.php"); //Required for validation of imageDate
 	 * The Image entity includes all information about the image itself (image type, file name, and text)
 	 * and also includes the associated owner of the image (profileId)
 	 *
-	 * @author David Mancini <mancini.david@gmail.com>
+	 * @author David Mancini <hello@davidmancini.xyz>
 	 */
 
 //Secure and Encrypted PDO Database Connection
@@ -483,7 +483,7 @@ class Image {
 		}
 
 		//Create query
-		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageText LIKE :imageFileName";
+		$query = "SELECT imageId, imageProfileId, imageType, imageFileName, imageText, imageDate FROM image WHERE imageText LIKE :imageText";
 		$statement = $pdo->prepare($query);
 
 		//Binds

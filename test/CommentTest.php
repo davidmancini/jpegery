@@ -1,7 +1,10 @@
 <?php
 namespace Edu\Cnm\Jpegery\Test;
 
-use Edu\Cnm\Jpegery\{Profile, Image, Comment};
+use Edu\Cnm\Jpegery\Comment;
+use Edu\Cnm\Jpegery\Profile;
+use Edu\Cnm\Jpegery\Image;
+
 //Grab the project test parameters
 //require_once("phpunit.xml");
 require_once("JpegeryTest.php");
@@ -97,7 +100,7 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * Test inserting a comment, editing it, and then updating it.
 	 */
-	public function testUpdateValidTweet() {
+	public function testUpdateValidComment() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("comment");
 

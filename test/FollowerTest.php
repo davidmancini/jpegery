@@ -1,7 +1,8 @@
 <?php
 namespace Edu\Cnm\Jpegery\Test;
 
-use Edu\Cnm\Jpegery\{Profile, Follower};
+use Edu\Cnm\Jpegery\Follower;
+use Edu\Cnm\Jpegery\Profile;
 //Grab the project test parameters
 require_once("JpegeryTest.php");
 

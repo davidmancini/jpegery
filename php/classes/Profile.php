@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: zleyba
- * Date: 1/28/16
- * Time: 1:35 PM
-
-
-
- */
-
 namespace Edu\Cnm\Jpegery;
 
 require_once("autoload.php");
@@ -82,7 +72,7 @@ class Profile implements \JsonSerializable {
 	private $profileImageId;
 
 	/**
-	 * user's name
+	 * user name
 	 *
 	 * @var string $profileName
 	 */
@@ -547,6 +537,45 @@ class Profile implements \JsonSerializable {
 	}
 
 	/**
+	 * get Comment by comment id
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $profileId primary key of the profile
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileId(\PDO $pdo, int $profileId) {
+		//Sanitize the profile id before seaching
+		if($profileId <= 0) {
+			throw(new \PDOException("profile id is not positive"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the comment id to the place holder in the template
+		$parameters = ["profileId" => $profileId];
+		$statement->execute($parameters);
+
+		//Grab the comment from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($profile);
+	}
+
+	/**
 	 * formats the state variable for JSON serialization
 	 *
 	 * @return array resulting state variables to serialize
@@ -557,6 +586,5 @@ class Profile implements \JsonSerializable {
 		$fields [profileCreateDate] = intval($this->profileCreateDate->format("U")) * 1000;
 		return($fields);
 	}
-
 // the end...
 }

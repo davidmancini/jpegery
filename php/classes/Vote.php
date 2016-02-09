@@ -1,23 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: michaelkemm
- * Date: 1/31/16
- * Time: 12:21 PM
- */
+	/**
+	 * Created by PhpStorm.
+	 * User: michaelkemm
+	 * Date: 1/31/16
+	 * Time: 12:21 PM
+	 */
 
-namespace Edu\Cnm\Jpegery;
+	namespace Edu\Cnm\Jpegery;
 
-require_once("autoload.php");
+	require_once("autoload.php");
 
-/**
- * Vote: Users can up/down vote content
- * @author Michael Kemm
- * @author David Mancini
- * @author Jacob Findley
- * @author Zach Leyba
- */
-class Vote {
+	/**
+	 * Vote: Users can up/down vote content
+	 * @author Michael Kemm
+	 * @author David Mancini
+	 * @author Jacob Findley
+	 * @author Zach Leyba
+	 */
+	class Vote {
 
 	/**
 	 * profile id associated with vote
@@ -187,9 +187,78 @@ class Vote {
 
 		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
 		$statement->execute($parameters);
-
-
 	}
+
+
+	/**
+	 * get Vote by voteId
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $voteId tweet id to search for
+	 * @return Vote|null Vote found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getVoteByVoteId(\PDO $pdo, int $voteId) {
+		// sanitize the voteId before searching
+		if($voteId <= 0) {
+			throw(new \PDOException("vote id is not positive"));
+		}
+
+		// create query template
+		$query = "SELECT voteId, voteProfileId, voteValue, FROM vote WHERE voteId = :voteId";
+		$statement = $pdo->prepare($query);
+
+		// bind the vote id to the place holder in the template
+		$parameters = array("voteId" => $voteId);
+		$statement->execute($parameters);
+
+		// grab the vote from mySQL
+		try {
+			$vote = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$vote = new Vote($row["voteId"], $row["voteProfileId"], $row["voteValue"]);
+			}
+		} catch(\Exception $exception) {
+			// if the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return($vote);
+	}
+
+	/**
+	 * get all Votes
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @return \SplFixedArray SplFixedArray of Tweets found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
+	public static function getAllVotes(\PDO $pdo) {
+		// create query template
+		$query = "SELECT voteId, vpoteProfileId, voteValue, FROM vote";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		// build an array of votes
+		$votes = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$vote = new Vote($row["voteId"], $row["voteProfileId"], $row["voteValue"]);
+				$votes[$votes->key()] = $vote;
+				$votes->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($votes);
+	}
+
+
 
 
 
