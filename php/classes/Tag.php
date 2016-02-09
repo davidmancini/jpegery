@@ -188,6 +188,52 @@ public function update(PDO $pdo) {
 }
 
 	/**
+	 ** Gets Tag by tagId number
+	 * @param \PDO $pdo PDO connection object
+	 * @param int $tagId tag id to search for
+	 * @return \ SplFixedArray SplFixedArray of tags found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are no the the correct data type
+	 **/
+
+	public static function getTagByTagId(\PDO $pdo, int $tagId) {
+		//santitize description before searching
+		if($tagId <= 0) {
+			throw(new \PDOException("tag id is not positive"));
+		}
+
+		//create query template
+		$query = "SELECT tagId, tagName FROM tag where tagId = :tagId, tagName = :tagName";
+
+		$statement = $pdo->prepare($query);
+
+		//bind the tag id to the place holder in the tempalte
+
+		$parameters = array("tagId" => $tagId);
+		$statement->execute($parameters);
+
+		//grab the tag from mySQL
+
+		try {
+
+			$tag = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$tag = new Tag($row["tagId"], $row["tagName"]);
+			}
+
+
+		}
+
+	}
+
+
+}
+
+
+
+	/**
 	 * formats the state variables for JSON serialization
 	 *
 	 * @return array resulting state variables to serialize

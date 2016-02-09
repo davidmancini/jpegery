@@ -104,7 +104,7 @@ class ImageTag implements \JsonSerializable {
 	 * @throws \RangeException if $newTagId is not positive
 	 * @throws \TypeError if $newTagId is not an integer
 	 */
-	public function setTagId($tagId) {
+	public function setTagId(int $tagId) {
 		$this->tagId = $tagId;
 		//verify the tag id is positive
 		if($newTagId <= 0) {
@@ -170,7 +170,14 @@ public function delete(\PDO $pdo) {
 		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
 		$statement->execute($parameters);
 
-
+/** Gets tag by name
+ *
+ * @param \PDO $pdo PDO connection object
+ * @param string $tagName tag name to search for
+ * @return \SplFixedArray SplFixedArray of tagged items found
+ * @throws \PDOException when mySQL related errors occur
+ * @throw \TypeError when
+ */
 
 	}
 
