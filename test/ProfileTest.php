@@ -32,7 +32,7 @@
 		 * profile id
 		 * @var $VALID_PROFILEID
 		 */
-		protected $VALID_PROFILEID = "PHPUnit test passin";
+		protected $VALID_PROFILEID = "PHPUnit test passing";
 
 		/**
 		 * profile admin
