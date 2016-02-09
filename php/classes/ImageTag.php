@@ -191,6 +191,18 @@ public function update(\PDO $pdo) {
 
 	}
 
+	/**
+	 * gets imageTage by tagId
+	 *
+	 * @param \PDO $pdo connection object
+	 * @param int $tagId to search for
+	 * @return Tag|null Tag found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throw \TypeError when variables are not the correct data type
+	 * **/
+
+	public static function getImageTagByTagIt(\PDO $pdo, int $tagID)
+
 
 /**
  * formats the state variables for JSON serialization
