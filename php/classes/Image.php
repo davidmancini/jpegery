@@ -496,7 +496,7 @@ class Image {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"], $row["imageDate"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
@@ -526,7 +526,7 @@ class Image {
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"] . $row["imageFileName"], $row["imageText"], $row["imageDate"]);
+				$image = new Image ($row["imageId"], $row["imageProfileId"], $row["imageType"], $row["imageFileName"], $row["imageText"], $row["imageDate"]);
 				$images[$images->key()] = $image;
 				$images->next();
 			} catch(\Exception $exception) {
