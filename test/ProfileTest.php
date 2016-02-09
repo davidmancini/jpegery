@@ -7,14 +7,15 @@
 	 */
 	namespace Edu\Cnm\Jpegery\test;
 
-	use Edu\CNM\Jpegery\JpegeryTest;
+
 	use Edu\Cnm\Jpegery\Profile;
 
 	// get the project test parameters
 	require_once("JpegeryTest.php");
 
 	//
-	require_once(dirname(__DIR__) . "jpegery/classes/autoload.php");
+
+	require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 	/**
 	 * PHPUnit test for the profile class
