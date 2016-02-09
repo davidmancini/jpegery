@@ -229,7 +229,43 @@ public function update(PDO $pdo) {
 	}
 
 
-}
+	/** Gets tag by name
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $tagName tag name to search for
+	 * @return \SplFixedArray SplFixedArray of tagged items found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throw \TypeError when
+	 */
+	public static function getTagByName(\PDO $PDO, string $tagName) {
+		//sanitize query before searching
+		$tagName = trim($tagName);
+		$tagName = filter_var($tagName, FILTER_SANITIZE_STRING);
+		if(empty($tagName) === true) {
+			throw(new \PDOException("tag name is invalid"));
+
+		}
+
+		//create query template
+		$query = "SELECT tagName, tagId FROM tag WHERE tagName LIKE :tagName";
+		$statement = $PDO->prepare($query);
+
+		//bind the tag name to the place holder in the template
+		$tagName = "%tagName%";
+		$parameters = array("tagName" => $tagName);
+		$statement->execute($parameters);
+
+		//build an array of tags by this name
+		$tags = new\SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
+		while($row = $statement->fetch()) !== false {
+			try {
+
+			}
+		}
+	}
+
+
 
 
 

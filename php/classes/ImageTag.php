@@ -170,14 +170,6 @@ public function delete(\PDO $pdo) {
 		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
 		$statement->execute($parameters);
 
-/** Gets tag by name
- *
- * @param \PDO $pdo PDO connection object
- * @param string $tagName tag name to search for
- * @return \SplFixedArray SplFixedArray of tagged items found
- * @throws \PDOException when mySQL related errors occur
- * @throw \TypeError when
- */
 
 	}
 
