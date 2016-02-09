@@ -260,10 +260,24 @@ public function update(PDO $pdo) {
 		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
 		while($row = $statement->fetch()) !== false {
 			try {
+				$tag = new tag($row["tagId"], $row["tagName"]);
+				$tags[$tags -.key()] = $tag;
+				$tag->next();
+			} catach(\Exception $exception) {
+				//if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
 
 			}
+
+			}
+			return ($tags);
+
 		}
-	}
+
+
+
+
+
 
 
 
