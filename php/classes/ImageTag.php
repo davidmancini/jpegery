@@ -99,20 +99,20 @@ class ImageTag implements \JsonSerializable {
 	}
 
 	/**
-	 * mutator method for tag ID
-	 * @param int $newTagid new value of tag id
+	 * mutator method for tag id
+	 *
+	 * @param string $newTagId new value of tag id
 	 * @throws \RangeException if $newTagId is not positive
 	 * @throws \TypeError if $newTagId is not an integer
-	 */
-	public function setTagId(int $tagId) {
-		$this->tagId = $tagId;
-		//verify the tag id is positive
+	 **/
+	public function setTagId(int $newTagId) {
+		// verify the tag id is positive
 		if($newTagId <= 0) {
 			throw(new \RangeException("tag id is not positive"));
-
-			//convert and store the tag id
-			$this->tagId = $newTagId;
 		}
+
+		// convert and store the tag id
+		$this->tagId = $newTagId;
 	}
 
 
@@ -148,7 +148,7 @@ public function insert(\PDO $pdo) {
 
 /**
  *
- **Deletes tag from mySQL
+ **Deletes imageTag from mySQL
  *
  * @param \PDO $pdo connection object
  * @throws \PDOException when mySQL related errors occur
@@ -161,17 +161,21 @@ public function delete(\PDO $pdo) {
 	if($this->imageId === null || $this->tagId === null) {
 		throw(new \PDOException("not an existing tag"));
 	}
-		// create query template
-	$query = "DELETE FROM imageTag WHERE imageId = :imageId";
+	// create query template
+	$query	 = "DELETE FROM tag WHERE tagId = :tagId";
 	$statement = $pdo->prepare($query);
 
+	// bind the member variables to the place holder in the template
+	$parameters = array("tagId" => $this->tagId);
+	$statement->execute($parameters);
+}
 
-		//bind the member variables to the place holders in the template
-		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
-		$statement->execute($parameters);
+	/**
+	 * Updates imageTag in mySQL
+	 * @param \PDO $pdo connection object
+	 * @throws \PDOException when mySQL related errors occur
+	 */
 
-
-	}
 
 public function update(\PDO $pdo) {
 	//enforce tagId and tagName are not null
@@ -181,12 +185,12 @@ public function update(\PDO $pdo) {
 	// create query template
 	$query = "UPDATE imageTag SET tagName :tagName,
  		WHERE tagId = :tagId";
+		$statement = $pdo->prepare($query);
 
 
-		//bind the member variables to the place holders in the template
-		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
-		$statement->execute($parameters);
-
+	// bind the member variables to the place holders in the template
+	$parameters = array("imageId" => $this->imageId, "tagId" => $this->tagId);
+	$statement->execute($parameters);
 
 
 	}
