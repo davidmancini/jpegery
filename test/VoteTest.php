@@ -155,7 +155,7 @@ public function testDeleteValidVote() {
 
 
 /**
- * c
+ * test deleting a Vote that does not exist
  *
  * @expectedException PDOException
  **/
@@ -166,6 +166,24 @@ public function testDeleteInvalidVote() {
 }
 
 
+	/**
+	 * test inserting a Vote and regrabbing it from mySQL
+	 **/
+	public function testGetValidVoteByVoteId() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("vote");
+
+		// create a new Vote and insert to into mySQL
+		$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImageId->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
+		$this->assertEquals($pdoVote->getProfileId(), $this->voteProfile->getVoteProfileId());
+		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getVoteImageId());
+		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
+	}
 
 
 
