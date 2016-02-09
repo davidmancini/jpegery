@@ -192,7 +192,7 @@ public function update(\PDO $pdo) {
 	}
 
 	/**
-	 * gets imageTage by tagId
+	 * gets imageTag by tagId
 	 *
 	 * @param \PDO $pdo connection object
 	 * @param int $tagId to search for
@@ -201,16 +201,35 @@ public function update(\PDO $pdo) {
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
 
-	public static function getImageTagByTagIt(\PDO $pdo, int $tagID) {
+	public static function getImageTagByTagIt(\PDO $pdo, int $tagId) {
 		//sanitize the tagId before searching
-		if($tagID <= 0) {
+		if($tagId <= 0) {
 			throw(new \PDOException("tag id is not positive"));
 		}
 
 		//create query template
-		$query = "SELECT tagId, imageId FROM ImageTag WHERE tagId = tagId";
+		$query = "SELECT tagId, imageId FROM ImageTag WHERE tagId = :tagId";
 		$statement = $pdo->prepare($query);
 
+		//bind the tag id to the place holder in the template
+		$parameters = array("tagId" => $tagId);
+		$statement->execute($parameters);
+
+		// grab the image tag from mySQL
+		try {
+			$imageTag = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$imageTag = new ImageTag($row[$tagId], $row[$imageId]);
+			}
+		catch
+			(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			return ($imageTag)
+		}
 
 	}
 
