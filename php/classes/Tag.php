@@ -226,6 +226,7 @@ public function update(PDO $pdo) {
 
 		}
 
+
 	}
 
 
@@ -261,9 +262,9 @@ public function update(PDO $pdo) {
 		while($row = $statement->fetch()) !== false {
 			try {
 				$tag = new tag($row["tagId"], $row["tagName"]);
-				$tags[$tags -.key()] = $tag;
+				$tags[$tags ->key()] = $tag;
 				$tag->next();
-			} catach(\Exception $exception) {
+			} catch(\Exception $exception) {
 				//if the row couldn't be converted, rethrow it
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 
