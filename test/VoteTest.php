@@ -154,6 +154,18 @@ public function testDeleteValidVote() {
 
 
 
+/**
+ * c
+ *
+ * @expectedException PDOException
+ **/
+public function testDeleteInvalidVote() {
+	// create a Vote and try to delete it without actually inserting it
+	$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->imageId->getVoteImageId(), $this->VALID_VOTEVALUE);
+	$vote->delete($this->getPDO());
+}
+
+
 
 
 
