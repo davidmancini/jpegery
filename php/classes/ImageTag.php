@@ -201,7 +201,7 @@ public function update(\PDO $pdo) {
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
 
-	public static function getImageTagByTagIt(\PDO $pdo, int $tagId) {
+	public static function getImageTagByTagId(\PDO $pdo, int $tagId) {
 		//sanitize the tagId before searching
 		if($tagId <= 0) {
 			throw(new \PDOException("tag id is not positive"));
@@ -232,6 +232,50 @@ public function update(\PDO $pdo) {
 		}
 
 	}
+
+	/**
+	 * gets imageTag by imageId
+	 *
+	 * @param \PDO $pdo connection object
+	 * @param int $tagId to search for
+	 * @return Tag|null Tag found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throw \TypeError when variables are not the correct data type
+	 * **/
+
+	public static function getImageTagByTagId(\PDO $pdo, int $imageId) {
+		//sanitize the tagId before searching
+		if($imageId <= 0) {
+			throw(new \PDOException("image id is not positive"));
+		}
+
+		//create query template
+		$query = "SELECT imageId, tagId FROM ImageTag WHERE imageId = :imageId";
+		$statement = $pdo->prepare($query);
+
+		//bind the tag id to the place holder in the template
+		$parameters = array("imageId" => $imageId);
+		$statement->execute($parameters);
+
+		// grab the image tag from mySQL
+		try {
+			$imageTag = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$imageTag = new ImageTag($row[$imageId], $row[$tagId]);
+			}
+		catch
+			(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+			return ($imageTag)
+		}
+
+	}
+
+
 
 
 /**
