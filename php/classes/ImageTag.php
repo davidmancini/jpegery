@@ -201,7 +201,18 @@ public function update(\PDO $pdo) {
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
 
-	public static function getImageTagByTagIt(\PDO $pdo, int $tagID)
+	public static function getImageTagByTagIt(\PDO $pdo, int $tagID) {
+		//sanitize the tagId before searching
+		if($tagID <= 0) {
+			throw(new \PDOException("tag id is not positive"));
+		}
+
+		//create query template
+		$query = "SELECT tagId, imageId FROM ImageTag WHERE tagId = tagId";
+		$statement = $pdo->prepare($query);
+
+
+	}
 
 
 /**
