@@ -267,6 +267,7 @@ class ImageTest extends JpegeryTest {
 		//Get data from database and ensure the fields match our expectations
 		$results = Image::getImageByImageFileName($this->getPDO(), $image->getImageFileName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
+		$pdoImage = $results;
 		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
