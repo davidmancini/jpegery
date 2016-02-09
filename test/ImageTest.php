@@ -310,8 +310,6 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-
-
 	/*
 	 * Test grabbing an image by text that does not exist
 	 */
