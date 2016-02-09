@@ -527,7 +527,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profilecreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId,profileaName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileverify = :profileVerify";
+		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
