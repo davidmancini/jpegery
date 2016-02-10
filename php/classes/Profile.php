@@ -104,7 +104,7 @@ class Profile implements \JsonSerializable {
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  $newProfileImageId = null, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  int $newProfileImageId, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
@@ -207,6 +207,7 @@ class Profile implements \JsonSerializable {
 
 		if($newProfileCreateDate === null) {
 			$this->profileCreateDate = new \DateTime();
+			return;
 		}
 
 		// save the profile creation date
