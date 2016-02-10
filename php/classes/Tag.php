@@ -223,11 +223,13 @@ public function update(PDO $pdo) {
 			if($row !== false) {
 				$tag = new Tag($row["tagId"], $row["tagName"]);
 			}
-
-
-
-
-	}
+		}
+		catch(\Exception $exception) {
+				//if the row couldn't be converted
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($tag);
+		}
 
 
 	/** Gets tag by name
@@ -293,4 +295,3 @@ public function update(PDO $pdo) {
 		return(get_object_vars($this));
 	}
 
-}
