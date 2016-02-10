@@ -19,7 +19,7 @@ require_once ("autoload.php"); //Required for validation of imageDate
 //LOCAL DEVELOPMENT Connection
 //$pdo = new \PDO('mysql:host=localhost;dbname=dmancini1', 'dmancini1', 'password');
 
-class Image {
+class Image implements \JsonSerializable {
 	use ValidateDate;
 
 	/*
@@ -172,7 +172,7 @@ class Image {
 	 * @throws InvalidArgumentException if $newImageDate is not a valid object or string
 	 * @throws RangeException if $newImageDate is a date that does not exist
 	 */
-	public function setImageDate($newImageDate) {
+	public function setImageDate($newImageDate = null) {
 		//If date is null, set current time and date
 		if($newImageDate === null) {
 			$this->imageDate = new \DateTime();
@@ -194,7 +194,7 @@ class Image {
 
 	/*
 	 * Accessor method for imageFileName
-	 * @return string of imageFileNmae
+	 * @return string of imageFileName
 	 */
 	public function getImageFileName() {
 		return ($this->imageFileName);
@@ -538,5 +538,16 @@ class Image {
 			}
 		}
 		return ($images);
+	}
+
+	/*
+	 * Formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 */
+	public function jsonSerialize() {
+		$fields = get_object_vars($this);
+		$fields["imageDate"] = intval($this->imageDate->format("U")) * 1000;
+		return($fields);
 	}
 }
