@@ -57,8 +57,8 @@ CREATE TABLE vote (
 	voteProfileId INT UNSIGNED NOT NULL,
 	voteImageId INT UNSIGNED NOT NULL,
 	voteValue BIT NOT NULL,
--- 	INDEX(voteProfileId),
--- 	INDEX(voteImageId),
+	INDEX(voteProfileId),
+	INDEX(voteImageId),
 	FOREIGN KEY(voteProfileId) REFERENCES profile(profileId),
 	FOREIGN KEY(voteImageId) REFERENCES image(imageId),
 	PRIMARY KEY(voteProfileId, voteImageId)
@@ -69,8 +69,8 @@ CREATE TABLE imageTag (
 	tagId INT UNSIGNED NOT NULL,
 	INDEX(imageId),
 	INDEX(tagId),
--- 	FOREIGN KEY(imageId) REFERENCES image(imageId),
--- 	FOREIGN KEY(tagId) REFERENCES tag(tagId),
+	FOREIGN KEY(imageId) REFERENCES image(imageId),
+	FOREIGN KEY(tagId) REFERENCES tag(tagId),
 	PRIMARY KEY(imageId, tagId)
 
 );
@@ -80,8 +80,8 @@ CREATE TABLE follower (
 	followerFollowedId INT UNSIGNED NOT NULL,
 	INDEX(followerFollowerId),
 	INDEX(followerFollowedId),
--- 	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
--- 	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
+	FOREIGN KEY(followerFollowerId) REFERENCES profile(profileId),
+	FOREIGN KEY(followerFollowedId) REFERENCES profile(profileId),
 	PRIMARY KEY(followerFollowerId, followerFollowedId)
 );
 
