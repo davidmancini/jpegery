@@ -19,7 +19,8 @@ require_once("autoload.php");
  * @author Zach Leyba
  */
 class Comment implements \JsonSerializable {
-	use \Edu\Cnm\Jpegery\ValidateDate;
+	use ValidateDate;
+
 	/**
 	 * id for comment, the primary key
 	 * @var int $commentId
@@ -65,7 +66,7 @@ class Comment implements \JsonSerializable {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 */
-	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, \DateTime $newCommentDate = null,  string $newCommentText) {
+	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, $newCommentDate = null,  string $newCommentText) {
 		try {
 			$this->setCommentId($newCommentId);
 			$this->setCommentImageId($newCommentImageId);
@@ -185,7 +186,7 @@ class Comment implements \JsonSerializable {
 		}
 		//store the comment date
 		try {
-			$newCommentDate = $this->validateDate($newCommentDate);
+			$newCommentDate = ValidateDate::validateDate($newCommentDate);
 		} catch (\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch (\RangeException $range) {
@@ -424,7 +425,7 @@ class Comment implements \JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentContent LIKE :commentContent";
+		$query = "SELECT commentId, commentImageId, commentProfileId, commentDate, commentText FROM comment WHERE commentText LIKE :commentContent";
 		$statement = $pdo->prepare($query);
 
 		//Search for the text given

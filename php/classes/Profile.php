@@ -478,12 +478,12 @@ class Profile implements \JsonSerializable {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify) VALUES(:profileId, :profileAdmin, :profileCreateDate, :profileEmail, :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt, :profileVerify)";
+		$query = "INSERT INTO profile(profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify) VALUES( :profileAdmin, :profileCreateDate, :profileEmail, :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt, :profileVerify)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
 		$formattedDate = $this->profileCreateDate->format("Y-m-d H:i:s");
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL

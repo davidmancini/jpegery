@@ -20,7 +20,7 @@ trait ValidateDate {
 	 * @throws \InvalidArgumentException if the date is in an invalid format
 	 * @throws \RangeException if the date is not a Gregorian date
 	 **/
-	private static function validateDate($newDate) {
+	public static function validateDate($newDate) {
 		// base case: if the date is a DateTime object, there's no work to be done
 		if(is_object($newDate) === true && get_class($newDate) === "DateTime") {
 			return($newDate);

@@ -31,7 +31,7 @@ class CommentTest extends JpegeryTest {
 	 * This shall never be inserted
 	 * @var string $INVALID_COMMENTTEXT
 	 */
-	protected $INVALID_COMMENTTEXT;
+	protected $INVALID_COMMENTTEXT = "To be used for failure.";
 
 	/**
 	 * timestamp of the comment; starts as null
@@ -90,6 +90,8 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test inserting a comment that already exists
+	 *
+	 * @expectedException \PDOException
 	 */
 	public function testInsertInvalidComment() {
 		//Create a comment with an invalid id
@@ -214,7 +216,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT);
 	}
 
 	/**
@@ -223,7 +225,7 @@ class CommentTest extends JpegeryTest {
 	public function testGetInvalidCommentByImageId() {
 		//Attempt to grab a comment using an invalid image id
 		$comment = Comment::getCommentByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
-		$this->assertNull($comment);
+		$this->assertEquals(0, $comment);
 	}
 
 	/**
@@ -248,13 +250,13 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT);
 	}
 
 	public function testGetInvalidCommentByProfileId() {
 		//Attempt to grab a comment using an invalid profile id
 		$comment = Comment::getCommentByProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
-		$this->assertNull($comment);
+		$this->assertEquals(0, $comment);
 	}
 
 	public function testGetValidCommentByCommentContent() {
@@ -276,7 +278,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertEquals($pdoComment->getCommentImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoComment->getCommentProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoComment->getCommentDate(), $this->VALID_COMMENTDATE);
-		$this->assertEquals($pdoComment->getCommentContent(), $this->VALID_COMMENTTEXT);
+		$this->assertEquals($pdoComment->getCommentText(), $this->VALID_COMMENTTEXT);
 	}
 
 	/**
