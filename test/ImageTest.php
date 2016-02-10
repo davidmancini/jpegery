@@ -62,7 +62,9 @@ class ImageTest extends JpegeryTest {
 
 		//Create and insert a profile to own the test image
 		//profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify
-		$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
+		//$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
+		$this->profile = new Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
+
 		$this->profile->insert($this->getPDO());
 
 		//Calculate the date that was just set up
@@ -84,7 +86,7 @@ class ImageTest extends JpegeryTest {
 		//Grab data from MySQL and enforce fields to match expectations
 		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
@@ -110,7 +112,7 @@ class ImageTest extends JpegeryTest {
 		//Grab data from MySQL and ensure fields match expectations
 		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT2);
@@ -177,7 +179,7 @@ class ImageTest extends JpegeryTest {
 		//Get data from database and ensure the fields match our expectations
 		$pdoImage = Image::getImageByImageId($this->getPDO(), $image->getImageId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
@@ -237,7 +239,7 @@ class ImageTest extends JpegeryTest {
 
 		//Grabs results from array and validate it
 		$pdoImage = $results[0];
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
@@ -268,7 +270,7 @@ class ImageTest extends JpegeryTest {
 		$results = Image::getImageByImageFileName($this->getPDO(), $image->getImageFileName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
 		$pdoImage = $results;
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
