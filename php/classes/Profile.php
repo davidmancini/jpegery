@@ -1,7 +1,6 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
-
 require_once("autoload.php");
 
 /**

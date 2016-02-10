@@ -19,7 +19,7 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 class ImageTest extends JpegeryTest {
 	/*
 	 * Profile that created the image for foreign key relations
-	 * @var Profile profile
+	 * @var \Edu\Cnm\Jpegery\Profile profile
 	 */
 	protected $profile = null;
 
@@ -62,7 +62,7 @@ class ImageTest extends JpegeryTest {
 
 		//Create and insert a profile to own the test image
 		//profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify
-		$this->profile = new Profile(null, false, null, "test@example.com", "testGuy", null, null, "Test Guy", "800-555-1234", null, "true");
+		$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", null, null, "Test Guy", "800-555-1234", null, "true");
 		$this->profile->insert($this->getPDO());
 
 		//Calculate the date that was just set up
