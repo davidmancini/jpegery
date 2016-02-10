@@ -225,7 +225,7 @@ class CommentTest extends JpegeryTest {
 	public function testGetInvalidCommentByImageId() {
 		//Attempt to grab a comment using an invalid image id
 		$comment = Comment::getCommentByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
-		$this->assertEquals(0, $comment);
+		$this->assertCount(0, $comment);
 	}
 
 	/**
@@ -256,7 +256,7 @@ class CommentTest extends JpegeryTest {
 	public function testGetInvalidCommentByProfileId() {
 		//Attempt to grab a comment using an invalid profile id
 		$comment = Comment::getCommentByProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
-		$this->assertEquals(0, $comment);
+		$this->assertCount(0, $comment);
 	}
 
 	public function testGetValidCommentByCommentContent() {
