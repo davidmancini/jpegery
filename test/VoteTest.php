@@ -1,21 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: michaelkemm
- * Date: 2/3/16
- * Time: 3:03 PM
- */
 
-namespace Edu\Cnm\Jpegery\test;
+namespace Edu\Cnm\Jpegery\Test;
 
-use Edu\CNM\Jpegery\JpegeryTest;
+
 use Edu\Cnm\Jpegery\Profile;
 
 // get the project test parameters
 require_once("JpegeryTest.php");
 
 //
-require_once(dirname(__DIR__) . "jpegery/classes/autoload.php");
+require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
 /**
  * PHPUnit test for the profile class
@@ -29,10 +23,10 @@ require_once(dirname(__DIR__) . "jpegery/classes/autoload.php");
 class VoteTest extends JpegeryTest {
 
 	/**
-	 *  voe profile id
+	 *  vote profile id
 	 * @var $VALID_VOTEPROFILEID
 	 */
-	protected $VALID_VOTEPROFILEID = "PHPUnit test passing";
+	protected $VALID_VOTEID = "PHPUnit test passing";
 
 	/**
 	 * vote profile id

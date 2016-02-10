@@ -84,6 +84,13 @@
 		 */
 		protected $VALID_PROFILESALT = "PHPUnit test pass";
 
+		/**
+		 * profile verification email
+		 * @var $VALID_PROFILEVERIFY
+		 */
+
+		protected $VALID_PROFILEVERIFY = "PHPUnit test pass";
+
 
 		/**
 		 * test inserting a valid Profile and verify that the actual mySQL data matches
@@ -93,13 +100,13 @@
 			$numRows = $this->getConnection()->getRowCount("profile");
 
 			// create a new Profile and insert to into mySQL
-			$profile = new Profile(null, $this->Profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+			$profile = new Profile(null, $this->Profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 			$profile->insert($this->getPDO());
 
 			// grab the data from mySQL and enforce the fields match our expectations
 			$pdoProfile = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId());
 			$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
-			$this->assertEquals($pdoProfile->getProfileId(), $this->Profile->getProfileId());
+			$this->assertEquals($pdoProfile->getProfileId(), $this->profile->getProfileId());
 			$this->assertEquals($pdoProfile->getProfileAdmin(), $this->VALID_PROFILEADMIN);
 			$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 			$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
@@ -118,24 +125,24 @@
 		 **/
 		public function testInsertInvalidProfile() {
 			// create a Profile with a non null Profile id and watch it fail
-			$profile = new Profile(DataDesignTest::INVALID_KEY, $this->Profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT );
+			$profile = new Profile(DataDesignTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
 			$profile->insert($this->getPDO());
 		}
 
 		/**
-		 * test inserting a Vote, editing it, and then updating it
+		 * test inserting a Profile, editing it, and then updating it
 		 **/
-		public function testUpdateValidVote() {
+		public function testUpdateValidProfile() {
 			// count the number of rows and save it for later
-			$numRows = $this->getConnection()->getRowCount("vote");
+			$numRows = $this->getConnection()->getRowCount("profile");
 
-			// create a new Vote and insert to into mySQL
-			$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
-			$vote->insert($this->getPDO());
+			// create a new Profile and insert to into mySQL
+			$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+			$profile->insert($this->getPDO());
 
-			// edit the vote value and update it in mySQL
-			$vote->setVoteValue($this->VALID_VOTEVALUE);
-			$vote->update($this->getPDO());
+			// edit the profile and update it in mySQL
+			$profile->setProfile($this->VALID_VOTEVALUE);
+			$profile->update($this->getPDO());
 
 			// grab the data from mySQL and enforce the fields match our expectations
 			$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
