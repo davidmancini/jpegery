@@ -208,7 +208,7 @@ class Follower implements \JsonSerializable {
 		$statement = $pdo->prepare($query);
 
 		//Search based on the one being followed
-		$parameters = ["followerFollowerId" => $followerFollowedId];
+		$parameters = ["followerFollowedId" => $followerFollowedId];
 		$statement->execute($parameters);
 
 		//Build an array of follower relationships
