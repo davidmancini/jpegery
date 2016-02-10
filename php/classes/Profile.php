@@ -136,7 +136,7 @@ class Profile implements \JsonSerializable {
 	 */
 
 	public function getProfileId() {
-		return $this->profileId;
+		return ($this->profileId);
 	}
 
 	/**
