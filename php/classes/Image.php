@@ -70,7 +70,7 @@ class Image {
 	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
 	 * @throws Exception if other exception is thrown
 	 */
-	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate) {
+	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate = null) {
 		try {
 			$this->setImageId($newImageId);
 			$this->setImageProfileId($newProfileId);
@@ -248,7 +248,7 @@ class Image {
 		}
 
 		//Exception if input will not fit in the database
-		if(strlen($newImageText <= 0)) {
+		if(strlen($newImageText) >= 500) {
 			throw(new \RangeException("image text is too large"));
 		}
 
@@ -303,7 +303,8 @@ class Image {
 		$statement = $pdo->prepare($query);
 
 		//Binds variables to placeholders
-		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageDate" => $this->imageDate);
+		$formattedDate = $this->imageDate->format("Y-m-d H:i:s");
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageDate" => $formattedDate);
 		$statement->execute($parameters);
 
 		//Updates null image id with the auto-incremented value just created
@@ -326,7 +327,8 @@ class Image {
 		$statement = $pdo->prepare($query);
 
 		//Binds variables to placeholders
-		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageId" => $this->imageId, "imageDate" => $this->imageDate);
+		$formattedDate = $this->imageDate->format("Y-m-d H:i:s");
+		$parameters = array("imageProfileId" => $this->imageProfileId, "imageType" => $this->imageType, "imageFileName" => $this->imageFileName, "imageText" => $this->imageText, "imageId" => $this->imageId, "imageDate" => $formattedDate);
 		$statement->execute($parameters);
 	}
 
