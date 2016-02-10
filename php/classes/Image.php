@@ -70,7 +70,7 @@ class Image {
 	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
 	 * @throws Exception if other exception is thrown
 	 */
-	public function __construct(int $newImageId = null, int $newProfileId = null, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate) {
+	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate) {
 		try {
 			$this->setImageId($newImageId);
 			$this->setImageProfileId($newProfileId);
@@ -111,6 +111,7 @@ class Image {
 		//Filter
 		$newImageId = filter_var($newImageId, FILTER_VALIDATE_INT);
 
+		//The below could be type hinted
 		//Exception if not int
 		if($newImageId === false) {
 			throw(new \InvalidArgumentException("image id is not an integer"));
