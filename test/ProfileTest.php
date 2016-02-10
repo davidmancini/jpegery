@@ -112,14 +112,14 @@
 		}
 
 		/**
-		 * test inserting a Vote that already exists
+		 * test inserting a Profile that already exists
 		 *
 		 * @expectedException PDOException
 		 **/
-		public function testInsertInvalidVote() {
-			// create a Vote with a non null Vote id and watch it fail
-			$vote = new Vote(DataDesignTest::INVALID_KEY, $this->voteProfile->getvoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
-			$vote->insert($this->getPDO());
+		public function testInsertInvalidProfile() {
+			// create a Profile with a non null Profile id and watch it fail
+			$profile = new Profile(DataDesignTest::INVALID_KEY, $this->Profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT );
+			$profile->insert($this->getPDO());
 		}
 
 		/**
