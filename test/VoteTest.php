@@ -26,7 +26,6 @@ require_once(dirname(__DIR__) . "jpegery/classes/autoload.php");
  * @see Profile
  * @author Michael Kemm
  */
-
 class VoteTest extends JpegeryTest {
 
 	/**
@@ -64,9 +63,6 @@ class VoteTest extends JpegeryTest {
 	//todo add voteImageId det up function
 
 
-
-
-
 	/**
 	 * test inserting a valid Vote and verify that the actual mySQL data matches
 	 **/
@@ -86,16 +82,16 @@ class VoteTest extends JpegeryTest {
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
-/**
- * test inserting a Vote that already exists
- *
- * @expectedException PDOException
- **/
-public function testInsertInvalidVote() {
-	// create a Vote with a non null Vote id and watch it fail
-	$vote = new Vote(DataDesignTest::INVALID_KEY, $this->voteProfile->getvoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
-	$vote->insert($this->getPDO());
-}
+	/**
+	 * test inserting a Vote that already exists
+	 *
+	 * @expectedException PDOException
+	 **/
+	public function testInsertInvalidVote() {
+		// create a Vote with a non null Vote id and watch it fail
+		$vote = new Vote(DataDesignTest::INVALID_KEY, $this->voteProfile->getvoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote->insert($this->getPDO());
+	}
 
 	/**
 	 * test inserting a Vote, editing it, and then updating it
@@ -120,50 +116,49 @@ public function testInsertInvalidVote() {
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
-/**
- * test updating a Vote that already exists
- *
- * @expectedException PDOException
- **/
-public function testUpdateInvalidVote() {
-	// create a Vote with a non null Vote id and watch it fail
-	$vote = new Vote(null, $this->profile->getProfileId(), $this->voteImage->getvoteImageId(), $this->VALID_TWEETDATE);
-	$vote->update($this->getPDO());
-}
+	/**
+	 * test updating a Vote that already exists
+	 *
+	 * @expectedException PDOException
+	 **/
+	public function testUpdateInvalidVote() {
+		// create a Vote with a non null Vote id and watch it fail
+		$vote = new Vote(null, $this->profile->getProfileId(), $this->voteImage->getvoteImageId(), $this->VALID_TWEETDATE);
+		$vote->update($this->getPDO());
+	}
 
-/**
- * test creating a Vote and then deleting it
- **/
-public function testDeleteValidVote() {
-	// count the number of rows and save it for later
-	$numRows = $this->getConnection()->getRowCount("vote");
+	/**
+	 * test creating a Vote and then deleting it
+	 **/
+	public function testDeleteValidVote() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("vote");
 
-	// create a new Vote and insert to into mySQL
-	$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
-	$vote->insert($this->getPDO());
+		// create a new Vote and insert to into mySQL
+		$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote->insert($this->getPDO());
 
-	// delete the Vote from mySQL
-	$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
-	$vote->delete($this->getPDO());
+		// delete the Vote from mySQL
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
+		$vote->delete($this->getPDO());
 
-	// grab the data from mySQL and enforce the Vote does not exist
-	$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
-	$this->assertNull($pdoVote);
-	$this->assertEquals($numRows, $this->getConnection()->getRowCount("vote"));
-}
+		// grab the data from mySQL and enforce the Vote does not exist
+		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
+		$this->assertNull($pdoVote);
+		$this->assertEquals($numRows, $this->getConnection()->getRowCount("vote"));
+	}
 
 
-
-/**
- * test deleting a Vote that does not exist
- *
- * @expectedException PDOException
- **/
-public function testDeleteInvalidVote() {
-	// create a Vote and try to delete it without actually inserting it
-	$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->imageId->getVoteImageId(), $this->VALID_VOTEVALUE);
-	$vote->delete($this->getPDO());
-}
+	/**
+	 * test deleting a Vote that does not exist
+	 *
+	 * @expectedException PDOException
+	 **/
+	public function testDeleteInvalidVote() {
+		// create a Vote and try to delete it without actually inserting it
+		$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->imageId->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote->delete($this->getPDO());
+	}
 
 
 	/**
@@ -217,24 +212,6 @@ public function testDeleteInvalidVote() {
 		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImageId->getVoteImageId());
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
