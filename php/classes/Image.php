@@ -179,9 +179,9 @@ class Image implements \JsonSerializable {
 			return;
 		}
 
-		//Catch exceptions and d display correct error (refers to validate-date.php) and if no exceptions, safe the new time and date
+		//Catch exceptions and display correct error (refers to validate-date.php) and if no exceptions, safe the new time and date
 		try {
-			$newImageDate = $this->validateDate($newImageDate);
+			$newImageDate = validateDate::validateDate($newImageDate);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw (new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {

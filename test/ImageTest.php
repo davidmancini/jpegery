@@ -62,7 +62,7 @@ class ImageTest extends JpegeryTest {
 
 		//Create and insert a profile to own the test image
 		//profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify
-		$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", "hash", null, "Test Guy", "800-555-1234", "salt", "true");
+		$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
 		$this->profile->insert($this->getPDO());
 
 		//Calculate the date that was just set up
