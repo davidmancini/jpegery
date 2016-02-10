@@ -24,7 +24,24 @@ class TagTest extends JpegeryTest {
 	 * tag id
 	 * @var string $VALID_TAGNAME
 	 **/
+
 	protected $VALID_TAGNAME = "PHPUnitTestPass";
 
+	/**
+	 * Test inserting a valid Tag and verify that the actual mySQL data matches
+	 */
+
+	public function testInsertValidTag {
+		//count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("tag");
+
+		//create a new Tag and insert it into mySQL
+		$tag = new Tag(null, $this->tag->getTagName(), $this->VALID_TAGNAME);
+		$tag->insert($this->getPDO());
+	}
+	/**
+	 * Test inserting a Tag that already exists
+	 *
+	 */
 
 }
