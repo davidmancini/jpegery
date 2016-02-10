@@ -18,7 +18,7 @@ CREATE TABLE profile (
 	profileName VARCHAR(32),
 	profilePhone VARCHAR(16),
 	profileSalt VARCHAR(32),
-	profileVerify BIT,
+	profileVerify VARCHAR(32),
 	PRIMARY KEY(profileId)
 );
 CREATE TABLE image (
