@@ -118,7 +118,7 @@ class Follower implements \JsonSerializable {
 		}
 
 		//Create a query template
-		$query = "INSERT INTO follower (followerId, followedId) VALUES (:followerFollowerId, :followerFollowedId)";
+		$query = "INSERT INTO follower(followerFollowerId, followerFollowedId) VALUES (:followerFollowerId, :followerFollowedId)";
 		$statement = $pdo->prepare($query);
 		//Bind the member variables to the place holders in the template
 		$parameters = ["followerFollowerId" => $this->followerFollowerId, "followerFollowedId" => $this->followerFollowedId];

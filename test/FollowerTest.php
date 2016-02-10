@@ -32,8 +32,10 @@ class FollowerTest extends JpegeryTest {
 
 		//Create and insert a profile for the follower object
 		//TODO: Finish this once profile is good.
-		$this->follower = new Profile(null, true, null, "Email", "myName", "passw0rd", "null", "mynameagain", "867", "456", "def");
-		$this->followed = new Profile(null, true, null, "Email2", "myName2", "passWARD", "null", "John", "5309", "123", "abc");
+		$this->follower = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "def");
+		$this->follower->insert($this->getPDO());
+		$this->followed = new Profile(null, true, null, "Email2", "myName2", "passWARD", 2, "John", "5309", "123", "abc");
+		$this->followed->insert($this->getPDO());
 	}
 
 	/**
