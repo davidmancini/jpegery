@@ -195,27 +195,27 @@ public function testDeleteInvalidVote() {
 	}
 
 	/**
-	 * test grabbing a Tweet by tweet content
+	 * test grabbing a Vote by vote value
 	 **/
-	public function testGetValidTweetByTweetContent() {
+	public function testGetValidVoteByVoteValue() {
 		// count the number of rows and save it for later
-		$numRows = $this->getConnection()->getRowCount("tweet");
+		$numRows = $this->getConnection()->getRowCount("vote");
 
 		// create a new Tweet and insert to into mySQL
-		$tweet = new Tweet(null, $this->profile->getProfileId(), $this->VALID_TWEETCONTENT, $this->VALID_TWEETDATE);
-		$tweet->insert($this->getPDO());
+		$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImageId->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$results = Tweet::getTweetByTweetContent($this->getPDO(), $tweet->getTweetContent());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tweet"));
+		$results = Vote::getVoteByVoteValue($this->getPDO(), $vote->getVotevalue());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Dmcdonald21\\DataDesign\\Tweet", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Vote", $results);
 
 		// grab the result from the array and validate it
-		$pdoTweet = $results[0];
-		$this->assertEquals($pdoTweet->getProfileId(), $this->profile->getProfileId());
-		$this->assertEquals($pdoTweet->getTweetContent(), $this->VALID_TWEETCONTENT);
-		$this->assertEquals($pdoTweet->getTweetDate(), $this->VALID_TWEETDATE);
+		$pdoVote = $results[0];
+		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getVoteProfileId());
+		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImageId->getVoteImageId());
+		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
 
