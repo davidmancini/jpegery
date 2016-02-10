@@ -83,7 +83,7 @@ class FollowerTest extends JpegeryTest {
 		//Grab the data from mySQL to make sure it is really dead
 		$pdoFollow = Follower::getFollowerByFollowerIdAndFollowedId($this->getPDO(), $this->follower->getProfileId(), $this->followed->getProfileId());
 		$this->assertNull($pdoFollow);
-		$this->asserEquals($numRows, $this->getConnection()->getRowCount("follower"));
+		$this->assertEquals($numRows, $this->getConnection()->getRowCount("follower"));
 	}
 
 	/**
