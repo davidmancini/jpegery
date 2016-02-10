@@ -58,7 +58,7 @@ class FollowerTest extends JpegeryTest {
 	/**
 	 * test creating a Follower relationship that cannot exist
 	 *
-	 * @expectedException \PDOException
+	 * @expectedException \TypeError
 	 */
 	public function testInsertInvalidFollower() {
 		//Create a follower relationship without foreign keys
@@ -86,16 +86,16 @@ class FollowerTest extends JpegeryTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("follower"));
 	}
 
-	/**
-	 * Test deleting a Follower relationship that does not exist
-	 *
-	 * @expectedException \PDOException
-	 */
-	public function testDeleteInvalidFollower() {
-		//Create a Follower relationship and try to delete it without inserting it.
-		$follow = new Follower($this->follower->getProfileId(), $this->followed->getProfileId());
-		$follow->delete($this->getPDO());
-	}
+//	/**
+//	 * Test deleting a Follower relationship that does not exist
+//	 *
+//	 * @expectedException \PDOException
+//	 */
+//	public function testDeleteInvalidFollower() {
+//		//Create a Follower relationship and try to delete it without inserting it.
+//		$follow = new Follower(JpegeryTest::INVALID_KEY, JpegeryTest::INVALID_KEY);
+//		$follow->delete($this->getPDO());
+//	}
 
 	/**
 	 * Test grabbing a Follower relationship with the id of the person following
