@@ -259,7 +259,7 @@ public function update(PDO $pdo) {
 		//build an array of tags by this name
 		$tags = new\SplFixedArray($statement->rowCount());
 		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
-		while($row = $statement->fetch()) !== false {
+		while($row = $statement->fetch() !== false) {
 			try {
 				$tag = new tag($row["tagId"], $row["tagName"]);
 				$tags[$tags ->key()] = $tag;
