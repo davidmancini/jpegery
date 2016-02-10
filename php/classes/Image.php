@@ -70,7 +70,7 @@ class Image implements \JsonSerializable {
 	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
 	 * @throws Exception if other exception is thrown
 	 */
-	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, \DateTime $newImageDate = null) {
+	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, $newImageDate = null) {
 		try {
 			$this->setImageId($newImageId);
 			$this->setImageProfileId($newProfileId);
