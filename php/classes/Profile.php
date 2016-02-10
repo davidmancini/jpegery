@@ -35,7 +35,7 @@ class Profile implements \JsonSerializable {
 	/**
 	 * date the user created the profile
 	 *
-	 * @var $profileCreateDate
+	 * @var \DateTime $profileCreateDate
 	 */
 
 	private $profileCreateDate;
@@ -447,7 +447,7 @@ class Profile implements \JsonSerializable {
 	/**
 	 * mutator method for profile verification
 	 *
-	 * @param $newProfileVerify the value of profile verification content
+	 * @param string $newProfileVerify the value of profile verification content
 	 * @throws \InvalidArgumentException if verification content is empty or insecure
 	 */
 
@@ -482,7 +482,8 @@ class Profile implements \JsonSerializable {
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
+		$formattedDate = $this->profileCreateDate->format("Y-m-d H:i:s");
+		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL
@@ -527,7 +528,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profilId = :profileId, profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
+		$query = " UPDATE profile SET profileId = :profileId, profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
@@ -583,7 +584,7 @@ class Profile implements \JsonSerializable {
 
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
-		$fields [profileCreateDate] = intval($this->profileCreateDate->format("U")) * 1000;
+		$fields ["profileCreateDate"] = intval($this->profileCreateDate->format("U")) * 1000;
 		return($fields);
 	}
 // the end...
