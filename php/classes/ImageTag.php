@@ -188,17 +188,10 @@ public function update(\PDO $pdo) {
 		$statement = $pdo->prepare($query);
 
 
-<<<<<<< Updated upstream
 	// bind the member variables to the place holders in the template
 	$parameters = array("imageId" => $this->imageId, "tagId" => $this->tagId);
 	$statement->execute($parameters);
-=======
 
-		//bind the member variables to the place holders in the template
-		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
-		$statement->execute($parameters);
-
->>>>>>> Stashed changes
 
 
 	}
