@@ -97,11 +97,18 @@
 			$profile->insert($this->getPDO());
 
 			// grab the data from mySQL and enforce the fields match our expectations
-			$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
-			$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
-			$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getVoteProfileId());
-			$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getVoteImageId());
-			$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
+			$pdoProfile = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId());
+			$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
+			$this->assertEquals($pdoProfile->getProfileId(), $this->Profile->getProfileId());
+			$this->assertEquals($pdoProfile->getProfileAdmin(), $this->VALID_PROFILEADMIN);
+			$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
+			$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
+			$this->assertEquals($pdoProfile->getProfileHandle(), $this->VALID_PROFILEHANDLE);
+			$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILEHASH);
+			$this->assertEquals($pdoProfile->getProfileImageId(), $this->VALID_PROFILEIMAGEID);
+			$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
+			$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
+			$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
 		}
 
 		/**
