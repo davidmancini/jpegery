@@ -111,7 +111,7 @@ class Profile implements \JsonSerializable {
 			$this->setProfileEmail($newProfileEmail);
 			$this->setProfileHandle($newProfileHandle);
 			$this->setProfileHash($newProfileHash);
-			$this->setprofileImageId($newProfileImageId);
+			$this->setProfileImageId($newProfileImageId);
 			$this->setProfileName($newProfileName);
 			$this->setProfilePhone($newProfilePhone);
 			$this->setProfileSalt($newProfileSalt);
