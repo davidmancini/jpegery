@@ -207,7 +207,7 @@ class ImageTest extends JpegeryTest {
 		//Grab data from database and ensure it matches our expectations
 		$results = Image::getAllImages($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
 
 		//Grab the result from the array and validate it
 		$pdoImage = $results[0];
