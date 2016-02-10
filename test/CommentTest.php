@@ -61,7 +61,7 @@ class CommentTest extends JpegeryTest {
 		$this->profile->insert($this->getPDO());
 
 		//TODO: Finish this.
-		$this->image = new Image($this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
+		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
 		$this->image->insert($this->getPDO());
 		//Calculate the date
 		$this->VALID_COMMENTDATE = new \DateTime();
