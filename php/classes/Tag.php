@@ -202,6 +202,7 @@ public function update(PDO $pdo) {
 			throw(new \PDOException("tag id is not positive"));
 		}
 
+
 		//create query template
 		$query = "SELECT tagId, tagName FROM tag where tagId = :tagId, tagName = :tagName";
 
@@ -224,7 +225,6 @@ public function update(PDO $pdo) {
 			}
 
 
-		}
 
 
 	}
@@ -238,7 +238,7 @@ public function update(PDO $pdo) {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throw \TypeError when
 	 */
-	public static function getTagByName(\PDO $PDO, string $tagName) {
+	public function getTagByName(\PDO $PDO, string $tagName) {
 		//sanitize query before searching
 		$tagName = trim($tagName);
 		$tagName = filter_var($tagName, FILTER_SANITIZE_STRING);

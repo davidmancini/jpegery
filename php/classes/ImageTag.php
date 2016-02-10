@@ -225,8 +225,9 @@ public function update(\PDO $pdo) {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$imageTag = new ImageTag($row[$tagId], $row[$imageId]);
+				$imageTag = new ImageTag($row["tagId"], $row["imageId"]);
 			}
+		}
 		catch
 			(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
@@ -235,7 +236,7 @@ public function update(\PDO $pdo) {
 			return ($imageTag);
 		}
 
-	}
+
 
 	/**
 	 * gets imageTag by imageId
@@ -247,7 +248,7 @@ public function update(\PDO $pdo) {
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
 
-	public static function getImageTagByTagId(\PDO $pdo, int $imageId) {
+	public static function getImageTagByImageId(\PDO $pdo, int $imageId) {
 		//sanitize the tagId before searching
 		if($imageId <= 0) {
 			throw(new \PDOException("image id is not positive"));
@@ -267,17 +268,20 @@ public function update(\PDO $pdo) {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$imageTag = new ImageTag($row[$imageId], $row[$tagId]);
+				$imageTag = new ImageTag($row["imageId"], $row["tagId"]);
 			}
+		}
 		catch
 			(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
-			return ($imageTag)
-		}
+			return ($imageTag);
 
-	}
+			}
+
+
+
 
 
 
