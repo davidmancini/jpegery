@@ -238,7 +238,7 @@
 	 **/
 	public static function getAllVotes(\PDO $pdo) {
 		// create query template
-		$query = "SELECT voteId, vpoteProfileId, voteValue, FROM vote";
+		$query = "SELECT voteProfileId, voteImageId, voteValue, FROM vote";
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
@@ -247,7 +247,7 @@
 		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$vote = new Vote($row["voteId"], $row["voteProfileId"], $row["voteValue"]);
+				$vote = new Vote($row["voteProfileId"], $row["voteImageId"],$row["voteValue"]);
 				$votes[$votes->key()] = $vote;
 				$votes->next();
 			} catch(\Exception $exception) {

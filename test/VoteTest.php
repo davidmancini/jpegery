@@ -185,7 +185,38 @@ public function testDeleteInvalidVote() {
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
+	/**
+	 * test grabbing a vote that does not exist
+	 **/
+	public function testGetInvalidVoteByVoteId() {
+		// grab a profile id that exceeds the maximum allowable profile id
+		$vote = Vote::getVoteByVoteId($this->getPDO(), DataDesignTest::INVALID_KEY);
+		$this->assertNull($vote);
+	}
 
+	/**
+	 * test grabbing a Tweet by tweet content
+	 **/
+	public function testGetValidTweetByTweetContent() {
+		// count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("tweet");
+
+		// create a new Tweet and insert to into mySQL
+		$tweet = new Tweet(null, $this->profile->getProfileId(), $this->VALID_TWEETCONTENT, $this->VALID_TWEETDATE);
+		$tweet->insert($this->getPDO());
+
+		// grab the data from mySQL and enforce the fields match our expectations
+		$results = Tweet::getTweetByTweetContent($this->getPDO(), $tweet->getTweetContent());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tweet"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Dmcdonald21\\DataDesign\\Tweet", $results);
+
+		// grab the result from the array and validate it
+		$pdoTweet = $results[0];
+		$this->assertEquals($pdoTweet->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoTweet->getTweetContent(), $this->VALID_TWEETCONTENT);
+		$this->assertEquals($pdoTweet->getTweetDate(), $this->VALID_TWEETDATE);
+	}
 
 
 
