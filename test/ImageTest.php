@@ -209,7 +209,7 @@ class ImageTest extends JpegeryTest {
 		//Grab data from database and ensure it matches our expectations
 		$results = Image::getAllImages($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Image", $results);
 
 		//Grab the result from the array and validate it
 		$pdoImage = $results[0];
@@ -232,7 +232,7 @@ class ImageTest extends JpegeryTest {
 		$image->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
-		$results = Image::getImageByProfileId($this->getPDO(), $image->getProfileId());
+		$results = Image::getImageByImageProfileId($this->getPDO(), $image->getImageProfileId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
 		$this->assertCount(1, $results);
 		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
@@ -251,7 +251,7 @@ class ImageTest extends JpegeryTest {
 	 */
 	public function testGetImageByInvalidProfileId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
-		$image = Image::getImageByProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
+		$image = Image::getImageByImageProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($image);
 	}
 
@@ -301,7 +301,7 @@ class ImageTest extends JpegeryTest {
 		$results = Image::getImageByImageText($this->getPDO(), $image->getImageText());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
 		$this->assertCount(1, $results);
-		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Image", $results);
 
 		//Grabs results from array and validate it
 		$pdoImage = $results[0];
