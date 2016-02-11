@@ -527,11 +527,11 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profileId = :profileId, profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
+		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
-		$parameters = ["profileId" => $this->profileId, "profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 	}

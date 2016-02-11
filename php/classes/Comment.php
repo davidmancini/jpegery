@@ -4,7 +4,7 @@
  * User: zleyba
  * Date: 1/28/16
  * Time: 1:38 PM
- */
+ **/
 
 namespace Edu\Cnm\Jpegery;
 require_once("autoload.php");
@@ -17,38 +17,38 @@ require_once("autoload.php");
  * @author Jacob Findley <jfindley2@cnm.edu>
  * @author Michael Kemm
  * @author Zach Leyba
- */
+ **/
 class Comment implements \JsonSerializable {
 	use ValidateDate;
 
 	/**
 	 * id for comment, the primary key
 	 * @var int $commentId
-	 */
+	 **/
 	private $commentId;
 
 	/**
 	 * id for image, foreign key
 	 * @var int $commentImageId
-	 */
+	 **/
 	private $commentImageId;
 
 	/**
 	 * id for profile, foreign key
 	 * @var int $commentProfileId
-	 */
+	 **/
 	private $commentProfileId;
 
 	/**
 	 * the date the comment was posted
 	 * @var \DateTime $commentDate
-	 */
+	 **/
 	private $commentDate;
 
 	/**
 	 * the text of the comment
 	 * @var string $commentText
-	 */
+	 **/
 	private $commentText;
 
 
@@ -65,7 +65,7 @@ class Comment implements \JsonSerializable {
 	 * @throws \RangeException if the data values are out of bounds
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
-	 */
+	 **/
 	public function __construct(int $newCommentId = null, int $newCommentImageId, int $newCommentProfileId, $newCommentDate = null,  string $newCommentText) {
 		try {
 			$this->setCommentId($newCommentId);
@@ -90,7 +90,7 @@ class Comment implements \JsonSerializable {
 	 * accessor method for comment id
 	 *
 	 * @return int value of comment id
-	 */
+	 **/
 	public function getCommentId() {
 		return $this->commentId;
 	}
@@ -101,7 +101,7 @@ class Comment implements \JsonSerializable {
 	 * @param int|null $newCommentId
 	 * @throws \RangeException if $newCommentId is not positive
 	 * @throws \TypeError if $newCommentId is not an int
-	 */
+	 **/
 	public function setCommentId(int $newCommentId = null) {
 		//base case: If $newCommentId is null, this is a new comment
 		if($newCommentId === null) {
@@ -118,7 +118,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * accessor method for image id
 	 * @return int value of image id
-	 */
+	 **/
 	public function getCommentImageId() {
 		return $this->commentImageId;
 	}
@@ -129,7 +129,7 @@ class Comment implements \JsonSerializable {
 	 * @param int $newCommentImageId
 	 * @throws \RangeException if $newCommentImageId is not positive
 	 * @throws \TypeError if $newCommentImageId is not an int
-	 */
+	 **/
 	public function setCommentImageId(int $newCommentImageId) {
 		//Verify $newCommentImageId is positive
 		if($newCommentImageId <= 0) {
@@ -142,7 +142,7 @@ class Comment implements \JsonSerializable {
 	 * accessor method for profile id
 	 *
 	 * @return int value of profile id
-	 */
+	 **/
 	public function getCommentProfileId() {
 		return $this->commentProfileId;
 	}
@@ -153,7 +153,7 @@ class Comment implements \JsonSerializable {
 	 * @param int $newCommentProfileId
 	 * @throws \RangeException if $newCommentProfileId is not positive
 	 * @throws \TypeError if $newCommentProfileId is not an int
-	 */
+	 **/
 	public function setCommentProfileId(int $newCommentProfileId) {
 		//verify $newCommentProfileId is positive
 		if($newCommentProfileId <= 0) {
@@ -166,7 +166,7 @@ class Comment implements \JsonSerializable {
 	 * accessor method for comment date
 	 *
 	 * @return \DateTime value of comment date
-	 */
+	 **/
 	public function getCommentDate() {
 		return $this->commentDate;
 	}
@@ -177,7 +177,7 @@ class Comment implements \JsonSerializable {
 	 * @param null $newCommentDate
 	 * @throws \InvalidArgumentException if $newCommentDate is not a valid object or string
 	 * @throws \RangeException if $newCommentDate is a date that cannot exist
-	 */
+	 **/
 	public function setCommentDate($newCommentDate = null) {
 		//base case: if $newCommentDate is null, use current date and time
 		if($newCommentDate === null) {
@@ -199,7 +199,7 @@ class Comment implements \JsonSerializable {
 	 * accessor method for comment text
 	 *
 	 * @return string value of comment text
-	 */
+	 **/
 	public function getCommentText() {
 		return $this->commentText;
 	}
@@ -211,7 +211,7 @@ class Comment implements \JsonSerializable {
 	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
 	 * @throws \RangeException if $newCommentText is more than 1023 characters
 	 * @throws \TypeError if $newCommentText is not a string
-	 */
+	 **/
 	public function setCommentText(string $newCommentText) {
 		//verify the comment text is secure
 		$newCommentText = trim($newCommentText);
@@ -233,7 +233,7 @@ class Comment implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 */
+	 **/
 
 	public function insert(\PDO $pdo) {
 		//Enforce that the comment id is null
@@ -259,7 +259,7 @@ class Comment implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 */
+	 **/
 	public function delete(\PDO $pdo) {
 		//Enforce that comment id is not null
 		if($this->commentId === null) {
@@ -281,7 +281,7 @@ class Comment implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 */
+	 **/
 	public function update(\PDO $pdo) {
 		//Enforce that comment id is not null
 		if($this->commentId === null) {
@@ -306,7 +306,7 @@ class Comment implements \JsonSerializable {
 	 * @return Comment|null Comment found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
-	 */
+	 **/
 	public static function getCommentByCommentId(\PDO $pdo, int $commentId) {
 		//Sanitize the comment id before seaching
 		if($commentId <= 0) {
@@ -342,7 +342,7 @@ class Comment implements \JsonSerializable {
 	 * @return \SplFixedArray SplFixedArray of Comments found
 	 * @throws \PDOException when mySQL related error occurs
 	 * @throws \TypeError when variables are not the correct data type
-	 */
+	 **/
 	public static function getCommentByImageId(\PDO $pdo, int $imageId) {
 		//Sanitize the image id before searching
 		if($imageId <= 0) {
@@ -379,7 +379,7 @@ class Comment implements \JsonSerializable {
 	 * @return \SplFixedArray SplFixedArray of Comments found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not of the correct data type
-	 */
+	 **/
 	public static function getCommentByProfileId(\PDO $pdo, int $profileId) {
 		//Sanitize the profile id before searching
 		if($profileId <= 0) {
@@ -415,7 +415,7 @@ class Comment implements \JsonSerializable {
 	 * @return \SplFixedArray SplFixedArray of Comments found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
-	 */
+	 **/
 	public static function getCommentByCommentContent(\PDO $pdo, string $commentContent) {
 		//Purge the string
 		$commentContent = trim($commentContent);
