@@ -210,7 +210,7 @@ class Profile implements \JsonSerializable {
 
 		// save the profile creation date
 		try {
-			$newProfileCreateDate = $this->validateDate($newProfileCreateDate);
+			$newProfileCreateDate = ValidateDate::validateDate($newProfileCreateDate);
 		} catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
 		} catch(\RangeException $range) {
@@ -533,17 +533,18 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profilesalt, profileVerify = :profileVerify";
+		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profileSalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
-		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $this->profileCreateDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$formattedDate = $this->profileCreateDate->format("Y-m-d H:i:s");
+		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 	}
 
 	/**
-	 * get Comment by comment id
+	 * get Profile by profile id
 	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $profileId primary key of the profile
@@ -553,7 +554,7 @@ class Profile implements \JsonSerializable {
 	 */
 
 	public static function getProfileByProfileId(\PDO $pdo, int $profileId) {
-		//Sanitize the profile id before seaching
+		//Sanitize the profile id before searching
 		if($profileId <= 0) {
 			throw(new \PDOException("profile id is not positive"));
 		}

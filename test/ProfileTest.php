@@ -74,7 +74,7 @@ class ProfileTest extends JpegeryTest {
 	 * phone number
 	 * @var $VALID_PROFILEPHONE
 	 */
-	protected $VALID_PROFILEPHONE = "PHPUnit test pass";
+	protected $VALID_PROFILEPHONE = "PHPUnit test p";
 
 	/**
 	 * profile salt
@@ -86,7 +86,7 @@ class ProfileTest extends JpegeryTest {
 	 * profile verification email
 	 * @var $VALID_PROFILEVERIFY
 	 */
-	protected $VALID_PROFILEVERIFY = "PHPUnit test pass";
+	protected $VALID_PROFILEVERIFY = 1;
 
 
 	public final function setUp() {
@@ -121,7 +121,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
-		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
+		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
 	/**
@@ -146,14 +146,15 @@ class ProfileTest extends JpegeryTest {
 		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
-		/**  // edit the profile and update it in mySQL
-		$profile->setProfile($this->$profile);
+		// edit the Profile and update it in mySQL
+		$profile->setProfileImageId($this->VALID_PROFILEIMAGEID);
 		$profile->update($this->getPDO());
-		*/
+
+
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoProfile = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
-		$this->assertEquals($pdoProfile->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoProfile->getProfileId(), $profile->getProfileId());
 		$this->assertEquals($pdoProfile->getProfileAdmin(), $this->VALID_PROFILEADMIN);
 		$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
@@ -163,7 +164,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
-		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
+		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
 	/**
@@ -171,7 +172,7 @@ class ProfileTest extends JpegeryTest {
 	 *
 	 * @expectedException PDOException
 	 **/
-	public function testUpdateInvalidVote() {
+	public function testUpdateInvalidProfile() {
 		// create a Profile with a non null Profile id and watch it fail
 		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->update($this->getPDO());
@@ -235,7 +236,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
-		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
+		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
 	/**
