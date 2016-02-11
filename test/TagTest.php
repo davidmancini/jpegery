@@ -28,6 +28,13 @@ class TagTest extends JpegeryTest {
 	protected $VALID_TAGNAME = "PHPUnitTestPass";
 
 	/**
+	 * tag id
+	 * @var string $VALID_TAGNAME2
+	 **/
+
+	protected $VALID_TAGNAME2 = "PHPUnitStillPassing";
+
+	/**
 	 * Test inserting a valid Tag and verify that the actual mySQL data matches
 	 */
 
@@ -39,6 +46,7 @@ class TagTest extends JpegeryTest {
 		$tag = new Tag(null, $this->tag->getTagName(), $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 	}
+
 	/**
 	 * Test inserting a Tag that already exists
 	 *
@@ -49,6 +57,10 @@ class TagTest extends JpegeryTest {
 		$tag = new Tag(JpegeryTest::INVALID_KEY, $this->tag->getTagId(), $this->VALID_TAGNAME);
 	}
 
+	/**
+	 * test inserting a tag and editing it, and then updating it
+	 **/
 
+	public function testUpdateValidTagName
 
 }
