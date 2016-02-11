@@ -390,7 +390,7 @@ class Profile implements \JsonSerializable {
 	/**
 	 * @param string $newProfilePhone
 	 * @throws \InvalidArgumentException if $newProfilePhone is empty or insecure
-	 * @throws \
+	 * @throws \RangeException if the phone number is too long
 	 */
 
 	public function setProfilePhone(string $newProfilePhone) {
@@ -400,6 +400,12 @@ class Profile implements \JsonSerializable {
 		if(empty($newProfilePhone) === true) {
 			throw(new \InvalidArgumentException("phone content is empty or insecure"));
 		}
+
+		// verify the Profile phone number will fit in the database
+		if(strlen($newProfilePhone) > 24) {
+			throw(new \RangeException("phone number too long"));
+		}
+
 		// save profile phone #
 		$this->profilePhone = $newProfilePhone;
 	}
