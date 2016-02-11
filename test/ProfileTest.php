@@ -5,7 +5,7 @@
  * Date: 2/3/16
  * Time: 11:21 AM
  */
-namespace Edu\Cnm\Jpegery\test;
+namespace Edu\Cnm\Jpegery\Test;
 
 
 use Edu\Cnm\Jpegery\Profile;
@@ -37,7 +37,7 @@ class ProfileTest extends JpegeryTest {
 
 	/**
 	 * profile creation date
-	 * @var  $VALID_PROFILECREATEDATE
+	 * @var int $VALID_PROFILECREATEDATE
 	 */
 	protected $VALID_PROFILECREATEDATE = null;
 
