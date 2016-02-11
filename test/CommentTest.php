@@ -18,37 +18,37 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * content of first comment
 	 * @var string $VALID_COMMENTTEXT
-	 */
+	 **/
 	protected $VALID_COMMENTTEXT = "PHPUnit test is passing";
 
 	/**
 	 * content of comment after update
 	 * @var string $VALID_COMMENTTEXT2
-	 */
+	 **/
 	protected $VALID_COMMENTTEXT2 = "PHPUnit is still passing";
 
 	/**
 	 * This shall never be inserted
 	 * @var string $INVALID_COMMENTTEXT
-	 */
+	 **/
 	protected $INVALID_COMMENTTEXT = "To be used for failure.";
 
 	/**
 	 * timestamp of the comment; starts as null
 	 * @var \DateTime $VALID_COMMENTDATE
-	 */
+	 **/
 	protected $VALID_COMMENTDATE = null;
 
 	/**
 	 * Profile that posted comment; a foreign key
 	 * @var \Edu\Cnm\Jpegery\Profile $profile
-	 */
+	 **/
 	protected $profile = null;
 
 	/**
 	 * Image that comment was regarding; a foreign key
 	 * @var \Edu\Cnm\Jpegery\Image $image
-	 */
+	 **/
 	protected $image = null;
 
 	public final function setUp() {
@@ -70,7 +70,7 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * Test inserting a valid Comment and verify that the mySQL data matches
 	 *
-	 */
+	 **/
 	public function testInsertValidComment () {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -92,7 +92,7 @@ class CommentTest extends JpegeryTest {
 	 * Test inserting a comment that already exists
 	 *
 	 * @expectedException \PDOException
-	 */
+	 **/
 	public function testInsertInvalidComment() {
 		//Create a comment with an invalid id
 		$comment = new Comment(JpegeryTest::INVALID_KEY, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
@@ -101,7 +101,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test inserting a comment, editing it, and then updating it.
-	 */
+	 **/
 	public function testUpdateValidComment() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -127,7 +127,7 @@ class CommentTest extends JpegeryTest {
 	 * Test updating a Comment that already exists
 	 *
 	 * @expectedException \PDOException
-	 */
+	 **/
 	public function testUpdateInvalidComment() {
 		//Test updating a comment without inserting it
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
@@ -136,7 +136,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test creating and deleting a comment.
-	 */
+	 **/
 	public function testDeleteValidComment() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -158,7 +158,7 @@ class CommentTest extends JpegeryTest {
 	 * Test deleting a Comment that does not exist
 	 *
 	 * @expectedException \PDOException
-	 */
+	 **/
 	public function testDeleteInvalidComment() {
 		//Create a comment and delete it without actually inserting it.
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
@@ -167,7 +167,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test finding a comment through its id
-	 */
+	 **/
 	public function testGetValidCommentByCommentId() {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -187,7 +187,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test trying to grab a comment that does not exist
-	 */
+	 **/
 	public function testGetInvalidCommentByCommentId() {
 		//Attempt to grab a comment using an invalid comment id
 		$comment = Comment::getCommentByCommentId($this->getPDO(), JpegeryTest::INVALID_KEY);
@@ -196,7 +196,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Testing Grabbing a comment by image id
-	 */
+	 **/
 	public function testGetValidCommentByImageId() {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -221,7 +221,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a comment by an image id that does not exist
-	 */
+	 **/
 	public function testGetInvalidCommentByImageId() {
 		//Attempt to grab a comment using an invalid image id
 		$comment = Comment::getCommentByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
@@ -230,7 +230,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Testing Grabbing a comment by a profile Id
-	 */
+	 **/
 	public function testGetValidCommentByProfileId () {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
@@ -283,7 +283,7 @@ class CommentTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a Comment by content that does not exist.
-	 */
+	 **/
 	public function testGetInvalidCommentByCommentContent() {
 		//Search for content we know does not exist
 		$comment = Comment::getCommentByCommentContent($this->getPDO(), $this->INVALID_COMMENTTEXT);
