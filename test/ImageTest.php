@@ -213,7 +213,7 @@ class ImageTest extends JpegeryTest {
 
 		//Grab the result from the array and validate it
 		$pdoImage = $results[0];
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
@@ -305,7 +305,7 @@ class ImageTest extends JpegeryTest {
 
 		//Grabs results from array and validate it
 		$pdoImage = $results[0];
-		$this->assertEquals($pdoImage->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
 		$this->assertEquals($pdoImage->getImageText(), $this->VALID_IMAGETEXT);
