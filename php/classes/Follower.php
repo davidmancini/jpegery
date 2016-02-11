@@ -10,19 +10,19 @@ require_once("autoload.php");
  *
  * Represents the Follower relationship
  *
- */
+ **/
 class Follower implements \JsonSerializable {
 
 	/**
 	 * id for the follower (One who is following another), this is a composite primary key
 	 * @var int $followerFollowerId
-	 */
+	 **/
 	private $followerFollowerId;
 
 	/**
 	 * id for the followed (One who is being followed by another), this is a composite primary key
 	 * @var int $followerFollowedId
-	 */
+	 **/
 	private $followerFollowedId;
 
 
@@ -35,7 +35,7 @@ class Follower implements \JsonSerializable {
 	 * @throws \RangeException if the ids are not positive numbers
 	 * @throws \TypeError if the ids are not ints
 	 * @throws \Exception if some other problem occurs
-	 */
+	 **/
 	public function __construct(int $newFollowerFollowerId, int $newFollowerFollowedId) {
 		try {
 			$this->setFollowerFollowerId($newFollowerFollowerId);
@@ -56,7 +56,7 @@ class Follower implements \JsonSerializable {
 	 * accessor method for follower id
 	 *
 	 * @return int value of follower id
-	 */
+	 **/
 	public function getFollowerFollowerId() {
 		return $this->followerFollowerId;
 	}
@@ -67,7 +67,7 @@ class Follower implements \JsonSerializable {
 	 * @param int $newFollowerFollowerId
 	 * @throws \RangeException if $newFollowerId is not a positive number
 	 * @throws \TypeError if $newFollowerId is not an int
-	 */
+	 **/
 	public function setFollowerFollowerId(int $newFollowerFollowerId) {
 		//Out of bounds error
 		if($newFollowerFollowerId <= 0) {
@@ -80,7 +80,7 @@ class Follower implements \JsonSerializable {
 	 * accessor method for followed id
 	 *
 	 * @return int the value of the followed id
-	 */
+	 **/
 	public function getFollowerFollowedId() {
 		return $this->followerFollowedId;
 	}
@@ -91,7 +91,7 @@ class Follower implements \JsonSerializable {
 	 * @param $newFollowerFollowedId
 	 * @throws \RangeException if $newFollowedId is not a positive number
 	 * @throws \TypeError if $newFollowedId is not an int
-	 */
+	 **/
 	public function setFollowerFollowedId($newFollowerFollowedId) {
 		//Out of bounds error
 		if($newFollowerFollowedId <= 0) {
@@ -107,7 +107,7 @@ class Follower implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related error occurs
 	 * @throws \TypeError if $pdo is not a PDO connection object
-	 */
+	 **/
 	public function insert(\PDO $pdo) {
 		//Make sure that followerId and followedId are not null
 		if($this->followerFollowerId === null) {
@@ -131,7 +131,7 @@ class Follower implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when $pdo is not a PDO connection object
-	 */
+	 **/
 	public function delete(\PDO $pdo) {
 		//Enforce that the relationship can exist
 		if($this->followerFollowedId === null) {
@@ -158,7 +158,7 @@ class Follower implements \JsonSerializable {
 	 * @return \SplFixedArray SplFixedArray of Follower relationships found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not of the correct data type
-	 */
+	 **/
 	public static function getFollowerByFollowerId(\PDO $pdo, int $followerFollowerId) {
 		//Sanitize the follower id
 		if($followerFollowerId <= 0) {
@@ -197,7 +197,7 @@ class Follower implements \JsonSerializable {
 	 * @return \SplFixedArray SplFixedArray of Follower relationships found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
-	 */
+	 **/
 	public static function getFollowerByFollowedId(\PDO $pdo, int $followerFollowedId) {
 		//Sanitize the followed id
 		if($followerFollowedId <= 0) {
@@ -236,7 +236,7 @@ class Follower implements \JsonSerializable {
 	 * @return Follower|null Follower found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
-	 */
+	 **/
 	public static function getFollowerByFollowerIdAndFollowedId(\PDO $pdo, int $followerFollowerId, int $followerFollowedId) {
 		//Sanitize the follower id
 		if($followerFollowerId <= 0) {

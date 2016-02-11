@@ -38,7 +38,7 @@ class TagTest extends JpegeryTest {
 	 * Test inserting a valid Tag and verify that the actual mySQL data matches
 	 */
 
-	public function testInsertValidTag {
+	public function testInsertValidTag() {
 		//count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("tag");
 
