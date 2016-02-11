@@ -64,7 +64,6 @@ class ImageTest extends JpegeryTest {
 		//profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify
 		//$this->profile = new \Edu\Cnm\Jpegery\Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
 		$this->profile = new Profile(null, false, null, "test@example.com", "testGuy", "hash", 1, "Test Guy", "800-555-1234", "salt", "true");
-
 		$this->profile->insert($this->getPDO());
 
 		//Calculate the date that was just set up
@@ -232,13 +231,10 @@ class ImageTest extends JpegeryTest {
 		$image->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
-		$results = Image::getImageByImageProfileId($this->getPDO(), $image->getImageProfileId());
+		$pdoImage = Image::getImageByImageProfileId($this->getPDO(), $image->getImageProfileId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("image"));
-		$this->assertCount(1, $results);
-		$this->assetContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery", $results);
 
 		//Grabs results from array and validate it
-		$pdoImage = $results[0];
 		$this->assertEquals($pdoImage->getImageProfileId(), $this->profile->getProfileId());
 		$this->assertEquals($pdoImage->getImageType(), $this->VALID_IMAGETYPE);
 		$this->assertEquals($pdoImage->getImageFileName(), $this->VALID_IMAGEFILENAME);
@@ -283,7 +279,7 @@ class ImageTest extends JpegeryTest {
 	public function testGetImageByInvalidImageFileName() {
 		//Grab profile id by a file name that doesn't exist
 		$image = Image::getImageByImageFileName($this->getPDO(), "this is not a real file name");
-		$this->assertCount(0, $image);
+		$this->assertNull($image);
 	}
 
 	/*
