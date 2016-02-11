@@ -9,53 +9,53 @@ require_once ("JpegeryTest.php");
 //Grab the class we're testing
 require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 
-/*
+/**
  * PHPUnit test for Image class
  *
  * @see Image
  * @author David Mancini <hello@davidmancini.xyz>
- */
+ **/
 
 class ImageTest extends JpegeryTest {
-	/*
+	/**
 	 * Profile that created the image for foreign key relations
 	 * @var \Edu\Cnm\Jpegery\Profile profile
-	 */
+	 **/
 	protected $profile = null;
 
-	/*
+	/**
 	 * Timestamp of the image; starts as null and is assigned later
 	 * @var DateTime $VALID_IMAGEDATE
-	 */
+	 **/
 	protected $VALID_IMAGEDATE = null;
 
-	/*
+	/**
 	 * String of image file name
 	 * @var String $VALID_IMAGEFILENAME
-	 */
+	 **/
 	protected $VALID_IMAGEFILENAME = "image.jpg";
 
-	/*
+	/**
 	 * String of image text
 	 * @var String $VALID_IMAGETEXT
-	 */
+	 **/
 	protected $VALID_IMAGETEXT = "This is an image!";
 
-	/*
+	/**
 	 * String of updated image text
 	 * @var String $VALID_IMAGETEXT2
-	 */
+	 **/
 	protected $VALID_IMAGETEXT2 = "This is updated image text.";
 
-	/*
+	/**
  * String of image type
  * @var String $VALID_IMAGETYPE
- */
+ **/
 	protected $VALID_IMAGETYPE = "jpg";
 
-	/*
+	/**
 	 * Create dependent objects before running each test
-	 */
+	 **/
 	public final function setUp() {
 		//run the default setUp method first
 		parent::setUp();
@@ -70,9 +70,9 @@ class ImageTest extends JpegeryTest {
 		$this->VALID_IMAGEDATE = new \DateTime();
 	}
 
-	/*
+	/**
 	 * Test inserting a valid image and verify that the actual MySQL data matches
-	 */
+	 **/
 	public function testInsertValidImage() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -92,9 +92,9 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test inserting an image, editing it, then updating it
-	 */
+	 **/
 
 	public function testUpdateValidImage() {
 		//Count the number of rows and save it for later
@@ -118,9 +118,9 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test creating an image and then deleting it
-	 */
+	 **/
 	public function testDeleteValidImage() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -139,22 +139,22 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("image"));
 	}
 
-	/**
+	/***
 	 * Test inserting an image that already exists
 	 *
 	 * @expectedException PDOException
-	 **/
+	 ***/
 	public function testInsertInvalidImage() {
 		//Create an image with a non-null image id and watch it fail
 		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 		$image->insert($this->getPDO());
 	}
 
-	/**
+	/***
 	 * Test deleting an image that does not exist
 	 *
 	 * @expectedException PDOException
-	 **/
+	 ***/
 	public function testDeleteInvalidImage() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -164,9 +164,9 @@ class ImageTest extends JpegeryTest {
 		$image->delete($this->getPDO());
 	}
 
-	/*
+	/**
 	 * Test inserting an image and re-grabbing it from MySQL
-	 */
+	 **/
 	public function testGetValidImageByImageId() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -185,18 +185,18 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image that does not exist
-	 */
+	 **/
 	public function testGetImageByInvalidImageId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
 		$image = Image::getImageByImageId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($image);
 	}
 
-	/*
+	/**
 	 * Test grabbing all Images
-	 */
+	 **/
 	public function testGetAllValidImages() {
 		//count the number of rows and save for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -219,9 +219,9 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by profile id
-	 */
+	 **/
 	public function testGetValidImageByProfileId() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -242,18 +242,18 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by invalid profile id
-	 */
+	 **/
 	public function testGetImageByInvalidProfileId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
 		$image = Image::getImageByImageProfileId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($image);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by file name
-	 */
+	 **/
 	public function testGetValidImageByImageFileName() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -273,18 +273,18 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by file name that does not exist
-	 */
+	 **/
 	public function testGetImageByInvalidImageFileName() {
 		//Grab profile id by a file name that doesn't exist
 		$image = Image::getImageByImageFileName($this->getPDO(), "this is not a real file name");
 		$this->assertNull($image);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by image text
-	 */
+	 **/
 	public function testGetImageByImageText() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
@@ -308,9 +308,9 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($pdoImage->getImageDate(), $this->VALID_IMAGEDATE);
 	}
 
-	/*
+	/**
 	 * Test grabbing an image by text that does not exist
-	 */
+	 **/
 	public function testGetImageByInvalidImageText() {
 		//Grab profile id by a file name that doesn't exist
 		$image = Image::getImageByImageText($this->getPDO(), "this text doesn't exist, nobody wrote this");
