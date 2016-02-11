@@ -28,12 +28,11 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
  */
 class ProfileTest extends JpegeryTest {
 
-
 	/**
 	 * profile admin
 	 * @var $VALID_PROFILEADMIN
 	 */
-	protected $VALID_PROFILEADMIN = null;
+	protected $VALID_PROFILEADMIN = false;
 
 	/**
 	 * profile creation date
@@ -63,7 +62,7 @@ class ProfileTest extends JpegeryTest {
 	 * profile avatar
 	 * @var $VALID_PROFILEIMAGEID
 	 */
-	protected $VALID_PROFILEIMAGEID = "PHPUnit test pass";
+	protected $VALID_PROFILEIMAGEID = 1;
 
 	/**
 	 * user name
@@ -87,8 +86,8 @@ class ProfileTest extends JpegeryTest {
 	 * profile verification email
 	 * @var $VALID_PROFILEVERIFY
 	 */
-
 	protected $VALID_PROFILEVERIFY = "PHPUnit test pass";
+
 
 	public final function setUp() {
 
@@ -96,6 +95,7 @@ class ProfileTest extends JpegeryTest {
 		$this->VALID_PROFILECREATEDATE = new\DateTime();
 
 	}
+
 
 	/**
 	 * test inserting a valid Profile and verify that the actual mySQL data matches
@@ -105,13 +105,13 @@ class ProfileTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		// create a new Profile and insert to into mySQL
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoProfile = Profile::getProfileByProfileId($this->getPDO(), $profile->getProfileId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("profile"));
-		$this->assertEquals($pdoProfile->getProfileId(), $this->profile->getProfileId());
+		$this->assertEquals($pdoProfile->getProfileId(), $profile->getProfileId());
 		$this->assertEquals($pdoProfile->getProfileAdmin(), $this->VALID_PROFILEADMIN);
 		$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
@@ -121,6 +121,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
 	}
 
 	/**
@@ -130,7 +131,7 @@ class ProfileTest extends JpegeryTest {
 	 **/
 	public function testInsertInvalidProfile() {
 		// create a Profile with a non null Profile id and watch it fail
-		$profile = new Profile(DataDesignTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 	}
 
@@ -142,7 +143,7 @@ class ProfileTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		// create a new Profile and insert to into mySQL
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// edit the profile and update it in mySQL
@@ -162,6 +163,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
 	}
 
 	/**
@@ -171,7 +173,7 @@ class ProfileTest extends JpegeryTest {
 	 **/
 	public function testUpdateInvalidVote() {
 		// create a Profile with a non null Profile id and watch it fail
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->update($this->getPDO());
 	}
 
@@ -183,7 +185,7 @@ class ProfileTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		// create a new Vote and insert to into mySQL
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// delete the Profile from mySQL
@@ -204,7 +206,7 @@ class ProfileTest extends JpegeryTest {
 	 **/
 	public function testDeleteInvalidProfile() {
 		// create a Profile and try to delete it without actually inserting it
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->delete($this->getPDO());
 	}
 
@@ -217,7 +219,7 @@ class ProfileTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("profile");
 
 		// create a new Profile and insert to into mySQL
-		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT);
+		$profile = new Profile(null, $this->profile->getProfileId(), $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -233,6 +235,7 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
 		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileVerify(),$this->VALID_PROFILEVERIFY);
 	}
 
 	/**

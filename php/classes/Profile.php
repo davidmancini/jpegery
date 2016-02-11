@@ -102,7 +102,7 @@ class Profile implements \JsonSerializable {
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  int $newProfileImageId, string $newProfileName, $newProfilePhone = null, string $newProfileSalt, string $newProfileVerify) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
@@ -244,7 +244,7 @@ class Profile implements \JsonSerializable {
 	public function setProfileEmail(string $newProfileEmail) {
 		//verify the email is a proper email
 		$newProfileEmail = trim($newProfileEmail);
-		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_EMAIL);
+		$newProfileEmail = filter_var($newProfileEmail, FILTER_SANITIZE_STRING);
 		if(empty($newProfileEmail) === true) {
 			throw(new \InvalidArgumentException("email is empty, insecure, or not a valid email"));
 		}
