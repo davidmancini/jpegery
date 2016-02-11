@@ -29,7 +29,7 @@ class VoteTest extends JpegeryTest {
 	protected $VALID_VOTEID = "PHPUnit test passing";
 
 	/**
-	 * vote profile id
+	 * vote image id
 	 * @var $VALID_VOTEIMAGEID
 	 */
 	protected $VALID_VOTEIMAGEID = null;
@@ -49,8 +49,8 @@ class VoteTest extends JpegeryTest {
 		parent::setUp();
 
 		// create and insert a Profile to own the test profile
-		$this->voteProfile = new VoteProfile(null, "@phpunit", "test@phpunit.de", "+12125551212");
-		$this->voteProfile->insert($this->getPDO());
+		$this->profile = new Profile(null, "@phpunit", "test@phpunit.de", "+12125551212");
+		$this->profile->insert($this->getPDO());
 
 	}
 
@@ -65,13 +65,13 @@ class VoteTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("vote");
 
 		// create a new Tweet and insert to into mySQL
-		$vote = new Vote(null, $this->voteProfile->getVoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTETYPE);
+		$vote = new Vote(null, $this->profile->getProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTETYPE);
 		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
-		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getVoteProfileId());
+		$this->assertEquals($pdoVote->getProfileId(), $this->profile->ProfileId());
 		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getVoteImageId());
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
