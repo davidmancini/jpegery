@@ -14,18 +14,18 @@ class FollowerTest extends JpegeryTest {
 	/**
 	 * Profile that is following another profile
 	 * @var \Edu\Cnm\Jpegery\Profile $follower
-	 */
+	 **/
 	protected $follower = null;
 
 	/**
 	 * Profile that is being followed by another profile
 	 * @var \Edu\Cnm\Jpegery\Profile $followed
-	 */
+	 **/
 	protected $followed = null;
 
 	/**
 	 * Create dependent objects before running each test
-	 */
+	 **/
 	public final function setUp() {
 		//Run the default setUp() method first
 		parent::setUp();
@@ -39,7 +39,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test inserting a Follower relationship and making sure it was inserted properly
-	 */
+	 **/
 	public function testInsertValidFollower() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("follower");
@@ -59,7 +59,7 @@ class FollowerTest extends JpegeryTest {
 	 * test creating a Follower relationship that cannot exist
 	 *
 	 * @expectedException \TypeError
-	 */
+	 **/
 	public function testInsertInvalidFollower() {
 		//Create a follower relationship without foreign keys
 		$follow = new Follower(null, null);
@@ -67,7 +67,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test creating a Follower relationship and then deleting it
-	 */
+	 **/
 	public function testDeleteValidFollower() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("follower");
@@ -86,20 +86,9 @@ class FollowerTest extends JpegeryTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("follower"));
 	}
 
-//	/**
-//	 * Test deleting a Follower relationship that does not exist
-//	 *
-//	 * @expectedException \PDOException
-//	 */
-//	public function testDeleteInvalidFollower() {
-//		//Create a Follower relationship and try to delete it without inserting it.
-//		$follow = new Follower(JpegeryTest::INVALID_KEY, JpegeryTest::INVALID_KEY);
-//		$follow->delete($this->getPDO());
-//	}
-
 	/**
 	 * Test grabbing a Follower relationship with the id of the person following
-	 */
+	 **/
 	public function testGetValidFollowerByFollowerId() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("follower");
@@ -120,7 +109,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test trying to locate the Follow relationships of a Follower who does not exist
-	 */
+	 **/
 	public function testGetInvalidFollowerByFollowerId() {
 		//Search for a follower id that cannot exist
 		$follow = Follower::getFollowerByFollowerId($this->getPDO(), JpegeryTest::INVALID_KEY);
@@ -129,7 +118,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a Follower relationship with the id of the person being followed
-	 */
+	 **/
 	public function testGetValidFollowerByFollowedId() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("follower");
@@ -150,7 +139,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a Follow relationship with a Followed id that cannot exist
-	 */
+	 **/
 	public function testGetInvalidFollowByFollowedId() {
 		//Search for a followed id that cannot exist
 		$follow = Follower::getFollowerByFollowedId($this->getPDO(), JpegeryTest::INVALID_KEY);
@@ -159,7 +148,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a Follower relationship with both the Follower and Followed known
-	 */
+	 **/
 	public function testGetValidFollowerByFollowerIdAndFollowedId() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("follower");
@@ -177,7 +166,7 @@ class FollowerTest extends JpegeryTest {
 
 	/**
 	 * Test grabbing a relationship where neither follower nor followed exist
-	 */
+	 **/
 	public function testGetInvalidFollowerByFollowerIdAndFollowedId() {
 		//Grab a follower id and followed id that do not exist
 		$follow = Follower::getFollowerByFollowerIdAndFollowedId($this->getPDO(), JpegeryTest::INVALID_KEY, JpegeryTest::INVALID_KEY);
