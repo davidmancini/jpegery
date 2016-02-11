@@ -37,9 +37,9 @@ class Tag implements \JsonSerializable {
 	 *
 	 * @param int $newTagId id of this Tag or null if a new Tag
 	 * @param string $newTagName name of a given tag
-	 * @throws InvalidArgumentException if data types are not valid
-	 * @throws RangeException if data values are out of bounds (e.g., strings too long, negative integers)
-	 * @throws Exception if some other exception is thrown
+	 * @throws \InvalidArgumentException if data types are not valid
+	 * @throws \RangeException if data values are out of bounds (e.g., strings too long, negative integers)
+	 * @throws \Exception if some other exception is thrown
 	 */
 
 	public function __construct(int $newTagId, string $newTagName) {
@@ -47,15 +47,15 @@ class Tag implements \JsonSerializable {
 		try {
 			$this->setTagId($newTagId);
 			$this->setTagName($newTagName);
-		} catch(InvalidArgumentException $invalidArgument) {
+		} catch(\InvalidArgumentException $invalidArgument) {
 			// rethrow the exception to the caller
-			throw(new InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
-		} catch(RangeException $range) {
+			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
+		} catch(\RangeException $range) {
 			// rethrow the exception to the caller
-			throw(new RangeException($range->getMessage(), 0, $range));
-		} catch(Exception $exception) {
+			throw(new \RangeException($range->getMessage(), 0, $range));
+		} catch(\Exception $exception) {
 			// rethrow generic exception
-			throw(new Exception($exception->getMessage(), 0, $exception));
+			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}
 
@@ -100,20 +100,20 @@ class Tag implements \JsonSerializable {
 	 * mutator method for tag name
 	 *
 	 * @param string $newTagName new value of tag name
-	 * @throws InvalidArgumentException if $newTag is not a string or insecure
-	 * @throws RangeException if $newTag is > 64vcharacters
+	 * @throws \InvalidArgumentException if $newTag is not a string or insecure
+	 * @throws \RangeException if $newTag is > 64vcharacters
 	 **/
 	public function setTagName(int $newTagName) {
 		// verify the tag is secure
 		$newTagName = trim($newTagName);
 		$newTagName = filter_var($newTagName, FILTER_SANITIZE_STRING);
 		if(empty($newTagName) === true) {
-			throw(new InvalidArgumentException("Tag empty or insecure"));
+			throw(new \InvalidArgumentException("Tag empty or insecure"));
 		}
 
 		// verify the email address will fit in the database
 		if(strlen($newTagName) > 64) {
-			throw(new RangeException("Tag too long"));
+			throw(new \RangeException("Tag too long"));
 		}
 
 		// store the email
@@ -122,14 +122,14 @@ class Tag implements \JsonSerializable {
 
 	/**
 	 * inserts this Tag into mySQL
-	 * @param PDO $pdo PDO Connection object
-	 * @throws PDOException when mySQL related errors occur
+	 * @param \PDO $pdo PDO Connection object
+	 * @throws \PDOException when mySQL related errors occur
 	 */
 
-	public function insert(PDO $pdo) {
+	public function insert(\PDO $pdo) {
 		//enformce the tagId is null (i.e. don't insert a tag that already exists)
 		if($this->tagId !== null) {
-			throw(new PDOException ("not a new Tag"));
+			throw(new \PDOException ("not a new Tag"));
 		}
 
 		//create query template
@@ -146,13 +146,13 @@ class Tag implements \JsonSerializable {
 	/**
 	 * deletes this tag from mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
-	 * @throws PDOException when mySQL related errors occur
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
 	 **/
-	public function delete(PDO $pdo) {
+	public function delete(\PDO $pdo) {
 		// enforce the tagId is not null (i.e., don't delete a tag that hasn't been inserted)
 		if($this->tagId === null) {
-			throw(new PDOException("unable to delete a tag that does not exist"));
+			throw(new \PDOException("unable to delete a tag that does not exist"));
 		}
 
 		// create query template
@@ -167,13 +167,13 @@ class Tag implements \JsonSerializable {
 	/**
 	 * updates this tag in mySQL
 	 *
-	 * @param PDO $pdo PDO connection object
-	 * @throws PDOException when mySQL related errors occur
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related errors occur
 	 **/
-	public function update(PDO $pdo) {
+	public function update(\PDO $pdo) {
 		// enforce the tagId is not null (i.e., don't update an tag that hasn't been inserted)
 		if($this->tagId === null) {
-			throw(new PDOException("unable to update a tag that does not exist"));
+			throw(new \PDOException("unable to update a tag that does not exist"));
 		}
 
 		// create query template
