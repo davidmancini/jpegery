@@ -66,126 +66,125 @@ class Tag implements \JsonSerializable {
 	 *
 	 ***/
 
-public function getTagId() {
-		return($this->tagId);
-}
-
-/**
- * mutator method for tag id
- *
- * @param string $newTagId new value of tag id
- * @throws \RangeException if $newTagId is not positive
- * @throws \TypeError if $newTagId is not an integer
- **/
-public function setTagId(int $newTagId) {
-	// verify the tag id is positive
-	if($newTagId <= 0) {
-		throw(new \RangeException("tag id is not positive"));
+	public function getTagId() {
+		return ($this->tagId);
 	}
 
-	// convert and store the tag id
-	$this->tagId = $newTagId;
-}
+	/**
+	 * mutator method for tag id
+	 *
+	 * @param string $newTagId new value of tag id
+	 * @throws \RangeException if $newTagId is not positive
+	 * @throws \TypeError if $newTagId is not an integer
+	 **/
+	public function setTagId(int $newTagId) {
+		// verify the tag id is positive
+		if($newTagId <= 0) {
+			throw(new \RangeException("tag id is not positive"));
+		}
 
-/** accessor method for tag name
- *
- *@return string value of tag name
- **/
-
-public function getTagName() {
-	return($this->tagName);
-}
-
-/**
- * mutator method for tag name
- *
- * @param string $newTagName new value of tag name
- * @throws InvalidArgumentException if $newTag is not a string or insecure
- * @throws RangeException if $newTag is > 64vcharacters
- **/
-public function setTagName(int $newTagName) {
-	// verify the tag is secure
-	$newTagName = trim($newTagName);
-	$newTagName = filter_var($newTagName, FILTER_SANITIZE_STRING);
-	if(empty($newTagName) === true) {
-		throw(new InvalidArgumentException("Tag empty or insecure"));
+		// convert and store the tag id
+		$this->tagId = $newTagId;
 	}
 
-	// verify the email address will fit in the database
-	if(strlen($newTagName) > 64) {
-		throw(new RangeException("Tag too long"));
+	/** accessor method for tag name
+	 *
+	 * @return string value of tag name
+	 **/
+
+	public function getTagName() {
+		return ($this->tagName);
 	}
 
-	// store the email
-	$this->tagName = $newTagName;
-}
+	/**
+	 * mutator method for tag name
+	 *
+	 * @param string $newTagName new value of tag name
+	 * @throws InvalidArgumentException if $newTag is not a string or insecure
+	 * @throws RangeException if $newTag is > 64vcharacters
+	 **/
+	public function setTagName(int $newTagName) {
+		// verify the tag is secure
+		$newTagName = trim($newTagName);
+		$newTagName = filter_var($newTagName, FILTER_SANITIZE_STRING);
+		if(empty($newTagName) === true) {
+			throw(new InvalidArgumentException("Tag empty or insecure"));
+		}
 
-/**
- * inserts this Tag into mySQL
- * @param PDO $pdo PDO Connection object
- * @throws PDOException when mySQL related errors occur
- */
+		// verify the email address will fit in the database
+		if(strlen($newTagName) > 64) {
+			throw(new RangeException("Tag too long"));
+		}
 
-public function insert(PDO $pdo) {
-	//enformce the tagId is null (i.e. don't insert a tag that already exists)
-	if($this->tagId !== null) {
-		throw(new PDOException ("not a new Tag"));
+		// store the email
+		$this->tagName = $newTagName;
 	}
 
-	//create query template
-	$query = "INSERT INTO tag(tagId, tagName
+	/**
+	 * inserts this Tag into mySQL
+	 * @param PDO $pdo PDO Connection object
+	 * @throws PDOException when mySQL related errors occur
+	 */
+
+	public function insert(PDO $pdo) {
+		//enformce the tagId is null (i.e. don't insert a tag that already exists)
+		if($this->tagId !== null) {
+			throw(new PDOException ("not a new Tag"));
+		}
+
+		//create query template
+		$query = "INSERT INTO tag(tagId, tagName
 				VALUES(:tagId, :tagName))";
-				$statement = $pdo->prepare($query);
+		$statement = $pdo->prepare($query);
 
-	//update the null tagId with what mySQL just gave us
-	$this->tagId = intval($pdo->lastInsertId());
+		//update the null tagId with what mySQL just gave us
+		$this->tagId = intval($pdo->lastInsertId());
 
 
-
-}
-
-/**
- * deletes this tag from mySQL
- *
- * @param PDO $pdo PDO connection object
- * @throws PDOException when mySQL related errors occur
- **/
-public function delete(PDO $pdo) {
-	// enforce the tagId is not null (i.e., don't delete a tag that hasn't been inserted)
-	if($this->tagId === null) {
-		throw(new PDOException("unable to delete a tag that does not exist"));
 	}
 
-	// create query template
-	$query	 = "DELETE FROM tag WHERE tagId = :tagId";
-	$statement = $pdo->prepare($query);
+	/**
+	 * deletes this tag from mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 **/
+	public function delete(PDO $pdo) {
+		// enforce the tagId is not null (i.e., don't delete a tag that hasn't been inserted)
+		if($this->tagId === null) {
+			throw(new PDOException("unable to delete a tag that does not exist"));
+		}
 
-	// bind the member variables to the place holder in the template
-	$parameters = array("tagId" => $this->tagId);
-	$statement->execute($parameters);
-}
+		// create query template
+		$query = "DELETE FROM tag WHERE tagId = :tagId";
+		$statement = $pdo->prepare($query);
 
-/**
- * updates this tag in mySQL
- *
- * @param PDO $pdo PDO connection object
- * @throws PDOException when mySQL related errors occur
- **/
-public function update(PDO $pdo) {
-	// enforce the tagId is not null (i.e., don't update an tag that hasn't been inserted)
-	if($this->tagId === null) {
-		throw(new PDOException("unable to update a tag that does not exist"));
+		// bind the member variables to the place holder in the template
+		$parameters = array("tagId" => $this->tagId);
+		$statement->execute($parameters);
 	}
 
-	// create query template
-	$query	 = "UPDATE tag SET tagName :tagName,
+	/**
+	 * updates this tag in mySQL
+	 *
+	 * @param PDO $pdo PDO connection object
+	 * @throws PDOException when mySQL related errors occur
+	 **/
+	public function update(PDO $pdo) {
+		// enforce the tagId is not null (i.e., don't update an tag that hasn't been inserted)
+		if($this->tagId === null) {
+			throw(new PDOException("unable to update a tag that does not exist"));
+		}
+
+		// create query template
+		$query = "UPDATE tag SET tagName :tagName,
  		WHERE tagId = :tagId";
-	$statement = $pdo->prepare($query);
+		$statement = $pdo->prepare($query);
 
-	// bind the member variables to the place holders in the template
-	$parameters = array("tagId" => $this->tagId, "tagName" => $this->tagName);
-	$statement->execute($parameters);
-}
+		// bind the member variables to the place holders in the template
+		$parameters = array("tagId" => $this->tagId, "tagName" => $this->tagName);
+		$statement->execute($parameters);
+	}
 
 	/**
 	 ** Gets Tag by tagId number
@@ -223,13 +222,12 @@ public function update(PDO $pdo) {
 			if($row !== false) {
 				$tag = new Tag($row["tagId"], $row["tagName"]);
 			}
-		}
-		catch(\Exception $exception) {
-				//if the row couldn't be converted
-				throw(new \PDOException($exception->getMessage(), 0, $exception));
+		} catch(\Exception $exception) {
+			//if the row couldn't be converted
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
 		return ($tag);
-		}
+	}
 
 
 	/** Gets tag by name
@@ -264,7 +262,7 @@ public function update(PDO $pdo) {
 		while($row = $statement->fetch() !== false) {
 			try {
 				$tag = new tag($row["tagId"], $row["tagName"]);
-				$tags[$tags ->key()] = $tag;
+				$tags[$tags->key()] = $tag;
 				$tag->next();
 			} catch(\Exception $exception) {
 				//if the row couldn't be converted, rethrow it
@@ -272,18 +270,10 @@ public function update(PDO $pdo) {
 
 			}
 
-			}
-			return ($tags);
-
 		}
+		return ($tags);
 
-
-
-
-
-
-
-
+	}
 
 
 	/**
@@ -292,6 +282,7 @@ public function update(PDO $pdo) {
 	 * @return array resulting state variables to serialize
 	 **/
 	public function jsonSerialize() {
-		return(get_object_vars($this));
+		return (get_object_vars($this));
 	}
 
+}
