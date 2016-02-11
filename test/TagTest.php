@@ -7,7 +7,7 @@ use Edu\Cnm\Jpegery\{
 };
 
 //grab the project test parameters
-require_once("JpgeryTest.php");
+require_once("JpegeryTest.php");
 
 //grab the class under scrutiny
 require_once(dirname(__DIR__) . "/php/classes/autoload.php");
