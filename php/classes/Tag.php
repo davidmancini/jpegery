@@ -77,8 +77,8 @@ class Tag implements \JsonSerializable {
 	 * @throws \RangeException if $newTagId is not positive
 	 * @throws \TypeError if $newTagId is not an integer
 	 **/
-	public function setTagId(int $newTagId) {
-		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
+	public function setTagId(int $newTagId = null) {
+		//Base case--if tag id is null, this is a new profile without a mySQL assigned id
 		if($newTagId === null) {
 			$this->tagId = null;
 			return;
