@@ -2,9 +2,7 @@
 
 namespace Edu\Cnm\Jpegery\Test;
 
-use Edu\Cnm\Jpegery\{
-	Tag
-};
+use Edu\Cnm\Jpegery\Tag;
 
 //grab the project test parameters
 require_once("JpegeryTest.php");
