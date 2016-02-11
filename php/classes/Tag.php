@@ -42,7 +42,7 @@ class Tag implements \JsonSerializable {
 	 * @throws \Exception if some other exception is thrown
 	 */
 
-	public function __construct(int $newTagId, string $newTagName) {
+	public function __construct(int $newTagId = null, string $newTagName) {
 
 		try {
 			$this->setTagId($newTagId);
@@ -78,6 +78,11 @@ class Tag implements \JsonSerializable {
 	 * @throws \TypeError if $newTagId is not an integer
 	 **/
 	public function setTagId(int $newTagId) {
+		//Base case--if profile id is null, this is a new profile without a mySQL assigned id
+		if($newTagId === null) {
+			$this->tagId = null;
+			return;
+		}
 		// verify the tag id is positive
 		if($newTagId <= 0) {
 			throw(new \RangeException("tag id is not positive"));
