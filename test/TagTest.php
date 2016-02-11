@@ -41,7 +41,7 @@ class TagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("tag");
 
 		//create a new Tag and insert it into mySQL
-		$tag = new Tag(null, $this->tag->getTagName(), $this->VALID_TAGNAME);
+		$tag = new Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 	}
 
@@ -50,9 +50,11 @@ class TagTest extends JpegeryTest {
 	 *
 	 * @epectedException PDOException
 	 */
-	public function testUpdateValidTag() {
+	public function testInsertInvalidTag() {
 		//create a Tag with a non null id and watch it fail
-		$tag = new Tag(JpegeryTest::INVALID_KEY, $this->tag->getTagId(), $this->VALID_TAGNAME);
+		$tag = new Tag(JpegeryTest::INVALID_KEY, $this->VALID_TAGNAME);
+		$tag->insert($this->getPDO());
+
 	}
 
 	/**
@@ -64,7 +66,7 @@ class TagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("tag");
 
 		//create a new tag and insert it into mySQL
-		$tag = new Tag(null, $this->tag->getTagId(), $this->VALID_TAGNAME);
+		$tag = new Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 
 		//grab the data from mySQL and enforce the fields that match our expectations
@@ -98,7 +100,7 @@ class TagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("tag");
 
 		//create a new Tag and insert it into mySQL
-		$tag = new Tag(null, $this->tag->getTagId(), $this->VALID_TAGNAME);
+		$tag = new Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 
 		//grab the data from mySQL and enforce the fields match our expectations
