@@ -117,7 +117,7 @@ class Vote {
 
 	/**
 	 * mutator method for vote profile id
-	 * @param int $newProfileId the new value of vote profile id
+	 * @param int $newVoteProfileId the new value of vote profile id
 	 * @throws \RangeException if profile id is not positive
 	 * @throws \TypeError if id is not an integer
 	 */
@@ -137,7 +137,7 @@ class Vote {
 	 * @return int value for vote image id
 	 */
 
-	public function getImageId() {
+	public function getVoteImageId() {
 		return $this->voteImageId;
 	}
 
@@ -148,7 +148,7 @@ class Vote {
 	 * @throws \TypeError if image id is not positive
 	 */
 
-	public function setImageId(int $newVoteImageId) {
+	public function setVoteImageId(int $newVoteImageId) {
 		// verify that the image id is positive
 		if($newVoteImageId <= 0) {
 			throw(new \RangeException("image id is not positive"));
@@ -224,7 +224,7 @@ class Vote {
 		}
 
 		// create query template
-		$query = "DELETE FROM votevalue WHERE voteValue = :voteValue";
+		$query = "DELETE FROM voteId WHERE voteId = :voteId";
 		$statement = $pdo->prepare($query);
 
 		// bind member variable to the placeholders
@@ -245,7 +245,7 @@ class Vote {
 			throw(new \PDOException("cannot update, vote does not exist"));
 		}
 		// create query template
-		$query = "UPDATE voteValue SET voteProfileId = :voteVrofileId, voteImageId = :voteImageId, voteValue = :voteValue";
+		$query = "UPDATE voteValue SET voteProfileId = :votePofileId, voteImageId = :voteImageId, voteValue = :voteValue";
 		$statement = $pdo->prepare($query);
 
 		// bind member variables to the placeholders

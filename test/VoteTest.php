@@ -32,19 +32,12 @@ class VoteTest extends JpegeryTest {
 	 *  vote profile id
 	 * @var $VALID_VOTEPROFILEID
 	 */
-	protected $VALID_PROFILEID = null;
-
-	/**
-	 * vote image id
-	 * @var $VALID_VOTEIMAGEID
-	 */
-	protected $VALID_VOTEIMAGEID = null;
 
 	/**
 	 * vote type
 	 * @var  $VALID_VOTEVALUE
 	 */
-	protected $VALID_VOTEVALUE = null;
+	protected $VALID_VOTEVALUE = 1;
 
 	/**
 	 * create dependent objects before running each test
@@ -53,21 +46,21 @@ class VoteTest extends JpegeryTest {
 	/**
 	 * @var Profile $profile
 	 */
-	protected $profile = null;
+	protected $voteProfile = null;
 
-	protected $image = null;
+	protected $voteImage = null;
 
 	public final function setUp() {
 		// run the default setUp() method first
 		parent::setUp();
 
 		// create and insert a Profile
-		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "yes");
-		$this->profile->insert($this->getPDO());
+		$this->voteProfile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "yes");
+		$this->voteProfile->insert($this->getPDO());
 
 		// create and insert an Image
-		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
-		$this->image->insert($this->getPDO());
+		$this->voteImage = new Image(null, $this->voteProfile->getProfileId(), "jpeg", "myfile", "theText", null);
+		$this->voteImage->insert($this->getPDO());
 
 	}
 
@@ -80,14 +73,14 @@ class VoteTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("vote");
 
 		// create a new Vote and insert to into mySQL
-		$vote = new Vote(null, $this->profile->getProfileId(), $this->image->getImageId(), $this->VALID_VOTEVALUE);
+		$vote = new Vote(null, $this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
-		$this->assertEquals($pdoVote->getProfileId(), $this->profile->ProfileId());
-		$this->assertEquals($pdoVote->getVoteImageId(), $this->image->getImageId());
+		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getProfileId());
+		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getImageId());
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
