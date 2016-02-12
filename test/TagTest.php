@@ -48,13 +48,12 @@ class TagTest extends JpegeryTest {
 	/**
 	 * Test inserting a Tag that already exists
 	 *
-	 * @ExpectedException PDOException
-	 */
+	 * @expectedException PDOException
+	 **/
 	public function testInsertInvalidTag() {
 		//create a Tag with a non null id and watch it fail
 		$tag = new Tag(JpegeryTest::INVALID_KEY, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
-
 	}
 
 	/**
