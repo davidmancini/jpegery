@@ -128,7 +128,7 @@ class ImageTag implements \JsonSerializable {
 
 public function insert(\PDO $pdo) {
 	//enforce the ImageTag is not null (i.e. don't insert a tag that does not exist)
-	if($this->imageId === null || $this->tagId === null) {
+	if($this->imageId !== null || $this->tagId !== null) {
 		throw(new \PDOException("not an existing tag"));
 	}
 
