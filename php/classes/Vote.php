@@ -170,7 +170,7 @@ class Vote {
 
 	/** mutaor method for vote type
 	 *
-	 * @param int @newVoteValueUp verify vote value
+	 * @param int $newVoteValue verify vote value
 	 * @throws \RangeException if vote is not 1 or -1
 	 */
 
@@ -196,7 +196,7 @@ class Vote {
 
 	public function insert(\PDO $pdo) {
 		// enforce that vote is null
-		if($this->voteProfileId !== null && $this->voteImageId !== null) {
+		if($this->voteProfileId === null && $this->voteImageId === null) {
 			throw(new \PDOException("this is not a new vote"));
 		}
 
@@ -260,23 +260,23 @@ class Vote {
 	 * get Vote by voteId
 	 *
 	 * @param \PDO $pdo PDO connection object
-	 * @param int $voteId tweet id to search for
+	 * @param int $voteProfileId AND int $voteImageId  to search for
 	 * @return Vote|null Vote found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
-	public static function getVoteByVoteId(\PDO $pdo, int $voteId) {
+	public static function getVoteByVoteProfileIdAndVoteImageId(\PDO $pdo, int $voteProfileId, int $voteImageId) {
 		// sanitize the voteId before searching
-		if($voteId <= 0) {
-			throw(new \PDOException("vote id is not positive"));
+		if($voteProfileId <= 0 || $voteImageId <= 0 ) {
+			throw(new \PDOException(" id is not positive"));
 		}
 
 		// create query template
-		$query = "SELECT voteId, voteProfileId, voteValue FROM vote WHERE voteId = :voteId";
+		$query = "SELECT voteProfileId, voteImageId, voteValue FROM vote WHERE voteProfileId = :voteProfileId AND voteImageId = :voteImageId";
 		$statement = $pdo->prepare($query);
 
 		// bind the vote id to the place holder in the template
-		$parameters = array("voteId" => $voteId);
+		$parameters = array("voteProfileId" => $voteProfileId, "voteImageId"=>voteImageId);
 		$statement->execute($parameters);
 
 		// grab the vote from mySQL
@@ -285,7 +285,7 @@ class Vote {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$vote = new Vote($row["voteId"], $row["voteProfileId"], $row["voteValue"]);
+				$vote = new Vote($row["voteProfileId"], $row["voteImageId"], $row["voteValue"]);
 			}
 		} catch(\Exception $exception) {
 			// if the row couldn't be converted, rethrow it
