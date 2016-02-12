@@ -43,7 +43,7 @@ class ImageTag implements \JsonSerializable {
 	 * @throws \Exception if some other exception occurs
 	 **/
 
-	public function __construct(int $newImageId = null, int $newTagId) {
+	public function __construct(int $newImageId, int $newTagId) {
 
 		try {
 			$this->setImageId($newImageId);
@@ -141,9 +141,6 @@ public function insert(\PDO $pdo) {
 	$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
 	$statement->execute($parameters);
 
-	//update the null tagId with the value MySQL gives us
-	$this->tagId = intval($pdo - lastInsertId());
-
 	}
 
 /**
@@ -162,11 +159,11 @@ public function delete(\PDO $pdo) {
 		throw(new \PDOException("not an existing tag"));
 	}
 	// create query template
-	$query	 = "DELETE FROM tag WHERE tagId = :tagId";
+	$query	 = "DELETE FROM imageTag WHERE imageId = :imageId AND tagId = :tagId";
 	$statement = $pdo->prepare($query);
 
 	// bind the member variables to the place holder in the template
-	$parameters = array("tagId" => $this->tagId);
+	$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
 	$statement->execute($parameters);
 }
 
@@ -177,31 +174,33 @@ public function delete(\PDO $pdo) {
 	 */
 
 
-public function update(\PDO $pdo) {
-	//enforce tagId and tagName are not null
-	if($this->imageId === null || $this->tagId === null) {
-		throw(new \PDOException("not an existing tag"));
-	}
-	// create query template
-	$query = "UPDATE imageTag SET tagName :tagName,
- 		WHERE tagId = :tagId";
-		$statement = $pdo->prepare($query);
+	//As a weak entity that can only has two possible permutations ("Exists", or "Does not exist"), there is no need for an update method.
 
-
-	// bind the member variables to the place holders in the template
-	$parameters = array("imageId" => $this->imageId, "tagId" => $this->tagId);
-	$statement->execute($parameters);
-
-
-
-	}
+//public function update(\PDO $pdo) {
+//	//enforce tagId and tagName are not null
+//	if($this->imageId === null || $this->tagId === null) {
+//		throw(new \PDOException("not an existing tag"));
+//	}
+//	// create query template
+//	$query = "UPDATE imageTag SET tagName :tagName,
+// 		WHERE tagId = :tagId";
+//		$statement = $pdo->prepare($query);
+//
+//
+//	// bind the member variables to the place holders in the template
+//	$parameters = array("imageId" => $this->imageId, "tagId" => $this->tagId);
+//	$statement->execute($parameters);
+//
+//
+//
+//	}
 
 	/**
 	 * gets imageTag by tagId
 	 *
 	 * @param \PDO $pdo connection object
 	 * @param int $tagId to search for
-	 * @return Tag|null Tag found or null if not found
+	 * @return |SplFixedArray imageTag found or null if not found
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
@@ -213,29 +212,28 @@ public function update(\PDO $pdo) {
 		}
 
 		//create query template
-		$query = "SELECT tagId, imageId FROM ImageTag WHERE tagId = :tagId";
+		$query = "SELECT imageId, tagId FROM ImageTag WHERE tagId = :tagId";
 		$statement = $pdo->prepare($query);
 
 		//bind the tag id to the place holder in the template
-		$parameters = array("tagId" => $tagId);
+		$parameters = ["tagId" => $tagId];
 		$statement->execute($parameters);
 
 		// grab the image tag from mySQL
-		try {
-			$imageTag = null;
-			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-			$row = $statement->fetch();
-			if($row !== false) {
-				$imageTag = new ImageTag($row["tagId"], $row["imageId"]);
-			}
-		}
-		catch
-			(\Exception $exception) {
+		$imageTags = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$imageTag = new ImageTag($row["imageId"], $row["tagId"]);
+				$imageTags[$imageTags->key()] = $imageTag;
+				$imageTags->next();
+			} catch(\Exception $exception) {
 				// if the row couldn't be converted, rethrow it
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
-			return ($imageTag);
 		}
+		return ($imageTags);
+	}
 
 
 
@@ -264,6 +262,41 @@ public function update(\PDO $pdo) {
 		$statement->execute($parameters);
 
 		// grab the image tag from mySQL
+		$imageTags = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$imageTag = new ImageTag($row["imageId"], $row["tagId"]);
+				$imageTags[$imageTags->key()] = $imageTag;
+				$imageTags->next();
+			} catch(\Exception $exception) {
+				// if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+		}
+		return ($imageTags);
+	}
+
+	public static function getImageTagByImageIdAndTagId(\PDO $pdo, int $imageId, int $tagId) {
+
+		if($imageId <= 0) {
+			throw(new \PDOException("Image id is not positive"));
+		}
+		//Sanitize the followed id
+		if($tagId <= 0) {
+			throw(new \PDOException("Tag Id is not positive"));
+		}
+
+		//create query template
+		$query = "SELECT imageId, tagId FROM ImageTag WHERE imageId = :imageId AND tagId = :tagId";
+		$statement = $pdo->prepare($query);
+
+		//bind the tag id to the place holder in the template
+		$parameters = array("imageId" => $imageId, "tagId" =>$tagId);
+		$statement->execute($parameters);
+
+
+		//Grab the imageTag from mySQL
 		try {
 			$imageTag = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
@@ -271,16 +304,12 @@ public function update(\PDO $pdo) {
 			if($row !== false) {
 				$imageTag = new ImageTag($row["imageId"], $row["tagId"]);
 			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		catch
-			(\Exception $exception) {
-				// if the row couldn't be converted, rethrow it
-				throw(new \PDOException($exception->getMessage(), 0, $exception));
-			}
-			return ($imageTag);
-
-			}
-
+		return($imageTag);
+	}
 
 
 
@@ -292,10 +321,8 @@ public function update(\PDO $pdo) {
  *
  * @return array resulting state variables to serialize
  **/
-public function jsonSerialize() {
+	public function jsonSerialize() {
 	$fields = get_object_vars($this);
 	return($fields);
-}
-
-
+	}
 }

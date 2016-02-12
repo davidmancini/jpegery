@@ -40,6 +40,12 @@ class CommentTest extends JpegeryTest {
 	protected $VALID_COMMENTDATE = null;
 
 	/**
+	 * A negative id for the purpose of error checking.
+	 * @var int $NEGATIVE_ID
+	 **/
+	protected $NEGATIVE_ID = -1;
+
+	/**
 	 * Profile that posted comment; a foreign key
 	 * @var \Edu\Cnm\Jpegery\Profile $profile
 	 **/
@@ -97,6 +103,11 @@ class CommentTest extends JpegeryTest {
 		//Create a comment with an invalid id
 		$comment = new Comment(JpegeryTest::INVALID_KEY, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 		$comment->insert($this->getPDO());
+	}
+
+	public function testInsertInvalidNegativeCommentId() {
+		//Create a comment with a negative id
+		$comment = new Comment($this->NEGATIVE_ID, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 	}
 
 	/**
