@@ -141,8 +141,8 @@ class Tag implements \JsonSerializable {
 		}
 
 		//create query template
-		$query = "INSERT INTO tag(tagId, tagName
-				VALUES(:tagId, :tagName))";
+		$query = "INSERT INTO tag(tagId, tagName)
+				VALUES(:tagId, :tagName)";
 		$statement = $pdo->prepare($query);
 
 		//bind the variables to placeholder in the template
@@ -250,7 +250,7 @@ class Tag implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throw \TypeError when
 	 */
-	public function getTagByName(\PDO $PDO, string $tagName) {
+	public static function getTagByName(\PDO $PDO, string $tagName) {
 		//sanitize query before searching
 		$tagName = trim($tagName);
 		$tagName = filter_var($tagName, FILTER_SANITIZE_STRING);

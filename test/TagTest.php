@@ -53,7 +53,7 @@ class TagTest extends JpegeryTest {
 	/**
 	 * Test inserting a Tag that already exists
 	 *
-	 * @expectedException PDOException
+	 * @expectedException \PDOException
 	 **/
 	public function testInsertInvalidTag() {
 		//create a Tag with a non null id and watch it fail
@@ -89,7 +89,7 @@ class TagTest extends JpegeryTest {
 	public function getAllValidTags() {
 
 		//grab a tag id that exeeds the maximum allowable tag id
-		$tag = Tag::getTagByTagName($this->getPDO(), "nobody ever made this tag");
+		$tag = Tag::getTagByName($this->getPDO(), "nobody ever made this tag");
 		$this->asserCount(0, $tag);
 }
 
