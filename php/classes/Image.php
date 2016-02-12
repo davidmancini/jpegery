@@ -59,8 +59,8 @@ class Image implements \JsonSerializable {
 	 * @param string $newImageType string containing image type
 	 * @param string $newImageFileName string containing the file name of the image
 	 * @param string $newImageText string containing the text associated with the image
-	 * @throws RangeException if data values are out of bounds (strings are too long, negative numbers)
-	 * @throws Exception if other exception is thrown
+	 * @throws \RangeException if data values are out of bounds (strings are too long, negative numbers)
+	 * @throws \Exception if other exception is thrown
 	 **/
 	public function __construct(int $newImageId = null, int $newProfileId, string $newImageType, string $newImageFileName, string $newImageText, $newImageDate = null) {
 		try {
@@ -90,10 +90,10 @@ class Image implements \JsonSerializable {
 	/**
 	 * Mutator method for image id
 	 * @param int $newImageId of new image
-	 * @throws InvalidArgumentException if image id is not an integer
-	 * @throws RangeException if image id is negative
+	 * @throws \InvalidArgumentException if image id is not an integer
+	 * @throws \RangeException if image id is negative
 	 **/
-	public function setImageId($newImageId) {
+	public function setImageId(int $newImageId = null) {
 		//If empty image id, allow MySQL to auto-increment
 		if($newImageId === null) {
 			$this->imageId = null;
@@ -129,8 +129,8 @@ class Image implements \JsonSerializable {
 	/**
 	 * Mutator method for imageProfileId
 	 * @param int $newImageProfileId of new profileId
-	 * @throws InvalidArgumentException if profile id is not an integer
-	 * @throws RangeException if profile id is negative
+	 * @throws \InvalidArgumentException if profile id is not an integer
+	 * @throws \RangeException if profile id is negative
 	 **/
 	public function setImageProfileId($newImageProfileId) {
 		//Filter
@@ -152,7 +152,7 @@ class Image implements \JsonSerializable {
 
 	/**
 	 * Accessor for imageDate
-	 * @return datetime value for the image's date
+	 * @return \datetime value for the image's date
 	 **/
 	public function getImageDate() {
 		return ($this->imageDate);
@@ -160,9 +160,9 @@ class Image implements \JsonSerializable {
 
 	/**
 	 * Mutator method for imageDate
-	 * @param datetime $newImageDate string for newImageDate or null to load current time
-	 * @throws InvalidArgumentException if $newImageDate is not a valid object or string
-	 * @throws RangeException if $newImageDate is a date that does not exist
+	 * @param \datetime $newImageDate string for newImageDate or null to load current time
+	 * @throws \InvalidArgumentException if $newImageDate is not a valid object or string
+	 * @throws \RangeException if $newImageDate is a date that does not exist
 	 **/
 	public function setImageDate($newImageDate = null) {
 		//If date is null, set current time and date
@@ -194,9 +194,9 @@ class Image implements \JsonSerializable {
 
 	/**
 	 * Mutator method for imageFileName
-	 * @param string $newimageFileName string for newImageFileName
-	 * @throws InvalidArgumentException if type is only non-sanitized values
-	 * @throws RangeException if image file name will not fit in database
+	 * @param string $newImageFileName string for newImageFileName
+	 * @throws \InvalidArgumentException if type is only non-sanitized values
+	 * @throws \RangeException if image file name will not fit in database
 	 **/
 	public function setImageFileName($newImageFileName) {
 		//Sanitize
@@ -227,8 +227,8 @@ class Image implements \JsonSerializable {
 	/**
 	 * Mutator method for imageText
 	 * @param string $newImageText string for new image's text
-	 * @throws InvalidArgumentException if type is only non-sanitized values
-	 * @throws RangeException if image's text will not fit in database
+	 * @throws \InvalidArgumentException if type is only non-sanitized values
+	 * @throws \RangeException if image's text will not fit in database
 	 **/
 	public function setImageText($newImageText) {
 		//Sanitize
@@ -259,8 +259,8 @@ class Image implements \JsonSerializable {
 	/**
 	 * Mutator method for imageType
 	 * @param string $newImageType string for image type
-	 * @throws InvalidArgumentException if type is only non-sanitized values
-	 * @throws RangeException if image type will not fit in database
+	 * @throws \InvalidArgumentException if type is only non-sanitized values
+	 * @throws \RangeException if image type will not fit in database
 	 **/
 	public function setImageType($newImageType) {
 		//Sanitize
@@ -327,7 +327,7 @@ class Image implements \JsonSerializable {
 	/**
 	 * Delete image in database
 	 * @param \PDO $pdo PDO connection object
-	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \PDOException when MySQL-related error occurs
 	 **/
 	public function delete(\PDO $pdo) {
 		//Only deletes if image id exists
@@ -350,7 +350,7 @@ class Image implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $imageId id to search for
 	 * @return Image or null if not found
-	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
 	public static function getImageByImageId(\PDO $pdo, int $imageId) {
@@ -388,7 +388,7 @@ class Image implements \JsonSerializable {
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $imageProfileId id to search for
 	 * @return Image or null if not found
-	 * @throws PDOException when MySQL-related error occurs
+	 * @throws \PDOException when MySQL-related error occurs
 	 * @throws \TypeError when variables are not the correct data type
 	 **/
 	public static function getImageByImageProfileId(\PDO $pdo, int $imageProfileId) {
@@ -466,7 +466,7 @@ class Image implements \JsonSerializable {
  * @param \PDO $pdo PDO connection object
  * @param string $imageText string to search for
  * @return \SplFixedArray SplFixedArray of images or null if not found
- * @throws PDOException when MySQL-related error occurs
+ * @throws \PDOException when MySQL-related error occurs
  * @throws \TypeError when variables are not the correct data type
  **/
 	public static function getImageByImageText(\PDO $pdo, string $imageText) {
