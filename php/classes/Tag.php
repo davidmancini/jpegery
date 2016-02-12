@@ -111,7 +111,7 @@ class Tag implements \JsonSerializable {
 	 * @throws \InvalidArgumentException if $newTag is not a string or insecure
 	 * @throws \RangeException if $newTag is > 64vcharacters
 	 **/
-	public function setTagName(int $newTagName) {
+	public function setTagName(string $newTagName) {
 		// verify the tag is secure
 		$newTagName = trim($newTagName);
 		$newTagName = filter_var($newTagName, FILTER_SANITIZE_STRING);
