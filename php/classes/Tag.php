@@ -88,6 +88,9 @@ class Tag implements \JsonSerializable {
 			throw(new \RangeException("tag id is not positive"));
 		}
 
+		//Filter integers
+		$newTagId = filter_var($newTagId, FILTER_VALIDATE_INT);
+
 		// convert and store the tag id
 		$this->tagId = $newTagId;
 	}
