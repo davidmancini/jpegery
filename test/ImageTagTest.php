@@ -32,7 +32,9 @@ class ImageTagTest extends JpegeryTest {
 	protected $profile = null;
 
 
-
+	/**
+	 * Create dependant objects before running each test
+	 **/
 	public final function setUp() {
 		//Run the default setUp() method first
 		parent::setUp();
@@ -47,7 +49,10 @@ class ImageTagTest extends JpegeryTest {
 		$this->imageTagTag->insert($this->getPDO());
 	}
 
-	public function testInsertValidImageTag () {
+	/**
+	 * Test inserting an ImageTag
+	 **/
+	public function testInsertValidImageTag() {
 		//Count the number of rows for later
 		$numRows = $this->getConnection()->getRowCount("imageTag");
 		$imageTag = new ImageTag($this->imageTagImage->getImageId(), $this->imageTagTag->getTagId());
@@ -61,11 +66,41 @@ class ImageTagTest extends JpegeryTest {
 	}
 
 	/**
-	 * Test creating
+	 * Test creating an invalid ImageTag
 	 *
 	 * @expectedException \TypeError
 	 **/
 	public function testInsertInvalidImageTag() {
 		$imageTag = new ImageTag(null, null);
+		$imageTag->insert($this->getPDO());
+	}
+
+	/**
+	 * Test deleting an imageTag
+	 **/
+	public function testDeleteValidImageTag() {
+		//Count the number of rows for later
+		$numRows = $this->getConnection()->getRowCount("imageTag");
+		$imageTag = new ImageTag($this->imageTagImage->getImageId(), $this->imageTagTag->getTagId());
+		$imageTag->insert($this->getPDO());
+
+		//Delete the ImageTag from mySQL
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("imageTag"));
+		$imageTag->delete($this->getPDO());
+
+		//Grab the data from mySQL to make sure it is really dead
+		$pdoImageTag = ImageTag::getImageTagByImageIdAndTagId($this->getPDO(), $this->imageTagImage->getImageId(), $this->imageTagTag->getTagId());
+		$this->assertNull($pdoImageTag);
+		$this->assertEquals($numRows, $this->getConnection()->getRowCount("imageTag"));
+	}
+
+	public function testGetValidImageTagByImageId() {
+		//Count the number of rows for later
+		$numRows = $this->getConnection()->getRowCount("imageTag");
+
+		$imageTag = new ImageTag($this->imageTagImage->getImageId(), $this->imageTagTag->getTagId());
+		$imageTag->insert($this->getPDO());
+		$results = ImageTag::getImageTagByImageId($this->getPDO(), $this->imageTagImage->getImageId());
+
 	}
 }

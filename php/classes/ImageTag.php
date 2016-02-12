@@ -247,6 +247,15 @@ public function delete(\PDO $pdo) {
 	 * @throw \TypeError when variables are not the correct data type
 	 * **/
 
+	/**
+	 * Gets all tags a specific image has
+	 *
+	 * @param \PDO $pdo
+	 * @param int $imageId
+	 * @return \SplFixedArray of imageTags found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not of the correct data type
+	 **/
 	public static function getImageTagByImageId(\PDO $pdo, int $imageId) {
 		//sanitize the tagId before searching
 		if($imageId <= 0) {
@@ -277,6 +286,16 @@ public function delete(\PDO $pdo) {
 		return ($imageTags);
 	}
 
+	/**
+	 * Determines whether or not a particular image has a specific tag.
+	 *
+	 * @param \PDO $pdo
+	 * @param int $imageId
+	 * @param int $tagId
+	 * @return ImageTag|null ImageTag if found or null
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not of the correct data type
+	 **/
 	public static function getImageTagByImageIdAndTagId(\PDO $pdo, int $imageId, int $tagId) {
 
 		if($imageId <= 0) {
@@ -310,10 +329,6 @@ public function delete(\PDO $pdo) {
 		}
 		return($imageTag);
 	}
-
-
-
-
 
 
 /**
