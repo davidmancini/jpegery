@@ -119,11 +119,14 @@ class Profile implements \JsonSerializable {
 			//Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
-		} catch(\RangeException $range) {
+		}
+		catch(\RangeException $range) {
 			throw(new \RangeException($range->getMessage(), 0, $range));
-		} catch(\TypeError $typeError) {
+		}
+		catch(\TypeError $typeError) {
 			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
-		} catch(\Exception $exception) {
+		}
+		catch(\Exception $exception) {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}

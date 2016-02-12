@@ -2,8 +2,9 @@
 
 namespace Edu\Cnm\Jpegery\Test;
 
-
 use Edu\Cnm\Jpegery\Profile;
+use Edu\Cnm\Jpegery\Vote;
+use Edu\Cnm\Jpegery\Image;
 
 // get the project test parameters
 require_once("JpegeryTest.php");
@@ -23,10 +24,15 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
 class VoteTest extends JpegeryTest {
 
 	/**
+	 *  vote id
+	 * @var $VALID_VOTEID
+	 */
+	protected $VALID_VOTEID = null;
+	/**
 	 *  vote profile id
 	 * @var $VALID_VOTEPROFILEID
 	 */
-	protected $VALID_VOTEID = "PHPUnit test passing";
+	protected $VALID_PROFILEID = null;
 
 	/**
 	 * vote image id
@@ -44,17 +50,26 @@ class VoteTest extends JpegeryTest {
 	 * create dependent objects before running each test
 	 **/
 
+	/**
+	 * @var Profile $profile
+	 */
+	protected $profile = null;
+
+	protected $image = null;
+
 	public final function setUp() {
 		// run the default setUp() method first
 		parent::setUp();
 
-		// create and insert a Profile to own the test profile
-		$this->profile = new Profile(null, "@phpunit", "test@phpunit.de", "+12125551212");
+		// create and insert a Profile
+		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "yes");
 		$this->profile->insert($this->getPDO());
 
-	}
+		// create and insert an Image
+		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
+		$this->image->insert($this->getPDO());
 
-	//todo add voteImageId det up function
+	}
 
 
 	/**
@@ -64,15 +79,15 @@ class VoteTest extends JpegeryTest {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("vote");
 
-		// create a new Tweet and insert to into mySQL
-		$vote = new Vote(null, $this->profile->getProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTETYPE);
+		// create a new Vote and insert to into mySQL
+		$vote = new Vote(null, $this->profile->getProfileId(), $this->image->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
 		$this->assertEquals($pdoVote->getProfileId(), $this->profile->ProfileId());
-		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getVoteImageId());
+		$this->assertEquals($pdoVote->getVoteImageId(), $this->image->getImageId());
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
 
@@ -83,7 +98,7 @@ class VoteTest extends JpegeryTest {
 	 **/
 	public function testInsertInvalidVote() {
 		// create a Vote with a non null Vote id and watch it fail
-		$vote = new Vote(DataDesignTest::INVALID_KEY, $this->voteProfile->getvoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
+		$vote = new Vote(JpegeryTest::INVALID_KEY, $this->voteProfile->getvoteProfileId(), $this->voteImage->getVoteImageId(), $this->VALID_VOTEVALUE);
 		$vote->insert($this->getPDO());
 	}
 
@@ -117,7 +132,7 @@ class VoteTest extends JpegeryTest {
 	 **/
 	public function testUpdateInvalidVote() {
 		// create a Vote with a non null Vote id and watch it fail
-		$vote = new Vote(null, $this->profile->getProfileId(), $this->voteImage->getvoteImageId(), $this->VALID_TWEETDATE);
+		$vote = new Vote(null, $this->voteProfile->getProfileId(), $this->voteImage->getvoteImageId(), $this->VALID_TWEETDATE);
 		$vote->update($this->getPDO());
 	}
 
@@ -156,7 +171,7 @@ class VoteTest extends JpegeryTest {
 
 
 	/**
-	 * test inserting a Vote and regrabbing it from mySQL
+	 * test inserting a Vote then grabbing it from mySQL
 	 **/
 	public function testGetValidVoteByVoteId() {
 		// count the number of rows and save it for later
@@ -179,7 +194,7 @@ class VoteTest extends JpegeryTest {
 	 **/
 	public function testGetInvalidVoteByVoteId() {
 		// grab a profile id that exceeds the maximum allowable profile id
-		$vote = Vote::getVoteByVoteId($this->getPDO(), DataDesignTest::INVALID_KEY);
+		$vote = Vote::getVoteByVoteId($this->getPDO(), JpegeryTest::INVALID_KEY);
 		$this->assertNull($vote);
 	}
 
