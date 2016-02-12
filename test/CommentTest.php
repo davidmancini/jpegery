@@ -105,11 +105,42 @@ class CommentTest extends JpegeryTest {
 		$comment->insert($this->getPDO());
 	}
 
+	/**
+	 * Test inserting a comment with invalid (Negative) input for the comment id itself
+	 *
+	 * @expectedException \RangeException
+	 **/
 	public function testInsertInvalidNegativeCommentId() {
 		//Create a comment with a negative id
 		$comment = new Comment($this->NEGATIVE_ID, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
 	}
 
+	/**
+	 * Test inserting a comment with invalid (Negative) input for its image
+	 *
+	 * @expectedException \RangeException
+	 **/
+	public function testInsertInvalidNegativeImageId() {
+		//Create a comment with a negative image id
+		$comment = new Comment(null, $this->NEGATIVE_ID, $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+	}
+
+	/**
+	 * Test inserting a comment with invalid (Negative) input for its profile
+	 *
+	 * @expectedException \RangeException
+	 **/
+	public function testInsertInvalidNegativeProfileId() {
+		//Create a comment with a negative profile id
+		$comment = new Comment(null, $this->image->getImageId(), $this->NEGATIVE_ID, $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+	}
+
+	public function testInsert() {
+
+	}
 	/**
 	 * Test inserting a comment, editing it, and then updating it.
 	 **/

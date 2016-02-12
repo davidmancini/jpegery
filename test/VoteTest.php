@@ -47,7 +47,9 @@ class VoteTest extends JpegeryTest {
 	 * @var Profile $profile
 	 */
 	protected $voteProfile = null;
-
+	/**
+	 * @var Image $image
+	 */
 	protected $voteImage = null;
 
 	public final function setUp() {
@@ -77,7 +79,7 @@ class VoteTest extends JpegeryTest {
 		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$pdoVote = Vote::getVoteByVoteId($this->getPDO(), $vote->getVoteId());
+		$pdoVote = Vote::getVoteByProfileIdAndImage($this->getPDO(), $vote->getVoteId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
 		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getProfileId());
 		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getImageId());
