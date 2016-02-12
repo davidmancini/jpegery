@@ -145,6 +145,10 @@ class Tag implements \JsonSerializable {
 				VALUES(:tagId, :tagName))";
 		$statement = $pdo->prepare($query);
 
+		//bind the variables to placeholder in the template
+		$parameters = ["tagId" => $this->tagId, "tagName" => $this->tagName];
+		$statement->execute($parameters);
+
 		//update the null tagId with what mySQL just gave us
 		$this->tagId = intval($pdo->lastInsertId());
 
