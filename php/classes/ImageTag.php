@@ -128,13 +128,13 @@ class ImageTag implements \JsonSerializable {
 
 public function insert(\PDO $pdo) {
 	//enforce the ImageTag is not null (i.e. don't insert a tag that does not exist)
-	if($this->imageId !== null || $this->tagId !== null) {
+	if($this->imageId === null || $this->tagId === null) {
 		throw(new \PDOException("not an existing tag"));
 	}
 
 	//create query template
-	$query = "INSERT INTO imageTag(imageId, tagId
-				VALUES(:imageId, :tagId))";
+	$query = "INSERT INTO imageTag(imageId, tagId)
+				VALUES(:imageId, :tagId)";
 	$statement = $pdo->prepare($query);
 
 		//bind the member variables to the place holders in the template
