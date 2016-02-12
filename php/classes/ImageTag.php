@@ -252,7 +252,7 @@ public function delete(\PDO $pdo) {
 		}
 
 		//create query template
-		$query = "SELECT imageId, tagId FROM ImageTag WHERE imageId = :imageId";
+		$query = "SELECT imageId, tagId FROM imageTag WHERE imageId = :imageId";
 		$statement = $pdo->prepare($query);
 
 		//bind the tag id to the place holder in the template
@@ -296,7 +296,7 @@ public function delete(\PDO $pdo) {
 		}
 
 		//create query template
-		$query = "SELECT imageId, tagId FROM ImageTag WHERE imageId = :imageId AND tagId = :tagId";
+		$query = "SELECT imageId, tagId FROM imageTag WHERE imageId = :imageId AND tagId = :tagId";
 		$statement = $pdo->prepare($query);
 
 		//bind the tag id to the place holder in the template
