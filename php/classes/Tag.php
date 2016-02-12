@@ -35,7 +35,7 @@ class Tag implements \JsonSerializable {
 	/**
 	 * constructor for this item
 	 *
-	 * @param int $newTagId id of this Tag or null if a new Tag
+	 * @param int|null $newTagId id of this Tag or null if a new Tag
 	 * @param string $newTagName name of a given tag
 	 * @throws \InvalidArgumentException if data types are not valid
 	 * @throws \RangeException if data values are out of bounds (e.g., strings too long, negative integers)

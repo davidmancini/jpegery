@@ -41,7 +41,7 @@ class TagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("tag");
 
 		//create a new Tag and insert it into mySQL
-		$tag = new \Edu\Cnm\Jpegery\Tag(null, $this->VALID_TAGNAME);
+		$tag = new Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 
 		//grab data from mySQL and enforce firleds to match expectations
