@@ -185,7 +185,7 @@ class Tag implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = "UPDATE tag SET tagName :tagName,
+		$query = "UPDATE tag SET tagName = :tagName
  		WHERE tagId = :tagId";
 		$statement = $pdo->prepare($query);
 
