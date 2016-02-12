@@ -287,6 +287,38 @@ class Tag implements \JsonSerializable {
 
 	}
 
+	/**
+	 * Gets all tags
+	 *
+	 * @param \PDOException
+	 * @return \SplFixedArray SpleFixedArray of Tags found or null if not found
+	 * @thorws \PDOException when mySQL related issues occur
+	 * @throws \TypeError when varialbes are not the correct data type
+	 *
+	 */
+	public static function getAllTags(\PDO $pdo) {
+		//create query template
+		$query = "SELECT tagId, tagName FROM tag";
+		$statement = $pdo->prepare($query);
+		$statement->execute();
+
+		//build an array of tags
+		$tags = new \SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
+		while(($row = $statement->fetch()) !== false) {
+			try {
+				$tag = new Tag($row["tagId"], $row["tagName"]);
+				$tags[$tags->key()] = $tag;
+				$tags->next();
+			} catch(\Exception $exception) {
+				//if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+			}
+
+		}
+		return ($tags);
+	}
+
 
 	/**
 	 * formats the state variables for JSON serialization
