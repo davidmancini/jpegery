@@ -63,6 +63,7 @@ class FollowerTest extends JpegeryTest {
 	public function testInsertInvalidFollower() {
 		//Create a follower relationship without foreign keys
 		$follow = new Follower(null, null);
+		$follow->insert($this->getPDO());
 	}
 
 	/**
