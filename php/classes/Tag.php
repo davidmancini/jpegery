@@ -73,7 +73,7 @@ class Tag implements \JsonSerializable {
 	/**
 	 * mutator method for tag id
 	 *
-	 * @param string $newTagId new value of tag id
+	 * @param int|null $newTagId new value of tag id
 	 * @throws \RangeException if $newTagId is not positive
 	 * @throws \TypeError if $newTagId is not an integer
 	 **/
@@ -109,7 +109,7 @@ class Tag implements \JsonSerializable {
 	 *
 	 * @param string $newTagName new value of tag name
 	 * @throws \InvalidArgumentException if $newTag is not a string or insecure
-	 * @throws \RangeException if $newTag is > 64vcharacters
+	 * @throws \RangeException if $newTag is > 64characters
 	 **/
 	public function setTagName(string $newTagName) {
 		// verify the tag is secure
