@@ -42,25 +42,25 @@ class ProfileTest extends JpegeryTest {
 
 	/**
 	 * profile email
-	 * @var $VALID_PROFILEEMAIL
+	 * @var string $VALID_PROFILEEMAIL
 	 */
 	protected $VALID_PROFILEEMAIL = "PHPUnit test pass";
 
 	/**
 	 * profile handle
-	 * @var $VALID_PROFILEHANDLE
+	 * @var string $VALID_PROFILEHANDLE
 	 */
 	protected $VALID_PROFILEHANDLE = "PHPUnit test pass";
 
 	/**
 	 * profile hash
-	 * @var $Valid_PROFILEHASH
+	 * @var string $Valid_PROFILEHASH
 	 */
 	protected $VALID_PROFILEHASH = "PHPUnit test pass";
 
 	/**
 	 * profile avatar
-	 * @var $VALID_PROFILEIMAGEID
+	 * @var int $VALID_PROFILEIMAGEID
 	 */
 	protected $VALID_PROFILEIMAGEID = 1;
 
