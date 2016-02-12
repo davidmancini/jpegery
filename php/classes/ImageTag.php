@@ -236,17 +236,6 @@ public function delete(\PDO $pdo) {
 	}
 
 
-
-	/**
-	 * gets imageTag by imageId
-	 *
-	 * @param \PDO $pdo connection object
-	 * @param int $tagId to search for
-	 * @return Tag|null Tag found or null if not found
-	 * @throws \PDOException when mySQL related errors occur
-	 * @throw \TypeError when variables are not the correct data type
-	 * **/
-
 	/**
 	 * Gets all tags a specific image has
 	 *
