@@ -69,7 +69,7 @@ class TagTest extends JpegeryTest {
 		$tag->insert($this->getPDO());
 
 		//grab the data from mySQL and enforce the fields that match our expectations
-		$results = Tag::getTagByTagName($this->getPDO(), $tag->getTagName());
+		$results = Tag::getTagByName($this->getPDO(), $tag->getTagName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount());
 		$this->assertCount(1, $results);
 		$this->assertContainsOnlyInstanceOf("Edu\\Cnm\\Jpegery\\Classes\\tag, $results");
