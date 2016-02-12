@@ -113,7 +113,7 @@ class TagTest extends JpegeryTest {
 
 		//grab the result from the array and validate it
 		$pdoTag = $results[0];
-		$this->assertEquals($pdoTag->getTagId(), $this->tag->getTagId());
+		$this->assertEquals($pdoTag->getTagId(), $tag->getTagId());
 		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
 
 
