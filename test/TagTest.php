@@ -41,14 +41,14 @@ class TagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("tag");
 
 		//create a new Tag and insert it into mySQL
-		$tag = new Tag(null, $this->VALID_TAGNAME);
+		$tag = new \Edu\Cnm\Jpegery\Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
 	}
 
 	/**
 	 * Test inserting a Tag that already exists
 	 *
-	 * @epectedException PDOException
+	 * @ExpectedException PDOException
 	 */
 	public function testInsertInvalidTag() {
 		//create a Tag with a non null id and watch it fail
@@ -107,7 +107,7 @@ class TagTest extends JpegeryTest {
 		$results = Tag::getAllTags($this->getPDO());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
 		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Classes\\Tag");
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Classes\\Tag", $results);
 
 		//grab the result from the array and validate it
 		$pdoTag = $results[0];
