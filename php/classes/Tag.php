@@ -215,7 +215,7 @@ class Tag implements \JsonSerializable {
 
 
 		//create query template
-		$query = "SELECT tagId, tagName FROM tag where tagId = :tagId, tagName = :tagName";
+		$query = "SELECT tagId, tagName FROM tag WHERE tagId = :tagId";
 
 		$statement = $pdo->prepare($query);
 
