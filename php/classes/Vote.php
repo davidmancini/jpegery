@@ -141,6 +141,7 @@ class Vote {
 		return $this->voteImageId;
 	}
 
+
 	/**
 	 * mutator method for vote image id
 	 * @param int $newVoteImageId the new value of vote profile id
