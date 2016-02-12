@@ -48,9 +48,9 @@ class ImageTest extends JpegeryTest {
 	protected $VALID_IMAGETEXT2 = "This is updated image text.";
 
 	/**
- * String of image type
- * @var String $VALID_IMAGETYPE
- **/
+	 * String of image type
+	 * @var String $VALID_IMAGETYPE
+	 **/
 	protected $VALID_IMAGETYPE = "jpg";
 
 	/**
@@ -139,22 +139,22 @@ class ImageTest extends JpegeryTest {
 		$this->assertEquals($numRows, $this->getConnection()->getRowCount("image"));
 	}
 
-	/***
+	/**
 	 * Test inserting an image that already exists
 	 *
 	 * @expectedException PDOException
-	 ***/
+	 **/
 	public function testInsertInvalidImage() {
 		//Create an image with a non-null image id and watch it fail
 		$image = new Image(JpegeryTest::INVALID_KEY, $this->profile->getProfileId(), $this->VALID_IMAGETYPE, $this->VALID_IMAGEFILENAME, $this->VALID_IMAGETEXT, $this->VALID_IMAGEDATE);
 		$image->insert($this->getPDO());
 	}
 
-	/***
+	/**
 	 * Test deleting an image that does not exist
 	 *
 	 * @expectedException PDOException
-	 ***/
+	 **/
 	public function testDeleteInvalidImage() {
 		//Count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("image");
