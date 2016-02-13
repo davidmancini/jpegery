@@ -18,15 +18,23 @@ require_once(dirname(__DIR__) . "/php/classes/autoload.php");
  * @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
  **/
 class TagTest extends JpegeryTest {
+
 	/**
 	 * tag id
+	 * @var int $TAGID
+	 **/
+	protected $VALID_TAGID = "null";
+
+
+	/**
+	 * tag name
 	 * @var string $VALID_TAGNAME
 	 **/
 
 	protected $VALID_TAGNAME = "PHPUnitTestPass";
 
 	/**
-	 * tag id
+	 * tag name
 	 * @var string $VALID_TAGNAME2
 	 **/
 
