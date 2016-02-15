@@ -57,6 +57,7 @@ class CommentTest extends JpegeryTest {
 	 **/
 	protected $image = null;
 
+
 	public final function setUp() {
 		//Run the default setUp() method first
 		parent::setUp();
@@ -77,7 +78,7 @@ class CommentTest extends JpegeryTest {
 	 * Test inserting a valid Comment and verify that the mySQL data matches
 	 *
 	 **/
-	public function testInsertValidComment () {
+	public function testInsertValidComment() {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
 
@@ -138,9 +139,6 @@ class CommentTest extends JpegeryTest {
 		$comment->insert($this->getPDO());
 	}
 
-	public function testInsert() {
-
-	}
 	/**
 	 * Test inserting a comment, editing it, and then updating it.
 	 **/
@@ -187,7 +185,7 @@ class CommentTest extends JpegeryTest {
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 		$comment->insert($this->getPDO());
 
-		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
 		$comment->delete($this->getPDO());
 
 		//Grab the data from mySQL and ensure that the comment has been properly...dealt with.
@@ -236,6 +234,7 @@ class CommentTest extends JpegeryTest {
 		$this->assertNull($comment);
 	}
 
+
 	/**
 	 * Testing Grabbing a comment by image id
 	 **/
@@ -249,7 +248,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its image id
 		$comments = Comment::getCommentByImageId($this->getPDO(), $comment->getCommentImageId());
-		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -273,7 +272,7 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * Testing Grabbing a comment by a profile Id
 	 **/
-	public function testGetValidCommentByProfileId () {
+	public function testGetValidCommentByProfileId() {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
 
@@ -283,7 +282,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its profile
 		$comments = Comment::getCommentByProfileId($this->getPDO(), $comment->getCommentProfileId());
-		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -311,7 +310,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its content
 		$comments = Comment::getCommentByCommentContent($this->getPDO(), $comment->getCommentText());
-		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -330,5 +329,46 @@ class CommentTest extends JpegeryTest {
 		//Search for content we know does not exist
 		$comment = Comment::getCommentByCommentContent($this->getPDO(), $this->INVALID_COMMENTTEXT);
 		$this->assertCount(0, $comment);
+	}
+
+	public function testInsertValidCommentAtCurrentTime() {
+		//Count the number of rows for future use
+		$numRows = $this->getConnection()->getRowCount("comment");
+
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), null, $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+		/*
+		 * ...How do I even test this?
+		 * I mean, seriously, how do I confirm that the new DateTime value is equivalent to the time it was created?
+		 *Maybe I should check to see if there's now a \DateTime object rather than a null value?
+		 */
+	}
+
+	/**
+	 * @expectedException \InvalidArgumentException
+	 */
+	public function testInsertInvalidCommentByInvalidArgumentOfTime() {
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), "Hello I am a string", $this->VALID_COMMENTTEXT);
+		$comment->insert($this->getPDO());
+	}
+
+//	/**
+//	 * @expectedException \RangeException
+//	 */
+//	public function testInsertInvalidCommentByOutOfRangeTime() {
+//		//Create a new Comment and insert it into mySQL
+//		$comment = new Comment(null, $this->image->getImageId(), \DateTime::ATOM, $this->VALID_COMMENTTEXT);
+//		$comment->insert($this->getPDO());
+//	}
+
+	/**
+	 * @expectedException \InvalidArgumentException
+	 */
+	public function testInsertInvalidCommentByEmptyText() {
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, "");
+		$comment->insert($this->getPDO());
 	}
 }
