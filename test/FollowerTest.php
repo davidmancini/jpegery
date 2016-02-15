@@ -174,4 +174,18 @@ class FollowerTest extends JpegeryTest {
 		$this->assertNull($follow);
 	}
 
+	/**
+	 * @expectedException \RangeException
+	 **/
+	public function testSetInvalidFollowerByNegativeFollowerId() {
+		$follow = new Follower(-1, $this->followed->getProfileId());
+		$follow->insert($this->getPDO());
+	}
+	/**
+	 * @expectedException \RangeException
+	 **/
+	public function testSetInvalidFollowerByNegativeFollowedId() {
+		$follow = new Follower($this->follower->getProfileId(), -1);
+		$follow->insert($this->getPDO());
+	}
 }
