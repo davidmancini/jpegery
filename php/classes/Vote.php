@@ -20,12 +20,6 @@ require_once("autoload.php");
 class Vote {
 
 	/**
-	 * composite primary key
-	 * @var $voteId
-	 */
-	private $voteId;
-
-	/**
 	 * profile id associated with vote
 	 * @var $voteProfileId
 	 */
@@ -55,9 +49,8 @@ class Vote {
 	 * @throws \TypeError if data types violate type hints
 	 * @throws \Exception if some other exception occurs
 	 **/
-	public function __construct(int $newVoteId = null, int $newVoteProfileId, int $newVoteImageId, $newVoteValue) {
+	public function __construct(int $newVoteProfileId, int $newVoteImageId, $newVoteValue) {
 		try {
-			$this->setVoteId($newVoteId);
 			$this->setVoteProfileId($newVoteProfileId);
 			$this->setVoteImageId($newVoteImageId);
 			$this->setVoteValue($newVoteValue);
@@ -74,36 +67,6 @@ class Vote {
 				throw(new \PDOException($exception->getMessage(), 0, $exception));
 			}
 		}
-
-
-	/**
-	 * accessor method for vote id
-	 *
-	 * @return int value of vote id
-	 **/
-	public function getVoteId() {
-		return $this->voteId;
-	}
-
-	/**
-	 * mutator method for vote id
-	 *
-	 * @param int|null $newVoteId
-	 * @throws \RangeException if $newVoteId is not positive
-	 * @throws \TypeError if $newVoteId is not an int
-	 **/
-	public function setVoteId(int $newVoteId = null) {
-		// If $newVoteId is null, this is a new comment
-		if($newVoteId === null) {
-			$this->voteId = null;
-			return;
-		}
-		//verify the comment id is positive
-		if($newVoteId <= 0) {
-			throw(new \RangeException("vote id is not positive"));
-		}
-		$this->voteId = $newVoteId;
-	}
 
 
 	/**
@@ -129,7 +92,7 @@ class Vote {
 		}
 
 		// save valid id
-		$this->VoteProfileId = $newVoteProfileId;
+		$this->voteProfileId = $newVoteProfileId;
 	}
 
 	/**
@@ -220,12 +183,12 @@ class Vote {
 
 	public function delete(\PDO $pdo) {
 		// enforce that this vote is not null
-		if($this->voteValue === null) {
+		if($this->voteProfileId === null && $this->voteImageId === null) {
 			throw(new \PDOException("vote does not exist"));
 		}
 
 		// create query template
-		$query = "DELETE FROM voteId WHERE voteId = :voteId";
+		$query = "DELETE FROM vote WHERE voteProfileId = :voteProfileId AND voteImageId = :voteImageId";
 		$statement = $pdo->prepare($query);
 
 		// bind member variable to the placeholders
@@ -246,12 +209,12 @@ class Vote {
 			throw(new \PDOException("cannot update, vote does not exist"));
 		}
 		// create query template
-		$query = "UPDATE voteValue SET voteProfileId = :votePofileId, voteImageId = :voteImageId, voteValue = :voteValue";
+		$query = "UPDATE vote SET voteValue = :voteValue";
 		$statement = $pdo->prepare($query);
 
 		// bind member variables to the placeholders
 
-		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
+		$parameters = ["voteValue" => $this->voteValue];
 		$statement->execute($parameters);
 	}
 
@@ -276,7 +239,7 @@ class Vote {
 		$statement = $pdo->prepare($query);
 
 		// bind the vote id to the place holder in the template
-		$parameters = array("voteProfileId" => $voteProfileId, "voteImageId"=>voteImageId);
+		$parameters = array("voteProfileId" => $voteProfileId, "voteImageId" => $voteImageId);
 		$statement->execute($parameters);
 
 		// grab the vote from mySQL
