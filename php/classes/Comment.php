@@ -219,7 +219,7 @@ class Comment implements \JsonSerializable {
 		if(empty($newCommentText) === true) {
 			throw(new \InvalidArgumentException("comment content is empty or insecure"));
 		}
-		if(strlen($newCommentText>1023)) {
+		if(strlen($newCommentText)>1023) {
 			throw(new \RangeException("Your comment is too long."));
 		}
 		$this->commentText = $newCommentText;

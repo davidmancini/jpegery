@@ -57,6 +57,12 @@ class CommentTest extends JpegeryTest {
 	 **/
 	protected $image = null;
 
+	/**
+	 * @var string
+	 */
+	protected $INVALID_TEXTLENGTH = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+
 
 	public final function setUp() {
 		//Run the default setUp() method first
@@ -78,7 +84,7 @@ class CommentTest extends JpegeryTest {
 	 * Test inserting a valid Comment and verify that the mySQL data matches
 	 *
 	 **/
-	public function testInsertValidComment() {
+	public function testInsertValidComment () {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
 
@@ -185,7 +191,7 @@ class CommentTest extends JpegeryTest {
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->VALID_COMMENTTEXT);
 		$comment->insert($this->getPDO());
 
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
 		$comment->delete($this->getPDO());
 
 		//Grab the data from mySQL and ensure that the comment has been properly...dealt with.
@@ -235,6 +241,7 @@ class CommentTest extends JpegeryTest {
 	}
 
 
+
 	/**
 	 * Testing Grabbing a comment by image id
 	 **/
@@ -248,7 +255,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its image id
 		$comments = Comment::getCommentByImageId($this->getPDO(), $comment->getCommentImageId());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -272,7 +279,7 @@ class CommentTest extends JpegeryTest {
 	/**
 	 * Testing Grabbing a comment by a profile Id
 	 **/
-	public function testGetValidCommentByProfileId() {
+	public function testGetValidCommentByProfileId () {
 		//Count the number of rows for future use
 		$numRows = $this->getConnection()->getRowCount("comment");
 
@@ -282,7 +289,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its profile
 		$comments = Comment::getCommentByProfileId($this->getPDO(), $comment->getCommentProfileId());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -310,7 +317,7 @@ class CommentTest extends JpegeryTest {
 
 		//Try to grab the comment in mySQL by its content
 		$comments = Comment::getCommentByCommentContent($this->getPDO(), $comment->getCommentText());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("comment"));
+		$this->assertEquals($numRows+1, $this->getConnection()->getRowCount("comment"));
 		$this->assertCount(1, $comments);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Comment", $comments);
 
@@ -370,5 +377,42 @@ class CommentTest extends JpegeryTest {
 		//Create a new Comment and insert it into mySQL
 		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, "");
 		$comment->insert($this->getPDO());
+	}
+
+	/**
+	 * @expectedException \RangeException
+	 */
+	public function testInsertInvalidCommentByTooMuchText() {
+		//Create a new Comment and insert it into mySQL
+		$comment = new Comment(null, $this->image->getImageId(), $this->profile->getProfileId(), $this->VALID_COMMENTDATE, $this->INVALID_TEXTLENGTH);
+		$comment->insert($this->getPDO());
+	}
+
+	/**
+	 * @expectedException \PDOException
+	 **/
+	public function testGetInvalidCommentByNegativeId() {
+		$pdoComment = Comment::getCommentByCommentId($this->getPDO(), $this->NEGATIVE_ID);
+	}
+
+	/**
+	 * @expectedException \PDOException
+	 **/
+	public function testGetInvalidCommentByNegativeImageId() {
+		$comments = Comment::getCommentByImageId($this->getPDO(), $this->NEGATIVE_ID);
+	}
+
+	/**
+	 * @expectedException \PDOException
+	 **/
+	public function testGetInvalidCommentByNegativeProfileId() {
+		$comments = Comment::getCommentByProfileId($this->getPDO(), $this->NEGATIVE_ID);
+	}
+
+	/**
+	 * @expectedException \PDOException
+	 **/
+	public function testGetInvalidCommentByEmptyComment() {
+		$comments = Comment::getCommentByCommentContent($this->getPDO(), "");
 	}
 }
