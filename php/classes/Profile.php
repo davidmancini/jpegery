@@ -11,7 +11,6 @@ require_once("autoload.php");
  *
  *The User's profile
  */
-
 class Profile implements \JsonSerializable {
 	use ValidateDate;
 
@@ -94,15 +93,15 @@ class Profile implements \JsonSerializable {
 	private $profileSalt;
 
 	/**
-	* verification method for profile
-	*
-	* @var $profileVerify
-	*/
+	 * verification method for profile
+	 *
+	 * @var $profileVerify
+	 */
 
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash,  int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt, string $newProfileVerify) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
@@ -115,18 +114,14 @@ class Profile implements \JsonSerializable {
 			$this->setProfilePhone($newProfilePhone);
 			$this->setProfileSalt($newProfileSalt);
 			$this->setProfileVerify($newProfileVerify);
-		}
-			//Rethrow the exception to the caller
+		} //Rethrow the exception to the caller
 		catch(\InvalidArgumentException $invalidArgument) {
 			throw(new \InvalidArgumentException($invalidArgument->getMessage(), 0, $invalidArgument));
-		}
-		catch(\RangeException $range) {
+		} catch(\RangeException $range) {
 			throw(new \RangeException($range->getMessage(), 0, $range));
-		}
-		catch(\TypeError $typeError) {
+		} catch(\TypeError $typeError) {
 			throw(new \TypeError($typeError->getMessage(), 0, $typeError));
-		}
-		catch(\Exception $exception) {
+		} catch(\Exception $exception) {
 			throw(new \Exception($exception->getMessage(), 0, $exception));
 		}
 	}
@@ -193,7 +188,7 @@ class Profile implements \JsonSerializable {
 	 */
 
 	public function getProfileCreateDate() {
-		return($this->profileCreateDate);
+		return ($this->profileCreateDate);
 	}
 
 	/**
@@ -223,7 +218,6 @@ class Profile implements \JsonSerializable {
 		// save date
 		$this->profileCreateDate = $newProfileCreateDate;
 	}
-
 
 
 	/**
@@ -305,17 +299,20 @@ class Profile implements \JsonSerializable {
 	 *
 	 * @param string $newProfileHash the value of profile hash
 	 * @throws \InvalidArgumentException if $newProfileHash is empty or insecure
-	 * @throws \TypeError if $newProfileHash is not a string
+	 * @throws \RangeException if $newProfileHash is not valid length
 	 */
 
 	public function setProfileHash(string $newProfileHash) {
 		//verify that the profile hash is valid
 		$newProfileHash = trim($newProfileHash);
-		$newProfileHash = filter_var($newProfileHash, FILTER_SANITIZE_STRING);
+		$newProfileHash = ctype_xdidgit($newProfileHash);
 		if(empty($newProfileHash) === true) {
-			throw(new \InvalidArgumentException("Profile hash is either empty or insecure"));
+			throw(new \InvalidArgumentException("profile hash is either empty or insecure"));
 		}
+		if($newProfileHash !== strlen(128)) {
+			throw (new\RangeException("profile hash is invalid"));
 
+		}
 		// save profile hash
 		$this->profileHash = $newProfileHash;
 	}
@@ -434,12 +431,16 @@ class Profile implements \JsonSerializable {
 	public function setProfileSalt(string $newProfileSalt) {
 		// verify that the profile salt is valid
 		$newProfileSalt = trim($newProfileSalt);
+		$newProfileSalt = ctype_xdidgit($newProfileSalt);
 		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
 		if(empty($newProfileSalt) === true) {
 			throw(new \InvalidArgumentException("profile salt is empty or insecure"));
 		}
+		if($newProfileSalt !== strlen(64)) {
+			throw (new\RangeException("profile salt is invalid"));
+		}
 
-		$this->profileSalt = $newProfileSalt;
+			$this->profileSalt = $newProfileSalt;
 	}
 
 	/**
@@ -582,7 +583,7 @@ class Profile implements \JsonSerializable {
 			//If the row couldn't be converted, rethrow it
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
 		}
-		return($profile);
+		return ($profile);
 	}
 
 	/**
@@ -594,7 +595,7 @@ class Profile implements \JsonSerializable {
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields ["profileCreateDate"] = intval($this->profileCreateDate->format("U")) * 1000;
-		return($fields);
+		return ($fields);
 	}
 // the end...
 }
