@@ -186,7 +186,7 @@ class ImageTest extends JpegeryTest {
 	}
 
 	/**
-	 * Test grabbing an image that does not exist
+	 * Test grabbing an image that does not existd
 	 **/
 	public function testGetImageByInvalidImageId() {
 		//Grab a profile id that exceeds the maximum allowable profile id
