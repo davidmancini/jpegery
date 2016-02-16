@@ -82,13 +82,13 @@ class TagTest extends JpegeryTest {
 		$tag->insert($this->getPDO());
 
 		//delete the tag from mySQL
-		$this > assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
 		$tag->delete($this->getPDO());
 
 		//grab the data from mySQL and enforce the tag does not exist
 		$pdoTag = Tag::getTagByTagId($this->getPDO(), $tag->getTagId());
 		$this->assertNull($pdoTag);
-		$this->assertEuqals($numRows, $this->getConnection()->getRowCount("tag"));
+		$this->assertEquals($numRows, $this->getConnection()->getRowCount("tag"));
 	}
 
 	/**
@@ -112,6 +112,19 @@ class TagTest extends JpegeryTest {
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
 		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME2);
 	}
+
+	/**
+	 * test deleting a tag that does not exist
+	 *
+	 * @expectedException PDOException
+	 **/
+
+	public function testDeleteInvalidTag() {
+		//create a tag and try to delete it without actually inserting it
+		$tag = new Tag(null, $this->VALID_TAGNAME);
+		$tag->delete($this->getPDO());
+	}
+
 
 	/**
 	 * test grabbing a tag that does not exist
