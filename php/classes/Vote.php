@@ -38,9 +38,8 @@ class Vote {
 	private $voteValue;
 
 	/**
-	 * Comment constructor.
+	 * vote constructor.
 	 *
-	 * @param int|null $newVoteId, composite key
 	 * @param int $newVoteImageId, foreign key
 	 * @param int $newVoteProfileId, foreign key
 	 * @param int $newVoteValue, Value of vote
@@ -56,6 +55,7 @@ class Vote {
 			$this->setVoteValue($newVoteValue);
 		}
 			//Rethrow the exception to the caller
+
 		catch(\RangeException $range) {
 				throw(new \RangeException($range->getMessage(), 0, $range));
 			}

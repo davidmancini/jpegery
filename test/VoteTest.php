@@ -85,11 +85,11 @@ class VoteTest extends JpegeryTest {
 	/**
 	 * test inserting a Vote that already exists
 	 *
-	 * @expectedException PDOException
+	 * @expectedException \PDOException
 	 **/
 	public function testInsertInvalidVote() {
 		// create a Vote with a non null Vote id and watch it fail
-		$vote = new Vote($this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
+		$vote = new Vote(JpegeryTest::INVALID_KEY, $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->insert($this->getPDO());
 	}
 
@@ -119,11 +119,11 @@ class VoteTest extends JpegeryTest {
 	/**
 	 * test updating a Vote that already exists
 	 *
-	 * @expectedException PDOException
+	 * @expectedException \PDOException
 	 **/
 	public function testUpdateInvalidVote() {
 		// create a Vote with a non null Vote id and watch it fail
-		$vote = new Vote($this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
+		$vote = new Vote(JpegeryTest::INVALID_KEY, $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->update($this->getPDO());
 	}
 
@@ -152,11 +152,11 @@ class VoteTest extends JpegeryTest {
 	/**
 	 * test deleting a Vote that does not exist
 	 *
-	 * @expectedException PDOException
+	 * @expectedException \PDOException
 	 **/
 	public function testDeleteInvalidVote() {
 		// create a Vote and try to delete it without actually inserting it
-		$vote = new Vote($this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
+		$vote = new Vote(JpegeryTest::INVALID_KEY, $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->delete($this->getPDO());
 	}
 
