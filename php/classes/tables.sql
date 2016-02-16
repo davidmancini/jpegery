@@ -16,7 +16,7 @@ CREATE TABLE profile (
 	profileHash CHAR(128) NOT NULL,
 	profileImageId INT UNSIGNED,
 	profileName VARCHAR(32),
-	profilePhone VARCHAR(24),
+	profilePhone VARCHAR(50),
 	profileSalt CHAR(64) NOT NULL,
 	profileVerify CHAR(32),
 	PRIMARY KEY(profileId)
