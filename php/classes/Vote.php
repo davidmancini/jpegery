@@ -177,13 +177,14 @@ class Vote {
 
 	/**
 	 * delete this vote from my SQL
-	 * \PDOException when mySQL errors occur
-	 * \TypeError if $pdo is not a PDO connection object
+	 * @param \PDO $pdo
+	 * @throws \PDOException when mySQL errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
 
 	public function delete(\PDO $pdo) {
 		// enforce that this vote is not null
-		if($this->voteProfileId === null && $this->voteImageId === null) {
+		if($this->voteProfileId === null || $this->voteImageId === null) {
 			throw(new \PDOException("vote does not exist"));
 		}
 
@@ -192,7 +193,7 @@ class Vote {
 		$statement = $pdo->prepare($query);
 
 		// bind member variable to the placeholders
-		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId, "voteValue" => $this->voteValue];
+		$parameters = ["voteProfileId" => $this->voteProfileId, "voteImageId" => $this->voteImageId];
 		$statement->execute($parameters);
 	}
 
