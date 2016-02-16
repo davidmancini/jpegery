@@ -70,6 +70,28 @@ class TagTest extends JpegeryTest {
 	}
 
 	/**
+	 * test creating a tag and then deleting it
+	 **/
+
+	public function testDeleteValidTag() {
+		//count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("tag");
+
+		//create a new tag and insert it into mySQL
+		$tag = new Tag(null, $this->VALID_TAGNAME);
+		$tag->insert($this->getPDO());
+
+		//delete the tag from mySQL
+		$this > assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
+		$tag->delete($this->getPDO());
+
+		//grab the data from mySQL and enforce the tag does not exist
+		$pdoTag = Tag::getTagByTagId($this->getPDO(), $tag->getTagId());
+		$this->assertNull($pdoTag);
+		$this->assertEuqals($numRows, $this->getConnection()->getRowCount("tag"));
+	}
+
+	/**
 	 * test inserting a tag and editing it, and then updating it
 	 **/
 
@@ -103,28 +125,28 @@ class TagTest extends JpegeryTest {
 
 	/**
 	 * test grabbing all tags
-	 *
-	 *
-	 * public function testGetAllValidTags() {
-		* //count the number of rows and save it for later
-		* $numRows = $this->getConnection()->getRowCount("tag");
- *
-* //create a new Tag and insert it into mySQL
-		* $tag = new Tag(null, $this->VALID_TAGNAME);
-		* $tag->insert($this->getPDO());
- *
-* //grab the data from mySQL and enforce the fields match our expectations
-		* $results = Tag::getAllTags($this->getPDO());
-		* $this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
-		* $this->assertCount(1, $results);
-		* $this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Tag", $results);
- *
-* //grab the result from the array and validate it
-		* $pdoTag = $results[0];
-		* $this->assertEquals($pdoTag->getTagId(), $tag->getTagId());
-		* $this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
- *
-*
-* } **/
+	 **/
+
+	public function testGetAllValidTags() {
+		//count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("tag");
+
+		//create a new Tag and insert it into mySQL
+		$tag = new Tag(null, $this->VALID_TAGNAME);
+		$tag->insert($this->getPDO());
+
+		//grab the data from mySQL and enforce the fields match our expectations
+		$results = Tag::getAllTags($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
+		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Tag", $results);
+
+		//grab the result from the array and validate it
+		$pdoTag = $results[0];
+		$this->assertEquals($pdoTag->getTagId(), $tag->getTagId());
+		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
+
+
+	}
 
 }
