@@ -240,7 +240,7 @@ class ProfileTest extends JpegeryTest {
 	}
 
 	/**
-	 * test grabbing a vote that does not exist
+	 * test grabbing a Profile that does not exist
 	 **/
 	public function testGetInvalidProfileByProfileId() {
 		// grab a profile id that exceeds the maximum allowable profile id
