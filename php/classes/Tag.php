@@ -250,7 +250,7 @@ class Tag implements \JsonSerializable {
 	 * @throws \PDOException when mySQL related errors occur
 	 * @throw \TypeError when
 	 */
-	public static function getTagByName(\PDO $PDO, string $tagName) {
+	public static function getTagByName(\PDO $pdo, string $tagName) {
 		//sanitize query before searching
 		$tagName = trim($tagName);
 		$tagName = filter_var($tagName, FILTER_SANITIZE_STRING);
@@ -260,11 +260,11 @@ class Tag implements \JsonSerializable {
 		}
 
 		//create query template
-		$query = "SELECT tagName, tagId FROM tag WHERE tagName LIKE :tagName";
-		$statement = $PDO->prepare($query);
+		$query = "SELECT tagId, tagName FROM tag WHERE tagName LIKE :tagName";
+		$statement = $pdo->prepare($query);
 
 		//bind the tag name to the place holder in the template
-		$tagName = "%tagName%";
+		$tagName = "%$tagName%";
 		$parameters = array("tagName" => $tagName);
 		$statement->execute($parameters);
 
@@ -285,10 +285,10 @@ class Tag implements \JsonSerializable {
 
 		//build an array of tags by this name
 		$tags = new \SplFixedArray($statement->rowCount());
-		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
-				$tag = new tag($row["tagId"], $row["tagName"]);
+				$tag = new Tag($row["tagId"], $row["tagName"]);
 				$tags[$tags->key()] = $tag;
 				$tags->next();
 

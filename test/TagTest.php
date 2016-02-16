@@ -148,20 +148,15 @@ class TagTest extends JpegeryTest {
 		//create new tag and insert it into the database
 		$tag = new Tag(null, $this->VALID_TAGNAME);
 		$tag->insert($this->getPDO());
-//		var_dump($tag);
-
-		//get data from database and ensure the fields match
-//		$pdoTag = Tag::getTagByName($this->getPDO(), $tag->getTagName());
-//		var_dump($pdoTag);
 
 		$results = Tag::getTagByName($this->getPDO(), $tag->getTagName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
-		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Image", $results);
+//		$this->assertCount(1, $results);
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Tag", $results);
 
 		//grabs results from array and validates them
 		$pdoTag = $results[0];
-		$this->assertEquals($pdoTag->getTagId(), $this->VALID_TAGID);
+		$this->assertEquals($pdoTag->getTagId(), $tag->getTagId());
 		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
 	}
 
