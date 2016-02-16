@@ -182,7 +182,7 @@ class VoteTest extends JpegeryTest {
 
 		// grab the data from mySQL and enforce the fields match our expectations
 		$results = Vote::getAllvotes($this->getPDO());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("Vote"));
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
 		$this->assertCount(1, $results);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Vote", $results);
 
