@@ -159,7 +159,7 @@ class Vote {
 
 	public function insert(\PDO $pdo) {
 		// enforce that vote is null
-		if($this->voteProfileId === null && $this->voteImageId === null) {
+		if($this->voteProfileId === null || $this->voteImageId === null) {
 			throw(new \PDOException("this is not a new vote"));
 		}
 
@@ -200,13 +200,13 @@ class Vote {
 	/**
 	 * update this vote in mySQL
 	 *
-	 * PDOException when mySQL errors occur
-	 * \TypeError if $pdo is not a PDO connection object
+	 * @throws \PDOException when mySQL errors occur
+	 * @throws \TypeError if $pdo is not a PDO connection object
 	 */
 
 	public function update(\PDO $pdo) {
 		// enforce that this vote in not null
-		if($this->voteValue === null) {
+		if($this->voteProfileId === null || $this->voteImageId === null) {
 			throw(new \PDOException("cannot update, vote does not exist"));
 		}
 		// create query template
