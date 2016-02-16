@@ -169,29 +169,29 @@ class VoteTest extends JpegeryTest {
 		$this->assertNull($vote);
 	}
 
-	/*
-	 * test grabbing a Vote by vote value
-
-	public function testGetValidVoteByVoteValue() {
+	/**
+	 * test grabbing all Votes
+	 **/
+	public function testGetAllValidVotes() {
 		// count the number of rows and save it for later
 		$numRows = $this->getConnection()->getRowCount("vote");
 
-		// create a new Tweet and insert to into mySQL
-		$vote = new Vote(null, $this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
+		// create a new Vote and insert to into mySQL
+		$vote = new Vote($this->voteProfile->getProfileId(), $this->voteImage->getImageId(), $this->VALID_VOTEVALUE);
 		$vote->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
-		$results = Vote::getVoteByVoteValue($this->getPDO(), $vote->getVotevalue());
-		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("vote"));
+		$results = Vote::getAllvotes($this->getPDO());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("Vote"));
 		$this->assertCount(1, $results);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Vote", $results);
 
 		// grab the result from the array and validate it
 		$pdoVote = $results[0];
-		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getVoteProfileId());
-		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImageId->getVoteImageId());
+		$this->assertEquals($pdoVote->getVoteProfileId(), $this->voteProfile->getProfileId());
+		$this->assertEquals($pdoVote->getVoteImageId(), $this->voteImage->getImageId());
 		$this->assertEquals($pdoVote->getVoteValue(), $this->VALID_VOTEVALUE);
 	}
-*/
+
 
 }

@@ -268,7 +268,7 @@ class Vote {
 	 **/
 	public static function getAllVotes(\PDO $pdo) {
 		// create query template
-		$query = "SELECT voteProfileId, voteImageId, voteValue, FROM vote";
+		$query = "SELECT voteProfileId, voteImageId, voteValue FROM vote";
 		$statement = $pdo->prepare($query);
 		$statement->execute();
 
