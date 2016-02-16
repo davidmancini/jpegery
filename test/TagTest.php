@@ -159,7 +159,6 @@ class TagTest extends JpegeryTest {
 		$this->assertCount(1, $results);
 		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Image", $results);
 
-
 		//grabs results from array and validates them
 		$pdoTag = $results[0];
 		$this->assertEquals($pdoTag->getTagId(), $this->VALID_TAGID);

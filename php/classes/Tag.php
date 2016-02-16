@@ -300,9 +300,10 @@ class Tag implements \JsonSerializable {
 			}
 
 
-			return ($tags);
+
 
 		}
+		return ($tags);
 	}
 
 	/**
