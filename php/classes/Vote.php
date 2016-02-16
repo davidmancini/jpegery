@@ -131,7 +131,8 @@ class Vote {
 		return $this->voteValue;
 	}
 
-	/** mutaor method for vote type
+	/**
+	 * mutator method for vote type
 	 *
 	 * @param int $newVoteValue verify vote value
 	 * @throws \RangeException if vote is not 1 or -1
