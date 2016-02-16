@@ -11,7 +11,7 @@ CREATE TABLE profile (
 	profileId INT UNSIGNED AUTO_INCREMENT NOT NULL,
 	profileAdmin BIT NOT NULL,
 	profileCreateDate DATETIME NOT NULL,
-	profileEmail VARCHAR(32) NOT NULL,
+	profileEmail VARCHAR(32) NOT NULL UNIQUE,
 	profileHandle VARCHAR(32) NOT NULL,
 	profileHash CHAR(128) NOT NULL,
 	profileImageId INT UNSIGNED,
