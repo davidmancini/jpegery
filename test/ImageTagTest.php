@@ -21,7 +21,7 @@ class ImageTagTest extends JpegeryTest {
 
 	/**
 	 * Tag that is given
-	 * @var \Edu\Cnm\Jpegery\Tag $imageTagTag
+	 * @var  \Edu\Cnm\Jpegery\Tag $imageTagTag
 	 **/
 	protected $imageTagTag = null;
 
@@ -103,4 +103,28 @@ class ImageTagTest extends JpegeryTest {
 		$results = ImageTag::getImageTagByImageId($this->getPDO(), $this->imageTagImage->getImageId());
 
 	}
+
+	/**
+	 * Test grabbing image tags by tagId
+	 */
+
+	public function getImageTagByTagId() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("imageTag");
+
+		//Create new image and insert into database
+		$imageTag = new ImageTag(null, $this->getImageTag());
+		$imageTag->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$pdoImage = Image::getImageTagByTagId($this->getPDO(), $imageTag->getImageTagId());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("imageTag"));
+
+		//Grabs results from array and validate it
+		$this->assertEquals($pdoImage->getImageTagTag(), $this->imageTagTag);
+		$this->assertEquals($pdoImage->getImageTagImage(), $this->imageTagImage);
+		$this->assertEquals($pdoImage->getProfile(), $this->profile);
+
+	}
+
 }
