@@ -136,6 +136,28 @@ class TagTest extends JpegeryTest {
 		$this->asserCount(0, $tag);
 }
 
+//	/**
+//	 * test grabbing a tag by Name
+//	 **/
+//
+//	public function testGetTagByName() {
+//
+//		//count the number of rows and save them for later
+//		$numRows = $this->getConnection()->getRowCount("tag");
+//
+//		//create new tag and insert it into the database
+//		$tag = new Tag(null, $this->VALID_TAGNAME);
+//		$tag->insert($this->getPDO());
+//		var_dump($tag);
+//
+//		//get data from database and ensure the fields match
+//		$pdoTag = Tag::getTagByName($this->getPDO(), $tag->getTagName());
+//		var_dump($pdoTag);
+//		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
+//		$this->assertEquals($pdoTag->getTagId(), $this->VALID_TAGID);
+//		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
+//	}
+
 	/**
 	 * test grabbing all tags
 	 **/
