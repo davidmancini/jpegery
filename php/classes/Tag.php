@@ -260,11 +260,11 @@ class Tag implements \JsonSerializable {
 		}
 
 		//create query template
-		$query = "SELECT tagName, tagId FROM tag WHERE tagName LIKE :tagName";
+		$query = "SELECT tagId, tagName FROM tag WHERE tagName LIKE :tagName";
 		$statement = $pdo->prepare($query);
 
 		//bind the tag name to the place holder in the template
-		$tagName = "%tagName%";
+		$tagName = "%$tagName%";
 		$parameters = array("tagName" => $tagName);
 		$statement->execute($parameters);
 
@@ -285,7 +285,7 @@ class Tag implements \JsonSerializable {
 
 		//build an array of tags by this name
 		$tags = new \SplFixedArray($statement->rowCount());
-		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
+		$statement->setFetchMode(\PDO::FETCH_ASSOC);
 		while(($row = $statement->fetch()) !== false) {
 			try {
 				$tag = new Tag($row["tagId"], $row["tagName"]);

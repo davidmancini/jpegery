@@ -13,12 +13,12 @@ CREATE TABLE profile (
 	profileCreateDate DATETIME NOT NULL,
 	profileEmail VARCHAR(32) NOT NULL,
 	profileHandle VARCHAR(32) NOT NULL,
-	profileHash VARCHAR(32) NOT NULL,
+	profileHash CHAR(128) NOT NULL,
 	profileImageId INT UNSIGNED,
 	profileName VARCHAR(32),
 	profilePhone VARCHAR(24),
-	profileSalt VARCHAR(32),
-	profileVerify VARCHAR(32),
+	profileSalt CHAR(64) NOT NULL,
+	profileVerify CHAR(32),
 	PRIMARY KEY(profileId)
 );
 CREATE TABLE image (

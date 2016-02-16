@@ -152,12 +152,11 @@ class TagTest extends JpegeryTest {
 		$results = Tag::getTagByName($this->getPDO(), $tag->getTagName());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("tag"));
 //		$this->assertCount(1, $results);
-		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Image", $results);
-
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\Tag", $results);
 
 		//grabs results from array and validates them
 		$pdoTag = $results[0];
-		$this->assertEquals($pdoTag->getTagId(), $this->VALID_TAGID);
+		$this->assertEquals($pdoTag->getTagId(), $tag->getTagId());
 		$this->assertEquals($pdoTag->getTagName(), $this->VALID_TAGNAME);
 	}
 
