@@ -275,19 +275,7 @@ class Tag implements \JsonSerializable {
 			$row = $statement->fetch();
 			if($row !== false) {
 				$tag = new Tag($row["tagId"], $row[$tagName]);
-
-
-				/**build an array of tags by this name
-				 * $tags = new\SplFixedArray($statement->rowCount());
-				 * $statement->setFetchMode(\PDO:: FETCH_ASSOC);
-				 * while($row = $statement->fetch() !== false) {
-				 * try {
-				 * $tag = new tag($row["tagId"], $row["tagName"]);
-				 * $tags[$tags->key()] = $tag;
-				 * $tags->next();**/
-
 			}
-
 		} catch(\Exception $exception) {
 			//if the row couldn't be converted, rethrow it
 			throw(new \PDOException($exception->getMessage(), 0, $exception));
@@ -295,8 +283,26 @@ class Tag implements \JsonSerializable {
 		}
 
 
-		return ($tag);
+		//build an array of tags by this name
+		$tags = new\SplFixedArray($statement->rowCount());
+		$statement->setFetchMode(\PDO:: FETCH_ASSOC);
+		while($row = $statement->fetch() !== false) {
+			try {
+				$tag = new tag($row["tagId"], $row["tagName"]);
+				$tags[$tags->key()] = $tag;
+				$tags->next();
 
+
+			} catch(\Exception $exception) {
+				//if the row couldn't be converted, rethrow it
+				throw(new \PDOException($exception->getMessage(), 0, $exception));
+
+			}
+
+
+			return ($tag);
+
+		}
 	}
 
 	/**
