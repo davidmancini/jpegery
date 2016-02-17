@@ -3,6 +3,7 @@
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
 require_once dirname(dirname(__DIR__)) . "../lib/xsrf.php";
 require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
+use Edu\Cnm\Jpegery\Image;
 
 /**
  * Controller/API for Image Class
@@ -35,10 +36,10 @@ try {
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
 	//Sanitize inputs
-	$imageId = filter_input(INPUT_GET, "imageId", FILTER_VALIDATE_INT);
+	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
 	//Make sure ID is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $imageId < 0)) {
+	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
 		throw(new InvalidArgumentException("ID cannot be empty or negative", 405));
 	}
 
@@ -48,7 +49,35 @@ try {
 	$imageType = filter_input(INPUT_GET, "imageType", FILTER_SANITIZE_STRING);
 	$imageFileName = filter_input(INPUT_GET, "imageFileName", FILTER_SANITIZE_STRING);
 	$imageText = filter_input(INPUT_GET, "imageText", FILTER_SANITIZE_STRING);
-	$profileId = filter_input(INPUT_GET, "imageDate", FILTER_SANITIZE_STRING);
+	$imageDate = filter_input(INPUT_GET, "imageDate", FILTER_SANITIZE_STRING);
+
+	//Handle REST calls
+	if($method === "GET") {
+		//Set XSRF cookie
+		setXsrfCookie("/");
+
+		//Get Image based on given field
+		if(empty($id) === false) {
+			$image = Image::getImageByImageId($pdo, $id);
+			if($image !== null) {
+				$reply->data = $image;
+			}
+		} else if(empty($profileId) === false) {
+			$image = Image::getImageByImageProfileId($pdo, $profileId);
+			if($image !== null) {
+				$reply->data = $image;
+			}
+		} else if(empty($imageFileName) === false) {
+			$image = Image::getImageByImageFileName($pdo, $imageFileName);
+			if($image !== null) {
+				$reply->data = $image;
+			}
+		} else if(empty($imageText) === false) {
+			$image = Image::getImageByImageText($pdo, $imageText);
+			if($image !== null) {
+				$reply->data = $image;
+			}
+		}
 
 
 
