@@ -53,7 +53,10 @@ class VoteTest extends JpegeryTest {
 		parent::setUp();
 
 		// create and insert a Profile
-		$this->voteProfile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "yes");
+		$password = "abc123";
+		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
+		$this->voteProfile = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, "yes");
 		$this->voteProfile->insert($this->getPDO());
 
 		// create and insert an Image
