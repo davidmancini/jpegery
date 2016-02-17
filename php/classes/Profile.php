@@ -592,6 +592,9 @@ class Profile implements \JsonSerializable {
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields ["profileCreateDate"] = intval($this->profileCreateDate->format("U")) * 1000;
+		unset($fields["profileHash"]);
+		unset($fields["profileSalt"]);
+		unset($fields["profileVerify"]);
 		return ($fields);
 	}
 // the end...

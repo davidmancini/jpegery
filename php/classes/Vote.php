@@ -17,7 +17,7 @@ require_once("autoload.php");
  * @author Jacob Findley
  * @author Zach Leyba
  */
-class Vote {
+class Vote implements \JsonSerializable {
 
 	/**
 	 * profile id associated with vote
@@ -289,5 +289,13 @@ class Vote {
 		return ($votes);
 	}
 
+	/**
+	 * formats the state variables for JSON serialization
+	 *
+	 * @return array resulting state variables to serialize
+	 **/
+	public function jsonSerialize() {
+		return (get_object_vars($this));
+	}
 
 }

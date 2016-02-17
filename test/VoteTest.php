@@ -25,11 +25,6 @@ class VoteTest extends JpegeryTest {
 
 
 	/**
-	 *  vote profile id
-	 * @var $VALID_VOTEPROFILEID
-	 */
-
-	/**
 	 * vote type
 	 * @var  $VALID_VOTEVALUE
 	 */
