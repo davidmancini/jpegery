@@ -116,30 +116,29 @@ class ImageTag implements \JsonSerializable {
 	}
 
 
+	/**
+	 * Inserts this Tag into mySQL
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @throws \PDOException when mySQL related error occurs
+	 * @throws \ TypeError if $pdo is not a PDO connection object
+	 *
+	 **/
 
-/**
- * Inserts this Tag into mySQL
- *
- * @param \PDO $pdo PDO connection object
- * @throws \PDOException when mySQL related error occurs
- * @throws \ TypeError if $pdo is not a PDO connection object
- *
- **/
+	public function insert(\PDO $pdo) {
+		//enforce the ImageTag is not null (i.e. don't insert a tag that does not exist)
+		if($this->imageId === null || $this->tagId === null) {
+			throw(new \PDOException("not an existing tag"));
+		}
 
-public function insert(\PDO $pdo) {
-	//enforce the ImageTag is not null (i.e. don't insert a tag that does not exist)
-	if($this->imageId === null || $this->tagId === null) {
-		throw(new \PDOException("not an existing tag"));
-	}
-
-	//create query template
-	$query = "INSERT INTO imageTag(imageId, tagId)
-				VALUES(:imageId, :tagId)";
-	$statement = $pdo->prepare($query);
+		//create query template
+		$query = "INSERT INTO imageTag(imageId, tagId)
+					VALUES(:imageId, :tagId)";
+		$statement = $pdo->prepare($query);
 
 		//bind the member variables to the place holders in the template
-	$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
-	$statement->execute($parameters);
+		$parameters = ["imageId" => $this->imageId, "tagId" => $this->tagId];
+		$statement->execute($parameters);
 
 	}
 
@@ -167,33 +166,6 @@ public function delete(\PDO $pdo) {
 	$statement->execute($parameters);
 }
 
-	/**
-	 * Updates imageTag in mySQL
-	 * @param \PDO $pdo connection object
-	 * @throws \PDOException when mySQL related errors occur
-	 */
-
-
-	//As a weak entity that can only has two possible permutations ("Exists", or "Does not exist"), there is no need for an update method.
-
-//public function update(\PDO $pdo) {
-//	//enforce tagId and tagName are not null
-//	if($this->imageId === null || $this->tagId === null) {
-//		throw(new \PDOException("not an existing tag"));
-//	}
-//	// create query template
-//	$query = "UPDATE imageTag SET tagName :tagName,
-// 		WHERE tagId = :tagId";
-//		$statement = $pdo->prepare($query);
-//
-//
-//	// bind the member variables to the place holders in the template
-//	$parameters = array("imageId" => $this->imageId, "tagId" => $this->tagId);
-//	$statement->execute($parameters);
-//
-//
-//
-//	}
 
 	/**
 	 * gets imageTag by tagId
