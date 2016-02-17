@@ -29,11 +29,13 @@ class FollowerTest extends JpegeryTest {
 	public final function setUp() {
 		//Run the default setUp() method first
 		parent::setUp();
-
+		$password = "abc123";
+		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
 		//Create and insert a profile for the follower object
-		$this->follower = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "def");
+		$this->follower = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, "def");
 		$this->follower->insert($this->getPDO());
-		$this->followed = new Profile(null, true, null, "Email2", "myName2", "passWARD", 2, "John", "5309", "123", "abc");
+		$this->followed = new Profile(null, true, null, "Email2", "myName2", $hash, 2, "John", "5309", $salt, "abc");
 		$this->followed->insert($this->getPDO());
 	}
 

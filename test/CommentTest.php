@@ -69,11 +69,12 @@ class CommentTest extends JpegeryTest {
 		parent::setUp();
 
 		//Create and insert a Profile to post the test Comment
-		//TODO: Finish this.
-		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "456", "yes");
+		$password = "abc123";
+		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
+		$this->profile = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, "yes");
 		$this->profile->insert($this->getPDO());
 
-		//TODO: Finish this.
 		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
 		$this->image->insert($this->getPDO());
 		//Calculate the date
