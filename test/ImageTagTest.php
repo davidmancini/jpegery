@@ -120,7 +120,7 @@ class ImageTagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("imageTag");
 
 		//Create new image and insert into database
-		$imageTag = new ImageTag(null, $this->getImageTagTag());
+		$imageTag = new ImageTag(null, $this->getImageTag());
 		$imageTag->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
