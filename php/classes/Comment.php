@@ -56,10 +56,10 @@ class Comment implements \JsonSerializable {
 	/**
 	 * Comment constructor.
 	 *
-	 * @param int|null $newCommentId, private key
-	 * @param int $newCommentImageId, foreign key
-	 * @param int $newCommentProfileId, foreign key
-	 * @param string $newCommentText
+	 * @param $newCommentId, private key
+	 * @param $newCommentImageId, foreign key
+	 * @param $newCommentProfileId, foreign key
+	 * @param $newCommentText
 	 * @param \DateTime|string|null $newCommentDate date and time comment was posted, or current time if null
 	 * @throws \InvalidArgumentException if the data types are not valid
 	 * @throws \RangeException if the data values are out of bounds
@@ -98,7 +98,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment id
 	 *
-	 * @param int|null $newCommentId
+	 * @param $newCommentId
 	 * @throws \RangeException if $newCommentId is not positive
 	 * @throws \TypeError if $newCommentId is not an int
 	 **/
@@ -126,7 +126,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment image id
 	 *
-	 * @param int $newCommentImageId
+	 * @param $newCommentImageId
 	 * @throws \RangeException if $newCommentImageId is not positive
 	 * @throws \TypeError if $newCommentImageId is not an int
 	 **/
@@ -150,7 +150,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment profile id
 	 *
-	 * @param int $newCommentProfileId
+	 * @param $newCommentProfileId
 	 * @throws \RangeException if $newCommentProfileId is not positive
 	 * @throws \TypeError if $newCommentProfileId is not an int
 	 **/
@@ -174,7 +174,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment date
 	 *
-	 * @param null $newCommentDate
+	 * @param $newCommentDate
 	 * @throws \InvalidArgumentException if $newCommentDate is not a valid object or string
 	 * @throws \RangeException if $newCommentDate is a date that cannot exist
 	 **/
@@ -207,7 +207,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for $newCommentText
 	 *
-	 * @param string $newCommentText
+	 * @param $newCommentText
 	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
 	 * @throws \RangeException if $newCommentText is more than 1023 characters
 	 * @throws \TypeError if $newCommentText is not a string
@@ -337,6 +337,8 @@ class Comment implements \JsonSerializable {
 	}
 
 	/**
+	 * Gets the comment by image id
+	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param int $imageId id of the image on which the comment is posted
 	 * @return \SplFixedArray SplFixedArray of Comments found
@@ -410,6 +412,7 @@ class Comment implements \JsonSerializable {
 
 	/**
 	 * gets Comments by content--Search for content
+	 *
 	 * @param \PDO $pdo PDO connection object
 	 * @param string $commentContent comment content to search for
 	 * @return \SplFixedArray SplFixedArray of Comments found
@@ -449,6 +452,11 @@ class Comment implements \JsonSerializable {
 		return ($comments);
 	}
 
+	/**
+	 * The jsonSerialize function--fulfilling a promise
+	 *
+	 * @return array
+	 */
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields["commentDate"] = intval($this->commentDate->format("U")) * 1000;

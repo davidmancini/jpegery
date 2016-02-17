@@ -269,6 +269,11 @@ class Follower implements \JsonSerializable {
 		return($follower);
 }
 
+	/**
+	 * The jsonSerialize function--fulfilling a promise
+	 *
+	 * @return array
+	 */
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		return ($fields);
