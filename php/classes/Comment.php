@@ -56,10 +56,10 @@ class Comment implements \JsonSerializable {
 	/**
 	 * Comment constructor.
 	 *
-	 * @param $newCommentId, private key
-	 * @param $newCommentImageId, foreign key
-	 * @param $newCommentProfileId, foreign key
-	 * @param $newCommentText
+	 * @param int|null $newCommentId, private key
+	 * @param int $newCommentImageId, foreign key
+	 * @param int $newCommentProfileId, foreign key
+	 * @param string $newCommentText
 	 * @param \DateTime|string|null $newCommentDate date and time comment was posted, or current time if null
 	 * @throws \InvalidArgumentException if the data types are not valid
 	 * @throws \RangeException if the data values are out of bounds
@@ -89,7 +89,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * accessor method for comment id
 	 *
-	 * @return int value of comment id
+	 * @return int|null value of comment id
 	 **/
 	public function getCommentId() {
 		return $this->commentId;
@@ -98,7 +98,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment id
 	 *
-	 * @param $newCommentId
+	 * @param int|null $newCommentId
 	 * @throws \RangeException if $newCommentId is not positive
 	 * @throws \TypeError if $newCommentId is not an int
 	 **/
@@ -126,7 +126,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment image id
 	 *
-	 * @param $newCommentImageId
+	 * @param int $newCommentImageId
 	 * @throws \RangeException if $newCommentImageId is not positive
 	 * @throws \TypeError if $newCommentImageId is not an int
 	 **/
@@ -150,7 +150,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment profile id
 	 *
-	 * @param $newCommentProfileId
+	 * @param int $newCommentProfileId
 	 * @throws \RangeException if $newCommentProfileId is not positive
 	 * @throws \TypeError if $newCommentProfileId is not an int
 	 **/
@@ -174,7 +174,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for comment date
 	 *
-	 * @param $newCommentDate
+	 * @param \DateTime|null $newCommentDate
 	 * @throws \InvalidArgumentException if $newCommentDate is not a valid object or string
 	 * @throws \RangeException if $newCommentDate is a date that cannot exist
 	 **/
@@ -207,7 +207,7 @@ class Comment implements \JsonSerializable {
 	/**
 	 * mutator method for $newCommentText
 	 *
-	 * @param $newCommentText
+	 * @param string $newCommentText
 	 * @throws \InvalidArgumentException if $newCommentText is empty or insecure
 	 * @throws \RangeException if $newCommentText is more than 1023 characters
 	 * @throws \TypeError if $newCommentText is not a string
