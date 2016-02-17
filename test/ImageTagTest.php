@@ -127,4 +127,29 @@ class ImageTagTest extends JpegeryTest {
 
 	}
 
+	/**
+	 * test grab image tag by profile id
+	 **/
+
+	public function getImageTagByProfile() {
+		//Count the number of rows and save it for later
+		$numRows = $this->getConnection()->getRowCount("imageTag");
+
+		//Create new image and insert into database
+		$imageTag = new ImageTag(null, $this->getImageTag());
+		$imageTag->insert($this->getPDO());
+
+		//Get data from database and ensure the fields match our expectations
+		$pdoImage = Image::getImageTagByProfile($this->getPDO(), $imageTag->getImageProfile());
+		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("imageTag"));
+
+		//Grabs results from array and validate it
+		$this->assertEquals($pdoImage->getImageTagTag(), $this->imageTagTag);
+		$this->assertEquals($pdoImage->getImageTagImage(), $this->imageTagImage);
+		$this->assertEquals($pdoImage->getProfile(), $this->profile);
+
+	}
+
+
+
 }
