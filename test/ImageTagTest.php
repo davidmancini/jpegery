@@ -132,8 +132,5 @@ class ImageTagTest extends JpegeryTest {
 		$imageTagResults = $pdoImageTag[0];
 		$this->assertEquals($imageTagResults->getTagId(), $this->imageTagTag->getTagId());
 		$this->assertEquals($imageTagResults->getImageId(), $this->imageTagImage->getImageId());
-
-
-
 	}
 }
