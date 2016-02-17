@@ -71,8 +71,9 @@ class CommentTest extends JpegeryTest {
 		//Create and insert a Profile to post the test Comment
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$verify = $salt;
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$this->profile = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, "yes");
+		$this->profile = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, $verify);
 		$this->profile->insert($this->getPDO());
 
 		$this->image = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
