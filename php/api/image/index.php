@@ -25,9 +25,8 @@ try {
 	//Grab MySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
-	//TODO: Verify "profile" is correct here.
 	//If Profile session is empty, the user is not logged in, throw an exception
-	if(empty($_SESSION["profile"]) === true ) {
+	if(empty($_SESSION["profile"]) === true) {
 		setXsrfCookie("/");
 		throw (new RuntimeException("Please log in or sign up.", 401));
 	}
@@ -78,6 +77,38 @@ try {
 				$reply->data = $image;
 			}
 		}
+	}
+
+	//If the user is logged in, allow to POST, PUT, and DELETE their own content.
+	if(empty($_SESSION["profile"]) === false) {
+
+		if($method === "PUT" || $method === "POST") {
+			verifyXsrf();
+			$requestContent = file_get_contents("php://input");
+			$requestObject = json_decode($requestContent);
+
+			//Ensure all fields are present
+			if(empty($requestObject->profileId) === true) {
+				throw(new InvalidArgumentException("Profile Id cannot be empty", 405));
+			}
+			if(empty($requestObject->imageType) === true) {
+				throw(new InvalidArgumentException("Image Type cannot be empty", 405));
+			}
+			if(empty($requestObject->imageFileName) === true) {
+				throw(new InvalidArgumentException("Image File Name cannot be empty", 405));
+			} //Image Text CAN be empty
+			if(empty($requestObject->imageDate) === true) {
+				throw(new InvalidArgumentException("Image Date cannot be empty", 405));
+			}
+
+			//Perform actual POST or PUT
+			if($method === "PUT") {
+				//TODO: Continue here.
+			}
+
+
+		}
+	}
 
 
 
@@ -87,4 +118,5 @@ try {
 
 
 
+//END MAIN TRY:
 }
