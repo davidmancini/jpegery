@@ -108,7 +108,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations
@@ -134,7 +134,10 @@ class ProfileTest extends JpegeryTest {
 	 **/
 	public function testInsertInvalidProfile() {
 		// create a Profile with a non null Profile id and watch it fail
-		$profile = new Profile(JpegeryTest::INVALID_KEY, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT, $this->VALID_PROFILEVERIFY);
+		$password = "abc123";
+		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
+		$profile = new Profile(JpegeryTest::INVALID_KEY, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 	}
 
@@ -149,7 +152,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// edit the Profile and update it in mySQL
@@ -183,7 +186,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->update($this->getPDO());
 	}
 
@@ -198,7 +201,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// delete the Profile from mySQL
@@ -222,7 +225,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->delete($this->getPDO());
 	}
 
@@ -238,7 +241,7 @@ class ProfileTest extends JpegeryTest {
 		$password = "abc123";
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH->$hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT->$salt, $this->VALID_PROFILEVERIFY);
+		$profile = new Profile(null, $this->VALID_PROFILEADMIN, $this->VALID_PROFILECREATEDATE, $this->VALID_PROFILEEMAIL, $this->VALID_PROFILEHANDLE, $this->VALID_PROFILEHASH = $hash, $this->VALID_PROFILEIMAGEID, $this->VALID_PROFILENAME, $this->VALID_PROFILEPHONE, $this->VALID_PROFILESALT = $salt, $this->VALID_PROFILEVERIFY);
 		$profile->insert($this->getPDO());
 
 		// grab the data from mySQL and enforce the fields match our expectations

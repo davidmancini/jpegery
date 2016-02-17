@@ -305,11 +305,10 @@ class Profile implements \JsonSerializable {
 	public function setProfileHash(string $newProfileHash) {
 		//verify that the profile hash is valid
 		$newProfileHash = trim($newProfileHash);
-		$newProfileHash = ctype_xdidgit($newProfileHash);
-		if(empty($newProfileHash) === true) {
+		if(ctype_xdigit($newProfileHash) === false) {
 			throw(new \InvalidArgumentException("profile hash is either empty or insecure"));
 		}
-		if($newProfileHash !== strlen(128)) {
+		if(strlen($newProfileHash) !== 128) {
 			throw (new\RangeException("profile hash is invalid"));
 
 		}
@@ -431,12 +430,10 @@ class Profile implements \JsonSerializable {
 	public function setProfileSalt(string $newProfileSalt) {
 		// verify that the profile salt is valid
 		$newProfileSalt = trim($newProfileSalt);
-		$newProfileSalt = ctype_xdidgit($newProfileSalt);
-		$newProfileSalt = filter_var($newProfileSalt, FILTER_SANITIZE_STRING);
-		if(empty($newProfileSalt) === true) {
+		if(ctype_xdigit($newProfileSalt) === false) {
 			throw(new \InvalidArgumentException("profile salt is empty or insecure"));
 		}
-		if($newProfileSalt !== strlen(64)) {
+		if(strlen($newProfileSalt) !== 64) {
 			throw (new\RangeException("profile salt is invalid"));
 		}
 
