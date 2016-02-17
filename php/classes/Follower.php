@@ -6,9 +6,12 @@ require_once("autoload.php");
 
 /**
  * Class Follower
- * @authors David Mancini, Jacob Findley, Michael Kemm, Zach Leyba
- *
  * Represents the Follower relationship
+ *
+ * @author David Mancini
+ * @author Jacob Findley
+ * @author Michael Kemm
+ * @author Zach Leyba
  *
  **/
 class Follower implements \JsonSerializable {
