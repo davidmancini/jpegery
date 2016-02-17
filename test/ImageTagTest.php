@@ -38,12 +38,19 @@ class ImageTagTest extends JpegeryTest {
 	public final function setUp() {
 		//Run the default setUp() method first
 		parent::setUp();
-
-		$this->profile = new Profile(null, true, null, "Email", "myName", "passw0rd", 1, "mynameagain", "867", "5309", "def");
+		//create and insert profile to tag image
+		$password = "abc123";
+		$salt = bin2hex(openssl_random_pseudo_bytes(32));
+		$verify = $salt;
+		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
+		$this->profile = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, $verify);
 		$this->profile->insert($this->getPDO());
+
+		//create an image to be tagged
 
 		$this->imageTagImage = new Image(null, $this->profile->getProfileId(), "jpeg", "myfile", "theText", null);
 		$this->imageTagImage->insert($this->getPDO());
+
 
 		$this->imageTagTag = new Tag(null, "Photo");
 		$this->imageTagTag->insert($this->getPDO());
