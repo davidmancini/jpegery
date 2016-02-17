@@ -119,11 +119,11 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
 		$this->assertEquals($pdoProfile->getProfileHandle(), $this->VALID_PROFILEHANDLE);
-		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILEHASH);
+		$this->assertEquals($pdoProfile->getProfileHash(), $hash);
 		$this->assertEquals($pdoProfile->getProfileImageId(), $this->VALID_PROFILEIMAGEID);
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
-		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileSalt(), $salt);
 		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
@@ -168,11 +168,11 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
 		$this->assertEquals($pdoProfile->getProfileHandle(), $this->VALID_PROFILEHANDLE);
-		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILEHASH);
+		$this->assertEquals($pdoProfile->getProfileHash(), $hash);
 		$this->assertEquals($pdoProfile->getProfileImageId(), $this->VALID_PROFILEIMAGEID);
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
-		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileSalt(), $salt);
 		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
@@ -252,11 +252,11 @@ class ProfileTest extends JpegeryTest {
 		$this->assertEquals($pdoProfile->getProfileCreateDate(), $this->VALID_PROFILECREATEDATE);
 		$this->assertEquals($pdoProfile->getProfileEmail(), $this->VALID_PROFILEEMAIL);
 		$this->assertEquals($pdoProfile->getProfileHandle(), $this->VALID_PROFILEHANDLE);
-		$this->assertEquals($pdoProfile->getProfileHash(), $this->VALID_PROFILEHASH);
+		$this->assertEquals($pdoProfile->getProfileHash(), $hash);
 		$this->assertEquals($pdoProfile->getProfileImageId(), $this->VALID_PROFILEIMAGEID);
 		$this->assertEquals($pdoProfile->getProfileName(), $this->VALID_PROFILENAME);
 		$this->assertEquals($pdoProfile->getProfilePhone(), $this->VALID_PROFILEPHONE);
-		$this->assertEquals($pdoProfile->getProfileSalt(), $this->VALID_PROFILESALT);
+		$this->assertEquals($pdoProfile->getProfileSalt(), $salt);
 		$this->assertEquals($pdoProfile->getProfileVerify(), $this->VALID_PROFILEVERIFY);
 	}
 
