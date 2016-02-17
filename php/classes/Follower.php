@@ -12,7 +12,6 @@ require_once("autoload.php");
  * @author Jacob Findley
  * @author Michael Kemm
  * @author Zach Leyba
- *
  **/
 class Follower implements \JsonSerializable {
 
