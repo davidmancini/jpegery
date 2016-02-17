@@ -120,17 +120,20 @@ class ImageTagTest extends JpegeryTest {
 		$numRows = $this->getConnection()->getRowCount("imageTag");
 
 		//Create new image and insert into database
-		$imageTag = new ImageTag(null, $this->getImageTag());
+		$imageTag = new ImageTag($this->imageTagImage->getImageId(), $this->imageTagTag->getTagId());
 		$imageTag->insert($this->getPDO());
 
 		//Get data from database and ensure the fields match our expectations
-		$pdoImage = Image::getImageTagByTagId($this->getPDO(), $imageTag->getImageTagId());
+		$pdoImageTag = ImageTag::getImageTagByTagId($this->getPDO(), $this->imageTagTag->getTagId());
 		$this->assertEquals($numRows + 1, $this->getConnection()->getRowCount("imageTag"));
+		$this->assertContainsOnlyInstancesOf("Edu\\Cnm\\Jpegery\\ImageTag", $pdoImageTag);
 
 		//Grabs results from array and validate it
-		$this->assertEquals($pdoImage->getImageTagTag(), $this->imageTagTag);
-		$this->assertEquals($pdoImage->getImageTagImage(), $this->imageTagImage);
-		$this->assertEquals($pdoImage->getProfile(), $this->profile);
+		$imageTagResults = $pdoImageTag[0];
+		$this->assertEquals($imageTagResults->getTagId(), $this->imageTagTag->getTagId());
+		$this->assertEquals($imageTagResults->getImageId(), $this->imageTagImage->getImageId());
+
+
 
 	}
 }
