@@ -268,19 +268,6 @@ class Tag implements \JsonSerializable {
 		$parameters = array("tagName" => $tagName);
 		$statement->execute($parameters);
 
-//		//grabs tag from mySQL
-//		try {
-//			$tag = null;
-//			$statement->setFetchMode(\PDO::FETCH_ASSOC);
-//			$row = $statement->fetch();
-//			if($row !== false) {
-//				$tag = new Tag($row["tagId"], $row[$tagName]);
-//			}
-//		} catch(\Exception $exception) {
-//			//if the row couldn't be converted, rethrow it
-//			throw(new \PDOException($exception->getMessage(), 0, $exception));
-//
-//		}
 
 
 		//build an array of tags by this name
