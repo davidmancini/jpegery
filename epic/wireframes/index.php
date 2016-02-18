@@ -44,16 +44,16 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-md-4">
+				<div class="row row-eq-height">
+					<div class="col-md-4 personaborder">
 						<a href="mobile-home.php"><img src="thumbnail-mobile-home.png" alt="Home page, Mobile" class="img-responsive"></a><br>
 						Home Page, Mobile
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 personaborder">
 						<a href="mobile-image.php"><img src="thumbnail-mobile-image.png" alt="Single Image, Mobile" class="img-responsive"></a><br>
 						Single Image, Mobile
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-4 personaborder">
 						<a href="mobile-user.php"><img src="thumbnail-mobile-user.png" alt="User Profile, Mobile" class="img-responsive"></a><br>
 						User Profile, Desktop
 					</div>
