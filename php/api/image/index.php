@@ -103,7 +103,15 @@ try {
 
 			//Perform actual POST or PUT
 			if($method === "PUT") {
-				//TODO: Continue here.
+				$image = Image::getImageByImageId($pdo, $id);
+				if($image === null) {
+					throw(new RuntimeException("Image does not exist", 404));
+				}
+				//Ensure the user is only editing their own content
+				$security = Image::getImageByImageId($pdo, $_SESSION["profile"]->getProfileId());
+				if($_SESSION["profile"]->getImageId() !== $profile $_SESSION["profile"])
+
+
 			}
 
 
