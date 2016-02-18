@@ -29,32 +29,32 @@
 
 				<h1 class="page-header">Wireframes</h1>
 
-				<div class="row">
-					<div class="col-md-4">
-						<a href="desktop-home.php"><img src="thumbnail-desktop-home.png" alt="Home page, Desktop"></a><br>
+				<div class="row row-eq-height">
+					<div class="col-md-4 personaborder">
+						<a href="desktop-home.php"><img src="thumbnail-desktop-home.png" alt="Home page, Desktop" class="img-responsive"></a><br>
 						Home Page, Desktop
 					</div>
-					<div class="col-md-4">
-						<a href="desktop-image.php"><img src="thumbnail-desktop-image.png" alt="Single Image, Desktop"></a><br>
+					<div class="col-md-4 personaborder">
+						<a href="desktop-image.php"><img src="thumbnail-desktop-image.png" alt="Single Image, Desktop" class="img-responsive"></a><br>
 						Single Image, Desktop
 					</div>
-					<div class="col-md-4">
-						<a href="desktop-user.php"><img src="thumbnail-desktop-user.png" alt="User Profile, Desktop"></a><br>
+					<div class="col-md-4 personaborder">
+						<a href="desktop-user.php"><img src="thumbnail-desktop-user.png" alt="User Profile, Desktop" class="img-responsive"></a><br>
 						User Profile, Desktop
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-4">
-						<a href="mobile-home.php"><img src="thumbnail-mobile-home.png" alt="Home page, Mobile"></a><br>
+						<a href="mobile-home.php"><img src="thumbnail-mobile-home.png" alt="Home page, Mobile" class="img-responsive"></a><br>
 						Home Page, Mobile
 					</div>
 					<div class="col-md-4">
-						<a href="mobile-image.php"><img src="thumbnail-mobile-image.png" alt="Single Image, Mobile"></a><br>
+						<a href="mobile-image.php"><img src="thumbnail-mobile-image.png" alt="Single Image, Mobile" class="img-responsive"></a><br>
 						Single Image, Mobile
 					</div>
 					<div class="col-md-4">
-						<a href="mobile-user.php"><img src="thumbnail-mobile-user.png" alt="User Profile, Mobile"></a><br>
+						<a href="mobile-user.php"><img src="thumbnail-mobile-user.png" alt="User Profile, Mobile" class="img-responsive"></a><br>
 						User Profile, Desktop
 					</div>
 				</div>
