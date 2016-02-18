@@ -20,6 +20,7 @@
 						<li role="presentation"><a href="epic-dana.php">Dana</a></li>
 						<li role="presentation" class="active"><a href="#">Jessica</a></li>
 						<li role="presentation"><a href="data-design.php">Data Design</a></li>
+						<li role="presentation"><a href="wireframes/index.php">Wireframes</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 text-right">
