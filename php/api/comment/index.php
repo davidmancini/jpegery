@@ -94,8 +94,6 @@ try {
 				//TODO: Figure out what's going on here. Should I do the $_SESSION["image"]->getImageId() thing?
 				$comment = new Comment(null,  $commentImageId, $commentProfileId, $requestObject->commentDate, $requestObject->commentText);
 				$comment->insert($pdo);
-				//TODO: Find out what $pusher->trigger is.
-				$pusher->trigger("comment", "new", $comment);
 				$reply->message = "Comment created";
 			}
 		} elseif ($method === "DELETE") {
@@ -106,7 +104,6 @@ try {
 			$comment->delete($pdo);
 			$deletedObject = new stdClass();
 			$deletedObject->commentId = $commentId;
-			$pusher->trigger("comment", "delete", $deletedObject);
 			$reply->message = "Listing deleted";
 		}
 	} elseif ((empty($method) === false) && ($method !== "GET")) {
