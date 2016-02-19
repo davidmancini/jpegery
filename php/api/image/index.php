@@ -22,11 +22,6 @@ $reply->status = 200;
 $reply->data = null;
 
 try {
-	//Create Pusher connection
-	$config = readConfig("/etc/apache2/captsone-mysql/jpegery.ini");
-	$pusherConfig = json_decode($config["pusher"]);
-	$pusher = new Pusher(); //TODO: What is this...?
-
 	//Grab MySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
@@ -85,7 +80,7 @@ try {
 	}
 
 	//If the user is logged in, allow to POST, PUT, and DELETE their own content.
-	if(empty($_SESSION["profile"]) === false) {
+	if(empty($_SESSION["profile"]) !== false) {
 
 		if($method === "PUT" || $method === "POST") {
 			verifyXsrf();
@@ -117,24 +112,33 @@ try {
 				if($security !== $_SESSION["profile"]->getProfileId) {
 					throw(new RuntimeException ("You cannot edit an image that is not yours.", 403));
 				}
-
 				$reply->message = "Image Successfully Updated";
 
 			} elseif($method === "POST") {
 				$image = new Image(null, $_SESSION["session"]->getProfileId, $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
 				$image->insert($pdo);
-				//$pusher
+				$reply->message = "Image Successfully Posted";
 
+			} elseif($method === "DELETE") {
+				$image = Image::getImageByImageId($pdo, $id);
+				if($image === null) {
+					throw(new RuntimeException("Image does not exist", 404));
+				}
+				$image->delete($pdo);
+				$deletedObject = new stdClass();
+				$deletedObject->imageId = $id;
+				$reply->message = "Image Successfully Deleted";
 			}
+		} else {
+			throw(new RuntimeException("You must be logged in to do this", 403));
 		}
 	}
-
-
-
-
-
-
-
-
-//END MAIN TRY:
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
 }
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+echo json_encode($reply);
