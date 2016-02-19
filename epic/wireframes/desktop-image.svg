@@ -142,25 +142,25 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
 font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
 >
-<rect x="1348" y="91.0156" width="138.234" height="22.75"/>
+<rect x="1338" y="91.0156" width="149.766" height="22.75"/>
 </g>
 
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
 font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
 >
-<rect x="1348" y="91.0156" width="138.234" height="22.75"/>
+<rect x="1338" y="91.0156" width="149.766" height="22.75"/>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1287,93.6406)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1277,93.6406)"
 font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
 >
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="0" y="0" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
- >    Log In</text>
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="53.125" y="0" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
- >     Register</text>
+ >    Settings</text>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="65.1562" y="0" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >     Log Out</text>
 </g>
 
-<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1287,93.6406)"
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1277,93.6406)"
 font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
 >
 </g>
@@ -183,7 +183,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
 font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
 >
-<path vector-effect="none" fill-rule="evenodd" d="M1132,102.391 C1132,96.1084 1138.72,91.0156 1147,91.0156 L1310.64,91.0156 C1318.92,91.0156 1325.64,96.1084 1325.64,102.391 C1325.64,108.673 1318.92,113.766 1310.64,113.766 L1147,113.766 C1138.72,113.766 1132,108.673 1132,102.391 "/>
+<path vector-effect="none" fill-rule="evenodd" d="M1132,102.391 C1132,96.1084 1138.72,91.0156 1147,91.0156 L1310.64,91.0156 C1318.93,91.0156 1325.64,96.1084 1325.64,102.391 C1325.64,108.673 1318.93,113.766 1310.64,113.766 L1147,113.766 C1138.72,113.766 1132,108.673 1132,102.391 "/>
 </g>
 
 <g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
@@ -201,7 +201,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="none" stroke="#a0a0a4" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
 font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
 >
-<text fill="#a0a0a4" fill-opacity="1" stroke="none" xml:space="preserve" x="1152" y="106.516" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+<text fill="#a0a0a4" fill-opacity="1" stroke="none" xml:space="preserve" x="1152" y="106.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
  >Search</text>
 </g>
 
@@ -228,7 +228,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
 font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
 >
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="85" y="110" font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="85" y="109.984" font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
  >jpegery</text>
 </g>
 
@@ -321,7 +321,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
 font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
 >
-<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="526.078" y="163" font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="526.078" y="162.984" font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
  >Image Title</text>
 </g>
 
@@ -1142,7 +1142,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
 font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
 >
-<path vector-effect="none" fill-rule="evenodd" d="M532.223,748 L532.384,746.202 L532.848,744.511 L533.588,742.953 L534.575,741.557 L535.78,740.352 L537.175,739.365 L538.733,738.626 L540.425,738.161 L542.223,738 L546.223,738 L546.223,722 L555.634,738 L1032.3,738 L1034.1,738.161 L1035.79,738.626 L1037.35,739.365 L1038.74,740.352 L1039.95,741.557 L1040.94,742.953 L1041.68,744.511 L1042.14,746.202 L1042.3,748 L1042.3,755.75 L1042.14,757.548 L1041.68,759.239 L1040.94,760.797 L1039.95,762.193 L1038.74,763.398 L1037.35,764.385 L1035.79,765.124 L1034.1,765.589 L1032.3,765.75 L542.223,765.75 L540.425,765.589 L538.733,765.124 L537.175,764.385 L535.78,763.398 L534.575,762.193 L533.588,760.797 L532.848,759.239 L532.384,757.548 L532.223,755.75 L532.223,748"/>
+<path vector-effect="none" fill-rule="evenodd" d="M532.223,748 L532.384,746.202 L532.849,744.511 L533.588,742.953 L534.575,741.557 L535.78,740.352 L537.176,739.365 L538.734,738.626 L540.426,738.161 L542.223,738 L546.223,738 L546.223,722 L555.635,738 L1032.3,738 L1034.1,738.161 L1035.79,738.626 L1037.35,739.365 L1038.74,740.352 L1039.95,741.557 L1040.94,742.953 L1041.68,744.511 L1042.14,746.202 L1042.3,748 L1042.3,755.75 L1042.14,757.548 L1041.68,759.239 L1040.94,760.797 L1039.95,762.193 L1038.74,763.398 L1037.35,764.385 L1035.79,765.124 L1034.1,765.589 L1032.3,765.75 L542.223,765.75 L540.426,765.589 L538.734,765.124 L537.176,764.385 L535.78,763.398 L534.575,762.193 L533.588,760.797 L532.849,759.239 L532.384,757.548 L532.223,755.75 L532.223,748"/>
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="725.219" y="756" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
  >Submitted comment</text>
 </g>
@@ -1235,7 +1235,7 @@ font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal"
 <g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
 font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
 >
-<path vector-effect="none" fill-rule="evenodd" d="M532.223,807 L532.384,805.202 L532.848,803.511 L533.588,801.953 L534.575,800.557 L535.78,799.352 L537.175,798.365 L538.733,797.626 L540.425,797.161 L542.223,797 L546.223,797 L546.223,781 L555.634,797 L1032.3,797 L1034.1,797.161 L1035.79,797.626 L1037.35,798.365 L1038.74,799.352 L1039.95,800.557 L1040.94,801.953 L1041.68,803.511 L1042.14,805.202 L1042.3,807 L1042.3,814.75 L1042.14,816.548 L1041.68,818.239 L1040.94,819.797 L1039.95,821.193 L1038.74,822.398 L1037.35,823.385 L1035.79,824.124 L1034.1,824.589 L1032.3,824.75 L542.223,824.75 L540.425,824.589 L538.733,824.124 L537.175,823.385 L535.78,822.398 L534.575,821.193 L533.588,819.797 L532.848,818.239 L532.384,816.548 L532.223,814.75 L532.223,807"/>
+<path vector-effect="none" fill-rule="evenodd" d="M532.223,807 L532.384,805.202 L532.849,803.511 L533.588,801.953 L534.575,800.557 L535.78,799.352 L537.176,798.365 L538.734,797.626 L540.426,797.161 L542.223,797 L546.223,797 L546.223,781 L555.635,797 L1032.3,797 L1034.1,797.161 L1035.79,797.626 L1037.35,798.365 L1038.74,799.352 L1039.95,800.557 L1040.94,801.953 L1041.68,803.511 L1042.14,805.202 L1042.3,807 L1042.3,814.75 L1042.14,816.548 L1041.68,818.239 L1040.94,819.797 L1039.95,821.193 L1038.74,822.398 L1037.35,823.385 L1035.79,824.124 L1034.1,824.589 L1032.3,824.75 L542.223,824.75 L540.426,824.589 L538.734,824.124 L537.176,823.385 L535.78,822.398 L534.575,821.193 L533.588,819.797 L532.849,818.239 L532.384,816.548 L532.223,814.75 L532.223,807"/>
 <text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="725.219" y="815" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
  >Submitted comment</text>
 </g>
