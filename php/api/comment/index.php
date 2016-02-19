@@ -2,10 +2,9 @@
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
 require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
-//TODO: Include a line that links to /vendor/autoload.php
 
 use \Edu\Cnm\Jpegery\Comment;
-use \Edu\Cnm\Jpegery\Profile;
+
 /**
  * Controller/API for the Comment class
  *
@@ -107,7 +106,6 @@ try {
 				$reply->message = "Comment created";
 			}
 		} elseif ($method === "DELETE") {
-			//TODO: Set this such that only the profile that posted it can delete the comment.
 			$comment = Comment::getCommentByCommentId($pdo, $commentId);
 			if($comment === null) {
 				throw(new \RuntimeException("Comment does not exist", 404));
