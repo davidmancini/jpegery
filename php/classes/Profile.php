@@ -69,13 +69,20 @@ class Profile implements \JsonSerializable {
 	private $profileImageId;
 
 	/**
-	 * user name
+	 * user's first name
 	 *
-	 * @var string $profileName
+	 * @var string $profileNameF
 	 */
 
-	private $profileName;
+	private $profileNameF;
 
+	/**
+	 * user's last name
+	 *
+	 * @var string $profileNameL
+	 */
+
+	private $profileNameL;
 	/**
 	 * user's phone number
 	 *
@@ -101,7 +108,7 @@ class Profile implements \JsonSerializable {
 	private $profileVerify;
 
 
-	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileName, string $newProfilePhone, string $newProfileSalt, string $newProfileVerify) {
+	public function __construct(int $newProfileId = null, bool $newProfileAdmin, $newProfileCreateDate = null, string $newProfileEmail, string $newProfileHandle, string $newProfileHash, int $newProfileImageId, string $newProfileNameF, string $newProfileNameL, string $newProfilePhone, string $newProfileSalt, string $newProfileVerify) {
 		try {
 			$this->setProfileId($newProfileId);
 			$this->setProfileAdmin($newProfileAdmin);
@@ -110,7 +117,8 @@ class Profile implements \JsonSerializable {
 			$this->setProfileHandle($newProfileHandle);
 			$this->setProfileHash($newProfileHash);
 			$this->setProfileImageId($newProfileImageId);
-			$this->setProfileName($newProfileName);
+			$this->setProfileName($newProfileNameF);
+			$this->setProfileName($newProfileNameL);
 			$this->setProfilePhone($newProfilePhone);
 			$this->setProfileSalt($newProfileSalt);
 			$this->setProfileVerify($newProfileVerify);
@@ -343,37 +351,71 @@ class Profile implements \JsonSerializable {
 	}
 
 	/**
-	 * accessor method for profile name
-	 * @return string value of profile name
+	 * accessor method for user's first name
+	 * @return string value of first name
 	 */
 
-	public function getProfileName() {
-		return $this->profileName;
+	public function getProfileNameF() {
+		return $this->profileNameF;
 	}
 
 	/**
-	 * mutator method for profile name
+	 * mutator method for user's first name
 	 *
-	 * @param string $newProfileName
+	 * @param string $newProfileNameF
 	 * @throws \InvalidArgumentException if profile name is empty or insecure
 	 * @throws \RangeException if profile name is too long
 	 * @throws \TypeError if profile name is not a string
 	 */
 
-	public function setProfileName(string $newProfileName) {
+	public function setProfileNameF(string $newProfileNameF) {
 		// verify the profile name is secure
-		$newProfileName = trim($newProfileName);
-		$newProfileName = filter_var($newProfileName, FILTER_SANITIZE_STRING);
+		$newProfileNameF = trim($newProfileNameF);
+		$newProfileNameF = filter_var($newProfileNameF, FILTER_SANITIZE_STRING);
 		if(empty($newProfileName) === true) {
 			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
 		}
 
 		// verify valid name length
-		if(strlen($newProfileName) > 50) {
+		if(strlen($newProfileNameF) > 50) {
 			throw(new \RangeException("Your name is too long"));
 		}
 		// save profile name
-		$this->profileName = $newProfileName;
+		$this->profileNameF = $newProfileNameF;
+	}
+
+	/**
+	 * accessor method for user's last name
+	 * @return string value of last name
+	 */
+
+	public function getProfileName() {
+		return $this->profileNameL;
+	}
+
+	/**
+	 * mutator method for profile name
+	 *
+	 * @param string $newProfileNameL
+	 * @throws \InvalidArgumentException if profile name is empty or insecure
+	 * @throws \RangeException if profile name is too long
+	 * @throws \TypeError if profile name is not a string
+	 */
+
+	public function setProfileNameL(string $newProfileNameL) {
+		// verify the profile name is secure
+		$newProfileNameL = trim($newProfileNameL);
+		$newProfileNameL = filter_var($newProfileNameL, FILTER_SANITIZE_STRING);
+		if(empty($newProfileName) === true) {
+			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
+		}
+
+		// verify valid name length
+		if(strlen($newProfileNameL) > 50) {
+			throw(new \RangeException("Your name is too long"));
+		}
+		// save profile name
+		$this->profileNameL = $newProfileNameL;
 	}
 
 	/**
