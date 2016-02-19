@@ -1,7 +1,7 @@
 <?php
 
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
-require_once dirname(dirname(__DIR__)) . "../lib/xsrf.php";
+require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
 require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
 use Edu\Cnm\Jpegery\Image;
 
@@ -24,12 +24,6 @@ $reply->data = null;
 try {
 	//Grab MySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
-
-	//If Profile session is empty, the user is not logged in, throw an exception
-	if(empty($_SESSION["profile"]) === true) {
-		setXsrfCookie("/");
-		throw (new RuntimeException("Please log in or sign up.", 401));
-	}
 
 	//Determine which HTTP method was used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
@@ -101,7 +95,7 @@ try {
 				throw(new InvalidArgumentException("Image Date cannot be empty", 405));
 			}
 
-			//Perform actual POST or PUT
+			//Perform actual POST, PUT, or DELETE
 			if($method === "PUT") {
 				$image = Image::getImageByImageId($pdo, $id);
 				if($image === null) {
@@ -133,8 +127,6 @@ try {
 				$deletedObject->imageId = $id;
 				$reply->message = "Image Successfully Deleted";
 			}
-		} else {
-			throw(new RuntimeException("You must be logged in to do this", 403));
 		}
 	}
 } catch(Exception $exception) {
