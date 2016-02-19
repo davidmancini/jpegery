@@ -34,9 +34,9 @@ class FollowerTest extends JpegeryTest {
 		$verify = $salt;
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
 		//Create and insert a profile for the follower object
-		$this->follower = new Profile(null, true, null, "Email", "myName", $hash, 1, "mynameagain", "867", $salt, $verify);
+		$this->follower = new Profile(null, true, null, "Email", "myName", $hash, 1, "First", "Last", "867", $salt, $verify);
 		$this->follower->insert($this->getPDO());
-		$this->followed = new Profile(null, true, null, "Email2", "myName2", $hash, 2, "John", "5309", $salt, $verify);
+		$this->followed = new Profile(null, true, null, "Email2", "myName2", $hash, 2, "Given", "Family", "5309", $salt, $verify);
 		$this->followed->insert($this->getPDO());
 	}
 
