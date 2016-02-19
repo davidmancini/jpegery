@@ -70,6 +70,11 @@ try {
 			if($image !== null) {
 				$reply->data = $image;
 			}
+		} else {
+			$images = Image::getAllImages($pdo);
+			if($images !== null) {
+				$reply->data = $images;
+			}
 		}
 	}
 
@@ -103,19 +108,19 @@ try {
 				}
 				//Ensure the user is only editing their own content
 				$security = Image::getImageProfileId($pdo, $imageProfileId);
-				if($security !== $_SESSION["profile"]->getProfileId) {
+				if($security !== $_SESSION["profile"]->getProfileId()) {
 					throw(new RuntimeException ("You cannot edit an image that is not yours.", 403));
 				}
 				$reply->message = "Image Successfully Updated";
 
 			} elseif($method === "POST") {
-				$image = new Image(null, $_SESSION["session"]->getProfileId, $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
+				$image = new Image(null, $_SESSION["session"]->getProfileId(), $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
 				$image->insert($pdo);
 				$reply->message = "Image Successfully Posted";
 
 			} elseif($method === "DELETE") {
 				$security = Image::getImageByImageId($pdo, $id);
-				if($security !== $_SESSION["profile"]->getProfileId){
+				if($security !== $_SESSION["profile"]->getProfileId()){
 					throw(new RuntimeException("You cannot delete an image that is not yours.", 403));
 				}
 				$image = Image::getImageByImageId($pdo, $id);
