@@ -336,8 +336,8 @@ class Profile implements \JsonSerializable {
 
 	/**
 	 * mutator method for profile image
-	 * @param
-	 * @throws
+	 * @param int $newProfileImageId
+	 * @throws \RangeException if image id is not valid
 	 */
 
 	public function setProfileImageId(int $newProfileImageId) {
@@ -479,7 +479,7 @@ class Profile implements \JsonSerializable {
 			throw (new\RangeException("profile salt is invalid"));
 		}
 
-			$this->profileSalt = $newProfileSalt;
+		$this->profileSalt = $newProfileSalt;
 	}
 
 	/**
