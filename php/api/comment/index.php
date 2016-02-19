@@ -5,6 +5,7 @@ require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 //TODO: Include a line that links to /vendor/autoload.php
 
 use \Edu\Cnm\Jpegery\Comment;
+use \Edu\Cnm\Jpegery\Profile;
 /**
  * Controller/API for the Comment class
  *
@@ -89,6 +90,9 @@ try {
 				if ($comment === null) {
 					throw(new \RuntimeException("Comment does not exist", 404));
 				}
+				if($_SESSION["profile"]->getProfileId() !== $comment->getCommentProfileId()) {
+					throw(new \RuntimeException("Only the author of the comment can edit it."));
+				}
 				$comment->setCommentText($requestObject->commentText);
 				$comment->setCommentDate($requestObject->commentDate);
 
@@ -103,9 +107,13 @@ try {
 				$reply->message = "Comment created";
 			}
 		} elseif ($method === "DELETE") {
+			//TODO: Set this such that only the profile that posted it can delete the comment.
 			$comment = Comment::getCommentByCommentId($pdo, $commentId);
 			if($comment === null) {
 				throw(new \RuntimeException("Comment does not exist", 404));
+			}
+			if($_SESSION["profile"]->getProfileId() !== $comment->getCommentProfileId()) {
+				throw(new \RuntimeException("Only the author of the comment can delete it."));
 			}
 			$comment->delete($pdo);
 			$deletedObject = new stdClass();
