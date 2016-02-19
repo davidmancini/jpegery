@@ -24,7 +24,7 @@ $reply->data = null;
 try {
 	//Grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
-	if(empty($_SESSION["comment"]) === true) {
+	if(empty($_SESSION["profile"]) === true) {
 		setXsrfCookie("/");
 		throw(new \RuntimeException("Please log in or sign up", 401));
 	}
@@ -62,7 +62,7 @@ try {
 
 	}
 	//Verify that the object is not empty
-	if(empty($_SESSION["comment"]) === false) {
+	if(empty($_SESSION["profile"]) === false) {
 		if($method === "PUT" || $method === "POST") {
 			verifyXsrf();
 			$requestContent = file_get_contents("php://input");
