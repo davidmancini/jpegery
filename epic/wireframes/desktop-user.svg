@@ -1,0 +1,1677 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="508.353mm" height="309.033mm"
+ viewBox="0 0 1441 876"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>User (desktop)</title>
+<desc>Generated with SwordSoft Layout</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="66" y="17" width="1431" height="866"/>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="66" y="17" width="1431" height="60"/>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<image x="66" y="37" width="32" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAy0lEQVRYhe3XTQ6DIBAF4De9Bh7EM3sQFlyDg7wutIlpYZhiGdLESWal8D4N+CMkMbMeU9NvwLcAEVlEZBMRHh0vC0iaGsACIALguq4EwH24bXx13p7wnLMfoBTO/cB4QC3cBaCFnwGdHVVAK/wHAFYBlvAr9dpBRcDocPJz7biGVwFe4RogA2AIgSmlYeEaYO4d8ESo23DqLvBCNAFWxLAnoRUx9F1gQbxfSW+3T5j5PaAhXAElhDvghNhKi6m35Zh4Wv3Xj8kNGFFPC72fxOa3o+cAAAAASUVORK5CYII=" />
+<image x="98" y="37" width="32" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwUlEQVRYhe3XUQ6DIAwG4HbXwIP0zB6EB67BQf69YKIz26R0/Flikya+WD4UoSoAYcaDOvoNiACoalZVtFxVdekqAGAoRQQiAjNDu84isly+PwpQa3UhwgAAXIhQgAexL5S3Yp7cRw/iNJMIQA/iADCzU6GRuIJ4+y5nIX4O+IaYAviEmAYAgFIKUkobok4FUJ8AdQ1QvwLXPsDcCblngTdfAe7TMAJA7QfoHRGzJ9wv3rVncACirQgt/v/H5AaMxhNwLZ/Ef5Vh/AAAAABJRU5ErkJggg==" />
+<image x="130" y="37" width="32" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAD/UlEQVRYhcVX30tieRQ/yjztMjCzrIM/6A56tyx3mnagC9fwtoIQBPvYw0L/QVutglJBBMkqRIGB/0H9BfXQg3AXS7ANBZM2KncKMy8rKUW91Mu3My9+r7fr1dRpZr5wwK/nx+dzzvf7PYerQ0R4eHgAvV4PdCn3zXTPYVvTfqOl06rA11gtVyCfzzM7OzuudgFEUfz14uLCoqXT6XS1DSICIQQQsU4KhYIFANBkMhVSqdQHLRst2d3d5QwGw/8AgKVSyaDWA4CM2ZCAJElGAEAqVqv1Yzqd/uUp8L29vcGurq680rdSqbxui0CpVDJQ54GBARwbG0MAQJvNdpLJZN43Ak+lUh8YhjkFABwfHye9vb0yievr65ctEahUKq+pk8ViIVhdHo8HAQBZlj3e39//WQ2eTqcHrFbrRwDA0dFRRESCiGgwGGQSt7e33zUlkM1m31Hj/v5+OQhdbrebAAD29PQcHRwcOCh4JpN5b7PZ/gMAHBkZoeayr91ul0mcnJz81BKB2dnZOgKISARBQABAu93+b6FQMJ+enr5lWfYYANDj8dQMCZF9/X5/HQH5OJodgdfrrSOAiMjzPFYrcdjd3X0MAOh2uzVtJycnNY+gIQFUXUKfz6eZFcdxcmBBEDSrNTU11f4lpKJ8hn6/v+5cERFZliUOh0NT5/V6ScfPkAptRACAgUBAM0ut6vh8PjnzjhsRlbOzM0ZxMRsSoL+VF06SJKNWzLYIICIUi0X5OKanp/H+/r4u67u7OzIxMSGDl8vlHxrFa5tAuVx+xXHcP9VuWEtZQQARidlsRgDAoaGhxNXV1ctnIZDP57sGBwf3AAD7+vqePAKr1YoAgDzPJ4vFoumzCJyfn5s5jtutvnk14KO9shoMwyAAoNPpTEiS9KYjAsVi0cTzfLI6CbUyxkAgQKods05nsVgIAKDL5dpWv4QnCUiS9MbpdCYAABmGqaWryHJhYUG+cMFgULM6RqORNqq/Ly8vf2yJQKlUMrhcrm31NFRmubi4KINTCYVCmrZ0Gg4PD4u0ITUkkMvlWKfTudNoGiIiCQaDMmgul2Oz2ayD7sPhsGa16DQUBGH76OiopyGB9fX135tNw1AoJLfXZDLJ0arF43GB/r+0tPSoAoiPm9PNzc33TYdRNBr9Q2sahsNhOUgikeBRdWlFUXRT/fLyskygo2m4uro6SZ3m5+cxEonIQeLxuKAGpxKLxTzULhqNkpmZmc6nYSQS+VN90URRdDcCp7K1tTWi9ut4Gq6srHhpkFgs5nkKnMrm5ubos03Dubm5vzY2Nn5rFZzK2tra+OHhYa+WTkngm3ya6XQ6IISAXq+HF1rKr7nqCKgr8iU/zwEAPgEJTnswjMNfOgAAAABJRU5ErkJggg==" />
+<image x="162" y="37" width="32" height="32" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAABPElEQVRYhe2WsW6DMBRFz60ys9ClEn+RCb6h/ddI+Y3mB7pm6NIuYevyOsRILrHBBhLaqFeyDI+H77V9/UBmxpp4WJX9X8AcAZIqSXtJR9dXNxPgyHbAE1C5fjdJhJllNUf46prZOWherAJOLua3U2g85RxDb+YAW/9dSQAH4B14jkxW/VjyFgyRu8EBtkDpx8YmmLQCY+S9XIBPoOzyXCy4AqMCcsh7IkgRMLgFU8h94hREBUwlzxURFDCXPIJDkoArkQN8hSrmhQkl7TlXtiXJf9QJM3sZEvCBd4SWRHdEzeyxi20CeaWXDOS5OkLq482/CZmwjVzPQXScwUIkyWCZFQgVIfiLPyRN0yAp2oqiuK6AMbRtnm2yPdD/0PTyL57dnwd+vYC6rrPykzywBKZ6YN1KeAvcnwlz8Q1t896SHZ7dwAAAAABJRU5ErkJggg==" />
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="194" y="43" width="1223" height="20"/>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="194" y="57.125" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ > http://jpegery.com</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1425,53 C1425,47.4772 1431.72,43 1440,43 L1474,43 C1482.28,43 1489,47.4772 1489,53 C1489,58.5228 1482.28,63 1474,63 L1440,63 C1431.72,63 1425,58.5228 1425,53 "/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="1434,52 1442,60 " />
+<circle cx="1434" cy="52" r="5"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="66" y="863" width="1431" height="20"/>
+</g>
+
+<g fill="none" stroke="none" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M5.81818,1.32231 C5.81818,15.0083 5.81818,15.0083 5.81818,15.0083 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M5.81818,1.32231 C5.81818,15.0083 5.81818,15.0083 5.81818,15.0083 "/>
+</g>
+
+<g fill="none" stroke="none" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M8.44628,3.3837 C8.44628,13.7733 8.44628,13.7733 8.44628,13.7733 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M8.44628,3.3837 C8.44628,13.7733 8.44628,13.7733 8.44628,13.7733 "/>
+</g>
+
+<g fill="none" stroke="none" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M11.157,4.84401 C11.157,12.6767 11.157,12.6767 11.157,12.6767 "/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" transform="matrix(0.568468,0.822705,-0.822705,0.568468,1430.17,851.194)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M11.157,4.84401 C11.157,12.6767 11.157,12.6767 11.157,12.6767 "/>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="756.5" y="31.125" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Browser</text>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#a0a0a4" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1348" y="91.0156" width="138.234" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1348" y="91.0156" width="138.234" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1287,93.6406)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="0" y="0" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >    Log In</text>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="53.125" y="0" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >     Register</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,1287,93.6406)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1132,102.391 C1132,96.1084 1138.72,91.0156 1147,91.0156 L1310.64,91.0156 C1318.92,91.0156 1325.64,96.1084 1325.64,102.391 C1325.64,108.673 1318.92,113.766 1310.64,113.766 L1147,113.766 C1138.72,113.766 1132,108.673 1132,102.391 "/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="1141,101.391 1149,109.391 " />
+<circle cx="1141" cy="101.391" r="5"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#a0a0a4" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#a0a0a4" fill-opacity="1" stroke="none" xml:space="preserve" x="1152" y="106.516" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Search</text>
+</g>
+
+<g fill="none" stroke="#a0a0a4" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#a0a0a4" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="85" y="110" font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+ >jpegery</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="24" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="66" y="123.781" width="1429" height="4"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="66,125.781 1495,125.781 " />
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="40" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="179" y="198" font-family="Avenir" font-size="40" font-weight="700" font-style="normal" 
+ >User Name</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="40" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="40" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="179" y="219" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Number of Uploaded Images</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="437.016" y="196.25" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Member Since 2015</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="600.57" y="241.25" width="362.859" height="25.75"/>
+</g>
+
+<g fill="#95bcf2" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="597.57" y="238.25" width="100.668" height="25.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="597.57,238.25 698.238,238.25 " />
+<polyline fill="none" vector-effect="none" points="597.57,264 698.238,264 " />
+<polyline fill="none" vector-effect="none" points="597.57,238.25 597.57,264 " />
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="607.141" y="255.25" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Most Popular</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="698.238" y="238.25" width="128.547" height="25.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="698.238,238.25 826.785,238.25 " />
+<polyline fill="none" vector-effect="none" points="698.238,264 826.785,264 " />
+<polyline fill="none" vector-effect="none" points="698.238,238.25 698.238,264 " />
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="707.703" y="255.25" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Most Commented</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="826.785" y="238.25" width="69.674" height="25.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="826.785,238.25 896.459,238.25 " />
+<polyline fill="none" vector-effect="none" points="826.785,264 896.459,264 " />
+<polyline fill="none" vector-effect="none" points="826.785,238.25 826.785,264 " />
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="836.484" y="255.25" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ > Newest</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<rect x="896.459" y="238.25" width="63.9711" height="25.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="896.459,238.25 960.43,238.25 " />
+<polyline fill="none" vector-effect="none" points="896.459,264 960.43,264 " />
+<polyline fill="none" vector-effect="none" points="896.459,238.25 896.459,264 " />
+<polyline fill="none" vector-effect="none" points="960.43,238.25 960.43,264 " />
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="906.188" y="255.25" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ > Oldest</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="174.074" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="174.074,558 374.074,758 " />
+<polyline fill="none" vector-effect="none" points="374.074,558 174.074,758 " />
+<rect x="174.074" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="279.117" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="279.117" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="284.109" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="174.766" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="174.766" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="179.766" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="426.25" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="426.25,558 626.25,758 " />
+<polyline fill="none" vector-effect="none" points="626.25,558 426.25,758 " />
+<rect x="426.25" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="531.293" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="531.293" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="536.281" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="426.941" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="426.941" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="431.938" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="679.809" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="679.809,558 879.809,758 " />
+<polyline fill="none" vector-effect="none" points="879.809,558 679.809,758 " />
+<rect x="679.809" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="784.852" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="784.852" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="789.844" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="680.5" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="680.5" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="685.5" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="931.984" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="931.984,558 1131.98,758 " />
+<polyline fill="none" vector-effect="none" points="1131.98,558 931.984,758 " />
+<rect x="931.984" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1037.03" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1037.03" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1042.02" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="932.676" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="932.676" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="937.672" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1186.93" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="1186.93,558 1386.93,758 " />
+<polyline fill="none" vector-effect="none" points="1386.93,558 1186.93,758 " />
+<rect x="1186.93" y="558" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1291.97" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1291.97" y="764" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1296.97" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1187.62" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1187.62" y="764" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1192.61" y="779.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="426.941" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="426.941,292 626.941,492 " />
+<polyline fill="none" vector-effect="none" points="626.941,292 426.941,492 " />
+<rect x="426.941" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="531.984" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="531.984" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="536.984" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="427.633" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="427.633" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="432.625" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="680.5" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="680.5,292 880.5,492 " />
+<polyline fill="none" vector-effect="none" points="880.5,292 680.5,492 " />
+<rect x="680.5" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="785.543" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="785.543" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="790.531" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="681.191" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="681.191" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="686.188" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="932.676" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="932.676,292 1132.68,492 " />
+<polyline fill="none" vector-effect="none" points="1132.68,292 932.676,492 " />
+<rect x="932.676" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1037.72" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1037.72" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1042.72" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="933.367" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="933.367" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="938.359" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1187.62" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="1187.62,292 1387.62,492 " />
+<polyline fill="none" vector-effect="none" points="1387.62,292 1187.62,492 " />
+<rect x="1187.62" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1292.66" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1292.66" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1297.66" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1188.31" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="1188.31" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="1193.3" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="174.766" y="292" width="200" height="200"/>
+</g>
+
+<g fill="none" stroke="#808080" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<polyline fill="none" vector-effect="none" points="174.766,292 374.766,492 " />
+<polyline fill="none" vector-effect="none" points="374.766,292 174.766,492 " />
+<rect x="174.766" y="292" width="200" height="200"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="0.784314" stroke="#a0a0a4" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="evenodd" d="M233.891,392 C233.891,387.927 238.368,384.625 243.891,384.625 L305.641,384.625 C311.163,384.625 315.641,387.927 315.641,392 C315.641,396.073 311.163,399.375 305.641,399.375 L243.891,399.375 C238.368,399.375 233.891,396.073 233.891,392 "/>
+</g>
+
+<g fill="#ffffff" fill-opacity="0.784314" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="233.891" y="396.125" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ >Most popular</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="0.784314" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="0.784314" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="279.809" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="279.809" y="498" width="94.2656" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="284.797" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Downvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="175.457" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+<rect x="175.457" y="498" width="94" height="22.75"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+<text fill="#000000" fill-opacity="1" stroke="none" xml:space="preserve" x="180.453" y="513.5" font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+ ># Upvote</text>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="Avenir" font-size="13.3333" font-weight="700" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,-61,-12)"
+font-family=".SF NS Text" font-size="13" font-weight="400" font-style="normal" 
+>
+</g>
+</g>
+</svg>

@@ -19,10 +19,11 @@
 						<!-- NAV BAR -->
 						<ul class="nav nav-tabs">
 							<li role="presentation" class="active"><a href="#">Home</a></li>
-							<li role="presentation"><a href="#">Jason</a></li>
+							<li role="presentation"><a href="epic-jason.php">Jason</a></li>
 							<li role="presentation"><a href="epic-dana.php">Dana</a></li>
 							<li role="presentation"><a href="epic-jessica.php">Jessica</a></li>
 							<li role="presentation"><a href="data-design.php">Data Design</a></li>
+							<li role="presentation"><a href="wireframes/index.php">Wireframes</a></li>
 						</ul>
 					</div>
 

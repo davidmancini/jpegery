@@ -59,5 +59,63 @@ try {
 		} elseif (empty($commentText) === false) {
 			$reply->data = Comment::getCommentByCommentContent($pdo, $commentText);
 		}
+
 	}
+	//Verify that the object is not empty
+	if(empty($_SESSION["comment"]) === false) {
+		if($method === "PUT" || $method === "POST") {
+			verifyXsrf();
+			$requestContent = file_get_contents("php://input");
+			$requestObject = json_decode($requestContent);
+
+			//Ensure that all fields are present.
+
+			if(empty($requestObject->commentText) === true) {
+				throw(new \InvalidArgumentException("Comment text can not be empty", 405));
+			}
+			if (empty($requestObject->commentDate) === true) {
+				$requestObject->commentDate = null;
+			}
+
+			//Attempt PUT
+			if($method === "PUT") {
+				$comment = Comment::getCommentByCommentId($pdo, $commentId);
+				if ($comment === null) {
+					throw(new \RuntimeException("Comment does not exist", 404));
+				}
+				$comment->setCommentText($requestObject->commentText);
+				$comment->setCommentDate($requestObject->commentDate);
+
+				//Update the Comment table
+				$comment->update($pdo);
+
+				$reply->message = "Comment updated";
+			} elseif($method === "POST") {
+				//TODO: Figure out what's going on here. Should I do the $_SESSION["image"]->getImageId() thing?
+				$comment = new Comment(null,  $commentImageId, $commentProfileId, $requestObject->commentDate, $requestObject->commentText);
+				$comment->insert($pdo);
+				$reply->message = "Comment created";
+			}
+		} elseif ($method === "DELETE") {
+			$comment = Comment::getCommentByCommentId($pdo, $commentId);
+			if($comment === null) {
+				throw(new \RuntimeException("Comment does not exist", 404));
+			}
+			$comment->delete($pdo);
+			$deletedObject = new stdClass();
+			$deletedObject->commentId = $commentId;
+			$reply->message = "Listing deleted";
+		}
+	} elseif ((empty($method) === false) && ($method !== "GET")) {
+		//If a non-admin attempted to access anything other than GET, throw an error at them
+		throw(new \RuntimeException("Only administrators are allowed to modify entries", 401));
+	}
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
 }
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+echo json_encode($reply);
