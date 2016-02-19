@@ -22,6 +22,11 @@ $reply->status = 200;
 $reply->data = null;
 
 try {
+	//Create Pusher connection
+	$config = readConfig("/etc/apache2/captsone-mysql/jpegery.ini");
+	$pusherConfig = json_decode($config["pusher"]);
+	$pusher = new Pusher(); //TODO: What is this...?
+
 	//Grab MySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
@@ -108,11 +113,17 @@ try {
 					throw(new RuntimeException("Image does not exist", 404));
 				}
 				//Ensure the user is only editing their own content
-				$security = Image::getImageByImageId($pdo, $_SESSION["profile"]->getProfileId());
-				if($_SESSION["profile"]->getImageId() !== $profile $_SESSION["profile"])
+				$security = Image::getImageProfileId($pdo, $imageProfileId);
+				if($security !== $_SESSION["profile"]->getProfileId) {
+					throw(new RuntimeException ("You cannot edit an image that is not yours.", 403));
+				}
 
+				$reply->message = "Image Successfully Updated";
 
-			}
+			} elseif($method === "POST") {
+				$image = new Image(null, $_SESSION["session"]->getProfileId, $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
+				$image->insert($pdo);
+				$pusher
 
 
 		}
