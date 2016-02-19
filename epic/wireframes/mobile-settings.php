@@ -29,7 +29,7 @@
 
 				<h1 class="page-header">User Settings, Mobile</h1>
 
-				<img src="mobile-image.svg" alt="User Settings, Mobile" class="img-responsive">
+				<img src="mobile-settings.svg" alt="User Settings, Mobile" class="img-responsive">
 
 			</main>
 
