@@ -44,7 +44,7 @@
 					</div>
 					<div class="col-md-3 personaborder">
 						<a href="desktop-settings.php"><img src="thumbnail-desktop-settings.png" alt="User Settings, Desktop" class="img-responsive"></a><br>
-						Home Page, Desktop
+						User Settings, Desktop
 					</div>
 				</div>
 
@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-md-3 personaborder">
 						<a href="mobile-settings.php"><img src="thumbnail-mobile-settings.png" alt="User Settings, Mobile" class="img-responsive"></a><br>
-						User Profile, Mobile
+						User Settings, Mobile
 					</div>
 				</div>
 
