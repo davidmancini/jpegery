@@ -59,11 +59,11 @@
 					</div>
 					<div class="col-md-3 personaborder">
 						<a href="mobile-user.php"><img src="thumbnail-mobile-user.png" alt="User Profile, Mobile" class="img-responsive"></a><br>
-						User Profile, Desktop
+						User Profile, Mobile
 					</div>
 					<div class="col-md-3 personaborder">
 						<a href="mobile-settings.php"><img src="thumbnail-mobile-settings.png" alt="User Settings, Mobile" class="img-responsive"></a><br>
-						User Profile, Desktop
+						User Profile, Mobile
 					</div>
 				</div>
 
