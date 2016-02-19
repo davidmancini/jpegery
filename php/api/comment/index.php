@@ -69,6 +69,12 @@ try {
 			$requestObject = json_decode($requestContent);
 
 			//Ensure that all fields are present.
+			if(empty ($requestObject->commentImageId) === true) {
+				throw(new \InvalidArgumentException("Comment Image must exist", 405));
+			}
+			if(empty ($requestObject->commentProfileId) === true) {
+				throw(new \InvalidArgumentException("Comment Profile must exist", 405));
+			}
 
 			if(empty($requestObject->commentText) === true) {
 				throw(new \InvalidArgumentException("Comment text can not be empty", 405));
@@ -92,7 +98,7 @@ try {
 				$reply->message = "Comment updated";
 			} elseif($method === "POST") {
 				//TODO: Figure out what's going on here. Should I do the $_SESSION["image"]->getImageId() thing?
-				$comment = new Comment(null,  $commentImageId, $commentProfileId, $requestObject->commentDate, $requestObject->commentText);
+				$comment = new Comment(null,  $requestObject->commentImageId, $requestObject->commentProfileId, $requestObject->commentDate, $requestObject->commentText);
 				$comment->insert($pdo);
 				$reply->message = "Comment created";
 			}
