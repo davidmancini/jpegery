@@ -123,12 +123,11 @@ try {
 			} elseif($method === "POST") {
 				$image = new Image(null, $_SESSION["session"]->getProfileId, $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
 				$image->insert($pdo);
-				$pusher
+				//$pusher
 
-
+			}
 		}
 	}
-
 
 
 
