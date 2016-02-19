@@ -120,6 +120,10 @@ try {
 				$reply->message = "Image Successfully Posted";
 
 			} elseif($method === "DELETE") {
+				$security = Image::getImageByImageId($pdo, $id);
+				if($security !== $_SESSION["profile"]->getProfileId){
+					throw(new RuntimeException("You cannot delete an image that is not yours.", 403));
+				}
 				$image = Image::getImageByImageId($pdo, $id);
 				if($image === null) {
 					throw(new RuntimeException("Image does not exist", 404));
