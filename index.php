@@ -38,20 +38,30 @@
 							Login/Registation Form<br><br><br><br><br><br>
 						</div>
 						<div class="col-md-6 text-center">
-							News
+							<div class="btn-group" role="group" aria-label="...">
+								<button type="button" class="btn btn-default">Following</button>
+								<button type="button" class="btn btn-default">Followers</button>
+								<button type="button" class="btn btn-default">Trending</button>
+								<button type="button" class="btn btn-default">Most Popular</button>
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View By&nbsp;<span class="caret"></span></button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Not Yet Followed</a></li>
+										<li><a href="#">Other...</a></li>
+									</ul>
+								</div>
+
+							</div>
 						</div>
 					</div>
 					<div class="row contentRow">
-						<div class="col-md-3">
+						<div class="col-xs-4">
 							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
-						<div class="col-md-3">
+						<div class="col-xs-4">
 							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
-						<div class="col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
-						</div>
-						<div class="col-md-3">
+						<div class="col-xs-4">
 							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 					</div>
