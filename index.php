@@ -10,7 +10,7 @@
 		<div class="mainContent">
 			<header>
 				<!--NAV BAR-->
-				<nav class="navbar navbar-default navbar-fixed-top">
+				<nav class="navbar navbar-fixed-top" role="navigation">
 					<div class="container-fluid">
 							<div class="navbar-header">
 								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
@@ -35,7 +35,7 @@
 				<div class="container contentContainer">
 						<div class="row">
 						<div class="col-md-6">
-
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 						<div class="col-md-6">
 

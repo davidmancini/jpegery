@@ -29,8 +29,34 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
  * SECTION: Navigation Bar
  ***************************************************/
 
-.container-fluid {
-	background-color: firebrick;
+/* Navbar background color */
+.navbar-fixed-top {
+	background: firebrick;
+}
+
+/* Color behind logo */
+/*.navbar-brand {*/
+	/*background-color: white;*/
+/*}*/
+
+/* Navigation bar non-active text color */
+.navbar-fixed-top .navbar-nav > li > a {
+	color: #56A0C9;
+}
+
+/* Navigation bar non-active hover color */
+.navbar-fixed-top .navbar-nav > li > a:hover,
+.navbar-fixed-top .navbar-nav > li > a:focus {
+	color: white;
+	background-color: #56A0C9;
+}
+
+/* Navigation bar active text and background */
+.navbar-fixed-top .navbar-nav > .active > a,
+.navbar-fixed-top .navbar-nav > .active > a:hover,
+.navbar-fixed-top .navbar-nav > .active > a:focus {
+	color: white;
+	background-color: black;
 }
 
 /***************************************************
