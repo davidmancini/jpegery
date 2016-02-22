@@ -389,7 +389,7 @@ class Profile implements \JsonSerializable {
 	 * @return string value of last name
 	 */
 
-	public function getProfileName() {
+	public function getProfileNameL() {
 		return $this->profileNameL;
 	}
 
@@ -606,11 +606,258 @@ class Profile implements \JsonSerializable {
 		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
-		//Bind the comment id to the place holder in the template
+		//Bind the profile id to the place holder in the template
 		$parameters = ["profileId" => $profileId];
 		$statement->execute($parameters);
 
-		//Grab the comment from mySQL
+		//Grab the profile from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile by profile email
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profileEmail the email associated with  the profile
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileEmail(\PDO $pdo, string $profileEmail) {
+		//Sanitize the email before searching
+		$profileEmail = trim($profileEmail);
+		$profileEmail = filter_var($profileEmail, FILTER_VALIDATE_EMAIL);
+
+		if(empty($profileEmail) === true) {
+			throw(new \PDOException("email is empty or insecure"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the email to the place holder in the template
+		$parameters = ["profileEmail" => $profileEmail];
+		$statement->execute($parameters);
+
+		//Grab the email from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile by profile handle
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profileHandle at handle of the profile
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileHandle(\PDO $pdo, string $profileHandle) {
+		//Sanitize the profile handle before searching
+		$profileHandle = trim($profileHandle);
+		$profileHandle = filter_var($profileHandle, FILTER_SANITIZE_STRING);
+		if(empty($profileHandle) === true) {
+			throw(new \PDOException("handle is empty or insecure"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the handle to the place holder in the template
+		$parameters = ["profileHandle" => $profileHandle];
+		$statement->execute($parameters);
+
+		//Grab the handle from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile by user first name
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profileNameF the users first name
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileNameF(\PDO $pdo, string $profileNameF) {
+		//Sanitize the user name before searching
+		$profileNameF = trim($profileNameF);
+		$profileNameF = filter_var($profileNameF, FILTER_SANITIZE_STRING);
+		if(empty($profileNameF) === true) {
+			throw(new \PDOException("first name is empty or insecure"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind first name to the place holder in the template
+		$parameters = ["profileNameF" => $profileNameF];
+		$statement->execute($parameters);
+
+		//Grab the first name from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile users last name
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profileNameL the users last name
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileNameL(\PDO $pdo, string $profileNameL) {
+		//Sanitize the last name before searching
+		$profileNameL = trim($profileNameL);
+		$profileNameL = filter_var($profileNameL, FILTER_SANITIZE_STRING);
+		if(empty($profileNameL) === true) {
+			throw(new \PDOException("last name is empty or insecure"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the last name to the place holder in the template
+		$parameters = ["profileNameL" => $profileNameL];
+		$statement->execute($parameters);
+
+		//Grab the last name from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile by profile phone number
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profilePhone the phone number associated with the profile
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfilePhone(\PDO $pdo, string $profilePhone) {
+		//Sanitize the phone number before searching
+		$profilePhone = trim($profilePhone);
+		$profilePhone = filter_var($profilePhone, FILTER_SANITIZE_STRING);
+
+		if(empty($profilePhone) === true) {
+			throw(new \PDOException("phone number is empty or insecure"));
+		}
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the phone number to the place holder in the template
+		$parameters = ["profilePhone" => $profilePhone];
+		$statement->execute($parameters);
+
+		//Grab the phone number from mySQL
+		try {
+			$profile = null;
+			$statement->setFetchMode(\PDO::FETCH_ASSOC);
+			$row = $statement->fetch();
+			if($row !== false) {
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+			}
+		} catch(\Exception $exception) {
+			//If the row couldn't be converted, rethrow it
+			throw(new \PDOException($exception->getMessage(), 0, $exception));
+		}
+		return ($profile);
+	}
+
+	/**
+	 * get Profile by profile verification
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $profileVerify the profile verification
+	 * @return profile|null profile found or null if not found
+	 * @throws \PDOException when mySQL related errors occur
+	 * @throws \TypeError when variables are not the correct data type
+	 */
+
+	public static function getProfileByProfileVerify(\PDO $pdo, string $profileVerify) {
+		//Sanitize the verification before searching
+		$profileVerify = trim($profileVerify);
+		$profileVerify = filter_var($profileVerify, FILTER_SANITIZE_STRING);
+		if(empty($profileVerify) === true) {
+			throw(new \PDOException("verification is empty or insecure"));
+		}
+
+		//Create query template
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$statement = $pdo->prepare($query);
+
+		//Bind the verification to the place holder in the template
+		$parameters = ["profileVerify" => $profileVerify];
+		$statement->execute($parameters);
+
+		//Grab the verification from mySQL
 		try {
 			$profile = null;
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
