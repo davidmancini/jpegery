@@ -34,25 +34,53 @@
 			<main>
 				<div class="container contentContainer">
 						<div class="row">
-						<div class="col-md-6">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						<div class="col-md-6 text-center">
+							Login/Registation Form<br><br><br><br><br><br>
 						</div>
-						<div class="col-md-6">
-
+						<div class="col-md-6 text-center">
+							News
 						</div>
 					</div>
-					<div class="row">
+					<div class="row contentRow">
 						<div class="col-md-3">
-
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 						<div class="col-md-3">
-
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 						<div class="col-md-3">
-
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 						<div class="col-md-3">
-
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+					</div>
+					<div class="row contentRow">
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+					</div>
+					<div class="row contentRow">
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+						</div>
+						<div class="col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
 						</div>
 					</div>
 				</div><!--/contentContainer-->
