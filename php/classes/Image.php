@@ -541,6 +541,8 @@ class Image implements \JsonSerializable {
 		if($_SESSION["profile"] !== $this->imageProfileId) {
 			throw(new \RuntimeException("You can only create file under your profile"));
 		}
+		$maximumWidth = 2048;
+		$maximumHeight = 2048;
 
 		$validExts = ["jpeg", "jpg", "gif", "png"];
 		$ourExts = ["jpeg", "gif"];
@@ -556,7 +558,26 @@ class Image implements \JsonSerializable {
 		}
 		$identificationOfImage = Profile::getProfileByProfileId($this->imageProfileId)->getProfileEmail() . $this->imageId;
 		$imageFileName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
+		$imageSizes = getimagesize($name);
 
+		$widthRatio = $maximumWidth/$imageSizes[0];
+		$heightRatio = $maximumHeight/$imageSizes[1];
+		if(!($imageSizes[0]<=$maximumWidth && $imageSizes[1]<=$maximumHeight)) {
+			if(($heightRatio * $imageSizes[0]) < $maximumWidth) {
+				$_FILES = imagescale($_FILES, $heightRatio * $imageSizes[0], $maximumHeight);
+			} else {
+				$_FILES = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
+			}
+		}
+
+		if($type === "jpeg") {
+			$savedImage = imagejpeg($_FILES, $imageFileName);
+		} else {
+			$savedImage = imagegif($_FILES, $imageFileName);
+		}
+		if ($savedImage === false) {
+			throw(new \PDOException("Something went wrong in uploading your image."));
+		}
 
 //		$options = array();
 //		$options["http"] = array();
