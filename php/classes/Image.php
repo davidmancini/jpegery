@@ -1,6 +1,7 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
+use Edu\Cnm\Jpegery\Profile;
 require_once ("autoload.php"); //Required for validation of imageDate
 
 /**
@@ -532,6 +533,44 @@ class Image implements \JsonSerializable {
 		return ($images);
 	}
 
+	public function imageUpload() {
+		session_start();
+		if(empty($_SESSION["profile"]) === true) {
+			throw(new \RuntimeException("Please log in or sign up", 401));
+		}
+		if($_SESSION["profile"] !== $this->imageProfileId) {
+			throw(new \RuntimeException("You can only create file under your profile"));
+		}
+
+		$validExts = ["jpeg", "jpg", "gif", "png"];
+		$ourExts = ["jpeg", "gif"];
+		$validFormat = ["image/jpeg", "image/gif"];
+		$name = $_FILES["file"]["name"];
+		$extension = end(explode(".", $name));
+		if(in_array($_FILES["file"]["type"], $validExts) === true && in_array($_FILES["file"]["type"], $ourExts) === false) {
+			$_FILES["file"]["type"] = "jpeg";
+		}
+		$type = $_FILES["file"]["type"];
+		if(in_array($type, $ourExts) === false || in_array($extension, $validFormat) === false) {
+			throw(new \InvalidArgumentException("File was not of correct type"));
+		}
+		$identificationOfImage = Profile::getProfileByProfileId($this->imageProfileId)->getProfileEmail() . $this->imageId;
+		$imageFileName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
+
+
+//		$options = array();
+//		$options["http"] = array();
+//		$options["http"]["method"] = "GET";
+		//The header?
+
+//		$fd = fopen("http://www.jpegery.com/", "rb", false, $context);
+//		if($fd === false) {
+//			throw(new \RuntimeException("Unable to open stream"));
+//		}
+//		fpassthru($fd);
+//		fclose($fd);
+
+	}
 	/**
 	 * Formats the state variables for JSON serialization
 	 *
