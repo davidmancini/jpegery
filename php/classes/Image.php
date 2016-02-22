@@ -561,7 +561,7 @@ class Image implements \JsonSerializable {
 			throw(new \InvalidArgumentException("File was not of correct type"));
 		}
 		$identificationOfImage = Profile::getProfileByProfileId($this->imageProfileId)->getProfileEmail() . $this->imageId;
-		$imageFileName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
+		$tempName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
 		$imageSizes = getimagesize($name);
 
 		$widthRatio = $maximumWidth/$imageSizes[0];
@@ -575,10 +575,14 @@ class Image implements \JsonSerializable {
 		}
 
 		if($type === "gif") {
-			$savedImage = imagegif($_FILES, $imageFileName);
+			$savedImage = imagegif($_FILES, $tempName);
+//			$this->setImageType("gif");
 		} else {
-			$savedImage = imagejpeg($_FILES, $imageFileName);
+			$savedImage = imagejpeg($_FILES, $tempName);
+//			$this->setImageType("jpeg");
 		}
+//		$this->setImageDate();
+//		$this->setImageFileName($tempName);
 		if ($savedImage === false) {
 			throw(new \Exception("Something went wrong in uploading your image."));
 		}
