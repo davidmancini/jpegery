@@ -533,6 +533,13 @@ class Image implements \JsonSerializable {
 		return ($images);
 	}
 
+	/**
+	 * The method by which images are uploaded to our servers
+	 *
+	 * @throws \RuntimeException when the user did not have the authority to add an image
+	 * @throws \InvalidArgumentException when filetype is not supported
+	 * @throws \Exception when another error occurs
+	 **/
 	public function imageUpload() {
 		session_start();
 		if(empty($_SESSION["profile"]) === true) {
@@ -545,15 +552,12 @@ class Image implements \JsonSerializable {
 		$maximumHeight = 2048;
 
 		$validExts = ["jpeg", "jpg", "gif", "png"];
-		$ourExts = ["jpeg", "gif"];
 		$validFormat = ["image/jpeg", "image/gif"];
 		$name = $_FILES["file"]["name"];
 		$extension = end(explode(".", $name));
-		if(in_array($_FILES["file"]["type"], $validExts) === true && in_array($_FILES["file"]["type"], $ourExts) === false) {
-			$_FILES["file"]["type"] = "jpeg";
-		}
+
 		$type = $_FILES["file"]["type"];
-		if(in_array($type, $ourExts) === false || in_array($extension, $validFormat) === false) {
+		if(in_array($type, $validExts) === false || in_array($extension, $validFormat) === false) {
 			throw(new \InvalidArgumentException("File was not of correct type"));
 		}
 		$identificationOfImage = Profile::getProfileByProfileId($this->imageProfileId)->getProfileEmail() . $this->imageId;
@@ -570,26 +574,14 @@ class Image implements \JsonSerializable {
 			}
 		}
 
-		if($type === "jpeg") {
-			$savedImage = imagejpeg($_FILES, $imageFileName);
-		} else {
+		if($type === "gif") {
 			$savedImage = imagegif($_FILES, $imageFileName);
+		} else {
+			$savedImage = imagejpeg($_FILES, $imageFileName);
 		}
 		if ($savedImage === false) {
-			throw(new \PDOException("Something went wrong in uploading your image."));
+			throw(new \Exception("Something went wrong in uploading your image."));
 		}
-
-//		$options = array();
-//		$options["http"] = array();
-//		$options["http"]["method"] = "GET";
-		//The header?
-
-//		$fd = fopen("http://www.jpegery.com/", "rb", false, $context);
-//		if($fd === false) {
-//			throw(new \RuntimeException("Unable to open stream"));
-//		}
-//		fpassthru($fd);
-//		fclose($fd);
 
 	}
 	/**
