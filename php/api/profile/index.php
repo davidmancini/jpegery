@@ -120,7 +120,7 @@ try {
 			throw(new InvalidArgumentException ("phone number is a required field", 406));
 		}
 
-		// put, post or delete
+		// put
 		if($method === "PUT") {
 			$profile = Profile::getProfileByProfileId($pdo, $id);
 			if($profile === null) {
@@ -133,55 +133,56 @@ try {
 				$_SESSION["profile"]->setProfileId(false);
 				throw(new RunTimeException("You can only modify your own profile", 403));
 			}
-			$volunteer->setVolEmail($requestObject->volEmail);
-			$volunteer->setVolFirstName($requestObject->volFirstName);
-			$volunteer->setVolLastName($requestObject->volLastName);
-			$volunteer->setVolPhone($requestObject->volPhone);
-			//if there's a password, hash it, and set it
-			if($requestObject->volPassword !== null) {
-				$hash = hash_pbkdf2("sha512", $requestObject->volPassword, $volunteer->getVolSalt(), 262144, 128);
-				$volunteer->setVolHash($hash);
+			$profile->setProfileEmail($requestObject->profileEmail);
+			$profile->setProfileNameF($requestObject->profileNameF);
+			$profile->setProfileNameL($requestObject->profileNameL);
+			$profile->setProfilePhone($requestObject->profilePhone);
+			//require a password, hash it, and set it
+			if($requestObject->Password !== null) {
+				$hash = hash_pbkdf2("sha512", $requestObject->Password, $profile->getProfileSalt(), 262144, 128);
+				$profile->setProfileHash($hash);
 			}
-			$volunteer->update($pdo);
-			//kill the temporary admin access, if they're not supposed to have it
-			//check to see if the password is not null; this means it's a regular volunteer changing their password and not an admin
+			if(empty($requestObject->Password) === true) {
+				throw(new \PDOException("password is a required field"));
+			}
+			//make sure that the password is not null
 			//prevents admins from being logged out for editing their regular volunteers
-			if(($volunteer->getVolIsAdmin() === false) && ($requestObject->volPassword !== null)) {
-				$_SESSION["volunteer"]->setVolIsAdmin(false);
+			if(($profile->getProfileId() === false) && ($requestObject->Password !== null)) {
+				$_SESSION["profile"]->setProfileId(false);
 			}
-			$reply->message = "Volunteer updated OK";
-		} elseif($method === "POST") {
+			$reply->message = "Profile has been updated";
+		//post
+	} elseif($method === "POST") {
 			//if they shouldn't have admin access to this method, kill the temp access and boot them
 			//check by retrieving their original volunteer from the DB and checking
-			$security = Volunteer::getVolunteerByVolId($pdo, $_SESSION["volunteer"]->getVolId());
-			if($security->getVolIsAdmin() === false) {
-				$_SESSION["volunteer"]->setVolIsAdmin(false);
+			$security = Volunteer::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
+			if($security->getProfileId() === false) {
+				$_SESSION["profile"]->setVolIsAdmin(false);
 				throw(new RunTimeException("Access Denied", 403));
 			}
 			$password = bin2hex(openssl_random_pseudo_bytes(32));
 			$salt = bin2hex(openssl_random_pseudo_bytes(32));
-			$hash = hash_pbkdf2("sha512", $password, $salt, 262144, 128);
+			$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
 			$emailActivation = bin2hex(openssl_random_pseudo_bytes(8));
-			//create new volunteer
-			$volunteer = new Volunteer($id, $_SESSION["volunteer"]->getOrgId(), $requestObject->volEmail, $emailActivation,
-				$requestObject->volFirstName, $hash, false, $requestObject->volLastName, $requestObject->volPhone, $salt);
-			$volunteer->insert($pdo);
-			$reply->message = "Volunteer created OK";
+			//create new Profile
+			$profile = new Profile($id, $_SESSION["profile"]->getProfileId(), null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, empty($profileImageId), $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $requestObject->profileVerify,  $salt);
+			$profile->insert($pdo);
+			$reply->message = "Profile has been created";
 			//compose and send the email for confirmation and setting a new password
 			// create Swift message
 			$swiftMessage = Swift_Message::newInstance();
 			// attach the sender to the message
 			// this takes the form of an associative array where the Email is the key for the real name
-			$swiftMessage->setFrom(["breadbasketapp@gmail.com" => "Bread Basket"]);
+			$swiftMessage->setFrom(["noreply@jpegery.com" => "Jpegery"]);
 			/**
 			 * attach the recipients to the message
-			 * notice this an array that can include or omit the the recipient's real name
+			 * this is an array that can include or omit the the recipient's real name
 			 * use the recipients' real name where possible; this reduces the probability of the Email being marked as spam
 			 **/
-			$recipients = [$requestObject->volEmail];
+			$recipients = [$requestObject->profileEmail];
 			$swiftMessage->setTo($recipients);
 			// attach the subject line to the message
-			$swiftMessage->setSubject("Please confirm your Bread Basket account");
+			$swiftMessage->setSubject("Please confirm your Jpegery account");
 			/**
 			 * attach the actual message to the message
 			 * here, we set two versions of the message: the HTML formatted message and a special filter_var()ed
@@ -198,8 +199,8 @@ try {
 			$urlglue = $basePath . "/controllers/email-confirmation?emailActivation=" . $volunteer->getVolEmailActivation();
 			$confirmLink = "https://" . $_SERVER["SERVER_NAME"] . $urlglue;
 			$message = <<< EOF
-<h1>You've been registered for the Bread Basket program!</h1>
-<p>Visit the following URL to set a new password and complete the registration process: </p>
+<h1>Welcome to Jpegery!</h1>
+<p>Click the link to set up your password!</p>
 <a href="$confirmLink">$confirmLink</a></p>
 EOF;
 			$swiftMessage->setBody($message, "text/html");
@@ -226,31 +227,26 @@ EOF;
 		verifyXsrf();
 		//if they shouldn't have admin access to this method, kill the temp access and boot them
 		//check by retrieving their original volunteer from the DB and checking
-		$security = Volunteer::getVolunteerByVolId($pdo, $_SESSION["volunteer"]->getVolId());
+		$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
 		if($security->getVolIsAdmin() === false) {
-			$_SESSION["volunteer"]->setVolIsAdmin(false);
+			$_SESSION["profile"]->setProfileId(false);
 			throw(new RunTimeException("Access Denied", 403));
 		}
-		$volunteer = Volunteer::getVolunteerByVolId($pdo, $id);
-		if($volunteer === null) {
-			throw(new RangeException("Volunteer does not exist", 404));
+		$volunteer = Profile::getProfileByProfileId($pdo, $id);
+		if($profile === null) {
+			throw(new RangeException("Profile does not exist", 404));
 		}
-		$volunteer->delete($pdo);
+		$profile->delete($pdo);
 		$deletedObject = new stdClass();
 		$deletedObject->volunteerId = $id;
-		$reply->message = "Volunteer deleted OK";
-	}
-} else {
-	//if not an admin, and attempting a method other than get, throw an exception
-	if((empty($method) === false) && ($method !== "GET")) {
-		throw(new RuntimeException("Only administrators are allowed to modify entries", 401));
+		$reply->message = "Profile has been deleted :(";
 	}
 }
-	//send exception back to the caller
-} catch(Exception $exception) {
-	$reply->status = $exception->getCode();
-	$reply->message = $exception->getMessage();
+catch(\Exception $exception) {
+	throw(new \Exception($exception->getMessage(), 0, $exception));
 }
+
+
 header("Content-type: application/json");
 if($reply->data === null) {
 	unset($reply->data);
