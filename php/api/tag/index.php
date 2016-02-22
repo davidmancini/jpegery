@@ -19,12 +19,12 @@ try {
 	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("etc/apache2/capstone-mysql/jpegerey.ini");
 	// if the tag session is empty, the user is not logged in, throw an exception
-	if(empty(_$SESSION["Tag"]) === true) {
+	if(empty($_SESSION["Profile"]) === true) {
 		setXsrfCookie('/');
 		throw new (new RuntimeException("You Must Sign In to Tag a Photo", 401));
 	}
 
-}
+
 
 //determine which HTTP method was used
 $method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
@@ -41,7 +41,7 @@ if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 
 $tagId = filter_input(INPUT_GET, "tagId", FILTER_VALIDATE_INT);
 $tagName = filter_input(INPUT_GET, "tagName", FILTER_SANITIZE_STRING);
 
-//handle REST calls, while only allowing admin to access database-modifying methods
+//handle REST calls for GET methods
 if($method === "GET") {
 	//set XSFR cookie
 	setXsrfCookie("/");
@@ -66,4 +66,20 @@ if($method === "GET") {
 
 }
 
+//handle REST calls for PUT methods
 
+//If the user is logged in, allow to POST, PUT, and DELETE their own content.
+	if(empty($_SESSION["profile"]) !== false) {
+
+		if($method === "POST") {
+			verifyXsrf();
+			$requestContent = file_get_contents("php://input");
+			$requestObject = json_decode($requestContent);
+
+		}
+		//ensure all fields are present
+		if(empty($requestObject->tagId) === true {
+			throw(new InvalidArgumentException)("Tag must have an ID", 405));
+		}
+		if(empty($requestObject->tagName))
+	}
