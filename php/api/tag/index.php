@@ -56,6 +56,11 @@ if($method === "GET") {
 		if($tag !== null && $tag->getTagName() === $_SESSION["tag"]->getTagName()) {
 			$reply->data = $tag;
 		}
+	} else if(empty($allTags) === false) {
+		$tag = Tag::getAllTags($pdo, $id);
+		if($tag !== null && $tag->getAllTags() === $_SESSION["tag"]->getAllTags()) {
+			$reply->data = $tag;
+		}
 
 	}
 
