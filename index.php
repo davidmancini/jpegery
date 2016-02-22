@@ -34,7 +34,7 @@
 			<main>
 
 			</main>
-		</div>
+		</div><!--/mainContent-->
 		<footer>
 			<?php require_once("footer.php")?>
 		</footer>
