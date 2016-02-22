@@ -541,49 +541,65 @@ class Image implements \JsonSerializable {
 	 * @throws \Exception when another error occurs
 	 **/
 	public function imageUpload() {
-		session_start();
+		if(session_status() !== PHP_SESSION_ACTIVE) {
+			session_start();
+		}
+
 		if(empty($_SESSION["profile"]) === true) {
 			throw(new \RuntimeException("Please log in or sign up", 401));
 		}
+
 		if($_SESSION["profile"] !== $this->imageProfileId) {
-			throw(new \RuntimeException("You can only create file under your profile"));
+			throw(new \RuntimeException("You can only create file under your profile", 401));
 		}
+
 		$maximumWidth = 2048;
 		$maximumHeight = 2048;
 
 		$validExts = ["jpeg", "jpg", "gif", "png"];
-		$validFormat = ["image/jpeg", "image/gif"];
+		$validFormat = ["image/jpeg", "image/jpg", "image/gif", "image/png"];
 		$name = $_FILES["file"]["name"];
-		$extension = end(explode(".", $name));
-
+		$extension = strtolower(end(explode(".", $name)));
 		$type = $_FILES["file"]["type"];
+
 		if(in_array($type, $validExts) === false || in_array($extension, $validFormat) === false) {
-			throw(new \InvalidArgumentException("File was not of correct type"));
+			throw(new \InvalidArgumentException("File was not of correct type", 418)); // tea earl grey hot
 		}
-		$identificationOfImage = Profile::getProfileByProfileId($this->imageProfileId)->getProfileEmail() . $this->imageId;
+
+		$identificationOfImage = $_SESSION["profile"]->getProfileEmail() . $this->imageId;
 		$tempName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
 		$imageSizes = getimagesize($name);
 
 		$widthRatio = $maximumWidth/$imageSizes[0];
+
 		$heightRatio = $maximumHeight/$imageSizes[1];
+
+		switch($type) {
+			case "jpeg":
+			case "jpg": $tempImage = imagecreatefromjpeg($_FILES); break;
+			case "gif": $tempImage = imagecreatefromgif($_FILES); break;
+			case "png": $tempImage = imagecreatefrompng($_FILES); break;
+			default: throw(new \InvalidArgumentException("File was not of correct type", 418)); break;
+		}
+
 		if(!($imageSizes[0]<=$maximumWidth && $imageSizes[1]<=$maximumHeight)) {
 			if(($heightRatio * $imageSizes[0]) < $maximumWidth) {
-				$_FILES = imagescale($_FILES, $heightRatio * $imageSizes[0], $maximumHeight);
+				$tempImage = imagescale($_FILES, $heightRatio * $imageSizes[0], $maximumHeight);
 			} else {
-				$_FILES = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
+				$tempImage = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
 			}
 		}
 		$fileLocation = "/jpegery/content/" . $tempName;
 
 		if($type === "gif") {
-			$savedImage = imagegif($_FILES, $fileLocation);
-//			$this->setImageType("gif");
+			$savedImage = imagegif($tempImage, $fileLocation);
+			$this->setImageType("image/gif");
 		} else {
-			$savedImage = imagejpeg($_FILES, $fileLocation);
-//			$this->setImageType("jpeg");
+			$savedImage = imagejpeg($tempImage, $fileLocation);
+			$this->setImageType("image/jpeg");
 		}
 //		$this->setImageDate();
-//		$this->setImageFileName($tempName);
+		$this->setImageFileName($fileLocation);
 		if ($savedImage === false) {
 			throw(new \Exception("Something went wrong in uploading your image."));
 		}
