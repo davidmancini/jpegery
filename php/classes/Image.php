@@ -573,12 +573,13 @@ class Image implements \JsonSerializable {
 				$_FILES = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
 			}
 		}
+		$fileLocation = "/jpegery/content/" . $tempName;
 
 		if($type === "gif") {
-			$savedImage = imagegif($_FILES, $tempName);
+			$savedImage = imagegif($_FILES, $fileLocation);
 //			$this->setImageType("gif");
 		} else {
-			$savedImage = imagejpeg($_FILES, $tempName);
+			$savedImage = imagejpeg($_FILES, $fileLocation);
 //			$this->setImageType("jpeg");
 		}
 //		$this->setImageDate();
