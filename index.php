@@ -32,7 +32,30 @@
 			</header>
 
 			<main>
-				<p>Test</p><br><p>Test</p><br><p>Test</p><br><p>Test</p><br><p>Test</p><br>
+				<div class="container contentContainer">
+						<div class="row">
+						<div class="col-md-6">
+
+						</div>
+						<div class="col-md-6">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+
+						</div>
+						<div class="col-md-3">
+
+						</div>
+						<div class="col-md-3">
+
+						</div>
+						<div class="col-md-3">
+
+						</div>
+					</div>
+				</div><!--/contentContainer-->
 			</main>
 		</div><!--/mainContent-->
 		<footer>
