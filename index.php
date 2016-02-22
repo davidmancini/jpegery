@@ -21,18 +21,18 @@
 								</button>
 								<a class="navbar-brand" href="#">jpegery</a>
 							</div>
-						<div class="collapse navbar-collapse" id="navbar-collapse">
-							<ul class="nav navbar-nav navbar-right">
-								<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-								<li><a href="#">Link</a></li>
-							</ul>
+							<div class="collapse navbar-collapse" id="navbar-collapse">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+									<li><a href="#">Link</a></li>
+								</ul>
 						</div><!--/navbar-collapse-->
 					</div><!--/container-fluid-->
 				</nav><!--END NAV BAR-->
 			</header>
 
 			<main>
-
+				<p>Test</p><br><p>Test</p><br><p>Test</p><br><p>Test</p><br><p>Test</p><br>
 			</main>
 		</div><!--/mainContent-->
 		<footer>
