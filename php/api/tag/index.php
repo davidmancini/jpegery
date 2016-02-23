@@ -68,7 +68,7 @@ if($method === "GET") {
 
 //handle REST calls for PUT methods
 
-//If the user is logged in, allow to POST, PUT, and DELETE their own content.
+//If the user is logged in, allow to POST their own tag.
 	if(empty($_SESSION["profile"]) !== false) {
 
 		if($method === "POST") {
@@ -78,8 +78,25 @@ if($method === "GET") {
 
 		}
 		//ensure all fields are present
-		if(empty($requestObject->tagId) === true {
-			throw(new InvalidArgumentException)("Tag must have an ID", 405));
+		if(empty($requestObject->tagId) === true) {
+			throw(new InvalidArgumentException("Tag must have an ID", 405));
 		}
-		if(empty($requestObject->tagName))
+		if(empty($requestObject->tagName) === true) {
+			throw(new InvalidArgumentException("Tag must have a Name", 405));
+		}
+
+		if($method === "POST") {
+			$tag = new Tag(null, $requestObject->tagName);
+			$tag->insert($pdo);
+		}
 	}
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+
+}
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+echo json_encode($reply);
