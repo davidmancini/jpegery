@@ -2,7 +2,7 @@
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
 require_once dirname(dirname(__DIR__)) . "/lib/xsrf.php";
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
-require_once(dirname(dirname(dirname(dirname(__DIR__)))) . "/vendor/autoload.php");
+use \Edu\Cnm\Jpegery\Profile;
 
 /**
  * api for profile class
@@ -57,7 +57,7 @@ try {
 	if($method === "GET") {
 		//set XSRF cookie
 		setXsrfCookie("/");
-		//get the volunteer based on the given field
+		//get the profile based on the given field
 		if(empty($id) === false) {
 			$profile = Profile::getProfileByProfileId($pdo, $id);
 			if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
@@ -153,17 +153,16 @@ try {
 			$reply->message = "Profile has been updated";
 		//post
 	} elseif($method === "POST") {
-			//if they shouldn't have admin access to this method, kill the temp access and boot them
-			//check by retrieving their original volunteer from the DB and checking
-			$security = Volunteer::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
+			// Verify that they are trying to update their own profile
+			$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
 			if($security->getProfileId() === false) {
-				$_SESSION["profile"]->setVolIsAdmin(false);
+				$_SESSION["profile"]->setProfileId(false);
 				throw(new RunTimeException("Access Denied", 403));
 			}
 			$password = bin2hex(openssl_random_pseudo_bytes(32));
 			$salt = bin2hex(openssl_random_pseudo_bytes(32));
 			$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
-			$emailActivation = bin2hex(openssl_random_pseudo_bytes(8));
+			$profileVerify = bin2hex(openssl_random_pseudo_bytes(8));
 			//create new Profile
 			$profile = new Profile($id, $_SESSION["profile"]->getProfileId(), null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, empty($profileImageId), $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $requestObject->profileVerify,  $salt);
 			$profile->insert($pdo);
@@ -184,7 +183,7 @@ try {
 			// attach the subject line to the message
 			$swiftMessage->setSubject("Please confirm your Jpegery account");
 			/**
-			 * attach the actual message to the message
+			 * attach the content to the message
 			 * here, we set two versions of the message: the HTML formatted message and a special filter_var()ed
 			 * version of the message that generates a plain text version of the HTML content
 			 * notice one tactic used is to display the entire $confirmLink to plain text; this lets users
@@ -196,7 +195,7 @@ try {
 				$lastSlash = strrpos($basePath, "/");
 				$basePath = substr($basePath, 0, $lastSlash);
 			}
-			$urlglue = $basePath . "/controllers/email-confirmation?emailActivation=" . $volunteer->getVolEmailActivation();
+			$urlglue = $basePath . "/controllers/email-confirmation?profileVerify=" . $profile->getProfileVerify();
 			$confirmLink = "https://" . $_SERVER["SERVER_NAME"] . $urlglue;
 			$message = <<< EOF
 <h1>Welcome to Jpegery!</h1>
@@ -225,20 +224,20 @@ EOF;
 		}
 	} elseif($method === "DELETE") {
 		verifyXsrf();
-		//if they shouldn't have admin access to this method, kill the temp access and boot them
-		//check by retrieving their original volunteer from the DB and checking
+		// make sure that they can only delete their own profile
+		//retrieve their profile from the database
 		$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
-		if($security->getVolIsAdmin() === false) {
+		if($security->getProfileId() === false) {
 			$_SESSION["profile"]->setProfileId(false);
 			throw(new RunTimeException("Access Denied", 403));
 		}
-		$volunteer = Profile::getProfileByProfileId($pdo, $id);
+		$profile = Profile::getProfileByProfileId($pdo, $id);
 		if($profile === null) {
 			throw(new RangeException("Profile does not exist", 404));
 		}
 		$profile->delete($pdo);
 		$deletedObject = new stdClass();
-		$deletedObject->volunteerId = $id;
+		$deletedObject->profileId = $id;
 		$reply->message = "Profile has been deleted :(";
 	}
 }
