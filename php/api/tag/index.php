@@ -4,6 +4,7 @@
  *
  * @author Zach Leyba mtvzach@gmail.com
  */
+use \Edu\Cnm\Jpegery\Tag;
 
 //verify the xsrf challenge
 if(session_status() !== PHP_SESSION_ACTIVE) {
