@@ -60,13 +60,17 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 	background-color: black;
 }
 
+/* Mobile (collapsed) button background color and icon bar color */
+.navbar-toggle { background-color: darkred;  }
+.icon-bar { background-color: white; }
+
 /***************************************************
  * SECTION: Above Content
  ***************************************************/
 
-/* Adds a bit of space between search box and the buttons above it. */
+/* Adds a bit of space between search box and the buttons below it. */
 .search {
-	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 

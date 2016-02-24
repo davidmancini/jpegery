@@ -38,6 +38,13 @@
 								Login/Registation Form<br><br><br><br><br><br>
 							</div>
 							<div class="col-md-6 text-center">
+								<div class="input-group search">
+									<input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+										</span>
+								</div>
+
 								<div class="btn-group" role="group" aria-label="...">
 									<button type="button" class="btn btn-default">Following</button>
 									<button type="button" class="btn btn-default">Followers</button>
@@ -52,12 +59,7 @@
 									</div>
 								</div>
 
-								<div class="input-group search">
-										<input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-										</span>
-								</div>
+
 
 							</div>
 					</div>
