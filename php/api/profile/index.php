@@ -51,7 +51,7 @@ try {
 	$profilePhone = filter_input(INPUT_GET, "profilePhone", FILTER_SANITIZE_STRING);
 	$profileSalt = filter_input(INPUT_GET, "profileSalt", FILTER_SANITIZE_EMAIL);
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
-	$current = filter_input(INPUT_GET, "current", FILTER_SANITIZE_STRING);
+//	$current = filter_input(INPUT_GET, "current", FILTER_SANITIZE_STRING);
 
 	//handle REST calls
 	if($method === "GET") {
@@ -83,7 +83,7 @@ try {
 				if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
 					$reply->data = $profile;
 				}
-				$reply->data = $volunteer;
+				$reply->data = $profile;
 			} else if(empty($profilePhone) === false) {
 				$profile = Profile::getProfileByProfilePhone($pdo, $profilePhone);
 				if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
@@ -146,7 +146,6 @@ try {
 				throw(new \PDOException("password is a required field"));
 			}
 			//make sure that the password is not null
-			//prevents admins from being logged out for editing their regular volunteers
 			if(($profile->getProfileId() === false) && ($requestObject->Password !== null)) {
 				$_SESSION["profile"]->setProfileId(false);
 			}
