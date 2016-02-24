@@ -61,7 +61,7 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 }
 
 /* Mobile (collapsed) button background color and icon bar color */
-.navbar-toggle { background-color: darkred;  }
+.navbar-toggle { background-color: darkred; }
 .icon-bar { background-color: white; }
 
 /***************************************************
