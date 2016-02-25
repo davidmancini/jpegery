@@ -57,7 +57,7 @@ try {
 		} elseif (empty($commentProfileId) === false) {
 			$reply->data = Comment::getCommentByProfileId($pdo, $commentProfileId)->toArray();
 		} elseif (empty($commentText) === false) {
-			$reply->data = Comment::getCommentByCommentContent($pdo, $commentText);
+			$reply->data = Comment::getCommentByCommentContent($pdo, $commentText)->toArray();
 		}
 
 	}
