@@ -187,7 +187,7 @@ try {
 		for($i = 0; $i < 3; $i++) {
 			$lastSlash = strrpos($basePath, "/");
 			$basePath = substr($basePath, 0, $lastSlash);
-		}
+		} //Don't trust this one.
 		$urlglue = $basePath . "/controllers/email-confirmation?profileVerify=" . $profile->getProfileVerify();
 		$confirmLink = "https://" . $_SERVER["SERVER_NAME"] . $urlglue;
 		$message = <<< EOF
@@ -214,23 +214,6 @@ EOF;
 			// the $failedRecipients parameter passed in the send() method now contains contains an array of the Emails that failed
 			throw(new RuntimeException("unable to send email", 404));
 		}
-	} elseif($method === "DELETE") {
-		verifyXsrf();
-		// make sure that they can only delete their own profile
-		//retrieve their profile from the database
-		$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
-		if($security->getProfileId() === false) {
-			$_SESSION["profile"]->setProfileId(false);
-			throw(new RunTimeException("Access Denied", 403));
-		}
-		$profile = Profile::getProfileByProfileId($pdo, $id);
-		if($profile === null) {
-			throw(new RangeException("Profile does not exist", 404));
-		}
-		$profile->delete($pdo);
-		$deletedObject = new stdClass();
-		$deletedObject->profileId = $id;
-		$reply->message = "Profile has been deleted :(";
 	}
 }
 catch (Exception $exception) {
