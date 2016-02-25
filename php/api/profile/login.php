@@ -15,29 +15,33 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 }
 try {
 // verify user login options
-	$profile = null;
-	$profile = getProfileByProfileEmail($profileEmail);
+//	$pdo //Connect to mysql encrypted;
+
+	verifyXsrf();
+	$requestContent = file_get_contents("php://input");
+	$requestObject = json_decode($requestContent);
+
+	$profile = Profile::getProfileByProfileEmail($pdo, $requestObject->emailHandlePhone);
 	if($profile === null) {
-		$profile = getProfileByProfileHandle($profileHandle);
+		$profile = Profile::getProfileByProfileHandle($pdo, $requestObject->emailHandlePhone);
 	}
 	if($profile === null) {
-		$profile = getProfileByProfilePhone($profilePhone);
+		$profile = Profile::getProfileByProfilePhone($pdo, $requestObject->emailHandlePhone);
 	}
 // if login options cannot be verified throw exception
 	if($profile === null) {
-		throw(new\IDTENTException("User name or password is incorrect"));
+		throw(new\RuntimeException("User name or password is incorrect"));
 	}
-	$password = bin2hex(openssl_random_pseudo_bytes(32));
-	$salt = bin2hex(openssl_random_pseudo_bytes(32));
-	$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
+	$hash = hash_pbkdf2("sha512", $requestObject->password, $profile->getProfileSalt(), 262144);
 // if login credentials are valid; start session
-	if(isset($profile) === true && $password === $hash->getProfileByProfileHash()) {
-		session_start();
-		session_regenerate_id(true);
+	if((empty($profile) === false) && ($hash === $profile->getProfileHash())) {
+		//Put the profile in the session.
+		//Put a flowery congratulation message saying that they've logged in.
 	} else {
-		session_abort();
+		//Throw an exception, saying that something is wrong.
 	}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
 }
+//Echo the json, encode the $reply.
