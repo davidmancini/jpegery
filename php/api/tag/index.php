@@ -1,4 +1,8 @@
 <?php
+require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
+require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
+
 /**
  * controller/api for the tag class
  *
@@ -18,11 +22,11 @@ $reply->data = null;
 
 try {
 	//grab the mySQL connection
-	$pdo = connectToEncryptedMySQL("etc/apache2/capstone-mysql/jpegerey.ini");
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	// if the tag session is empty, the user is not logged in, throw an exception
 	if(empty($_SESSION["Profile"]) === true) {
 		setXsrfCookie('/');
-		throw new (new RuntimeException("You Must Sign In to Tag a Photo", 401));
+		throw(new RuntimeException("You Must Sign In to Tag a Photo", 401));
 	}
 
 
