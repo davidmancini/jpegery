@@ -582,14 +582,14 @@ class Image implements \JsonSerializable {
 			default: throw(new \InvalidArgumentException("File was not of correct type", 418)); break;
 		}
 
-		if(!($imageSizes[0]<=$maximumWidth && $imageSizes[1]<=$maximumHeight)) {
+		if(!($imageSizes[0] <= $maximumWidth && $imageSizes[1] <= $maximumHeight)) {
 			if(($heightRatio * $imageSizes[0]) < $maximumWidth) {
 				$tempImage = imagescale($_FILES, $heightRatio * $imageSizes[0], $maximumHeight);
 			} else {
 				$tempImage = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
 			}
 		}
-		$fileLocation = "/jpegery/content/" . $tempName;
+		$fileLocation = "/var/www/html/public_html/jpegery/content/" . $tempName;
 
 		if($type === "gif") {
 			$savedImage = imagegif($tempImage, $fileLocation);
