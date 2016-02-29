@@ -32,7 +32,7 @@ try {
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
 	//Make sure ID is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
+	if(($method === "DELETE" || $method === "POST") && (empty($id) === true || $id < 0)) {
 		throw(new InvalidArgumentException("ID cannot be empty or negative", 405));
 	}
 
