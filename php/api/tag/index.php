@@ -51,24 +51,32 @@ if($method === "GET") {
 	//set XSFR cookie
 	setXsrfCookie("/");
 	//get tag based on the given field
+//	if(empty($id) === false) {
+//		$tag = Tag::getTagById($pdo, $id);
+//		if($tag !== null && $tag->getTagId() === $_SESSION["tag"]->getTagId()) {
+//			$reply->data = $tag;
+//		}
+//	} else if(empty($tagName) === false) {
+//		$tag = Tag::getTagByName($pdo, $id);
+//		if($tag !== null && $tag->getTagName() === $_SESSION["tag"]->getTagName()) {
+//			$reply->data = $tag;
+//		}
+//	} else if(empty($allTags) === false) {
+//		$tag = Tag::getAllTags($pdo, $id);
+//		if($tag !== null && $tag->getAllTags() === $_SESSION["tag"]->getAllTags()) {
+//			$reply->data = $tag;
+//		}
+//
+//	}
+
 	if(empty($id) === false) {
-		$tag = Tag::getTagById($pdo, $id);
-		if($tag !== null && $tag->getTagId() === $_SESSION["tag"]->getTagId()) {
-			$reply->data = $tag;
-		}
-	} else if(empty($tagName) === false) {
-		$tag = Tag::getTagByName($pdo, $id);
-		if($tag !== null && $tag->getTagName() === $_SESSION["tag"]->getTagName()) {
-			$reply->data = $tag;
-		}
-	} else if(empty($allTags) === false) {
-		$tag = Tag::getAllTags($pdo, $id);
-		if($tag !== null && $tag->getAllTags() === $_SESSION["tag"]->getAllTags()) {
-			$reply->data = $tag;
-		}
+		$reply->data = Tag::getTagById($pdo, $tagId);
+	} else if(empty($city) === false) {
+		$reply->data = Tag::getTagByName($pdo, $tagName)->toArray();
+	} else if(empty($name) === false) {
+		$reply->data = Tag::getAllTags($pdo, $tags)->toArray();
 
 	}
-
 }
 
 //handle REST calls for PUT methods
@@ -98,7 +106,6 @@ if($method === "GET") {
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
-
 }
 header("Content-type: application/json");
 if($reply->data === null) {
