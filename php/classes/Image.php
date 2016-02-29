@@ -598,7 +598,7 @@ class Image implements \JsonSerializable {
 			$savedImage = imagejpeg($tempImage, $fileLocation);
 			$this->setImageType("image/jpeg");
 		}
-//		$this->setImageDate();
+		$this->setImageDate();
 		$this->setImageFileName($fileLocation);
 		if ($savedImage === false) {
 			throw(new \Exception("Something went wrong in uploading your image."));
