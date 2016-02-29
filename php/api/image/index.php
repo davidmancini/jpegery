@@ -114,7 +114,7 @@ try {
 				$reply->message = "Image Successfully Updated";
 
 			} elseif($method === "POST") {
-				$image = new Image(null, $_SESSION["session"]->getProfileId(), $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
+				$image = new Image(null, $_SESSION["profile"]->getProfileId(), $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
 				$image->insert($pdo);
 				$reply->message = "Image Successfully Posted";
 

@@ -26,7 +26,7 @@ try {
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
 	//Exception if the vote is null, or if the user is not logged in.
-	if(empty($_SESSION["Profile"]) === true) {
+	if(empty($_SESSION["profile"]) === true) {
 		throw(new RuntimeException("You must be logged in to vote on an image.", 401));
 	}
 
@@ -56,7 +56,7 @@ try {
 
 			//Perform actual POST or DELETE
 			if($method === "POST") {
-				$vote = Vote::getVoteByVoteProfileIdAndVoteImageId($pdo, $voteProfileId, $voteImageId);
+				$vote = new Vote($_SESSION["profile"]->getProfileId(), $requestObject->voteImageId, $requestObject->voteValue);
 				$vote->insert($pdo);
 				$reply->message = "Voted successfully.";
 			}
