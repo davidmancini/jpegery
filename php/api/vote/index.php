@@ -2,7 +2,7 @@
 
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
 require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
-require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 use Edu\Cnm\Jpegery\Vote;
 
 /**
@@ -33,24 +33,12 @@ try {
 	//Determine which HTTP method was used
 	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 
-	//Sanitize inputs
-	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 
-	//Make sure ID is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
-		throw(new InvalidArgumentException("ID cannot be empty or negative", 405));
-	}
-
-	//Sanitize and trim fields
-	//voteProfileId, voteImageId, voteValue
-	$voteProfileId = filter_input(INPUT_GET, "voteProfileId", FILTER_VALIDATE_INT);
-	$voteImageId = filter_input(INPUT_GET, "voteImageId", FILTER_VALIDATE_INT);
-	$voteValue = filter_input(INPUT_GET, "voteValue", FILTER_VALIDATE_INT);
 
 	//If the user is logged in, allow to POST and DELETE vote.
 	if(empty($_SESSION["profile"]) !== false) {
 
-		if($method === "POST" || $method === "DELETE") {
+		if($method === "POST") {
 			verifyXsrf();
 			$requestContent = file_get_contents("php://input");
 			$requestObject = json_decode($requestContent);
@@ -68,24 +56,26 @@ try {
 
 			//Perform actual POST or DELETE
 			if($method === "POST") {
-				$vote = Vote::getVoteByVoteProfileIdAndVoteImageId($pdo, $id);
+				$vote = Vote::getVoteByVoteProfileIdAndVoteImageId($pdo, $voteProfileId, $voteImageId);
 				$vote->insert($pdo);
 				$reply->message = "Voted successfully.";
-
-			} elseif($method === "DELETE") {
-				$vote = Vote::getVoteByVoteProfileIdAndVoteImageId($pdo, $id);
-				if($vote === null) {
-					throw(new RuntimeException("Vote does not exist", 404));
-				}
-				$security = $vote->getVoteByVoteProfileIdAndVoteImageId($pdo, $id);
-				if($security !== $_SESSION["profile"]->getProfileId()) {
-					throw(new RuntimeException("You cannot delete a vote that isn't yours.", 403);
-				}
-				$vote->delete($pdo);
-				$deletedObject = new stdClass();
-				$deletedObject->(voteProfileId, $voteImageId) = $id;
-				$reply->message = "Vote Successfully Deleted.";
 			}
+		} elseif($method === "DELETE") {
+			//Sanitize and trim fields
+			//voteProfileId, voteImageId, voteValue
+			$voteProfileId = filter_input(INPUT_GET, "voteProfileId", FILTER_VALIDATE_INT);
+			$voteImageId = filter_input(INPUT_GET, "voteImageId", FILTER_VALIDATE_INT);
+
+			$vote = Vote::getVoteByVoteProfileIdAndVoteImageId($pdo, $voteProfileId, $voteImageId);
+			if($vote === null) {
+				throw(new RuntimeException("Vote does not exist", 404));
+			}
+			$security = $requestObject->voteProfileId;
+			if($security !== $_SESSION["profile"]->getProfileId()) {
+				throw(new RuntimeException("You cannot delete a vote that isn't yours.", 403));
+			}
+			$vote->delete($pdo);
+			$reply->message = "Vote Successfully Deleted.";
 		}
 	}
 } catch(Exception $exception) {
