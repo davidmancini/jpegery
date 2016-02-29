@@ -550,7 +550,7 @@ class Image implements \JsonSerializable {
 		}
 
 		if($_SESSION["profile"] !== $this->imageProfileId) {
-			throw(new \RuntimeException("You can only create file under your profile", 401));
+			throw(new \RuntimeException("We could not upload your image, as your account did not match the account the image would have been placed under. We didn't even think that was possible.", 401));
 		}
 
 		$maximumWidth = 2048;
