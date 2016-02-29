@@ -41,10 +41,58 @@ try {
 	}
 
 //sanitize and trim other fields
+	$imageId = filter_input(INPUT_GET, "imageId", FILTER_VALIDATE_INT);
 	$tagId = filter_input(INPUT_GET, "tagId", FILTER_VALIDATE_INT);
-	$tagName = filter_input(INPUT_GET, "tagName", FILTER_SANITIZE_STRING);
+
 
 //handle REST calls for GET methods
 	if($method === "GET") {
 		//set XSFR cookie
 		setXsrfCookie("/");
+		//get tag based on the given field
+		if(empty($id) === false) {
+			$tag = Tag::getImageTagByImageId($pdo, $id);
+			if($tag !== null && $tag->getImageId() === $_SESSION["tag"]->getImageId()) {
+				$reply->data = $tag;
+			}
+		}
+	}
+
+	//handle REST calls for PUT methods
+
+//If the user is logged in, allow to POST their own tag.
+	if(empty($_SESSION["profile"]) !== false) {
+
+		if($method === "POST") {
+			verifyXsrf();
+			$requestContent = file_get_contents("php://input");
+			$requestObject = json_decode($requestContent);
+
+		}
+		//ensure all fields are present
+		if(empty($requestObject->imageId) === true) {
+			throw(new InvalidArgumentException("Image must have an ID", 405));
+		}
+		if(empty($requestObject->tagId) === true) {
+			throw(new InvalidArgumentException("Tag must have an ID", 405));
+		}
+
+		if($method === "POST") {
+			$tag = new Tag($requestObject->imageId, $requestObject->tagId);
+			$tag->insert($pdo);
+		}
+	}
+} catch(Exception $exception) {
+	$reply->status = $exception->getCode();
+	$reply->message = $exception->getMessage();
+
+}
+header("Content-type: application/json");
+if($reply->data === null) {
+	unset($reply->data);
+}
+echo json_encode($reply);
+
+
+
+
