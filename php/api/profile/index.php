@@ -1,6 +1,6 @@
 <?php
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
-require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
+require_once dirname(dirname(__DIR__)) . "/lib/xsrf.php";
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 use \Edu\Cnm\Jpegery\Profile;
 
@@ -51,7 +51,6 @@ try {
 	$profilePhone = filter_input(INPUT_GET, "profilePhone", FILTER_SANITIZE_STRING);
 	$profileSalt = filter_input(INPUT_GET, "profileSalt", FILTER_SANITIZE_EMAIL);
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
-//	$current = filter_input(INPUT_GET, "current", FILTER_SANITIZE_STRING);
 
 	//handle REST calls
 	if($method === "GET") {

@@ -6,6 +6,7 @@ use \Edu\Cnm\Jpegery\Profile;
 
 /**
  * login api
+ *
  * @author Michael Kemm
  */
 
@@ -13,6 +14,12 @@ use \Edu\Cnm\Jpegery\Profile;
 if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
 }
+
+//Create an empty reply
+$reply = new stdClass();
+$reply->status = 200;
+$reply->data = null;
+
 try {
 // verify user login options
 //	$pdo //Connect to mysql encrypted;
