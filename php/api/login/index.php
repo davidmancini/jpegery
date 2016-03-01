@@ -36,12 +36,15 @@ try {
 // if login credentials are valid; start session
 	if((empty($profile) === false) && ($hash === $profile->getProfileHash())) {
 		//Put the profile in the session.
-		//Put a flowery congratulation message saying that they've logged in.
+		session_start();
+		echo "Welcome to jpegery!";
+		// somethings wrong
 	} else {
-		//Throw an exception, saying that something is wrong.
+		throw(new\RuntimeException("Verify your login information and try again."));
 	}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
 }
 //Echo the json, encode the $reply.
+echo json_encode($reply);
