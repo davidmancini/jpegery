@@ -16,7 +16,7 @@
 				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Link</a></li>
 			</ul>
-			<form class="navbar-form navbar-right hidden-xs" role="search">
+			<form class="navbar-form navbar-right hidden-xs" role="search"><!--Search box is hidden when nav bar collapses-->
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search for...">
 				</div>

@@ -19,7 +19,7 @@
 							<!--Blank section. Could be used for company banner?-->
 						</div>
 						<div class="col-md-6 text-center">
-							<div class="input-group search hidden-sm hidden-md hidden-lg">
+							<div class="input-group search hidden-sm hidden-md hidden-lg"><!--Search box is only visible when search box on nav bar disappears-->
 								<input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
@@ -43,57 +43,41 @@
 
 					<div class="row contentRow contentImageRow">
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
-						<!--					</div>-->
-						<!--					<div class="row contentRow">-->
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
 							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
-						</div>
-						<!--					</div>-->
-						<!--					<div class="row contentRow">-->
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image"
-												  class="img-responsive contentImage"></a>
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
-						<!--					</div>-->
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+						</div>
 					</div><!--/contentContainer-->
 			</main>
 		</div><!--/mainContent-->
