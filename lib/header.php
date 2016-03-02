@@ -10,11 +10,20 @@
 			</button>
 			<a class="navbar-brand" href="#">jpegery</a>
 		</div>
+
 		<div class="collapse navbar-collapse" id="navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Link</a></li>
 			</ul>
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search for...">
+				</div>
+				<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+			</form>
 		</div><!--/navbar-collapse-->
+
+
 	</div><!--/container-fluid-->
 </nav><!--END NAV BAR-->
