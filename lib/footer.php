@@ -1,12 +1,12 @@
 <div class="container-fluid footer">
 	<div class="row">
 		<div class="col-xs-6">
-			<a href="#">Log In</a><br>
-			<a href="#">Help</a><br>
-			<a href="#">FAQ</a><br>
+			<a href="#"><i class="fa fa-sign-in"></i>&nbsp;Log In</a><br>
+			<a href="#"><i class="fa fa-info"></i>&nbsp;Help</a><br>
+			<a href="#"><i class="fa fa-question"></i>&nbsp;FAQ</a><br>
 		</div>
 		<div class="col-xs-6 text-right">
-			<a href="#">Contact Us</a>
+			<a href="#"><i class="fa fa-envelope-o"></i>&nbsp;Contact Us</a>
 		</div>
 	</div>
 	<div class="row">
@@ -14,4 +14,4 @@
 			<p class="text-center">Copyright &copy; 2015-<?php echo date("Y");?>&nbsp;jpegery<br>All Rights Reserved.</p>
 		</div>
 	</div>
-</div>
+</div

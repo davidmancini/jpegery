@@ -39,48 +39,49 @@
 										</ul>
 									</div>
 								</div>
-
-
-
 							</div>
 					</div>
-					<div class="row contentRow">
+
+					<div class="row contentRow contentImageRow">
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
-						</div>
-<!--					</div>-->
-<!--					<div class="row contentRow">-->
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 <!--					</div>-->
 <!--					<div class="row contentRow">-->
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+						</div>
+<!--					</div>-->
+<!--					<div class="row contentRow">-->
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 <!--					</div>-->
 				</div><!--/contentContainer-->
