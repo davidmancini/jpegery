@@ -19,7 +19,7 @@
 								Login/Registation Form<br><br><br><br><br><br>
 							</div>
 							<div class="col-md-6 text-center">
-								<div class="input-group search">
+								<div class="input-group search hidden-sm hidden-md hidden-lg">
 									<input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
 										<span class="input-group-btn">
 											<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>

@@ -16,14 +16,12 @@
 				<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">Link</a></li>
 			</ul>
-			<form class="navbar-form navbar-right" role="search">
+			<form class="navbar-form navbar-right hidden-xs" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search for...">
 				</div>
 				<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
 			</form>
 		</div><!--/navbar-collapse-->
-
-
 	</div><!--/container-fluid-->
 </nav><!--END NAV BAR-->
