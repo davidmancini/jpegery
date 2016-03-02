@@ -9,26 +9,7 @@
 	<body>
 		<div class="mainContent">
 			<header>
-				<!--NAV BAR-->
-				<nav class="navbar navbar-fixed-top" role="navigation">
-					<div class="container-fluid">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-									<span class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="#">jpegery</a>
-							</div>
-							<div class="collapse navbar-collapse" id="navbar-collapse">
-								<ul class="nav navbar-nav navbar-right">
-									<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-									<li><a href="#">Link</a></li>
-								</ul>
-						</div><!--/navbar-collapse-->
-					</div><!--/container-fluid-->
-				</nav><!--END NAV BAR-->
+				<?php require_once ("lib/header.php"); ?>
 			</header>
 
 			<main>
@@ -106,7 +87,7 @@
 			</main>
 		</div><!--/mainContent-->
 		<footer>
-			<?php require_once("footer.php")?>
+			<?php require_once("lib/footer.php") ?>
 		</footer>
 	</body>
 </html>
