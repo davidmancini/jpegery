@@ -15,30 +15,20 @@
 			<main>
 				<div class="container contentContainer">
 					<div class="row">
-						<div class="col-md-6 text-center">
-							<!--Blank section. Could be used for company banner?-->
-						</div>
-						<div class="col-md-6 text-center">
-							<div class="input-group search hidden-sm hidden-md hidden-lg"><!--Search box is only visible when search box on nav bar disappears-->
-								<input type="text" class="form-control" name="search" id="search" placeholder="Search for...">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-									</span>
+					<?php require_once ("lib/content-search.php"); ?>
+						<div class="btn-group pull-right" role="group" aria-label="...">
+							<button type="button" class="btn btn-default">Following</button>
+							<button type="button" class="btn btn-default">Followers</button>
+							<button type="button" class="btn btn-default">Trending</button>
+							<button type="button" class="btn btn-default">Most Popular</button>
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View By&nbsp;<span class="caret"></span></button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Not Yet Followed</a></li>
+									<li><a href="#">Other...</a></li>
+								</ul>
 							</div>
-							<div class="btn-group" role="group" aria-label="...">
-								<button type="button" class="btn btn-default">Following</button>
-								<button type="button" class="btn btn-default">Followers</button>
-								<button type="button" class="btn btn-default">Trending</button>
-								<button type="button" class="btn btn-default">Most Popular</button>
-								<div class="btn-group" role="group">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View By&nbsp;<span class="caret"></span></button>
-									<ul class="dropdown-menu">
-										<li><a href="#">Not Yet Followed</a></li>
-										<li><a href="#">Other...</a></li>
-									</ul>
-								</div>
-							</div><!--End Button Group-->
-						</div>
+						</div><!--End Button Group-->
 					</div>
 
 					<div class="row contentRow contentImageRow">

@@ -14,9 +14,56 @@
 
 			<main>
 				<div class="container contentContainer">
+					<div class="row">
+						<?php require_once ("lib/content-search.php"); ?>
 
-					</div><!--/contentContainer-->
+							<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
+							<h3 class="text-center">Next Images</h3>
+							<div class="nextImageGroup">
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6 col-sm-12">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+								<div class="col-sm-6">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+								</div>
+							</div><!--/nextImageGroup-->
+						</div><!--/nextImageColumn-->
+
+						<div class="col-sm-6 col-xs-12"><!--Image-->
+							<h2 class="text-center">{Image Title}</h2>
+							<img src="images/placeholder.png" alt="Placeholder Image" class="center-block img-responsive">
+						</div>
+
+						<div class="col-md-3 col-xs-3"><!--Tag cloud and up/downvotes-->
+							Tag Cloud!!!!!!<br>Other tags<br><br>Yay
+						</div>
+
+						<div class="col-md-12 col-xs-9"><!--Image data: text, comments, etc.-->
+							Comments, etc.
+						</div>
+
+					</div><!--/row-->
+				</div><!--/contentContainer-->
 			</main>
+
 		</div><!--/mainContent-->
 		<footer>
 			<?php require_once("lib/footer.php") ?>
