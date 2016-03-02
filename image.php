@@ -14,36 +14,44 @@
 
 			<main>
 				<div class="container contentContainer">
+					<?php require_once ("lib/content-search.php"); ?>
 					<div class="row">
-						<?php require_once ("lib/content-search.php"); ?>
-
 							<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
 							<h3 class="text-center">Next Images</h3>
 							<div class="nextImageGroup">
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>
 								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 								<div class="col-sm-6">
-									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-								</div>
+									<div>
+										<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
+									</div>								</div>
 							</div><!--/nextImageGroup-->
 						</div><!--/nextImageColumn-->
 
