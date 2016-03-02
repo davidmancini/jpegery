@@ -23,7 +23,7 @@
 								<div class="col-sm-6">
 									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
 								</div>
-								<div class="col-sm-6 col-sm-12">
+								<div class="col-sm-6">
 									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
 								</div>
 								<div class="col-sm-6">
@@ -52,13 +52,22 @@
 							<img src="images/placeholder.png" alt="Placeholder Image" class="center-block img-responsive">
 						</div>
 
-						<div class="col-md-3 col-xs-3"><!--Tag cloud and up/downvotes-->
+						<div class="col-sm-3 col-xs-3"><!--Tag cloud and up/downvotes-->
+							<h3 class="text-center">Tags</h3>
 							Tag Cloud!!!!!!<br>Other tags<br><br>Yay
 						</div>
 
-						<div class="col-md-12 col-xs-9"><!--Image data: text, comments, etc.-->
-							Comments, etc.
-						</div>
+						<div class="col-sm-12 col-xs-9 imageData"><!--Image data: text, comments, etc.-->
+							<div class="imageText text-center">
+								{Image Text}
+							</div>
+							<div class="submit-comment">
+
+							</div>
+							<div class="comments">
+
+							</div>
+						</div><!--/imageData-->
 
 					</div><!--/row-->
 				</div><!--/contentContainer-->
