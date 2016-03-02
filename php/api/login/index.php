@@ -43,9 +43,8 @@ try {
 // if login credentials are valid; start session
 	if((empty($profile) === false) && ($hash === $profile->getProfileHash())) {
 		//Put the profile in the session.
-		session_start();
-		echo "Welcome to jpegery!";
-		// somethings wrong
+		$reply->message = "Welcome to jpegery!";
+		$_SESSION["profile"] = $profile;
 	} else {
 		throw(new\RuntimeException("Verify your login information and try again."));
 	}
