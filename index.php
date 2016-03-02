@@ -44,44 +44,44 @@
 
 					<div class="row contentRow contentImageRow">
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
-						</div>
-<!--					</div>-->
-<!--					<div class="row contentRow">-->
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 <!--					</div>-->
 <!--					<div class="row contentRow">-->
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
 							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+						</div>
+<!--					</div>-->
+<!--					<div class="row contentRow">-->
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-3">
+							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
 						</div>
 <!--					</div>-->
 				</div><!--/contentContainer-->
