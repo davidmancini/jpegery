@@ -9,9 +9,9 @@
  * https://github.com/Skylarity/trufork
  **/
 //auto loads classes
-require_once(dirname(dirname(dirname((__DIR__)))) . "/php/classes/autoloader.php");
+require_once(dirname(dirname(dirname((__DIR__)))) . "/php/classes/autoload.php");
 //security w/ NG in mind
-require_once(dirname(dirname(dirname((__DIR__)))) . "/php/lib/xsrf.php");
+require_once(dirname(dirname(dirname((__DIR__)))) . "/lib/xsrf.php");
 //a security file that's on the server created by Dylan
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 //composer for Swiftmailer
@@ -24,34 +24,26 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 $reply = new stdClass();
 $reply->status = 200;
 $reply->data = null;
+
 try {
 	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
 	$profile = Profile::getProfileByProfileVerify($pdo, $profileVerify);
+
 	if(empty($profile) === true) {
 		throw (new InvalidArgumentException("Activation code has been activated or does not exist", 404));
 	} else {
 		$profileVerify->setProfileVerify(null);
 		$profile->update($pdo);
-	}
-	$reply->data = "Congratulations, your account has been activated!";
-	//redirect them somewhere
-// building the activation link that can travel to another server and still work. This is the link that will be clicked to confirm the account.
-	$basePath = $_SERVER["SCRIPT_NAME"];
-//iterate to get to the right path (gotta be a cleaner way to do this...)
-	for ($i=0; $i < 3; $i++) {
-		$lastSlash = strrpos($basePath, "/");
-		$basePath = substr($basePath, 0, $lastSlash);
+		$reply->data = "Congratulations, your account has been activated!";
 	}
 
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->data = $exception->getMessage();
 }
-header("Location: " . $urlglue);
+
 header("Content-type: application/json");
-if($reply->data === null) {
-	unset($reply->data);
-}
+
 echo json_encode($reply);
