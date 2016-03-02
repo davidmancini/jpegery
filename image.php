@@ -50,30 +50,29 @@
 						<div class="col-sm-6 col-xs-12"><!--Image-->
 							<h2 class="text-center">{Image Title}</h2>
 							<img src="images/placeholder.png" alt="Placeholder Image" class="center-block img-responsive">
-						</div>
+							<div class="imageData">
+								<div class="imageText text-center">
+									{Image Text}
+								</div>
+								<div class="submit-comment">
+									<form action="">
+										<div class="input-group">
+											<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
+											<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
+										</div>
+									</form>
+								</div>
+								<div class="comments">
 
-						<div class="col-sm-3 col-xs-3"><!--Tag cloud and up/downvotes-->
+								</div>
+							</div><!--/imageData-->
+						</div><!--/Image-->
+
+
+						<div class="col-sm-3 col-xs-12 center-block"><!--Tag cloud and up/downvotes-->
 							<h3 class="text-center">Tags</h3>
 							Tag Cloud!!!!!!<br>Other tags<br><br>Yay
 						</div>
-
-						<div class="col-sm-12 col-xs-9 imageData"><!--Image data: text, comments, etc.-->
-							<div class="imageText text-center">
-								{Image Text}
-							</div>
-							<div class="submit-comment">
-								<form action="">
-									<div class="input-group">
-										<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
-										<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
-									</div>
-									
-								</form>
-							</div>
-							<div class="comments">
-
-							</div>
-						</div><!--/imageData-->
 
 					</div><!--/row-->
 				</div><!--/contentContainer-->
