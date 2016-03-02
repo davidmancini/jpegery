@@ -62,7 +62,13 @@
 								{Image Text}
 							</div>
 							<div class="submit-comment">
-
+								<form action="">
+									<div class="input-group">
+										<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
+										<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
+									</div>
+									
+								</form>
 							</div>
 							<div class="comments">
 
