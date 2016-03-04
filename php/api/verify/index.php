@@ -15,7 +15,6 @@ require_once(dirname(dirname(dirname((__DIR__)))) . "/lib/xsrf.php");
 //a security file that's on the server created by Dylan
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 //composer for Swiftmailer
-require_once(dirname(dirname(dirname(dirname(__DIR__)))) . "/vendor/autoload.php");
 //verify the xsrf challenge
 if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();

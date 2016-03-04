@@ -27,6 +27,8 @@ try {
 	verifyXsrf();
 	$requestContent = file_get_contents("php://input");
 	$requestObject = json_decode($requestContent);
+//grab the mySQL connection
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
 	$profile = Profile::getProfileByProfileEmail($pdo, $requestObject->emailHandlePhone);
 	if($profile === null) {
