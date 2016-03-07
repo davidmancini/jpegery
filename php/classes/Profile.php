@@ -526,12 +526,12 @@ class Profile implements \JsonSerializable {
 			throw(new \PDOException("Not a new profile."));
 		}
 		// create query template
-		$query = "INSERT INTO profile(profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify) VALUES( :profileAdmin, :profileCreateDate, :profileEmail, :profileHandle, :profileHash, :profileImageId, :profileName, :profilePhone, :profileSalt, :profileVerify)";
+		$query = "INSERT INTO profile(profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify) VALUES( :profileAdmin, :profileCreateDate, :profileEmail, :profileHandle, :profileHash, :profileImageId, :profileNameF, :profileNameL, :profilePhone, :profileSalt, :profileVerify)";
 		$statement = $pdo->prepare($query);
 
 		// bind the member variables to the placeholder
 		$formattedDate = $this->profileCreateDate->format("Y-m-d H:i:s");
-		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileNameF" => $this->profileNameF, "profileNameL" => $this->profileNameL, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 		// save profile id given by mySQL
@@ -576,12 +576,12 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileName = :profileName, profilePhone = :profilePhone, profileSalt = :profileSalt, profileVerify = :profileVerify";
+		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileNameF = :profileNameL, profileNameF = :profileNameL, profilePhone = :profilePhone, profileSalt = :profileSalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
 		$formattedDate = $this->profileCreateDate->format("Y-m-d H:i:s");
-		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileName" => $this->profileName, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
+		$parameters = ["profileAdmin" => $this->profileAdmin, "profileCreateDate" => $formattedDate, "profileEmail" => $this->profileEmail, "profileHandle" => $this->profileHandle, "profileHash" => $this->profileHash, "profileImageId" => $this->profileImageId, "profileNameF" => $this->profileNameF, "profileNameL" => $this->profileNameL, "profilePhone" => $this->profilePhone, "profileSalt" => $this->profileSalt, "profileVerify" => $this->profileVerify];
 		$statement->execute($parameters);
 
 	}
@@ -603,7 +603,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the profile id to the place holder in the template
@@ -616,7 +616,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -645,7 +645,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the email to the place holder in the template
@@ -658,7 +658,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -686,7 +686,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the handle to the place holder in the template
@@ -699,7 +699,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -727,7 +727,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind first name to the place holder in the template
@@ -740,7 +740,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -768,7 +768,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the last name to the place holder in the template
@@ -781,7 +781,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -809,7 +809,7 @@ class Profile implements \JsonSerializable {
 			throw(new \PDOException("phone number is empty or insecure"));
 		}
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the phone number to the place holder in the template
@@ -822,7 +822,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
@@ -850,7 +850,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileName, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
 		$statement = $pdo->prepare($query);
 
 		//Bind the verification to the place holder in the template
@@ -863,7 +863,7 @@ class Profile implements \JsonSerializable {
 			$statement->setFetchMode(\PDO::FETCH_ASSOC);
 			$row = $statement->fetch();
 			if($row !== false) {
-				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileName"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
+				$profile = new Profile($row["profileId"], $row["profileAdmin"], $row["profileCreateDate"], $row["profileEmail"], $row["profileHandle"], $row["profileHash"], $row["profileImageId"], $row["profileNameF"], $row["profileNameL"], $row["profilePhone"], $row["profileSalt"], $row["profileVerify"]);
 			}
 		} catch(\Exception $exception) {
 			//If the row couldn't be converted, rethrow it
