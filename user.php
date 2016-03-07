@@ -14,26 +14,39 @@
 
 			<main>
 				<div class="container contentContainer">
+
 					<div class="row aboveRow">
-					<?php require_once ("lib/content-search.php"); ?>
-						<div class="btn-group pull-right" role="group" aria-label="...">
-							<button type="button" class="btn btn-default">Following</button>
-							<button type="button" class="btn btn-default">Followers</button>
-							<button type="button" class="btn btn-default">Trending</button>
-							<button type="button" class="btn btn-default">Most Popular</button>
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View By&nbsp;<span class="caret"></span></button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Not Yet Followed</a></li>
-									<li><a href="#">Other...</a></li>
-								</ul>
+						<?php require_once ("lib/content-search.php"); ?>
+						<div class="col-md-6">
+							<div class="pull-left col-md-4 col-xs-12">
+								<img src="images/placeholder.png" alt="Placeholder Image" width="150">
 							</div>
-						</div><!--End Button Group-->
-					</div>
+
+							<div class="col-md-8 col-xs-12 userInfo">
+								<h2>{{User Name}}</h2>
+								<p>340 Uploaded Images</p>
+								<p>Member Since 2015</p>
+								<button type="button" href="#" class="btn btn-default"><i class="fa fa-user-plus"></i>&nbsp;Follow</button>
+							</div>
+
+						</div>
+
+						<div class="col-md-6">
+							<div class="btn-group pull-right" role="group" aria-label="...">
+								<button type="button" class="btn btn-default">Newest</button>
+								<button type="button" class="btn btn-default">Most Popular</button>
+								<button type="button" class="btn btn-default">Most Commented</button>
+								<button type="button" class="btn btn-default">Oldest</button>
+							</div><!--End Button Group-->
+						</div>
+					</div><!--End Row-->
+
+
 
 					<div class="row contentRow contentImageRow">
 						<div class="col-xs-6 col-sm-4 col-md-3">
 							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							Upvote
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
 							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
