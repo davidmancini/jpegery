@@ -79,7 +79,7 @@
 
 						<div class="col-sm-3 col-xs-12 center-block"><!--Tag cloud and up/downvotes-->
 							<h3 class="text-center">Tags</h3>
-							Tag Cloud!!!!!!<br>Other tags<br><br>Yay
+							{{Tag Cloud}}
 						</div>
 
 					</div><!--/row-->
