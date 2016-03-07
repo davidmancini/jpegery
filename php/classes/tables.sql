@@ -20,7 +20,14 @@ CREATE TABLE profile (
 	profilePhone VARCHAR(50) UNIQUE,
 	profileSalt CHAR(64) NOT NULL,
 	profileVerify CHAR(32),
+	INDEX(profileId),
+	INDEX(profileEmail),
+	INDEX(profileHandle),
+	INDEX(profileNameF),
+	INDEX(profileNameL),
+	INDEX(profilePhone),
 	PRIMARY KEY(profileId)
+
 );
 CREATE TABLE image (
 	imageId INT UNSIGNED AUTO_INCREMENT NOT NULL,
