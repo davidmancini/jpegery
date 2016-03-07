@@ -27,7 +27,6 @@ CREATE TABLE profile (
 	INDEX(profileNameL),
 	INDEX(profilePhone),
 	PRIMARY KEY(profileId)
-
 );
 CREATE TABLE image (
 	imageId INT UNSIGNED AUTO_INCREMENT NOT NULL,
