@@ -79,7 +79,13 @@
 
 						<div class="col-sm-3 col-xs-12 center-block"><!--Tag cloud and up/downvotes-->
 							<h3 class="text-center">Tags</h3>
-							{{Tag Cloud}}
+							{{Tag Cloud}}<br>
+							<div class="upDownVote text-center">
+								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
+									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
+									<button type="button" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i>&nbsp;#</button>
+								</div>
+							</div>
 						</div>
 
 					</div><!--/row-->
