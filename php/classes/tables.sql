@@ -37,6 +37,7 @@ CREATE TABLE image (
 	imageText VARCHAR(500),
 	imageType VARCHAR(128) NOT NULL,
 	INDEX(imageProfileId),
+	INDEX(imageid),
 	FOREIGN KEY(imageProfileId) REFERENCES profile(profileId),
 	PRIMARY KEY(imageId)
 );
