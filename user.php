@@ -45,7 +45,7 @@
 
 					<div class="row contentRow contentImageRow">
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -54,7 +54,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -63,7 +63,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -81,7 +81,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -99,7 +99,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -108,7 +108,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -117,7 +117,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -126,7 +126,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -135,7 +135,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -144,7 +144,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+							<div><a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a></div>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
