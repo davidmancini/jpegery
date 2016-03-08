@@ -100,8 +100,7 @@ try {
 
 				$reply->message = "Comment updated";
 			} elseif($method === "POST") {
-				//TODO: Figure out what's going on here. Should I do the $_SESSION["image"]->getImageId() thing?
-				$comment = new Comment(null,  $requestObject->commentImageId, $requestObject->commentProfileId, $requestObject->commentDate, $requestObject->commentText);
+				$comment = new Comment(null,  $requestObject->commentImageId, $_SESSION["profile"]->getProfileId(), $requestObject->commentDate, $requestObject->commentText);
 				$comment->insert($pdo);
 				$reply->message = "Comment created";
 			}
