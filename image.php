@@ -63,24 +63,12 @@
 								<div class="imageText text-center">
 									{Image Text}
 								</div>
-								<div class="submit-comment">
-									<form action="">
-										<div class="input-group">
-											<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
-											<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
-										</div>
-									</form>
-								</div>
-								<div class="comments">
-
-								</div>
 							</div><!--/imageData-->
 						</div><!--/Image-->
 
-
 						<div class="col-sm-3 col-xs-12 center-block"><!--Tag cloud and up/downvotes-->
 							<h3 class="text-center">Tags</h3>
-							{{Tag Cloud}}<br>
+							<p class="text-center">{{Tag Cloud}}</p><br>
 							<div class="upDownVote text-center">
 								<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 									<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
@@ -88,11 +76,43 @@
 								</div>
 							</div>
 						</div>
-
 					</div><!--/row-->
+
+					<div class="row"><!--commentRow-->
+						<div class="col-sm-3">
+							<!--Empty; used to center comments with the row above-->
+						</div>
+						<div class="col-sm-6 col-xs-12"><!--commentGroup-->
+							<div class="submit-comment">
+								<form action="">
+									<div class="input-group">
+										<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
+										<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
+									</div>
+								</form>
+							</div>
+							<div class="commentSection">
+								<div class="comment">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
+									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
+									<p class="pull-right commentTime">{{Comment Time}}</p>
+								</div>
+								<div class="comment">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
+									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
+									<p class="pull-right commentTime">{{Comment Time}}</p>
+								</div>
+								<div class="comment">
+									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
+									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
+									<p class="pull-right commentTime">{{Comment Time}}</p>
+								</div>
+							</div><!--/commentSection-->
+						</div><!--/commentGroup-->
+					</div><!--/commentRow-->
+
 				</div><!--/contentContainer-->
 			</main>
-
 		</div><!--/mainContent-->
 		<footer>
 			<?php require_once("lib/footer.php") ?>
