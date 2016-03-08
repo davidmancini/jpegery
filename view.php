@@ -11,5 +11,6 @@
 		<p><a href="image.php">Single Image</a></p>
 		<p><a href="user.php">User Page</a></p>
 		<p><a href="settings.php">Settings</a></p>
+		<p><a href="upload.php">Upload Image</a></p>
 	</body>
 </html>
