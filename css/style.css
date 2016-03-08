@@ -133,7 +133,7 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 	background-color: bisque;
 	border: 1px solid;
 	border-radius: 5px;
-	padding: 10px 0;
+	padding: 15px 0;
 	margin: 10px 0;
 }
 
@@ -167,6 +167,7 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 	border: 1px solid;
 	border-radius: 5px;
 	padding: 10px;
+	padding-bottom:50px;
 	margin-bottom: 10px;
 }
 

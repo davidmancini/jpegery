@@ -29,7 +29,8 @@
 						<div class="col-sm-3">
 							<!--Empty; to align with above-->
 						</div>
-						<div class="col-sm-9 settingsBox"><!--Personal Settings-->
+						<div class="col-sm-9"><!--Personal Settings-->
+							<div class="settingsBox">
 								<h2>Personal Settings</h2>
 								<form action="" class="form-horizontal" name="personalSettings" id="personalSettings">
 									<div class="form-group">
@@ -58,34 +59,37 @@
 									</div>
 									<button type="submit" class="btn btn-default pull-right">Update</button>
 								</form>
+							</div>
 
 						</div><!--/Personal Settings-->
 						<div class="col-sm-3">
 							<!--Empty; to align with above-->
 						</div>
-						<div class="col-sm-9 settingsBox"><!--Security Settings-->
-							<h2>Security</h2>
-							<form action="" class="form-horizontal" name="securitySettings" id="securitySettings">
-								<div class="form-group">
-									<label for="oldPassword" class="col-sm-2 control-label">Old Password</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="oldPassword" placeholder="Old Password" ">
+						<div class="col-sm-9"><!--Security Settings-->
+							<div class="settingsBox">
+								<h2>Security</h2>
+								<form action="" class="form-horizontal" name="securitySettings" id="securitySettings">
+									<div class="form-group">
+										<label for="oldPassword" class="col-sm-2 control-label">Old Password</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="oldPassword" placeholder="Old Password" ">
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="newPassword1" class="col-sm-2 control-label">New Password</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="newPassword1" placeholder="New Password">
+									<div class="form-group">
+										<label for="newPassword1" class="col-sm-2 control-label">New Password</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="newPassword1" placeholder="New Password">
+										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label for="newPassword2" class="col-sm-2 control-label">Confirm New Password</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="newPassword2" placeholder="Confirm New Password" ">
+									<div class="form-group">
+										<label for="newPassword2" class="col-sm-2 control-label">Confirm New Password</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" id="newPassword2" placeholder="Confirm New Password" ">
+										</div>
 									</div>
-								</div>
-								<button type="submit" class="btn btn-default pull-right">Change Password</button>
-							</form>
+									<button type="submit" class="btn btn-default pull-right">Change Password</button>
+								</form>
+							</div>
 						</div><!--/Security Settings-->
 					</div><!--/settingsRow-->
 
