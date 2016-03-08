@@ -89,7 +89,7 @@
 								<form action="">
 									<div class="input-group">
 										<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
-										<span class="input-group-btn"><button type="submit" class="btn btn-default">Submit</button></span>
+										<span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="fa fa-comment"></i>&nbsp;Comment</button></span>
 									</div>
 								</form>
 							</div>
@@ -97,17 +97,17 @@
 								<div class="comment">
 									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
 									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-									<p class="pull-right commentTime">{{Comment Time}}</p>
+									<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
 								</div>
 								<div class="comment">
 									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
 									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-									<p class="pull-right commentTime">{{Comment Time}}</p>
+									<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
 								</div>
 								<div class="comment">
 									<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
 									<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-									<p class="pull-right commentTime">{{Comment Time}}</p>
+									<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
 								</div>
 							</div><!--/commentSection-->
 						</div><!--/commentGroup-->

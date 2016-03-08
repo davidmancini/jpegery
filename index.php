@@ -17,10 +17,10 @@
 					<div class="row aboveRow">
 					<?php require_once ("lib/content-search.php"); ?>
 						<div class="btn-group pull-right" role="group" aria-label="...">
-							<button type="button" class="btn btn-default">Following</button>
-							<button type="button" class="btn btn-default">Followers</button>
-							<button type="button" class="btn btn-default">Trending</button>
-							<button type="button" class="btn btn-default">Most Popular</button>
+							<button type="button" class="btn btn-default"><i class="fa fa-users"></i>&nbsp;Following</button>
+							<button type="button" class="btn btn-default"><i class="fa fa-exchange"></i>&nbsp;Followers</button>
+							<button type="button" class="btn btn-default"><i class="fa fa-fire"></i>&nbsp;Trending</button>
+							<button type="button" class="btn btn-default"><i class="fa fa-trophy"></i>&nbsp;Most Popular</button>
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View By&nbsp;<span class="caret"></span></button>
 								<ul class="dropdown-menu">

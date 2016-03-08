@@ -33,13 +33,13 @@
 							<h2>Upload Image</h2>
 							<form action="" class="form-horizontal" name="uploadImage" id="uploadImage">
 								<div class="form-group">
-									<label for="image" class="col-sm-2 control-label">Select Image</label>
+									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>
 									<div class="col-sm-10">
 										<input type="file" class="form-control" id="image">
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="text" class="col-sm-2 control-label">Caption</label>
+									<label for="text" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
 									<div class="col-sm-10">
 										<input type="text" class="form-control" id="text" placeholder="Caption">
 									</div>

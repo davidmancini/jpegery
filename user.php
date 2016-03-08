@@ -33,10 +33,10 @@
 
 						<div class="col-md-6">
 							<div class="btn-group pull-right" role="group" aria-label="...">
-								<button type="button" class="btn btn-default">Newest</button>
-								<button type="button" class="btn btn-default">Most Popular</button>
-								<button type="button" class="btn btn-default">Most Commented</button>
-								<button type="button" class="btn btn-default">Oldest</button>
+								<button type="button" class="btn btn-default"><i class="fa fa-angle-double-up"></i>&nbsp;Newest</button>
+								<button type="button" class="btn btn-default"><i class="fa fa-trophy"></i>&nbsp;Most Popular</button>
+								<button type="button" class="btn btn-default"><i class="fa fa-fire"></i>&nbsp;Most Commented</button>
+								<button type="button" class="btn btn-default"><i class="fa fa-angle-double-down"></i>&nbsp;Oldest</button>
 							</div><!--End Button Group-->
 						</div>
 					</div><!--End Row-->
