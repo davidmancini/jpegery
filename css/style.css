@@ -19,7 +19,7 @@ body {
 
 /* Clears default spacing, which allows for better design */
 h1,h2,h3,h4,h5,h6 {
-	margin: 0;
+	margin: 0 0 5px 0;
 	padding: 0 0 5px;
 }
 
@@ -159,6 +159,17 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 	margin: 10px 0;
 	text-align: center;
 }
+
+/***************************************************
+ * SECTION: Settings Page Template
+ ***************************************************/
+.settingsBox {
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
 
 /***************************************************
  * SECTION: Footer
