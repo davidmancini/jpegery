@@ -57,6 +57,7 @@
 
 						<div class="col-sm-6 col-xs-12"><!--Image-->
 							<h2 class="text-center">{Image Title}</h2>
+							<p class="text-center"><a href="#">{{Author}}</a> {{Time Published}}</p>
 							<img src="images/placeholder.png" alt="Placeholder Image" class="center-block img-responsive">
 							<div class="imageData">
 								<div class="imageText text-center">
