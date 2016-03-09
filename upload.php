@@ -6,6 +6,7 @@
 		<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
 		<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
 		<title>Jpegery</title>
+		<script src="script.js"></script>
 		<?php require_once("lib/head-tags.html") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
 		<link rel="stylesheet" href="css/style.css"><!--Overrides core Bootstrap-->
 	</head>
@@ -37,7 +38,7 @@
 							<form ng-controller="MyCtrl" name="form">
 								<div class="form-group">
 									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>
-									<div class="button" ngf-select ng-model="file" name="file">Select Image</div>
+									<button ngf-select ng-model="file" name="file">Select Image</button>
 								</div>
 								<div class="form-group">
 									<label for="text" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
