@@ -851,7 +851,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		//Bind the verification to the place holder in the template
