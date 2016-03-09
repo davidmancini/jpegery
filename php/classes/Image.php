@@ -575,7 +575,6 @@ class Image implements \JsonSerializable {
 		$heightRatio = $maximumHeight/$imageSizes[1];
 
 		switch($type) {
-			//TODO: Reformat switch
 			case "jpeg":{
 
 			}

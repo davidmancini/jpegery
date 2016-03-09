@@ -11,8 +11,6 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
 }
 
-//TODO: try/catch stuff
-
 $reply = new stdClass();
 $reply->status = 200;
 
