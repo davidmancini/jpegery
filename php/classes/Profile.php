@@ -845,7 +845,7 @@ class Profile implements \JsonSerializable {
 		//Sanitize the verification before searching
 		$profileVerify = trim($profileVerify);
 		$profileVerify = filter_var($profileVerify, FILTER_SANITIZE_STRING);
-		if(empty($profileVerify) === true || ($profileVerify) === null) {
+		if(empty($profileVerify) === true) {
 				throw(new \PDOException("verification is empty or insecure"));
 
 		}
