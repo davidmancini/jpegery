@@ -645,7 +645,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileEmail = :profileEmail";
 		$statement = $pdo->prepare($query);
 
 		//Bind the email to the place holder in the template
@@ -686,7 +686,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileHandle = :profileHandle";
 		$statement = $pdo->prepare($query);
 
 		//Bind the handle to the place holder in the template
@@ -727,7 +727,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileNameF = :profileNameF";
 		$statement = $pdo->prepare($query);
 
 		//Bind first name to the place holder in the template
@@ -768,7 +768,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileNameL = :profileNameL";
 		$statement = $pdo->prepare($query);
 
 		//Bind the last name to the place holder in the template
