@@ -13,10 +13,10 @@ $reply->status = 200;
 
 $requestContent = file_get_contents("php://input");
 $requestObject = json_encode($_FILES);
-
-$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", "", null);
-$image->insert($this->getPDO());
-$image->imageUpload();
+//
+//$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", "", null);
+//$image->insert($this->getPDO());
+//$image->imageUpload();
 
 $reply->data = $requestObject;
 

@@ -38,8 +38,8 @@
 							<h2>Upload Image</h2>
 							<form ng-controller="MyCtrl" name="form">
 								<div class="form-group">
-									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>
-									<button class="form-control" ngf-select ng-model="file" name="file">Select</button>
+<!--									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>-->
+									<button class="form-control" ngf-select ng-model="file" name="file">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
 								</div>
 								<div class="form-group">
 									<label for="text" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
