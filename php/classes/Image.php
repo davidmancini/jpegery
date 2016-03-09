@@ -575,11 +575,26 @@ class Image implements \JsonSerializable {
 		$heightRatio = $maximumHeight/$imageSizes[1];
 
 		switch($type) {
-			case "jpeg":
-			case "jpg": $tempImage = imagecreatefromjpeg($_FILES); break;
-			case "gif": $tempImage = imagecreatefromgif($_FILES); break;
-			case "png": $tempImage = imagecreatefrompng($_FILES); break;
-			default: throw(new \InvalidArgumentException("File was not of correct type", 418)); break;
+			//TODO: Reformat switch
+			case "jpeg":{
+
+			}
+			case "jpg": {
+				$tempImage = imagecreatefromjpeg($_FILES);
+				break;
+			}
+			case "gif": {
+				$tempImage = imagecreatefromgif($_FILES);
+				break;
+			}
+			case "png": {
+				$tempImage = imagecreatefrompng($_FILES);
+				break;
+			}
+			default: {
+				throw(new \InvalidArgumentException("File was not of correct type", 418));
+				break;
+			}
 		}
 
 		if(!($imageSizes[0] <= $maximumWidth && $imageSizes[1] <= $maximumHeight)) {
@@ -598,11 +613,9 @@ class Image implements \JsonSerializable {
 			$savedImage = imagejpeg($tempImage, $fileLocation);
 			$this->setImageType("image/jpeg");
 		}
-		$tempText = filter_var($_FILES["text"], FILTER_SANITIZE_STRING);
-		$this->setImageText($tempText);
 		$this->setImageFileName($fileLocation);
 		if ($savedImage === false) {
-			throw(new \Exception("Something went wrong in uploading your image."));
+			throw(new \Exception("Something went wrong in uploading your image.", 400));
 		}
 
 	}
