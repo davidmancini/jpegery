@@ -576,7 +576,7 @@ class Profile implements \JsonSerializable {
 		}
 
 		// create query template
-		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileNameF = :profileNameL, profileNameF = :profileNameL, profilePhone = :profilePhone, profileSalt = :profileSalt, profileVerify = :profileVerify";
+		$query = " UPDATE profile SET profileAdmin = :profileAdmin, profileCreateDate = :profileCreateDate, profileEmail = :profileEmail, profileHandle = :profileHandle, profileHash = :profileHash, profileImageId = :profileImageId, profileNameF = :profileNameF, profileNameL = :profileNameL, profilePhone = :profilePhone, profileSalt = :profileSalt, profileVerify = :profileVerify";
 		$statement = $pdo->prepare($query);
 
 		// bind the number variables to the placeholders
@@ -845,8 +845,9 @@ class Profile implements \JsonSerializable {
 		//Sanitize the verification before searching
 		$profileVerify = trim($profileVerify);
 		$profileVerify = filter_var($profileVerify, FILTER_SANITIZE_STRING);
-		if(empty($profileVerify) === true) {
-			throw(new \PDOException("verification is empty or insecure"));
+		if(empty($profileVerify) === true || ($profileVerify) === null) {
+				throw(new \PDOException("verification is empty or insecure"));
+
 		}
 
 		//Create query template

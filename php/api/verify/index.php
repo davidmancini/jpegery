@@ -1,20 +1,23 @@
 
 <?php
 /**
- * controller for getting a confirmation email from a new user
+ * Profile verification api
  *
  * @author Michael Kemm
- * @author Tamra Fenstermaker <fenstermaker505@gmail.com>
- * contributor code from https://github.com/sandidgec/foodinventory &
- * https://github.com/Skylarity/trufork
- **/
+ *
+ */
+
+
 //auto loads classes
 require_once(dirname(dirname(dirname((__DIR__)))) . "/php/classes/autoload.php");
 //security w/ NG in mind
 require_once(dirname(dirname(dirname((__DIR__)))) . "/lib/xsrf.php");
 //a security file that's on the server created by Dylan
 require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
-//composer for Swiftmailer
+use \Edu\Cnm\Jpegery\Profile;
+
+
+
 //verify the xsrf challenge
 if(session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
@@ -28,12 +31,15 @@ try {
 	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
+	if($profileVerify === null) {
+		throw(new \InvalidArgumentException("Testing"));
+	}
 	$profile = Profile::getProfileByProfileVerify($pdo, $profileVerify);
-
-	if(empty($profile) === true) {
+	// make sure the verification isn't empty
+	if(empty($profile) === true || ($profile) === null) {
 		throw (new InvalidArgumentException("Activation code has been activated or does not exist", 404));
 	} else {
-		$profileVerify->setProfileVerify(null);
+		$profileVerify->setProfileVerify();
 		$profile->update($pdo);
 		$reply->data = "Congratulations, your account has been activated!";
 	}
