@@ -1,4 +1,3 @@
-var app = angular.module("FileUpload", ["ngFileUpload"]);
 app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
 	$scope.submit = function() {
 		if($scope.form.file.$valid && $scope.file) {
