@@ -31,9 +31,6 @@ try {
 	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
-	if($profileVerify === null) {
-		throw(new \InvalidArgumentException("Testing"));
-	}
 	$profile = Profile::getProfileByProfileVerify($pdo, $profileVerify);
 	// make sure the verification isn't empty
 	if(empty($profile) === true || ($profile) === null) {
