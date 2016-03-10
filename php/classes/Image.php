@@ -549,7 +549,7 @@ class Image implements \JsonSerializable {
 			throw(new \RuntimeException("Please log in or sign up", 401));
 		}
 
-		if($_SESSION["profile"] !== $this->imageProfileId) {
+		if($_SESSION["profile"]->getProfileId() !== $this->imageProfileId) {
 			throw(new \RuntimeException("We could not upload your image, as your account did not match the account the image would have been placed under. We didn't even think that was possible.", 401));
 		}
 
