@@ -9,7 +9,7 @@ app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
 		Upload.upload({
 			url: 'image-upload.php',
 			method: 'POST',
-			data: {file: file, text: text}
+			data: {file: file, caption: caption}
 		}).then(function(result) {
 
 			console.log('Success ' + result.config.data.file.name + ' uploaded. Response: ' + result.data);
