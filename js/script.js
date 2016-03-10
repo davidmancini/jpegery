@@ -12,7 +12,7 @@ app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
 			data: {file: file, caption: caption}
 		}).then(function(result) {
 
-			console.log('Success ' + result.config.data.file.name + ' uploaded. Response: ' + result.data);
+			console.log('Success ' + result.config.data.file.name + ' uploaded. Response: ' + result.data.caption);
 			console.log(result.data);
 		}, function(result){
 			console.log('Error Status: ');

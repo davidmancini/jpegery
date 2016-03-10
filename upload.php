@@ -44,7 +44,7 @@
 								<div class="form-group">
 									<label for="caption" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption">
+										<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption" ng-model="caption">
 									</div>
 								</div>
 								<button type="submit" ng-click="submit()" class="btn btn-default pull-right"><i class="fa fa-cloud-upload"></i>&nbsp;Post</button>
