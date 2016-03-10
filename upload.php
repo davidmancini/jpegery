@@ -6,8 +6,8 @@
 		<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
 		<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
 		<title>Jpegery</title>
-		<script src="app.js"></script>
-		<script src="script.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/script.js"></script>
 		<?php require_once("lib/head-tags.html") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
 		<link rel="stylesheet" href="css/style.css"><!--Overrides core Bootstrap-->
 	</head>
