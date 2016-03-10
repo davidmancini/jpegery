@@ -372,7 +372,7 @@ class Profile implements \JsonSerializable {
 		// verify the profile name is secure
 		$newProfileNameF = trim($newProfileNameF);
 		$newProfileNameF = filter_var($newProfileNameF, FILTER_SANITIZE_STRING);
-		if(empty($newProfileName) === true) {
+		if(empty($newProfileNameF) === true) {
 			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
 		}
 
@@ -406,7 +406,7 @@ class Profile implements \JsonSerializable {
 		// verify the profile name is secure
 		$newProfileNameL = trim($newProfileNameL);
 		$newProfileNameL = filter_var($newProfileNameL, FILTER_SANITIZE_STRING);
-		if(empty($newProfileName) === true) {
+		if(empty($newProfileNameL) === true) {
 			throw(new \InvalidArgumentException("Profile Name is empty or insecure"));
 		}
 
