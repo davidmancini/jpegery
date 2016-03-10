@@ -42,9 +42,9 @@
 									<button class="form-control" ngf-select ng-model="file" name="file">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
 								</div>
 								<div class="form-group">
-									<label for="text" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
+									<label for="caption" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="text" name="text" placeholder="Caption">
+										<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption">
 									</div>
 								</div>
 								<button type="submit" ng-click="submit()" class="btn btn-default pull-right"><i class="fa fa-cloud-upload"></i>&nbsp;Post</button>
