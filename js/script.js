@@ -1,11 +1,11 @@
 app.controller('MyCtrl', ['$scope', 'Upload', function ($scope, Upload) {
 	$scope.submit = function() {
 		if($scope.form.file.$valid && $scope.file) {
-			$scope.upload($scope.file, $scope.text);
+			$scope.upload($scope.file, $scope.caption);
 		}
 	};
 
-	$scope.upload = function(file, text) {
+	$scope.upload = function(file, caption) {
 		Upload.upload({
 			url: 'image-upload.php',
 			method: 'POST',
