@@ -38,12 +38,12 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 
 /* Navbar background color */
 .navbar-fixed-top {
-	background: firebrick;
+	background: #133253;
 }
 
 /* Color behind logo */
 .navbar-brand {
-	background-color: darkred;
+	background-color: #041D37;
 	color: white;
 }
 
@@ -180,5 +180,5 @@ body {display: flex; flex-direction: column; min-height: 100vh; width: 100%;}
 .footer {
 	margin-top: 10px;
 	padding: 10px 20px 5px;
-	background-color: lightblue;
+	background-color: #133253;
 }
