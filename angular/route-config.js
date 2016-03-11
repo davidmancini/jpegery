@@ -2,31 +2,31 @@ app.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 	// route for the home page
 		.when('/', {
-			controller  : 'mainController',
+			controller  : 'MainController',
 			templateUrl : 'angular/pages/home.php'
 		})
 
-		// route for the about page
+		// route for the user page
 		.when('/user', {
-			controller  : 'userController',
+			controller  : 'UserController',
 			templateUrl : 'angular/pages/user.php'
 		})
 
-		// route for the sign up page
+		// route for the image upload page
 		.when('/upload', {
-			controller  : 'uploadController',
+			controller  : 'UploadController',
 			templateUrl : 'angular/pages/upload.php'
 		})
 
-		// route for the about page
+		// route for the settings page
 		.when('/settings', {
-			controller  : 'settingsController',
+			controller  : 'SettingsController',
 			templateUrl : 'angular/pages/settings.php'
 		})
 
-		// route for the about page
+		// route for the image page
 		.when('/image', {
-			controller  : 'imageController',
+			controller  : 'ImageController',
 			templateUrl : 'angular/pages/image.php'
 		})
 
