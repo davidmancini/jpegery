@@ -559,7 +559,8 @@ class Image implements \JsonSerializable {
 		$validExts = ["jpeg", "jpg", "gif", "png"];
 		$validFormat = ["image/jpeg", "image/jpg", "image/gif", "image/png"];
 		$name = $_FILES["file"]["name"];
-		$extension = strtolower(end(explode(".", $name)));
+		$tmp=explode(".", $name);
+		$extension = strtolower(end($tmp));
 		$type = $_FILES["file"]["type"];
 
 		if(in_array($type, $validExts) === false || in_array($extension, $validFormat) === false) {
