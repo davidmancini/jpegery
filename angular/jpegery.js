@@ -1,0 +1,1 @@
+var app = angular.module("jpegery", ["ngRoute", "ui.bootstrap", "ngMessages"]);

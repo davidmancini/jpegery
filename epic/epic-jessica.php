@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Jessica Kelso</title>
 		<!--Include Bootstrap Head Tags -->
-		<?php require_once(dirname(__DIR__) . "/lib/head-tags.html"); ?>
+		<?php require_once(dirname(__DIR__) . "/lib/head-utils.php"); ?>
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body class="footerBody">
