@@ -58,7 +58,6 @@ try {
 		}
 	}
 
-	//handle REST calls for PUT methods
 
 //If the user is logged in, allow to POST their own tag.
 	if(empty($_SESSION["profile"]) !== false) {
@@ -76,10 +75,27 @@ try {
 		if(empty($requestObject->tagId) === true) {
 			throw(new InvalidArgumentException("Tag must have an ID", 405));
 		}
-
+		//perform actual POST or DELETE
 		if($method === "POST") {
-			$tag = new Tag($requestObject->imageId, $requestObject->tagId);
+			$tag = new Tag($requestObject->imageId, $requestObject->tagName);
 			$tag->insert($pdo);
+		} elseif($method === "DELETE") {
+			$image = imageTag::getImageTagByImageIdAndTagId($pdo, $id);
+			if($image === null) {
+				throw(new RuntimeException("Image does not exist", 404));
+			}
+			$security = $image->getImageProfileId();
+			if($security !== $_SESSION["profile"]->getProfileId()) {
+				throw(new RuntimeException("You cannot edit an image that is not yours.", 403));
+			}
+			$image = Image::getImageByImageId($pdo, $id);
+			if($image === null) {
+				throw(new RuntimeException("Image does not exist", 404));
+			}
+			$image->delete($pdo);
+			$deletedObject = new stdClass();
+			$deletedObject->imageId = $id;
+			$reply->message = "Image Successfully Deleted";
 		}
 	}
 } catch(Exception $exception) {
