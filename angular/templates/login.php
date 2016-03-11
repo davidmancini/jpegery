@@ -4,5 +4,6 @@
 	<button type="submit">Log In</button>
 	<pre>
 		{{loginData | json}}
+		{{alerts}}
 	</pre>
 </form>

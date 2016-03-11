@@ -11,6 +11,12 @@ $CURRENT_DEPTH = substr_count($CURRENT_DIR, "/");
 $ROOT_DEPTH = substr_count($ROOT_PATH, "/");
 $DEPTH_DIFFERENCE = $CURRENT_DEPTH - $ROOT_DEPTH;
 $PREFIX = str_repeat("../", $DEPTH_DIFFERENCE);
+
+require_once ($PREFIX."lib/xsrf.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
+}
+setXsrfCookie();
 ?>
 
 <!-- Tells IE to use highest mode available, avoiding IE compatibility Mode bugs. -->
