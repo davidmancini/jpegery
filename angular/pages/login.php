@@ -1,1 +1,1 @@
-<?php require_once ("../templates/login.php"); ?>
+<ng-include src="'angular/templates/login.php'"></ng-include>

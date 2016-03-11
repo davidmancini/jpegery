@@ -32,7 +32,7 @@ app.config(function($routeProvider, $locationProvider) {
 
 		// route for the login page
 		.when('/login', {
-			controller  : 'imageController',
+			controller  : 'LoginController',
 			templateUrl : 'angular/pages/login.php'
 		})
 
