@@ -17,6 +17,7 @@ $reply->status = 200;
 try {
 
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
+
 	$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_STRING);
 
 	$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", $caption, null);
@@ -24,6 +25,7 @@ try {
 
 //Connect to encrypted mySQL
 	$image->insert($pdo);
+
 	$reply->message = "This worked. Or didn't and you somehow screwed it up so much you got a false positive. Either way, good job.";
 
 } catch(Exception $exception) {
