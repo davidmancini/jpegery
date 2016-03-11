@@ -562,14 +562,15 @@ class Image implements \JsonSerializable {
 		$tmp=explode(".", $name);
 		$extension = strtolower(end($tmp));
 		$type = $_FILES["file"]["type"];
+		$imagePath=$_FILES["file"]["tmp_name"];
 
 		if(in_array($type, $validFormat) === false || in_array($extension, $validExts) === false) {
 			throw(new \InvalidArgumentException("File was not of correct type", 418)); // tea earl grey hot
 		}
 
 		$identificationOfImage = $_SESSION["profile"]->getProfileEmail() . $this->imageId;
-		$tempName = hash("ripemd160", $identificationOfImage) . "." . $_FILES["file"]["type"];
-		$imageSizes = getimagesize($name);
+		$tempName = hash("ripemd160", $identificationOfImage) . "." . $extension;
+		$imageSizes = getimagesize($imagePath);
 
 		$widthRatio = $maximumWidth/$imageSizes[0];
 
@@ -580,15 +581,15 @@ class Image implements \JsonSerializable {
 
 			}
 			case "jpg": {
-				$tempImage = imagecreatefromjpeg($_FILES);
+				$tempImage = imagecreatefromjpeg($imagePath);
 				break;
 			}
 			case "gif": {
-				$tempImage = imagecreatefromgif($_FILES);
+				$tempImage = imagecreatefromgif($imagePath);
 				break;
 			}
 			case "png": {
-				$tempImage = imagecreatefrompng($_FILES);
+				$tempImage = imagecreatefrompng($imagePath);
 				break;
 			}
 			default: {
