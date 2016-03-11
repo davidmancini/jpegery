@@ -8,7 +8,7 @@
 	</div>
 </div><!--End Row-->
 
-<div class="row" ng-app="jpegery"><!--settingsRow-->
+<div class="row"><!--settingsRow-->
 	<div class="col-sm-3">
 		<!--Empty; to align with above-->
 	</div>
