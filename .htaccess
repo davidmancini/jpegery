@@ -1,4 +1,5 @@
 <IfModule mod_rewrite.c>
+	Options -MultiViews
 	RewriteEngine On
 	# Don't rewrite files or directories
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
