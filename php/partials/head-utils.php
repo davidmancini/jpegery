@@ -55,9 +55,9 @@ setXsrfCookie();
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/<?php echo $ANGULAR_VERSION;?>/angular-messages.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/<?php echo $ANGULAR_VERSION;?>/angular-route.js"></script>
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.1/ui-bootstrap-tpls.min.js"></script>
-<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
-<script type="text/javascript" src="https://angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
-
+<script type="text/javascript" src="//angular-file-upload.appspot.com/js/ng-file-upload-shim.js"></script>
+<script type="text/javascript" src="//angular-file-upload.appspot.com/js/ng-file-upload.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-messages.js"></script>
 
 <!--Angular app files (order: app, services, directives, controllers)-->
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/jpegery.js"></script>

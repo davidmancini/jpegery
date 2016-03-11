@@ -1,4 +1,4 @@
-app.controller("LoginController", ["$scope", "LoginService", function($scope, LoginService) {
+app.controller("LoginController", ["$scope", "$http", "LoginService", function($scope, $http, LoginService) {
 
 	$scope.loginData = {};
 	$scope.alerts = [];
