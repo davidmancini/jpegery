@@ -17,7 +17,8 @@
 		<form ng-controller="UploadController" name="form" id="form">
 			<div class="form-group">
 				<!--									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>-->
-				<button class="form-control" ngf-select ng-model="file" name="file">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
+				<button class="form-control" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+						  ngf-accept="'image/*'">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
 			</div>
 			<div class="form-group">
 				<label for="caption" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
