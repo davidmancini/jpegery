@@ -37,7 +37,7 @@ try {
 	$profile = Profile::getProfileByProfileVerify($pdo, $profileVerify);
 	// make sure the verification isn't empty
 	if(empty($profile) === true || ($profile) === null) {
-		throw (new InvalidArgumentException("Activation code has been activated or does not exist", 404));
+		throw (new InvalidArgumentException("Activation code has been used or does not exist", 404));
 	} else {
 		$profileVerify->setProfileVerify();
 		$profile->update($pdo);
