@@ -8,13 +8,13 @@
 	</div>
 </div><!--End Row-->
 
-<div class="row"><!--settingsRow-->
+<div class="row" ng-app="jpegery"><!--settingsRow-->
 	<div class="col-sm-3">
 		<!--Empty; to align with above-->
 	</div>
 	<div class="col-sm-9"><!--Upload Image-->
 		<h2>Upload Image</h2>
-		<form ng-controller="MyCtrl" name="form">
+		<form ng-controller="UploadController" name="uploadForm" id="uploadForm">
 			<div class="form-group">
 				<!--									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>-->
 				<button class="form-control" ngf-select ng-model="file" name="file">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
