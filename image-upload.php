@@ -16,23 +16,29 @@ $reply->status = 200;
 
 try {
 
-//Open session
-	$requestContent = file_get_contents("php://input");
-	$requestObject = json_encode($requestContent);
+	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
-	$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", $requestObject->text, null);
+//	$_SESSION["profile"] = Profile::getProfileByProfileId($pdo, 7708);
+
+////Open session
+////	$requestContent = file_get_contents("php://input");
+////	$requestObject = json_encode($requestContent);
+	$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_STRING);
+//	$reply->data = $caption;
+//
+	$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", $caption, null);
 	$image->imageUpload();
 //Connect to encrypted mySQL
-	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	$image->insert($pdo);
-
-	$reply->data = $requestObject;
-
 	$reply->message = "This worked. Or didn't and you somehow screwed it up so much you got a false positive. Either way, good job.";
+//
+//	$image->delete($pdo);
+//	$profile->delete($pdo);
+
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->data = $exception->getMessage();
 }
 //Echo the json, encode the $reply.
-header("Content-type: application/json");
+header("Content-type: application/html");
 echo json_encode($reply);
