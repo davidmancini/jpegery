@@ -563,7 +563,7 @@ class Image implements \JsonSerializable {
 		$extension = strtolower(end($tmp));
 		$type = $_FILES["file"]["type"];
 
-		if(in_array($type, $validExts) === false || in_array($extension, $validFormat) === false) {
+		if(in_array($type, $validFormat) === false || in_array($extension, $validExts) === false) {
 			throw(new \InvalidArgumentException("File was not of correct type", 418)); // tea earl grey hot
 		}
 
@@ -575,7 +575,7 @@ class Image implements \JsonSerializable {
 
 		$heightRatio = $maximumHeight/$imageSizes[1];
 
-		switch($type) {
+		switch($extension) {
 			case "jpeg":{
 
 			}
@@ -606,7 +606,7 @@ class Image implements \JsonSerializable {
 		}
 		$fileLocation = "/var/www/html/public_html/jpegery/content/" . $tempName;
 
-		if($type === "gif") {
+		if($extension === "gif") {
 			$savedImage = imagegif($tempImage, $fileLocation);
 			$this->setImageType("image/gif");
 		} else {
