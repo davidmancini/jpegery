@@ -30,13 +30,18 @@ try {
 //grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 
-	$profile = Profile::getProfileByProfileEmail($pdo, $requestObject->emailHandlePhone);
+	try {
+		$profile = Profile::getProfileByProfileEmail($pdo, $requestObject->emailHandlePhone);
+	} catch(Exception $exception) {
+		$profile = null;
+	}
 	if($profile === null) {
 		$profile = Profile::getProfileByProfileHandle($pdo, $requestObject->emailHandlePhone);
 	}
 	if($profile === null) {
 		$profile = Profile::getProfileByProfilePhone($pdo, $requestObject->emailHandlePhone);
 	}
+
 // if login options cannot be verified throw exception
 	if($profile === null) {
 		throw(new\RuntimeException("User name or password is incorrect"));
@@ -53,6 +58,7 @@ try {
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
+	$reply->trace = $exception->getTrace();
 }
 //Echo the json, encode the $reply.
 echo json_encode($reply);

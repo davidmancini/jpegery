@@ -809,7 +809,7 @@ class Profile implements \JsonSerializable {
 			throw(new \PDOException("phone number is empty or insecure"));
 		}
 		//Create query template
-		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profileId = :profileId";
+		$query = "SELECT profileId, profileAdmin, profileCreateDate, profileEmail, profileHandle, profileHash, profileImageId, profileNameF, profileNameL, profilePhone, profileSalt, profileVerify FROM profile WHERE profilePhone = :profilePhone";
 		$statement = $pdo->prepare($query);
 
 		//Bind the phone number to the place holder in the template
