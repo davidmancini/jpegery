@@ -48,7 +48,7 @@ try {
 		$reply->message = "Welcome to jpegery!";
 		$_SESSION["profile"] = $profile;
 	} else {
-		throw(new\RuntimeException("Verify your login information and try again."));
+		throw(new\RuntimeException("User name or password is incorrect"));
 	}
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
