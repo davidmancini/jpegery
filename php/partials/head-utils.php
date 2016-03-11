@@ -19,6 +19,8 @@ $PREFIX = str_repeat("../", $DEPTH_DIFFERENCE);
 <!-- Sets viewport and zoom scale to 1:1.  This is required when creating a responsive site. -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+<base href="<?php echo dirname($_SERVER["PHP_SELF"]) . "/";?>">
+
 <!-- Bootstrap Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 
@@ -60,7 +62,7 @@ $PREFIX = str_repeat("../", $DEPTH_DIFFERENCE);
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="jpegery">
 	<head>
 		<meta charset="UTF-8">
 		<title>Jpegery</title>

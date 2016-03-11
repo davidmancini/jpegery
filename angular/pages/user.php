@@ -1,5 +1,5 @@
 <div class="row aboveRow">
-	<?php require_once("lib/content-search.php"); ?>
+	<ng-include src="'angular/templates/content-search.php'"></ng-include>
 	<div class="col-md-6">
 		<div class="pull-left col-md-4 col-xs-12">
 			<img src="images/placeholder.png" alt="Placeholder Image" width="150">

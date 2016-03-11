@@ -1,4 +1,4 @@
-<?php require_once("lib/content-search.php"); ?>
+<ng-include src="'angular/templates/content-search.php'"></ng-include>
 <div class="row">
 	<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
 		<h3 class="text-center">Next Images</h3>

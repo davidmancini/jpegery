@@ -8,11 +8,12 @@ require_once("php/partials/head-utils.php");
 <?php require_once("php/partials/header.php");?>
 
 
-	<body>
+	<body ng-controller="mainController">
 		<div class="mainContent">
 				<?php require_once("php/partials/header.php"); ?>
 			<main>
 				<div class="container contentContainer">
+					
 					<div ng-view></div>
 
 				</div><!--/contentContainer-->
