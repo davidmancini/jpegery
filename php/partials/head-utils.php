@@ -70,7 +70,6 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/upload-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/login-controller.js"></script>
 
-
 <!DOCTYPE html>
 <html lang="en" ng-app="jpegery">
 	<head>
