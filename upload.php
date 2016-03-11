@@ -8,7 +8,7 @@
 		<title>Jpegery</title>
 		<script src="js/app.js"></script>
 		<script src="js/script.js"></script>
-		<?php require_once("lib/head-tags.html") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
+		<?php require_once("lib/head-utils.php") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
 		<link rel="stylesheet" href="css/style.css"><!--Overrides core Bootstrap-->
 	</head>
 	<body ng-app="FileUpload">
@@ -21,7 +21,7 @@
 				<div class="container contentContainer">
 
 					<div class="row aboveRow">
-						<?php require_once ("lib/content-search.php"); ?>
+						<?php require_once("lib/content-search.php"); ?>
 						<div class="pull-left col-sm-3">
 							<img src="images/placeholder.png" alt="Placeholder Image" width="150">
 						</div>

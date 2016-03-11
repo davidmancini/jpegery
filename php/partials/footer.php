@@ -14,4 +14,4 @@
 			<p class="text-center">Copyright &copy; 2015-<?php echo date("Y");?>&nbsp;jpegery<br>All Rights Reserved.</p>
 		</div>
 	</div>
-</div
+</div>

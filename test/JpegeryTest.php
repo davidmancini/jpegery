@@ -45,7 +45,7 @@ abstract class JpegeryTest extends \PHPUnit_Extensions_Database_TestCase {
 		return new \PHPUnit_Extensions_Database_Operation_Composite(array( \PHPUnit_Extensions_Database_Operation_Factory::DELETE_ALL(),  \PHPUnit_Extensions_Database_Operation_Factory::INSERT()));
 	}
 	/**
-	 * templates the tearDown method that runs after each test. Cleanup, basically.
+	 * partials the tearDown method that runs after each test. Cleanup, basically.
 	 *
 	 * @return \PHPUnit_Extensions_Database_Operation_IDatabaseOperation deletes the database
 	 */

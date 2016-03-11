@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Jpegery</title>
-		<?php require_once("lib/head-tags.html") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
+		<?php require_once("lib/head-utils.php") ?><!--Includes Bootstrap, Google Fonts, Font Awesome, etc. -->
 		<link rel="stylesheet" href="css/style.css"><!--Overrides core Bootstrap-->
 	</head>
 	<body>
@@ -14,7 +14,7 @@
 
 			<main>
 				<div class="container contentContainer">
-					<?php require_once ("lib/content-search.php"); ?>
+					<?php require_once("lib/content-search.php"); ?>
 					<div class="row">
 							<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
 							<h3 class="text-center">Next Images</h3>
