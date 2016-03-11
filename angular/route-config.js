@@ -30,6 +30,12 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl : 'angular/pages/image.php'
 		})
 
+		// route for the login page
+		.when('/login', {
+			controller  : 'imageController',
+			templateUrl : 'angular/pages/login.php'
+		})
+
 		.otherwise({
 			redirectTo: "/"
 		});

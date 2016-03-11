@@ -54,11 +54,13 @@ $PREFIX = str_repeat("../", $DEPTH_DIFFERENCE);
 <!--Angular app files (order: app, services, directives, controllers)-->
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/jpegery.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/route-config.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/login-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/main-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/image-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/user-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/settings-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/upload-controller.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/login-controller.js"></script>
 
 
 <!DOCTYPE html>
