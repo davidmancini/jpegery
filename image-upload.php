@@ -17,7 +17,6 @@ $reply->status = 200;
 try {
 
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
-
 	$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_STRING);
 
 	$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", $caption, null);
