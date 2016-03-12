@@ -24,7 +24,5 @@
 	</div>
 
 	<button type="submit" name="submit" id="submit" class="btn btn-primary">Login</button>
-	<pre>
-		{{ loginData | json }}
-	</pre>
 </form>
+<uib-alert ng-repeat="alert in alerts" type="{{ alert.type }}" close="alerts.length = 0;">{{ alert.msg }}</uib-alert>

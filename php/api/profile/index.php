@@ -51,6 +51,7 @@ try {
 	$profilePhone = filter_input(INPUT_GET, "profilePhone", FILTER_SANITIZE_STRING);
 	$profileSalt = filter_input(INPUT_GET, "profileSalt", FILTER_SANITIZE_EMAIL);
 	$profileVerify = filter_input(INPUT_GET, "profileVerify", FILTER_SANITIZE_STRING);
+	$current = filter_input(INPUT_GET, "current", FILTER_VALIDATE_BOOLEAN);
 
 	//handle REST calls
 	if($method === "GET") {
@@ -100,17 +101,19 @@ try {
 
 
 	// make sure all fields are present, in order to prevent database issues
-	if(empty($requestObject->profileEmail) === true) {
-		throw(new InvalidArgumentException ("email is a required field", 406));
-	}
-	if(empty($requestObject->profileNameF) === true) {
-		throw(new InvalidArgumentException ("first name is a required field", 406));
-	}
-	if(empty($requestObject->profileNameL) === true) {
-		throw(new InvalidArgumentException ("last name is a required field", 406));
-	}
-	if(empty($requestObject->profilePhone) === true) {
-		throw(new InvalidArgumentException ("phone number is a required field", 406));
+	if($method === "POST" || $method === "PUT") {
+		if(empty($requestObject->profileEmail) === true) {
+			throw(new InvalidArgumentException ("email is a required field", 406));
+		}
+		if(empty($requestObject->profileNameF) === true) {
+			throw(new InvalidArgumentException ("first name is a required field", 406));
+		}
+		if(empty($requestObject->profileNameL) === true) {
+			throw(new InvalidArgumentException ("last name is a required field", 406));
+		}
+		if(empty($requestObject->profilePhone) === true) {
+			throw(new InvalidArgumentException ("phone number is a required field", 406));
+		}
 	}
 
 	// put
@@ -135,11 +138,11 @@ try {
 			$hash = hash_pbkdf2("sha512", $requestObject->Password, $profile->getProfileSalt(), 262144, 128);
 			$profile->setProfileHash($hash);
 		}
-		if(empty($requestObject->Password) === true) {
+		if(empty($requestObject->password) === true) {
 			throw(new \PDOException("password is a required field"));
 		}
 		//make sure that the password is not null
-		if(($profile->getProfileId() === false) && ($requestObject->Password !== null)) {
+		if(($profile->getProfileId() === false) && ($requestObject->password !== null)) {
 			$_SESSION["profile"]->setProfileId(false);
 		}
 		$reply->message = "Profile has been updated";
@@ -218,6 +221,7 @@ EOF;
 catch (Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->message = $exception->getMessage();
+	$reply->trace = $exception->getTrace();
 }
 
 
