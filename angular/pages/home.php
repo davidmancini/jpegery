@@ -13,42 +13,9 @@
 			</ul>
 		</div>
 	</div><!--End Button Group-->
-</div>
-<div class="row contentRow contentImageRow">
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage">
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
-	</div>
-	<div class="col-xs-6 col-sm-4 col-md-3">
-		<a href="#"><img src="images/placeholder.png" alt="Placeholder image" class="img-responsive contentImage"></a>
+	<div ng-app='myApp' ng-controller='ScrollController'>
+	<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+		<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
 	</div>
 </div>
+
