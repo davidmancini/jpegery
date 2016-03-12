@@ -1,12 +1,10 @@
-app.controller("LoginController", ["$scope", "$http", "$window", "LoginService", function($scope, $http, $window, LoginService) {
-
+app.controller("loginController", ["$scope", "$http", "$window", "loginService", function($scope, $http, $window, loginService) {
 	$scope.loginData = {};
 	$scope.alerts = [];
 
 	$scope.submit = function(loginData, validated) {
-
 		if(validated === true) {
-			LoginService.login(loginData)
+			loginService.login(loginData)
 				.then(function(reply) {
 					if(reply.status === 200) {
 						$window.location = ".";
