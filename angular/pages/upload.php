@@ -4,7 +4,7 @@
 		<img src="images/placeholder.png" alt="Placeholder Image" width="150">
 	</div>
 	<div class="col-sm-9 userInfo">
-		<h2>User Name</h2>
+		<h2>{{profile.profileNameF}} {{profile.profileNameL}}</h2>
 	</div>
 </div><!--End Row-->
 

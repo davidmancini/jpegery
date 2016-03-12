@@ -1,4 +1,4 @@
-app.constant("PROFILE_ENDPOINT", "api/profile/");
+app.constant("PROFILE_ENDPOINT", "php/api/profile/");
 app.service("profileService", function($http, PROFILE_ENDPOINT) {
 	function getUrl() {
 		return(PROFILE_ENDPOINT);

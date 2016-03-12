@@ -1,7 +1,7 @@
 //var uploadApp = angular.module("FileUpload", ["ngFileUpload"]);
 //app.controller('uploadController', function($scope) {
 
-app.controller('UploadController', ['$scope', 'Upload', function ($scope, Upload) {
+app.controller('uploadController', ['$scope', 'Upload', 'profileService', function ($scope, Upload, profileService) {
 	$scope.submit = function() {
 		if($scope.form.file.$valid && $scope.file) {
 			$scope.upload($scope.file, $scope.caption);

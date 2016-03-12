@@ -1,10 +1,11 @@
+<current-profile></current-profile>
 <div class="row aboveRow">
 	<ng-include src="'angular/templates/content-search.php'"></ng-include>
 	<div class="pull-left col-sm-3">
 		<img src="images/placeholder.png" alt="Placeholder Image" width="150">
 	</div>
 	<div class="col-sm-9 userInfo">
-		<h2>{{User Name}}</h2>
+		<h2>{{profile.profileNameF}} {{profile.profileNameL}}</h2>
 	</div>
 </div><!--End Row-->
 
@@ -19,25 +20,25 @@
 				<div class="form-group">
 					<label for="firstName" class="col-sm-2 control-label">First Name</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="firstName" value="{{First Name}}">
+						<input type="text" class="form-control" id="firstName" value="{{profile.profileNameF}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="lastName" class="col-sm-2 control-label">Last Name</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="lastName" value="{{Last Name}}">
+						<input type="text" class="form-control" id="lastName" value="{{profile.profileNameL}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="handle" class="col-sm-2 control-label">Handle</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="handle" value="{{Handle}}">
+						<input type="text" class="form-control" id="handle" value="{{profile.profileHandle}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="email" value="{{Email}}">
+						<input type="text" class="form-control" id="email" value="{{profile.profileEmail}}">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-default pull-right">Update</button>
