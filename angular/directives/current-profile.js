@@ -1,7 +1,7 @@
 app.directive("currentProfile", ["profileService", function(profileService){
 	return({
 		// detect current profile based on visibility
-		link: function postLink(scope) {
+		link: function postLink(scope, element, attrs, ctrl, transclude) {
 			console.log("???");
 			scope.getCurrentProfile = function() {
 				profileService.fetchCurrent(true)
@@ -19,6 +19,9 @@ app.directive("currentProfile", ["profileService", function(profileService){
 		},
 		restrict: "E",
 		template: "<span></span>",
-		transclude: true
+		transclude: true,
+		scope: {
+			target: "="
+		}
 	});
 }]);
