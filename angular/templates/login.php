@@ -1,4 +1,4 @@
-<form id="loginForm" name="loginForm" ng-controller="LoginController" ng-submit="submit(loginData, loginForm.$valid);" novalidate>
+<form id="loginForm" name="loginForm" ng-submit="submit(loginData, loginForm.$valid);" novalidate>
 <!--	Username: <input type="text" name="emailHandlePhone" id="emailHandlePhone" ng-model="loginData.emailHandlePhone"><br>-->
 
 	<div class="form-group" ng-class=" { 'has-error':loginForm.emailHandlePhone.$touched && loginForm.emailHandlePhone.$invalid } ">
@@ -24,4 +24,7 @@
 	</div>
 
 	<button type="submit" name="submit" id="submit" class="btn btn-primary">Login</button>
+	<pre>
+		{{ loginData | json }}
+	</pre>
 </form>
