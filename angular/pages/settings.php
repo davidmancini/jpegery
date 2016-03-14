@@ -1,4 +1,3 @@
-<current-profile></current-profile>
 <div class="row aboveRow">
 	<ng-include src="'angular/templates/content-search.php'"></ng-include>
 	<div class="pull-left col-sm-3">
