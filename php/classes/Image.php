@@ -628,6 +628,7 @@ class Image implements \JsonSerializable {
 	public function jsonSerialize() {
 		$fields = get_object_vars($this);
 		$fields["imageDate"] = intval($this->imageDate->format("U")) * 1000;
+		$fields["imageFileName"] = str_replace("/var/www/html/public_html", "", $this->imageFileName);
 		return($fields);
 	}
 }

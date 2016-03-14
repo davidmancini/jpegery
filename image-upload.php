@@ -21,10 +21,12 @@ try {
 	$caption = filter_input(INPUT_POST, "caption", FILTER_SANITIZE_STRING);
 
 	$image = new Image (null, $_SESSION["profile"]->getProfileId(), "temporaryType", "temporaryName", $caption, null);
+	$image->insert($pdo);
+
 	$image->imageUpload();
 
 //Connect to encrypted mySQL
-	$image->insert($pdo);
+	$image->update($pdo);
 
 	$reply->message = "This worked. Or didn't and you somehow screwed it up so much you got a false positive. Either way, good job.";
 
