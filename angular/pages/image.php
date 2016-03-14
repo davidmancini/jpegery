@@ -43,11 +43,11 @@
 		<h2 class="text-center">{Image Title}</h2>
 		<p class="text-center"><a href="#">{{Author}}</a> {{Time Published}}</p>
 		<div>
-			<img src="images/placeholder.png" alt="Placeholder Image" class="center-block img-responsive">
+			<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
 		<div class="imageData">
 			<div class="imageText text-center">
-				{Image Text}
+				{{image.imageText}}
 			</div>
 		</div><!--/imageData-->
 	</div><!--/Image-->
@@ -78,6 +78,15 @@
 			</form>
 		</div>
 		<div class="commentSection">
+			<div class="row">
+				<div class="col-md-12">
+					<ul>
+						<li ng-repeat="comment in comments">
+							{{getProfileByProfileId(comment.commentProfileId).profileHandle}} said: {{comment.commentText}}
+						</li>
+					</ul>
+				</div>
+			</div>
 			<div class="comment">
 				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
 				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.

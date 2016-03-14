@@ -22,8 +22,13 @@
 			</div>
 			<div class="form-group">
 				<label for="caption" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption" ng-model="caption">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="tags" name="tags" placeholder="Please separate your tags with # and spaces" ng-model="tags">
 				</div>
 			</div>
 			<button type="submit" ng-click="submit()" class="btn btn-default pull-right"><i class="fa fa-cloud-upload"></i>&nbsp;Post</button>
