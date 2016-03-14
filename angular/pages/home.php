@@ -13,5 +13,5 @@
 			</ul>
 		</div>
 	</div><!--End Button Group-->
-	<div lazy-scroll="paginationFuntion()" lazy-scroll-trigger="80" >
+	<div lazy-scroll="paginationFunction()" lazy-scroll-trigger="80" >
 
