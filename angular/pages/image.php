@@ -70,9 +70,9 @@
 	</div>
 	<div class="col-sm-6 col-xs-12"><!--commentGroup-->
 		<div class="submit-comment">
-			<form action="">
+			<form name="commentForm" id="commentForm" ng-submit="submit(commentData, commentForm.$valid);" novalidate>
 				<div class="input-group">
-					<textarea name="comment" id="comment" cols="30" rows="3" class="form-control" placeholder="Comment"></textarea>
+					<input type="text" class="form-control" name="comment" id="comment" cols="30" rows="3" ng-minlength="2" ng-maxlength="1024" ng-required="true" placeholder="Comment">
 					<span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="fa fa-comment"></i>&nbsp;Comment</button></span>
 				</div>
 			</form>
