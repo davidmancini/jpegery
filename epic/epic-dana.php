@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>Dana McNeill</title>
 		<!--Include Bootstrap Head Tags -->
-		<?php require_once(dirname(__DIR__) . "/lib/head-utils.php"); ?>
+		<?php require_once("epic-head-utils.php"); ?>
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body class="footerBody">

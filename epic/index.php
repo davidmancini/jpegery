@@ -8,7 +8,8 @@
 		<meta charset="utf-8"/>
 		<title>jpegery Epic</title>
 		<!--Include Bootstrap Head Tags -->
-		<?php require_once(dirname(__DIR__) . "/lib/head-utils.php"); ?>
+		<?php require_once("epic-head-utils.php"); ?>
+
 		<link rel="stylesheet" href="../css/epicstyles.css">
 	</head>
 	<body class="footerBody">
