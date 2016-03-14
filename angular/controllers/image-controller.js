@@ -1,10 +1,10 @@
-app.controller('imageController', ['$scope', '$http', '$window', 'imageService', function($scope, $http, $window, imageService) {
+app.controller('imageController', ['$scope', '$http', '$window', 'imageService', 'commentService', function($scope, $http, $window, imageService, commentService) {
 	$scope.commentData = {};
 	$scope.alerts = [];
 
 	$scope.submit = function(commentData, validated) {
 		if(validated === true) {
-			imageService.comment(commentData)
+			commentService.comment(commentData)
 				.then(function(reply) {
 					if(reply.status === 200) {
 						$window.location = ".";
