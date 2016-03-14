@@ -65,12 +65,14 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/login-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/profile-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/directives/current-profile.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/directives/lazy-scroll.min.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/main-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/image-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/user-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/settings-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/upload-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/login-controller.js"></script>
+
 
 <!DOCTYPE html>
 <html lang="en" ng-app="jpegery">

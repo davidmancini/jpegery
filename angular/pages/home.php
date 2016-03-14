@@ -13,9 +13,5 @@
 			</ul>
 		</div>
 	</div><!--End Button Group-->
-	<div ng-app='myApp' ng-controller='ScrollController'>
-	<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
-		<img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
-	</div>
-</div>
+	<div lazy-scroll="paginationFuntion()" lazy-scroll-trigger="80" >
 
