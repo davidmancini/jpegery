@@ -2,8 +2,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.commentData = {};
 	$scope.alerts = [];
 	$scope.images = [];
+	$scope.comments = [];
 
 	$scope.images = imageService.all();
+	$scope.comments = commentService.all();
 
 	$scope.submit = function(commentData, validated) {
 		if(validated === true) {

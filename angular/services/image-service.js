@@ -1,13 +1,16 @@
-app.constant("LOGIN_ENDPOINT", 'php/api/image/');
+app.service('imageService', function($http){
+	this.IMAGE_ENDPOINT = 'php/api/image/';
 
-app.service('imageService', function($http, LOGIN_ENDPOINT){
 	function getUrl() {
-		return(LOGIN_ENDPOINT);
+		return(IMAGE_ENDPOINT);
 	}
 	function getUrlForId(imageId) {
 		return(getUrl() + imageId);
 	}
 	this.all = function() {
-		return($http.get(getUrl()));
+		return($http.get(getUrl()))
+			.then(function(reply){
+				return(reply.data);
+			})
 	};
 });
