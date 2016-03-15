@@ -45,19 +45,19 @@ app.config(function($routeProvider, $locationProvider) {
 		// route for the help page
 		.when('/help', {
 			controller  : 'helpController',
-			templateUrl : 'angular/pages/register.php'
+			templateUrl : 'angular/pages/help.php'
 		})
 
 		// route for the faq page
 		.when('/faq', {
 			controller  : 'faqController',
-			templateUrl : 'angular/pages/register.php'
+			templateUrl : 'angular/pages/faq.php'
 		})
 
 		// route for the contact us page
-		.when('/contact-us', {
+		.when('/contact', {
 			controller  : 'contactController',
-			templateUrl : 'angular/pages/register.php'
+			templateUrl : 'angular/pages/contact.php'
 		})
 
 
