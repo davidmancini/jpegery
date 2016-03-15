@@ -4,11 +4,11 @@
 		<h3 class="text-center">Next Images</h3>
 		<div class="nextImageGroup">
 
-			<ul>
-				<li ng-repeat="image in images |orderBy:'-imageDate'">
+			<div class="col-sm-6">
+				<div ng-repeat="image in images |orderBy:'-imageDate'">
 					<img src="{{image.imageFileName}}" class="center-block img-responsive">
-				</li>
-			</ul>
+				</div>
+			</div>
 			<div class="col-sm-6">
 				<div>
 					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
