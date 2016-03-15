@@ -2,7 +2,7 @@
 	<div class="container-fluid footer">
 		<div class="row">
 			<div class="col-xs-6">
-				<a href="#"><i class="fa fa-sign-in"></i>&nbsp;Log In</a>&nbsp;&nbsp;
+				<a href="login"><i class="fa fa-sign-in"></i>&nbsp;Log In</a>&nbsp;&nbsp;
 				<a href="#"><i class="fa fa-info"></i>&nbsp;Help</a>&nbsp;&nbsp;
 				<a href="#"><i class="fa fa-question"></i>&nbsp;FAQ</a>
 			</div>
