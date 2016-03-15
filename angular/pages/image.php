@@ -53,12 +53,10 @@
 		<div class="commentSection">
 			<div class="row">
 				<div class="col-md-12">
-					<ul>
-						<li ng-repeat="comment in comments">
-							{{getProfileByProfileId(comment.commentProfileId).profileHandle}} said: {{comment.commentText}}
-							{{comment.commentDate | date : 'short'}}
-						</li>
-					</ul>
+					<div ng-repeat = "nextComment in comments | orderBy:'-commentDate'">
+						<p>getProfileByProfileId({{nextComment.commentProfileId}}).profileHandle said: {{nextComment.commentText}}</p>
+						{{comment.commentDate | date : 'short'}}
+					</div>
 				</div>
 			</div>
 <!--			<div class="comment">-->

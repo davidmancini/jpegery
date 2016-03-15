@@ -5,6 +5,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.comments = [];
 	$scope.image = null;
 	$scope.profile = null;
+	$scope.imgId = null;
 
 	$scope.getAllImages = function() {
 		imageService.all()
@@ -24,24 +25,32 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 		$scope.images = $scope.getAllImages();
 	}
 
+	$scope.getCommentsByImageId = function() {
+		$scope.imgId = $scope.image.imageId;
+		console.log($scope.imgId);
+		commentService.fetchByImageId($scope.imgId)
+			.then(function(result) {
+				if(result.data.status === 200) {
+					$scope.comments = result.data.data;
+					console.log("This worked");
+				}
+				else {
+					console.log("This did not work");
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "Comments could not be loaded"
+					}
+				}
+			})
+	};
+	if($scope.comments.length === 0 && $scope.image !== null) {
+		$scope.comments = $scope.getCommentsByImageId()
+	}
+
 	$scope.changeImage = function(img) {
 		$scope.image =img;
+		$scope.comments = $scope.getCommentsByImageId()
 	};
-	//$scope.getAllComments = function() {
-	//	commentService.all()
-	//		.then(function(result) {
-	//			if(result.data.status === 200) {
-	//				$scope.comments = result.data.data;
-	//			}
-	//			else {
-	//				$scope.alerts[0] = {
-	//					type: "danger",
-	//					msg: "Comments could not be loaded"
-	//				}
-	//			}
-	//		})
-	//};
-	//$scope.comments = commentService.all();
 
 	$scope.getCurrentProfile = function() {
 		profileService.fetchCurrent(true)

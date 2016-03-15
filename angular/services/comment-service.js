@@ -16,4 +16,7 @@ app.service('commentService', function($http){
 	this.all = function() {
 		return($http.get('php/api/comment/'));
 	};
+	this.fetchByImageId = function(imgId) {
+		return($http.get('php/api/comment/' + "?commentImageId=" + imgId));
+	};
 });
