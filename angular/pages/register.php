@@ -62,11 +62,12 @@
 
 	<div class="form-group" ng-class=" { 'has-error':registerForm.profilePassword2.$touched && registerForm.profilePassword2.$invalid } ">
 		<label for="profilePassword2">Confirm Password</label>
-		<input type="password" class="form-control" id="profilePassword2" name="profilePassword2" placeholder="Password" ng-model="registerData.profilePassword2" ng-minlength="2" ng-maxlength="32" ng-required="true">
+		<input type="password" class="form-control" id="profilePassword2" name="profilePassword2" placeholder="Password" ng-model="registerData.profilePassword2" ng-minlength="2" ng-maxlength="32" ng-required="true" pw-check="profilePassword">
 		<div class="alert alert-danger" role="alert" ng-messages="registerForm.profilePassword2.$error" ng-if="registerForm.profilePassword2.$touched" ng-hide="registerForm.profilePassword2.$valid">
 			<p ng-message="minlength">Password Confirmation is too short</p>
 			<p ng-message="maxlength">Password Confirmation is too long</p>
 			<p ng-message="required">Password Confirmation is required</p>
+			<p ng-message="pwmatch">Passwords Don't Match</p>
 		</div>
 	</div>
 
