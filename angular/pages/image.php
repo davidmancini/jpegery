@@ -5,8 +5,8 @@
 		<div class="nextImageGroup">
 
 			<div class="col-sm-6">
-				<div ng-repeat="image in images |orderBy:'-imageDate'">
-					<img src="{{image.imageFileName}}" class="center-block img-responsive">
+				<div ng-repeat="nextImage in images |orderBy:'-imageDate'">
+					<a href="{{nextImage.imageFileName}}"><img src="{{nextImage.imageFileName}}" class="center-block img-responsive"></a>
 				</div>
 			</div>
 			<div class="col-sm-6">

@@ -1,8 +1,10 @@
-app.controller('imageController', ['$scope', '$http', '$window', 'imageService', 'commentService', function($scope, $http, $window, imageService, commentService) {
+app.controller('imageController', ['$scope', '$http', '$window', 'imageService', 'commentService', 'profileService', function($scope, $http, $window, imageService, commentService, profileService) {
 	$scope.commentData = {};
 	$scope.alerts = [];
 	$scope.images = [];
 	$scope.comments = [];
+	$scope.image = null;
+	$scope.profile = null;
 
 	$scope.getAllImages = function() {
 		imageService.all()
@@ -37,6 +39,40 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	//};
 	//$scope.comments = commentService.all();
 
+	$scope.getCurrentProfile = function() {
+		profileService.fetchCurrent(true)
+			.then(function(result) {
+				if (result.data.status === 200) {
+					$scope.profile = result.data.data;
+				} else {
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "You are not logged in."
+					};
+				}
+			});
+	};
+
+	if ($scope.profile === null) {
+		$scope.profile = $scope.getCurrentProfile();
+	}
+	$scope.getCurrentImage = function() {
+		profileService.fetchCurrent(true)
+			.then(function(result) {
+				if (result.data.status === 200) {
+					$scope.image = result.data.data;
+				} else {
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "You are not viewing an image.."
+					};
+				}
+			});
+	};
+
+	if ($scope.image === null) {
+		$scope.image = $scope.getCurrentProfile();
+	}
 	$scope.submit = function(commentData, validated) {
 		if(validated === true) {
 			commentService.comment(commentData)
