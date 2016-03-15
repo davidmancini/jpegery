@@ -569,7 +569,7 @@ class Image implements \JsonSerializable {
 		}
 
 		$identificationOfImage = $_SESSION["profile"]->getProfileEmail() . $this->imageId;
-		$tempName = hash("ripemd160", $identificationOfImage) . "." . $extension;
+		$tempName = hash("ripemd160", $identificationOfImage) . ".";
 		$imageSizes = getimagesize($imagePath);
 
 		$widthRatio = $maximumWidth/$imageSizes[0];
@@ -605,12 +605,15 @@ class Image implements \JsonSerializable {
 				$tempImage = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
 			}
 		}
-		$fileLocation = "/var/www/html/public_html/jpegery/content/" . $tempName;
 
 		if($extension === "gif") {
+			$tempName = $tempName . "gif";
+			$fileLocation = "/var/www/html/public_html/jpegery/content/" . $tempName;
 			$savedImage = imagegif($tempImage, $fileLocation);
 			$this->setImageType("image/gif");
 		} else {
+			$tempName = $tempName . "jpeg";
+			$fileLocation = "/var/www/html/public_html/jpegery/content/" . $tempName;
 			$savedImage = imagejpeg($tempImage, $fileLocation);
 			$this->setImageType("image/jpeg");
 		}
