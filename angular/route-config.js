@@ -62,7 +62,7 @@ app.config(function($routeProvider, $locationProvider) {
 
 		// route for logout event
 		.when('/logout', {
-			controller: 'LogoutController',
+			controller: 'logoutController',
 			template: '' //A template or templateUrl is required by AngularJS, even if your controller always redirects.
 
 		})
