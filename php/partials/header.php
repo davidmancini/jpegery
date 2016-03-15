@@ -10,7 +10,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<div class="center-block">
-					<a class="navbar-brand" href="#"><img src="images/jpegerylogo.png" alt="jpegery" class="img-responsive" width="100"></a>
+					<a class="navbar-brand" href="index"><img src="images/jpegerylogo.png" alt="jpegery" class="img-responsive" width="100"></a>
 				</div>
 			</div>
 
