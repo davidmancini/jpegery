@@ -15,10 +15,14 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
 <!--					<li class="active"><a href="#">Current <span class="sr-only">(current)</span></a></li>-->
-					<li><a href="login"><i class="fa fa-sign-in"></i>&nbsp;Log In</a></li>
-					<li><a href="register"><i class="fa fa-user"></i>&nbsp;Register</a></li>
-					<li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;Log Out (doesn't exist yet)</a></li>
-					<li><a href="settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+					<?php if(empty($_SESSION["profile"])) { ?>
+						<li><a href="login"><i class="fa fa-sign-in"></i>&nbsp;Log In</a></li>
+						<li><a href="register"><i class="fa fa-user"></i>&nbsp;Register</a></li>
+					<?php }
+					if(!empty($_SESSION["profile"])) {?>
+						<li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;Log Out (doesn't exist yet)</a></li>
+						<li><a href="settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+					<?php } ?>
 				</ul>
 				<form class="navbar-form navbar-right hidden-xs" role="search"><!--Search box is hidden when nav bar collapses-->
 					<div class="form-group">
