@@ -1,1 +1,1 @@
-var app = angular.module("jpegery", ["ngRoute", "ui.bootstrap", "ngMessages", "ngFileUpload","lazy-scroll"]);
+var app = angular.module("jpegery", ["ngRoute", "ui.bootstrap", "ngMessages", "ngFileUpload"]);
