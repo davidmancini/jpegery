@@ -75,10 +75,12 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	};
 
 	if ($scope.image === null) {
-		$scope.image = $scope.getCurrentProfile();
+		$scope.image = $scope.getCurrentImage();
 	}
 	$scope.submit = function(commentData, validated) {
 		if(validated === true) {
+			commentData.commentProfileId = $scope.profile.profileId;
+			commentData.commentImageId = $scope.image.imageId;
 			commentService.comment(commentData)
 				.then(function(reply) {
 					if(reply.status === 200) {

@@ -45,7 +45,7 @@
 		<div class="submit-comment">
 			<form name="commentForm" id="commentForm" ng-submit="submit(commentData, commentForm.$valid);" novalidate>
 				<div class="input-group">
-					<input type="text" class="form-control" name="comment" id="comment" cols="30" rows="3" ng-minlength="2" ng-maxlength="1024" ng-required="true" placeholder="Comment">
+					<input type="text" class="form-control" name="comment" id="comment" cols="30" rows="3" ng-minlength="2" ng-maxlength="1024" ng-required="true" placeholder="Comment" ng-model="commentData.commentText">
 					<span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="fa fa-comment"></i>&nbsp;Comment</button></span>
 				</div>
 			</form>
