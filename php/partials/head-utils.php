@@ -78,6 +78,7 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/contact-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/faq-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/help-controller.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/logout-controller.js"></script>
 
 <!DOCTYPE html>
 <html lang="en" ng-app="jpegery">
