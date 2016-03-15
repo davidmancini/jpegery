@@ -19,6 +19,7 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 setXsrfCookie();
 ?>
 
+<!--Favicons-->
 <?php require_once ("icons.php") ?>
 
 <!-- Tells IE to use highest mode available, avoiding IE compatibility Mode bugs. -->
