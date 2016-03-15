@@ -14,5 +14,8 @@
 		<p><a href="upload">Upload Image</a></p>
 		<p><a href="register">Register</a></p>
 		<p><a href="login">Log In</a></p>
+		<p><a href="faq">FAQ</a></p>
+		<p><a href="help">Help</a></p>
+		<p><a href="contact">Contact Us</a></p>
 	</body>
 </html>
