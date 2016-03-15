@@ -41,7 +41,7 @@
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
 		<h2 class="text-center">{Image Title}</h2>
-		<p class="text-center"><a href="#">{{Author}}</a> {{Time Published}}</p>
+		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a> {{image.imageDate | date : 'short' }}</p>
 		<div>
 			<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
@@ -83,25 +83,17 @@
 					<ul>
 						<li ng-repeat="comment in comments">
 							{{getProfileByProfileId(comment.commentProfileId).profileHandle}} said: {{comment.commentText}}
+							{{comment.commentDate | date : 'short'}}
 						</li>
 					</ul>
 				</div>
 			</div>
-			<div class="comment">
-				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
-				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
-			</div>
-			<div class="comment">
-				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
-				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
-			</div>
-			<div class="comment">
-				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>
-				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.
-				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>
-			</div>
+<!--			<div class="comment">-->
+<!--				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>-->
+<!--				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.-->
+<!--				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>-->
+<!--			</div>-->
+
 		</div><!--/commentSection-->
 	</div><!--/commentGroup-->
 </div><!--/commentRow-->
