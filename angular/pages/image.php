@@ -3,6 +3,12 @@
 	<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
 		<h3 class="text-center">Next Images</h3>
 		<div class="nextImageGroup">
+
+			<ul>
+				<li ng-repeat="image in images |orderBy:'-imageDate'">
+					<img src="{{image.imageFileName}}" class="center-block img-responsive">
+				</li>
+			</ul>
 			<div class="col-sm-6">
 				<div>
 					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
@@ -54,7 +60,7 @@
 
 	<div class="col-sm-3 col-xs-12 center-block"><!--Tag cloud and up/downvotes-->
 		<h3 class="text-center">Tags</h3>
-		<p class="text-center">{{Tag Cloud}}</p><br>
+		<p class="text-center"></p><br>
 		<div class="upDownVote text-center">
 			<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
 				<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
