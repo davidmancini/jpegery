@@ -18,6 +18,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<p class="text-center">Copyright &copy; 2015-<?php echo date("Y");?>&nbsp;jpegery<br>All Rights Reserved.</p>
+				<img src="images/jpegerylogo.png" alt="jpegery" class="img-responsive center-block" width="150">
 			</div>
 		</div>
 	</div>

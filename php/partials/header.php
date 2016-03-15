@@ -9,7 +9,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">jpegery</a>
+				<div class="center-block">
+					<a class="navbar-brand" href="#"><img src="images/jpegerylogo.png" alt="jpegery" class="img-responsive" width="100"></a>
+				</div>
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar-collapse">
