@@ -14,9 +14,6 @@ app.service('commentService', function($http){
 		);
 	};
 	this.all = function() {
-		return($http.get(getUrl()))
-			.then(function(reply){
-				return(reply.data);
-			})
+		return($http.get('php/api/comment/'));
 	};
 });
