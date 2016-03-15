@@ -23,6 +23,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	if($scope.images.length === 0) {
 		$scope.images = $scope.getAllImages();
 	}
+
+	$scope.changeImage = function(img) {
+		$scope.image =img;
+	};
 	//$scope.getAllComments = function() {
 	//	commentService.all()
 	//		.then(function(result) {

@@ -6,50 +6,17 @@
 
 			<div class="col-sm-6">
 				<div ng-repeat="nextImage in images |orderBy:'-imageDate'">
-					<a href="{{nextImage.imageFileName}}"><img src="{{nextImage.imageFileName}}" class="center-block img-responsive"></a>
+					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}" class="center-block img-responsive">
 				</div>
 			</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>
-			</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
-			<div class="col-sm-6">
-				<div>
-					<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" class="img-responsive nextImage"></a>
-				</div>								</div>
 		</div><!--/nextImageGroup-->
 	</div><!--/nextImageColumn-->
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
-		<h2 class="text-center">{Image Title}</h2>
+		<h2 class="text-center">Image</h2>
 		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a> {{image.imageDate | date : 'short' }}</p>
 		<div>
-			<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
+			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
 		<div class="imageData">
 			<div class="imageText text-center">
