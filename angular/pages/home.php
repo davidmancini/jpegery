@@ -14,4 +14,3 @@
 			</ul>
 		</div>
 	</div><!--End Button Group-->
-home.php
