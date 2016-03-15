@@ -19,6 +19,8 @@ if(session_status() !== PHP_SESSION_ACTIVE) {
 setXsrfCookie();
 ?>
 
+<?php require_once ("icons.php") ?>
+
 <!-- Tells IE to use highest mode available, avoiding IE compatibility Mode bugs. -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
