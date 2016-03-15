@@ -67,7 +67,6 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/image-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/comment-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/services/tag-service.js"></script>
-
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/directives/lazy-scroll.min.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/main-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/image-controller.js"></script>
@@ -76,7 +75,9 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/upload-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/login-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/register-controller.js"></script>
-
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/contact-controller.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/faq-controller.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/help-controller.js"></script>
 
 <!DOCTYPE html>
 <html lang="en" ng-app="jpegery">

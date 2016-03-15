@@ -42,6 +42,25 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl : 'angular/pages/register.php'
 		})
 
+		// route for the help page
+		.when('/help', {
+			controller  : 'helpController',
+			templateUrl : 'angular/pages/register.php'
+		})
+
+		// route for the faq page
+		.when('/faq', {
+			controller  : 'faqController',
+			templateUrl : 'angular/pages/register.php'
+		})
+
+		// route for the contact us page
+		.when('/contact-us', {
+			controller  : 'contactController',
+			templateUrl : 'angular/pages/register.php'
+		})
+
+
 		.otherwise({
 			redirectTo: "/"
 		});
