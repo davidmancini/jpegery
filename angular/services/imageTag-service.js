@@ -21,12 +21,12 @@ app.service("imageTagService", function($http, IMAGETAG_ENDPOINT) {
 
 	//get by tagName
 	this.fetchListing = function(tagName) {
-		return ($http.get(getUrl() + "?tag=" + tagName));
+		return ($http.get(getUrl() + "?imageTag=" + tagName));
 	};
 
 	//post
 	this.create = function(tag) {
-		return ($http.post(getUrl(), tag));
+		return ($http.post(getUrl(), imageTag));
 	};
 
 });
