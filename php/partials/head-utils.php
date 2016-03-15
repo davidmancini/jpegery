@@ -71,6 +71,7 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/settings-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/upload-controller.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/login-controller.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX;?>angular/controllers/register-controller.js"></script>
 
 
 <!DOCTYPE html>
