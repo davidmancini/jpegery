@@ -36,6 +36,12 @@ app.config(function($routeProvider, $locationProvider) {
 			templateUrl : 'angular/pages/login.php'
 		})
 
+		// route for the register page
+		.when('/register', {
+			controller  : 'registerController',
+			templateUrl : 'angular/pages/register.php'
+		})
+
 		.otherwise({
 			redirectTo: "/"
 		});

@@ -1,4 +1,4 @@
-app.controller('settingsController', ["$scope", "profileService", function($scope, profileService) {
+app.controller('settingsController', ["$scope", "currentProfile", function($scope, currentProfile) {
 
 	$scope.profile = null;
 	$scope.alerts = [];
