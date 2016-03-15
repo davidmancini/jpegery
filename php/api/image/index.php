@@ -71,7 +71,7 @@ try {
 				$reply->data = $image;
 			}
 		} else {
-			$images = Image::getAllImages($pdo);
+			$images = Image::getAllImages($pdo)->toArray();
 			if($images !== null) {
 				$reply->data = $images;
 			}

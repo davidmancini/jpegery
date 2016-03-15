@@ -1,4 +1,4 @@
-app.constant("LOGIN_ENDPOINT", '../../php/api/image/');
+app.constant("LOGIN_ENDPOINT", 'php/api/image/');
 
 app.service('imageService', function($http, LOGIN_ENDPOINT){
 	function getUrl() {
