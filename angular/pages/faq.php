@@ -139,7 +139,7 @@
 			</div>
 		</div>
 
-		<div class="faqHeader">Conserns</div>
+		<div class="faqHeader">Concerns</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
