@@ -1,8 +1,8 @@
-app.constant("TAG_ENDPOINT", "php/api/tag/");
-app.service("tagService", function($http, TAG_ENDPOINT) {
+app.constant("IMAGETAG_ENDPOINT", "php/api/imageTag/");
+app.service("imageTagService", function($http, IMAGETAG_ENDPOINT) {
 
 	function getUrl() {
-		return (TAG_ENDPOINT);
+		return (IMAGETAG_ENDPOINT);
 	}
 
 	function getUrlForId(tagId) {
@@ -30,4 +30,3 @@ app.service("tagService", function($http, TAG_ENDPOINT) {
 	};
 
 });
-
