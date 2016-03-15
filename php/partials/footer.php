@@ -6,7 +6,7 @@
 					<a href="login"><i class="fa fa-sign-in"></i>&nbsp;Log In</a>&nbsp;&nbsp;
 				<?php }
 				if(!empty($_SESSION["profile"])) { ?>
-					<a href="#"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a>&nbsp;&nbsp;
+					<a href="logout"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a>&nbsp;&nbsp;
 				<?php } ?>
 				<a href="help"><i class="fa fa-info"></i>&nbsp;Help</a>&nbsp;&nbsp;
 				<a href="faq"><i class="fa fa-question"></i>&nbsp;FAQ</a>

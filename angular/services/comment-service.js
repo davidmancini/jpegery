@@ -1,13 +1,13 @@
 app.service('commentService', function($http){
-	this.COMMENT_ENDPOINT = 'php/api/comment/';
+	this.LOGOUT_ENDPOINT = 'php/api/comment/';
 	function getUrl() {
-		return(COMMENT_ENDPOINT);
+		return(LOGOUT_ENDPOINT);
 	}
 	function getUrlForId(commentId) {
 		return(getUrl() + commentId);
 	}
 	this.comment = function(commentData) {
-		return ($http.post(this.COMMENT_ENDPOINT, commentData)
+		return ($http.post(this.LOGOUT_ENDPOINT, commentData)
 				.then(function(reply){
 					return(reply.data);
 				})

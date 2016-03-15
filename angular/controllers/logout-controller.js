@@ -1,6 +1,6 @@
-app.controller('contactController', function($scope) {
-	function LogoutController($location) {
-		Session.clear();
-		$location.path('home');
-	}
-});
+app.controller('logoutController', ["$scope", "$window", "logoutService", function($scope, $window, logoutService) {
+	logoutService.logout()
+		.then(function() {
+			$window.location = ".";
+		});
+}]);

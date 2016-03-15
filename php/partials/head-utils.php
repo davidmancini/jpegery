@@ -74,6 +74,7 @@ setXsrfCookie();
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/services/profile-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/services/image-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/services/comment-service.js"></script>
+<script type="text/javascript" src="<?php echo $PREFIX; ?>angular/services/logout-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/services/tag-service.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/directives/password-match.js"></script>
 <script type="text/javascript" src="<?php echo $PREFIX; ?>angular/controllers/main-controller.js"></script>

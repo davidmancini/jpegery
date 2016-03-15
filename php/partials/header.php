@@ -22,7 +22,7 @@
 						<li><a href="register"><i class="fa fa-user"></i>&nbsp;Register</a></li>
 					<?php }
 					if(!empty($_SESSION["profile"])) {?>
-						<li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;Log Out (doesn't exist yet)</a></li>
+						<li><a href="logout"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
 						<li><a href="settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
 					<?php } ?>
 				</ul>

@@ -1,13 +1,4 @@
-<?php
-////Logged in users get directed to main page; can't register again
-//if($_SESSION["profile"]) {
-////	header("Location: ..", true, 301);
-//	echo "You're already registered";
-//}
-//if (empty(@isset($_SESSION["profile"]))) {
-//?>
-
-<form id="registerForm" name="registerForm" ng-submit="submit(registerData, registerForm.$valid);" novalidate>
+<form id="registerForm" name="registerForm" ng-submit="createProfile(registerData, registerForm.$valid);" novalidate>
 
 	<div class="form-group" ng-class=" { 'has-error':registerForm.profileNameF.$touched && registerForm.profileNameF.$invalid } ">
 		<label for="profileNameF">First Name</label>
@@ -83,5 +74,3 @@
 	<button type="submit" name="submit" id="submit" class="btn btn-primary">Register</button>
 </form>
 <uib-alert ng-repeat="alert in alerts" type="{{ alert.type }}" close="alerts.length = 0;">{{ alert.msg }}</uib-alert>
-
-<?php //} ?>
