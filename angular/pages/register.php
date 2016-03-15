@@ -14,7 +14,7 @@
 		<label for="profileNameL">Last Name</label>
 		<input type="text" class="form-control" id="profileNameL" name="profileNameL" placeholder="Last Name" ng-model="registerData.profileNameL" ng-minlength="2" ng-maxlength="32" ng-required="true">
 		<div class="alert alert-danger" role="alert" ng-messages="registerForm.profileNameL.$error" ng-if="registerForm.profileNameL.$touched" ng-hide="registerForm.profileNameL.$valid">
-			<p ng-message="minlength">Last Name is too short</p>
+			<p ng-message="minlength">Last Na me is too short</p>
 			<p ng-message="maxlength">Last Name is too long</p>
 			<p ng-message="required">Last Name is required</p>
 		</div>
@@ -47,6 +47,26 @@
 			<p ng-message="minlength">Phone Number is too short</p>
 			<p ng-message="maxlength">Phone Number is too long</p>
 			<p ng-message="required">Phone Number is required</p>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class=" { 'has-error':registerForm.profilePassword.$touched && registerForm.profilePassword.$invalid } ">
+		<label for="profilePassword">Password</label>
+		<input type="password" class="form-control" id="profilePassword" name="profilePassword" placeholder="Password" ng-model="registerData.profilePassword" ng-minlength="2" ng-maxlength="32" ng-required="true">
+		<div class="alert alert-danger" role="alert" ng-messages="registerForm.profilePassword.$error" ng-if="registerForm.profilePassword.$touched" ng-hide="registerForm.profilePassword.$valid">
+			<p ng-message="minlength">Password is too short</p>
+			<p ng-message="maxlength">Password is too long</p>
+			<p ng-message="required">Password is required</p>
+		</div>
+	</div>
+
+	<div class="form-group" ng-class=" { 'has-error':registerForm.profilePassword2.$touched && registerForm.profilePassword2.$invalid } ">
+		<label for="profilePassword2">Confirm Password</label>
+		<input type="password" class="form-control" id="profilePassword2" name="profilePassword2" placeholder="Password" ng-model="registerData.profilePassword2" ng-minlength="2" ng-maxlength="32" ng-required="true">
+		<div class="alert alert-danger" role="alert" ng-messages="registerForm.profilePassword2.$error" ng-if="registerForm.profilePassword2.$touched" ng-hide="registerForm.profilePassword2.$valid">
+			<p ng-message="minlength">Password Confirmation is too short</p>
+			<p ng-message="maxlength">Password Confirmation is too long</p>
+			<p ng-message="required">Password Confirmation is required</p>
 		</div>
 	</div>
 

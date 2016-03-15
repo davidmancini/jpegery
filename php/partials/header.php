@@ -14,8 +14,11 @@
 
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link</a></li>
+<!--					<li class="active"><a href="#">Current <span class="sr-only">(current)</span></a></li>-->
+					<li><a href="login">Log In</a></li>
+					<li><a href="register">Register</a></li>
+					<li><a href="#">Log Out (doesn't exist yet)</a></li>
+					<li><a href="settings">Settings</a></li>
 				</ul>
 				<form class="navbar-form navbar-right hidden-xs" role="search"><!--Search box is hidden when nav bar collapses-->
 					<div class="form-group">
