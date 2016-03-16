@@ -5,7 +5,7 @@
 		<div class="nextImageGroup">
 
 			<!--			<div class="col-sm-6">-->
-			<div ng-repeat="nextImage in images | limitTo: 10 | orderBy:'-imageDate'" class="col-sm-6">
+			<div ng-repeat="nextImage in images | orderBy: nextImage.imageDate:true | limitTo: 10" class="col-sm-6">
 				<div class="thumbnail nextImage">
 					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}"
 						  class="center-block img-responsive">
@@ -53,7 +53,8 @@
 		<div class="commentSection">
 			<div class="row">
 				<div class="col-md-12">
-					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'" ng-init="getCommenterHandle(nextComment.commentProfileId)">
+					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'"
+						  ng-init="getCommenterHandle(nextComment.commentProfileId)">
 						<p>{{handle}} said: {{nextComment.commentText}}</p>
 						{{comment.commentDate | date : 'short'}}
 					</div>
