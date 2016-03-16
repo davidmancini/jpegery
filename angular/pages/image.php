@@ -26,8 +26,8 @@
 			<div class="imageText text-center">
 				<div class="upDownVote text-center">
 					<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
-						<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;#</button>
-						<button type="button" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i>&nbsp;#</button>
+						<button type="button" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i>&nbsp;</button>
+						<button type="button" class="btn btn-danger"><i class="fa fa-thumbs-o-down"></i>&nbsp;</button>
 					</div>
 				</div>
 				<small>Posted on {{image.imageDate | date : 'short' }}</small>
