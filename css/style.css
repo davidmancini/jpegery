@@ -61,7 +61,7 @@ body {
 
 /* Navigation bar non-active text color */
 .navbar-fixed-top .navbar-nav > li > a {
-	color: #56A0C9;
+	color: white;
 }
 
 /* Navigation bar non-active hover color */
@@ -168,7 +168,7 @@ body {
 
 /* Styles Comments Section */
 .commentSection {
-	background-color: bisque;
+	background-color: lightgray;
 	border: 1px solid;
 	border-radius: 5px;
 	padding: 15px 0;
@@ -176,8 +176,8 @@ body {
 }
 
 .comment {
-	padding: 5px;
-	margin: 5px;
+	padding: 0 5px 5px;
+	/*margin: 5px;*/
 }
 
 /* Color of comment timestamp */
@@ -218,5 +218,5 @@ body {
 	margin-top: 10px;
 	padding: 10px 20px 5px;
 	background-color: #133253;
-	color: #337ab7;
+	color: white;
 }

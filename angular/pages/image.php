@@ -54,7 +54,7 @@
 				<div class="col-md-12">
 					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'"
 						  ng-init="getCommenterHandle(nextComment.commentProfileId)">
-						<p>{{handle}} said: {{nextComment.commentText}}</p>
+						<p class="comment">{{handle}} said: {{nextComment.commentText}}</p>
 						{{comment.commentDate | date : 'short'}}
 					</div>
 				</div>

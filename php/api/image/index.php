@@ -2,7 +2,7 @@
 
 require_once dirname(dirname(__DIR__)) . "/classes/autoload.php";
 require_once dirname(dirname(dirname(__DIR__))) . "/lib/xsrf.php";
-require_once ("/etc/apache2/capstone-mysql/encrypted-config.php");
+require_once("/etc/apache2/capstone-mysql/encrypted-config.php");
 use Edu\Cnm\Jpegery\Image;
 
 /**
@@ -76,6 +76,7 @@ try {
 				$reply->data = $images;
 			}
 		}
+//		$reply->data->setImageText(htmlentities($reply->data->getImageText())); // Decode quotes
 	}
 
 	//If the user is logged in, allow to POST, PUT, and DELETE their own content.
@@ -125,7 +126,7 @@ try {
 					throw(new RuntimeException("Image does not exist", 404));
 				}
 				$security = $image->getImageProfileId();
-				if($security !== $_SESSION["profile"]->getProfileId()){
+				if($security !== $_SESSION["profile"]->getProfileId()) {
 					throw(new RuntimeException("You cannot delete an image that is not yours.", 403));
 				}
 				$image = Image::getImageByImageId($pdo, $id);
