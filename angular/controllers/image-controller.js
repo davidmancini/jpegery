@@ -50,9 +50,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	}
 
 	$scope.changeImage = function(img) {
-		$scope.image = img;
-		$scope.comments = $scope.getCommentsByImageId();
-		$scope.getProfileByProfileId($scope.image.imageProfileId);
+		$window.location = "image/" + img.imageId;
+		//$scope.image = img;
+		//$scope.comments = $scope.getCommentsByImageId();
+		//$scope.getProfileByProfileId($scope.image.imageProfileId);
 	};
 
 	//$scope.getProfileHandleByProfileId = function(profileId) {
@@ -73,7 +74,6 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 				}
 			});
 	};
-
 
 
 	$scope.getCurrentProfile = function() {
@@ -118,7 +118,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 
 	$scope.getCommenterHandle = function(profileId) {
 		profileService.fetchByProfileId(profileId)
-			.then(function(result){
+			.then(function(result) {
 				if(result.data.status === 200) {
 					$scope.handle = result.data.data.profileHandle;
 				} else {
