@@ -18,7 +18,7 @@
 </div>
 
 <div class="row contentRow contentImageRow">
-	<div class="col-xs-6 col-sm-4 col-md-3 homeRow" ng-repeat="image in images">
+	<div class="col-xs-6 col-sm-4 col-md-3 homeRow" ng-repeat="image in images | orderBy: image.imageDate:true">
 		<div>
 			<a href="image/{{image.imageId}}">
 				<div class="thumbnail homeImage">
