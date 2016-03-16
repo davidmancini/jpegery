@@ -30,7 +30,7 @@ try {
 	$image->update($pdo);
 
 	$reply->message = "This worked. Or didn't and you somehow screwed it up so much you got a false positive. Either way, good job.";
-
+	$reply->data = $image;
 } catch(Exception $exception) {
 	$reply->status = $exception->getCode();
 	$reply->data = $exception->getMessage();
