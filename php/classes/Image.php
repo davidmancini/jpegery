@@ -578,7 +578,8 @@ class Image implements \JsonSerializable {
 
 		switch($extension) {
 			case "jpeg":{
-
+				$tempImage = imagecreatefromjpeg($imagePath);
+				break;
 			}
 			case "jpg": {
 				$tempImage = imagecreatefromjpeg($imagePath);
