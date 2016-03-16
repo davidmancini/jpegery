@@ -4,11 +4,11 @@
 		<h3 class="text-center">Next Images</h3>
 		<div class="nextImageGroup">
 
-			<div class="col-sm-6">
-				<div ng-repeat="nextImage in images |orderBy:'-imageDate'">
+<!--			<div class="col-sm-6">-->
+				<div ng-repeat="nextImage in images |orderBy:'-imageDate'" class="col-sm-6">
 					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}" class="center-block img-responsive">
 				</div>
-			</div>
+<!--			</div>-->
 		</div><!--/nextImageGroup-->
 	</div><!--/nextImageColumn-->
 

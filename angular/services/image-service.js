@@ -13,4 +13,7 @@ app.service('imageService', function($http){
 	this.fetchCurrent = function(current) {
 		return($http.get('php/api/image' + "?current=" + current));
 	};
+	this.fetchByProfileId = function(profileId) {
+		return($http.get('php/api/image/' + "?imageProfileId=" + profileId));
+	};
 });

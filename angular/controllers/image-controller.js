@@ -27,7 +27,6 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 
 	$scope.getCommentsByImageId = function() {
 		$scope.imgId = $scope.image.imageId;
-		console.log($scope.imgId);
 		commentService.fetchByImageId($scope.imgId)
 			.then(function(result) {
 				if(result.data.status === 200) {
