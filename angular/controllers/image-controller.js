@@ -58,10 +58,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	//};
 	//
 	$scope.getProfileByProfileId = function(profileId) {
-		profileService.fetchByProfileId(7720)
+		profileService.fetchByProfileId(profileId)
 			.then(function(result) {
-				if (result.data.status === 200) {
-					$scope.handle = result.data.data;
+				if(result.data.status === 200) {
+					$scope.profile = result.data.data;
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
@@ -96,7 +96,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 				console.log("Got current image");
 				if(result.data.status === 200) {
 					$scope.image = result.data.data;
-					$scope.comments = $scope.getCommentsByImageId()
+					$scope.comments = $scope.getCommentsByImageId();
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",

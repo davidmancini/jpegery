@@ -3,15 +3,12 @@
 
 app.controller('uploadController', ['$scope', 'Upload', 'profileService', function ($scope, Upload, profileService) {
 	$scope.submit = function() {
-
-
 		if($scope.form.file.$valid && $scope.file) {
 			$scope.upload($scope.file, $scope.caption, $scope.tags);
 		}
 	};
 
 	$scope.upload = function(file, caption, tags) {
-
 		Upload.upload({
 			url: 'image-upload.php',
 			method: 'POST',

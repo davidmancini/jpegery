@@ -17,7 +17,7 @@
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
 		<h2 class="text-center">{{image.imageText}}</h2>
-		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a></p>
+		<!--		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a></p>-->
 		<div>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
@@ -58,10 +58,10 @@
 		<div class="commentSection">
 			<div class="row">
 				<div class="col-md-12">
-<!--					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'">-->
-<!--						<p>{{handle.profileHandle}} said: {{nextComment.commentText}}</p>-->
-<!--						{{comment.commentDate | date : 'short'}}-->
-<!--					</div>-->
+					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'">
+						<p>{{profile.profileHandle}} said: {{nextComment.commentText}}</p>
+						{{comment.commentDate | date : 'short'}}
+					</div>
 				</div>
 			</div>
 			<!--			<div class="comment">-->
