@@ -3,9 +3,8 @@
 	<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
 		<h3 class="text-center">Newest Images</h3>
 		<div class="nextImageGroup">
-
 			<!--			<div class="col-sm-6">-->
-			<div ng-repeat="nextImage in images | orderBy: nextImage.imageDate:true | limitTo: 16" class="col-sm-6">
+			<div ng-repeat="nextImage in images | orderBy: nextImage.imageDate:true" class="col-sm-6">
 				<div class="thumbnail nextImage">
 					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}"
 						  class="center-block img-responsive">
