@@ -138,7 +138,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			commentService.comment(commentData)
 				.then(function(reply) {
 					if(reply.status === 200) {
-						$window.location = ".";
+						$window.location = "image/" + $scope.image.imageId;
 					} else {
 						$scope.alerts[0] = {
 							type: "danger",
