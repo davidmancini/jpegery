@@ -15,7 +15,7 @@
 
 	<div class="form-group" ng-class="{ 'has-error':loginForm.password.$touched && loginForm.password.$invalid }">
 		<label for="password">Password</label>
-		<input type="password" class="form-control" name="password" id="password" ng-model="loginData.password" ng-minlength="5" ng-maxlength="50" ng-required="true">
+		<input type="password" class="form-control" name="password" id="password" ng-model="loginData.password" ng-minlength="6" ng-maxlength="50" ng-required="true">
 		<div class="alert alert-danger" role="alert" ng-messages="loginForm.password.$error" ng-if="loginForm.password.$touched" ng-hide="loginForm.password.$valid">
 			<p ng-message="minlength">Password is too short</p>
 			<p ng-message="maxlength">Password is too long</p>
