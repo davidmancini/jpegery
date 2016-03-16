@@ -101,6 +101,7 @@ if($method === "GET") {
 		if($method === "POST") {
 			$tag = new Tag(null, $requestObject->tagName);
 			$tag->insert($pdo);
+			$reply->imageId = $tag->getTagId();
 		}
 	}
 } catch(Exception $exception) {

@@ -116,6 +116,7 @@ try {
 			} elseif($method === "POST") {
 				$image = new Image(null, $_SESSION["profile"]->getProfileId(), $requestObject->imageType, $requestObject->imageFileName, $requestObject->imageText, null);
 				$image->insert($pdo);
+				$reply->imageId = $image->getImageId();
 				$reply->message = "Image Successfully Posted";
 
 			} elseif($method === "DELETE") {

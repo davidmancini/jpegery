@@ -3,6 +3,8 @@
 
 app.controller('uploadController', ['$scope', 'Upload', 'profileService', function ($scope, Upload, profileService) {
 	$scope.submit = function() {
+
+
 		if($scope.form.file.$valid && $scope.file) {
 			$scope.upload($scope.file, $scope.caption, $scope.tags);
 		}
@@ -24,7 +26,6 @@ app.controller('uploadController', ['$scope', 'Upload', 'profileService', functi
 			var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 			console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
 		});
-
 
 	};
 }]);
