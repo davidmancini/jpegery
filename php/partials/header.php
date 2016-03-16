@@ -23,7 +23,7 @@
 					<?php }
 					if(!empty($_SESSION["profile"])) {?>
 						<li><a href="upload"><i class="fa fa-plus"></i>&nbsp;Upload Image</a></li>
-						<li><a href="profile"><i class="fa fa-user"></i>&nbsp;My Profile</a></li>
+<!--						<li><a href="profile"><i class="fa fa-user"></i>&nbsp;My Profile</a></li>-->
 						<li><a href="settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
 						<li><a href="logout"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
 					<?php } ?>
