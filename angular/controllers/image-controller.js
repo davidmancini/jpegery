@@ -7,7 +7,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.image = null;
 	$scope.profile = null;
 	$scope.imgId = null;
-	$scope.handle = null;
+	$scope.imageContributor = null;
 
 	$scope.getAllImages = function() {
 		imageService.all()
@@ -62,7 +62,8 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 		profileService.fetchByProfileId(profileId)
 			.then(function(result) {
 				if(result.data.status === 200) {
-					$scope.profile = result.data.data;
+					$scope.imageContributor = result.data.data;
+					console.log($scope.imageContributor.profileHandle);
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
