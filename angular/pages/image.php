@@ -5,8 +5,8 @@
 		<div class="nextImageGroup">
 
 			<!--			<div class="col-sm-6">-->
-			<div ng-repeat="nextImage in images |orderBy:'-imageDate'" class="col-sm-6">
-				<div class="thumbnail">
+			<div ng-repeat="nextImage in images | limitTo: 10 | orderBy:'-imageDate'" class="col-sm-6">
+				<div class="thumbnail nextImage">
 					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}"
 						  class="center-block img-responsive">
 				</div>

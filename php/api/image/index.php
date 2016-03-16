@@ -41,7 +41,7 @@ try {
 	$profileId = filter_input(INPUT_GET, "profileId", FILTER_VALIDATE_INT);
 	$imageType = filter_input(INPUT_GET, "imageType", FILTER_SANITIZE_STRING);
 	$imageFileName = filter_input(INPUT_GET, "imageFileName", FILTER_SANITIZE_STRING);
-	$imageText = filter_input(INPUT_GET, "imageText", FILTER_SANITIZE_STRING);
+	$imageText = filter_input(INPUT_GET, "imageText", FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES);
 	$imageDate = filter_input(INPUT_GET, "imageDate", FILTER_SANITIZE_STRING);
 
 	//Handle REST calls

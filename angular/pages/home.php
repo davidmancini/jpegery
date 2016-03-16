@@ -18,10 +18,10 @@
 </div>
 
 <div class="row contentRow contentImageRow">
-	<div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="image in images">
+	<div class="col-xs-6 col-sm-4 col-md-3 homeRow" ng-repeat="image in images">
 		<div>
 			<a href="image/{{image.imageId}}">
-				<div class="thumbnail">
+				<div class="thumbnail homeImage">
 					<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="img-responsive contentImage">
 				</div>
 			</a>
