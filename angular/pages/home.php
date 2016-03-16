@@ -14,6 +14,7 @@
 			</ul>
 		</div>
 	</div><!--End Button Group-->
+	<br/>
 
 	<div class="row contentRow contentImageRow">
 		<div class="col-xs-6 col-sm-4 col-md-3">

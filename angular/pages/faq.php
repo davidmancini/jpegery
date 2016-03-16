@@ -19,7 +19,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Is
-						account registration required?</a>
+						account registration required?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse in">
@@ -32,7 +32,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseTen">Can I submit my own images?</a>
+						href="#collapseTen">Can I submit my own images?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseTen" class="panel-collapse collapse">
@@ -46,7 +46,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseEleven">How do I get started?</a>
+						href="#collapseEleven">How do I get started?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseEleven" class="panel-collapse collapse">
@@ -67,7 +67,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseTwo">Who are you guys?</a>
+						href="#collapseTwo">Who are you guys?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse">
@@ -76,11 +76,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default fa-arrow-down">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseThree">Why Images?</a>
+						href="#collapseThree">Why Images?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseThree" class="panel-collapse collapse">
@@ -93,7 +93,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseFive">How much do I get from each sale?</a>
+						href="#collapseFive">How much do I get from each sale?<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseFive" class="panel-collapse collapse">
@@ -107,7 +107,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseSix">You guys seem awesome, but are you really?</a>
+						href="#collapseSix">You guys seem awesome, but are you really? <i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseSix" class="panel-collapse collapse">
@@ -122,7 +122,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseFour">I really want to use your site, but I'm scared.</a>
+						href="#collapseFour">I really want to use your site, but I'm scared.<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseFour" class="panel-collapse collapse">
@@ -135,7 +135,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-						href="#collapseSeven">jpegery seems cool, but I want more features.</a>
+						href="#collapseSeven">jpegery seems cool, but I want more features.<i class="fa fa-arrow-down"></i></a>
 				</h4>
 			</div>
 			<div id="collapseSeven" class="panel-collapse collapse">
@@ -154,8 +154,6 @@
 	}
 
 	.panel-heading [data-toggle="collapse"]:after {
-		font-family: 'Glyphicons Halflings';
-		content: "e072"; /* "play" icon */
 		float: right;
 		color: #F58723;
 		font-size: 18px;
