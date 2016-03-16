@@ -13,7 +13,11 @@
 			</div>
 			<div class="col-xs-6 text-right">
 				<a href="contact-us"><i class="fa fa-envelope-o"></i>&nbsp;Contact Us</a>
+				<?php if(!empty($_SESSION["profile"])) { ?>
+					<a href="upload"><i class="fa fa-upload"></i>&nbsp;Upload</a>
+				<?php } ?>
 			</div>
+
 		</div>
 		<div class="row">
 			<div class="col-md-12">
