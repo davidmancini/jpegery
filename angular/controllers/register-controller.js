@@ -2,9 +2,10 @@ app.controller("registerController", ["$scope", "$http", "$window", "profileServ
 	$scope.loginData = {};
 	$scope.alerts = [];
 
-	$scope.submit = function(registerData, validated) {
+	$scope.createProfile = function(registerData, validated) {
 		if(validated === true) {
-			profileService.login(registerData)
+
+			profileService.create(registerData)
 				.then(function(reply) {
 					if(reply.status === 200) {
 						$window.location = ".";

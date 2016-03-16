@@ -21,7 +21,7 @@ app.service("profileService", function($http, PROFILE_ENDPOINT) {
 	};
 
 	this.create = function(profile) {
-		return($http.post(getUrl(), profile));
+		return($http.post('php/api/profile/', profile));
 	};
 
 	this.update = function(profileId, profile) {

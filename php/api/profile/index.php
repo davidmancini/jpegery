@@ -24,13 +24,16 @@ try {
 	//grab the mySQL connection
 	$pdo = connectToEncryptedMySQL("/etc/apache2/capstone-mysql/jpegery.ini");
 	//if the profile session is empty, the user is not logged in, throw an exception
-	if(empty($_SESSION["profile"]) === true) {
+
+
+	//determine which HTTP method was used
+	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
+
+	if(empty($_SESSION["profile"]) === true && $method !== "POST") {
 		setXsrfCookie("/");
 		throw(new RuntimeException("Please log-in or sign up", 401));
 	}
 
-	//determine which HTTP method was used
-	$method = array_key_exists("HTTP_X_HTTP_METHOD", $_SERVER) ? $_SERVER["HTTP_X_HTTP_METHOD"] : $_SERVER["REQUEST_METHOD"];
 	//sanitize inputs
 	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 	//make sure the id is valid for methods that require it
@@ -102,6 +105,11 @@ try {
 
 	// make sure all fields are present, in order to prevent database issues
 	if($method === "POST" || $method === "PUT") {
+
+		verifyXsrf();
+		$requestContent = file_get_contents("php://input");
+		$requestObject = json_decode($requestContent);
+
 		if(empty($requestObject->profileEmail) === true) {
 			throw(new InvalidArgumentException ("email is a required field", 406));
 		}
@@ -149,17 +157,17 @@ try {
 		//post
 	} elseif($method === "POST") {
 		// Verify that they are trying to update their own profile
-		$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
-		if($security->getProfileId() === false) {
-			$_SESSION["profile"]->setProfileId(false);
-			throw(new RunTimeException("Access Denied", 403));
-		}
-		$password = bin2hex(openssl_random_pseudo_bytes(32));
+//		$security = Profile::getProfileByProfileId($pdo, $_SESSION["profile"]->getProfileId());
+//		if($security->getProfileId() === false) {
+//			$_SESSION["profile"]->setProfileId(false);
+//			throw(new RunTimeException("Access Denied", 403));
+//		}
+		$password = $requestObject->profilePassword;
 		$salt = bin2hex(openssl_random_pseudo_bytes(32));
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
 		$profileVerify = bin2hex(openssl_random_pseudo_bytes(8));
 		//create new Profile
-		$profile = new Profile($id, $_SESSION["profile"]->getProfileId(), null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, empty($profileImageId), $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $requestObject->profileVerify, $salt);
+		$profile = new Profile(null, false, null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, 4407, $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $salt, $profileVerify);
 		$profile->insert($pdo);
 		$reply->message = "Profile has been created";
 		//compose and send the email for confirmation and setting a new password
