@@ -1,7 +1,7 @@
 <ng-include src="'angular/templates/content-search.php'"></ng-include>
 <div class="row">
 	<div class="col-sm-3 hidden-xs nextImageColumn"><!--Next Images; disappears on screens smaller than small-->
-		<h3 class="text-center">Next Images</h3>
+		<h3 class="text-center">Newest Images</h3>
 		<div class="nextImageGroup">
 
 			<!--			<div class="col-sm-6">-->
