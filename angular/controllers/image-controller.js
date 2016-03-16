@@ -8,6 +8,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.profile = null;
 	$scope.imgId = null;
 	$scope.imageContributor = null;
+	$scope.handle = null;
 
 	$scope.getAllImages = function() {
 		imageService.all()
@@ -63,7 +64,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			.then(function(result) {
 				if(result.data.status === 200) {
 					$scope.imageContributor = result.data.data;
-					console.log($scope.imageContributor.profileHandle);
+					//console.log($scope.imageContributor.profileHandle);
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
@@ -114,6 +115,20 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	if($scope.image === null) {
 		$scope.image = $scope.getCurrentImage();
 	}
+
+	$scope.getCommenterHandle = function(profileId) {
+		profileService.fetchByProfileId(profileId)
+			.then(function(result){
+				if(result.data.status === 200) {
+					$scope.handle = result.data.data.profileHandle;
+				} else {
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "Could not find user."
+					};
+				}
+			});
+	};
 
 
 	$scope.submit = function(commentData, validated) {
