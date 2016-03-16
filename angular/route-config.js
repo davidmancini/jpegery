@@ -31,8 +31,8 @@ app.config(function($routeProvider, $locationProvider) {
 		})
 
 		// route for the image page
-		.when('/profile/', {
-			controller: 'profileController',
+		.when('/profile/:profileId', {
+			controller: 'userController',
 			templateUrl: 'angular/pages/user.php'
 		})
 

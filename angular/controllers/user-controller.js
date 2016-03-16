@@ -1,8 +1,27 @@
-app.controller('userController', ['$http', '$scope', 'profileService', 'imageService', function($http, $scope, profileService, imageService){
+app.controller('userController', ['$http', '$scope', 'profileService', 'imageService', '$routeParams', function($http, $scope, profileService, imageService, $routeParams) {
 	$scope.alerts = [];
 	$scope.images = [];
 	$scope.image = null;
-	//$scope.profile = null;
+	$scope.currentProfileId = $routeParams.profileId;
+	$scope.profile = null;
+
+	$scope.getProfileByProfileId = function() {
+		profileService.fetchByProfileId($scope.currentProfileId)
+			.then(function(reply) {
+				if(reply.data.status === 200) {
+					console.log(reply);
+					$scope.profile = reply.data.data;
+				} else {
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "You are not viewing an image.."
+					};
+				}
+			});
+	};
+	if($scope.profile === null) {
+		$scope.getProfileByProfileId();
+	}
 
 	$scope.getImagesByProfileId = function() {
 		$scope.profId = $scope.profile.profileId;
@@ -21,8 +40,5 @@ app.controller('userController', ['$http', '$scope', 'profileService', 'imageSer
 				}
 			})
 	};
-	if($scope.comments.length === 0 && $scope.profile !== null) {
-		$scope.comments = $scope.getImagesByProfileId()
-	}
 
 }]);

@@ -18,7 +18,7 @@
 		<h2 class="text-center">{{image.imageText}}</h2>
 		<div>
 			<p class="text-center">
-				<a href="#">{{imageContributor.profileHandle}}</a>
+				Posted by <a href="profile/{{imageContributor.profileId}}">{{imageContributor.profileHandle}}</a>
 			</p>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
