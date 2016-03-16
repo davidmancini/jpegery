@@ -22,7 +22,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			})
 	};
 	if($scope.images.length === 0) {
-		$scope.images = $scope.getAllImages();
+		$scope.getAllImages();
 	}
 
 	$scope.getCommentsByImageId = function() {
@@ -47,7 +47,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	}
 
 	$scope.changeImage = function(img) {
-		$scope.image =img;
+		$scope.image = img;
 		$scope.comments = $scope.getCommentsByImageId()
 	};
 
@@ -68,7 +68,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.getCurrentProfile = function() {
 		profileService.fetchCurrent(true)
 			.then(function(result) {
-				if (result.data.status === 200) {
+				if(result.data.status === 200) {
 					$scope.profile = result.data.data;
 				} else {
 					$scope.alerts[0] = {
@@ -79,13 +79,13 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			});
 	};
 
-	if ($scope.profile === null) {
+	if($scope.profile === null) {
 		$scope.profile = $scope.getCurrentProfile();
 	}
 	$scope.getCurrentImage = function() {
 		profileService.fetchCurrent(true)
 			.then(function(result) {
-				if (result.data.status === 200) {
+				if(result.data.status === 200) {
 					$scope.image = result.data.data;
 				} else {
 					$scope.alerts[0] = {
@@ -96,7 +96,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			});
 	};
 
-	if ($scope.image === null) {
+	if($scope.image === null) {
 		$scope.image = $scope.getCurrentImage();
 	}
 	$scope.submit = function(commentData, validated) {
