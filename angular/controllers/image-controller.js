@@ -1,4 +1,5 @@
-app.controller('imageController', ['$scope', '$http', '$window', 'imageService', 'commentService', 'profileService', function($scope, $http, $window, imageService, commentService, profileService) {
+app.controller('imageController', ['$scope', '$http', '$window', 'imageService', 'commentService', 'profileService', '$routeParams', function($scope, $http, $window, imageService, commentService, profileService, $routeParams) {
+	$scope.currentImageId = $routeParams.imageId;
 	$scope.commentData = {};
 	$scope.alerts = [];
 	$scope.images = [];

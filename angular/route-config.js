@@ -25,7 +25,7 @@ app.config(function($routeProvider, $locationProvider) {
 		})
 
 		// route for the image page
-		.when('/image', {
+		.when('/image/:imageId', {
 			controller: 'imageController',
 			templateUrl: 'angular/pages/image.php'
 		})
