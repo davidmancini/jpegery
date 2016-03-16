@@ -35,14 +35,14 @@ try {
 	}
 
 	//sanitize inputs
-	$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+	$profileId = filter_input(INPUT_GET, "profile", FILTER_VALIDATE_INT);
 	//make sure the id is valid for methods that require it
-	if(($method === "DELETE" || $method === "PUT") && (empty($id) === true || $id < 0)) {
+	if(($method === "DELETE" || $method === "PUT") && (empty($profileId) === true || $profileId < 0)) {
 		throw(new InvalidArgumentException("id cannot be empty or negative", 405));
 	}
 
 	//sanitize and trim other fields
-	$profileId = filter_input(INPUT_GET, "profileId", FILTER_VALIDATE_INT);
+//	$profileId = filter_input(INPUT_GET, "profileId", FILTER_VALIDATE_INT);
 	$profileAdmin = filter_input(INPUT_GET, "profileAdmin", FILTER_VALIDATE_BOOLEAN);
 	$profileCreateDate = filter_input(INPUT_GET, "profileCreateDate", FILTER_SANITIZE_STRING);
 	$profileEmail = filter_input(INPUT_GET, "profileEmail", FILTER_SANITIZE_EMAIL);
@@ -61,8 +61,8 @@ try {
 		//set XSRF cookie
 		setXsrfCookie("/");
 		//get the profile based on the given field
-		if(empty($id) === false) {
-			$profile = Profile::getProfileByProfileId($pdo, $id);
+		if(empty($profileId) === false) {
+			$profile = Profile::getProfileByProfileId($pdo, $profileId);
 			if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
 				$reply->data = $profile;
 			}
@@ -126,7 +126,7 @@ try {
 
 	// put
 	if($method === "PUT") {
-		$profile = Profile::getProfileByProfileId($pdo, $id);
+		$profile = Profile::getProfileByProfileId($pdo, $profileId);
 		if($profile === null) {
 			throw(new RuntimeException("profile does not exist", 404));
 		}
