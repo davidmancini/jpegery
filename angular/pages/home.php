@@ -12,7 +12,7 @@
 <!--				<li><a href="#">Other...</a></li>-->
 <!--			</ul>-->
 <!--		</div>-->
-<!--	</div><!--End Button Group-->-->
+<!--	</div><!--End Button Group-->
 	<br/>
 </div>
 
