@@ -134,6 +134,7 @@ body {
 
 .homeRow {
 	min-height: 300px;
+	max-height: 300px;
 	overflow: hidden;
 }
 
@@ -150,6 +151,7 @@ body {
 	max-height: 80px;
 	overflow: hidden;
 	margin: 2px;
+	cursor: pointer;
 }
 
 /* Adds padding around image text */
