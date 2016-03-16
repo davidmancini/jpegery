@@ -6,7 +6,7 @@
 			<!--			<div class="col-sm-6">-->
 			<div ng-repeat="nextImage in images | orderBy: nextImage.imageDate:true" class="col-sm-6">
 				<div class="thumbnail nextImage">
-					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}"
+					<img ng-click="changeImage(nextImage);" ng-src="{{nextImage.imageFileName}}"
 						  class="center-block img-responsive">
 				</div>
 			</div>
@@ -17,7 +17,9 @@
 	<div class="col-sm-6 col-xs-12"><!--Image-->
 		<h2 class="text-center">{{image.imageText}}</h2>
 		<div>
-			<p class="text-center"><a href="#">{{imageContributor.profileHandle}}</a></p>
+			<p class="text-center">
+				<a href="#">{{imageContributor.profileHandle}}</a>
+			</p>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
 		<div class="imageData">

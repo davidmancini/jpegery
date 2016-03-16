@@ -34,10 +34,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 			.then(function(result) {
 				if(result.data.status === 200) {
 					$scope.comments = result.data.data;
-					console.log("This worked");
+					//console.log("This worked");
 				}
 				else {
-					console.log("This did not work");
+					//console.log("This did not work");
 					$scope.alerts[0] = {
 						type: "danger",
 						msg: "Comments could not be loaded"
@@ -61,11 +61,12 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	//};
 	//
 	$scope.getProfileByProfileId = function(profileId) {
+		console.log(profileId);
 		profileService.fetchByProfileId(profileId)
 			.then(function(result) {
 				if(result.data.status === 200) {
 					$scope.imageContributor = result.data.data;
-					//console.log($scope.imageContributor.profileHandle);
+					console.log($scope.imageContributor.profileHandle);
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
@@ -96,12 +97,13 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.getCurrentImage = function() {
 		imageService.fetchByImageId($scope.currentImageId)
 			.then(function(result) {
-				console.log("Getting current image");
-				console.log(result);
-				console.log("Got current image");
+				//console.log("Getting current image");
+				//console.log(result);
+				//console.log("Got current image");
 				if(result.data.status === 200) {
 					$scope.image = result.data.data;
 					$scope.comments = $scope.getCommentsByImageId();
+					$scope.getProfileByProfileId($scope.image.imageProfileId);
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",

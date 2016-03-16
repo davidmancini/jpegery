@@ -1,5 +1,5 @@
-<div class="row aboveRow">
-	<ng-include src="'angular/templates/content-search.php'"></ng-include><div class="btn-group pull-right" role="group" aria-label="...">
+<!--<div class="row aboveRow">-->
+<!--	<ng-include src="'angular/templates/content-search.php'"></ng-include><div class="btn-group pull-right" role="group" aria-label="...">-->
 <!--		<button type="button" class="btn btn-default"><i class="fa fa-users"></i>&nbsp;Following</button>-->
 <!--		<button type="button" class="btn btn-default"><i class="fa fa-exchange"></i>&nbsp;Followers</button>-->
 <!--		<button type="button" class="btn btn-default"><i class="fa fa-fire"></i>&nbsp;Trending</button>-->
@@ -12,9 +12,9 @@
 <!--				<li><a href="#">Other...</a></li>-->
 <!--			</ul>-->
 <!--		</div>-->
-<!--	</div><!--End Button Group-->
-	<br/>
-</div>
+<!--	</div><!-- End Button Group -->
+<!--	<br/>-->
+<!--</div>-->
 
 <div class="row contentRow contentImageRow">
 	<div class="col-xs-6 col-sm-4 col-md-3 homeRow" ng-repeat="image in images | orderBy: image.imageDate:true">
