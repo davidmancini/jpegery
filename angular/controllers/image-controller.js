@@ -51,6 +51,20 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 		$scope.comments = $scope.getCommentsByImageId()
 	};
 
+	//$scope.getProfileHandleByProfileId = function(profileId) {
+	//	profileService.fetchHandleById(profileId)
+	//		.then(function(results) {
+	//			if(result.data.status === 200) {
+	//				return result.data.data;
+	//			} else {
+	//				$scope.alerts[0] = {
+	//					type: "danger",
+	//					msg: "We could not find the handle of the user who posted this comment"
+	//				};
+	//			}
+	//		});
+	//};
+
 	$scope.getCurrentProfile = function() {
 		profileService.fetchCurrent(true)
 			.then(function(result) {

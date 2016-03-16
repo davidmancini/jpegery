@@ -31,4 +31,7 @@ app.service("profileService", function($http, PROFILE_ENDPOINT) {
 	this.destroy = function(profileId) {
 		return($http.delete(getUrlForId(profileId)));
 	};
+	//this.fetchHandleById = function(profId) {
+	//	return(($http.get('php/api/profile/' + "?profileId=" + profId)).profileHandle);
+	//};
 });
