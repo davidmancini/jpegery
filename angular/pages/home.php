@@ -21,7 +21,9 @@
 	<div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="image in images">
 		<div>
 			<a href="image/{{image.imageId}}">
-				<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="img-responsive contentImage">
+				<div class="thumbnail">
+					<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="img-responsive contentImage">
+				</div>
 			</a>
 		</div>
 		<div class="upDownVote text-center">
