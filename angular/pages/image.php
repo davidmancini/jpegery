@@ -16,15 +16,14 @@
 	</div><!--/nextImageColumn-->
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
-		<h2 class="text-center">Image</h2>
-		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a>
-			{{image.imageDate | date : 'short' }}</p>
+		<h2 class="text-center">{{image.imageText}}</h2>
+		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a></p>
 		<div>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
 		<div class="imageData">
 			<div class="imageText text-center">
-				{{image.imageText}}
+				{{image.imageDate | date : 'short' }}
 			</div>
 		</div><!--/imageData-->
 	</div><!--/Image-->
