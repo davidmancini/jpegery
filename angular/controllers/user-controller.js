@@ -2,15 +2,15 @@ app.controller('userController', ['$http', '$scope', 'profileService', 'imageSer
 	$scope.alerts = [];
 	$scope.images = [];
 	$scope.image = null;
-	$scope.currentProfileId = $routeParams.profileId;
 	$scope.profile = null;
 
 	$scope.getProfileByProfileId = function() {
-		profileService.fetchByProfileId($scope.currentProfileId)
+		profileService.fetchByProfileId($routeParams.profileId)
 			.then(function(reply) {
 				if(reply.data.status === 200) {
-					console.log(reply);
+					//console.log(reply);
 					$scope.profile = reply.data.data;
+					$scope.getImagesByProfileId();
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
@@ -19,20 +19,16 @@ app.controller('userController', ['$http', '$scope', 'profileService', 'imageSer
 				}
 			});
 	};
-	if($scope.profile === null) {
-		$scope.getProfileByProfileId();
-	}
 
 	$scope.getImagesByProfileId = function() {
-		$scope.profId = $scope.profile.profileId;
-		imageService.fetchByProfileId($scope.profId)
+		imageService.fetchByProfileId($scope.profile.profileId)
 			.then(function(result) {
 				if(result.data.status === 200) {
 					$scope.comments = result.data.data;
-					console.log("This worked");
+					//console.log("This worked");
 				}
 				else {
-					console.log("This did not work");
+					//console.log("This did not work");
 					$scope.alerts[0] = {
 						type: "danger",
 						msg: "Images could not be loaded"
@@ -40,5 +36,9 @@ app.controller('userController', ['$http', '$scope', 'profileService', 'imageSer
 				}
 			})
 	};
+
+	if($scope.profile === null) {
+		$scope.getProfileByProfileId();
+	}
 
 }]);

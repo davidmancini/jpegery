@@ -1,8 +1,10 @@
 <?php
 
 namespace Edu\Cnm\Jpegery;
+
 use Edu\Cnm\Jpegery\Profile;
-require_once ("autoload.php"); //Required for validation of imageDate
+
+require_once("autoload.php"); //Required for validation of imageDate
 
 /**
  * Image
@@ -462,14 +464,14 @@ class Image implements \JsonSerializable {
 	}
 
 	/**
- * Gets image by image text
- *
- * @param \PDO $pdo PDO connection object
- * @param string $imageText string to search for
- * @return \SplFixedArray SplFixedArray of images or null if not found
- * @throws \PDOException when MySQL-related error occurs
- * @throws \TypeError when variables are not the correct data type
- **/
+	 * Gets image by image text
+	 *
+	 * @param \PDO $pdo PDO connection object
+	 * @param string $imageText string to search for
+	 * @return \SplFixedArray SplFixedArray of images or null if not found
+	 * @throws \PDOException when MySQL-related error occurs
+	 * @throws \TypeError when variables are not the correct data type
+	 **/
 	public static function getImageByImageText(\PDO $pdo, string $imageText) {
 		//Sanitize
 		$imageText = trim($imageText);
@@ -559,10 +561,10 @@ class Image implements \JsonSerializable {
 		$validExts = ["jpeg", "jpg", "gif", "png"];
 		$validFormat = ["image/jpeg", "image/jpg", "image/gif", "image/png"];
 		$name = $_FILES["file"]["name"];
-		$tmp=explode(".", $name);
+		$tmp = explode(".", $name);
 		$extension = strtolower(end($tmp));
 		$type = $_FILES["file"]["type"];
-		$imagePath=$_FILES["file"]["tmp_name"];
+		$imagePath = $_FILES["file"]["tmp_name"];
 
 		if(in_array($type, $validFormat) === false || in_array($extension, $validExts) === false) {
 			throw(new \InvalidArgumentException("File was not of correct type", 418)); // tea earl grey hot
@@ -572,12 +574,12 @@ class Image implements \JsonSerializable {
 		$tempName = hash("ripemd160", $identificationOfImage) . ".";
 		$imageSizes = getimagesize($imagePath);
 
-		$widthRatio = $maximumWidth/$imageSizes[0];
+		$widthRatio = $maximumWidth / $imageSizes[0];
 
-		$heightRatio = $maximumHeight/$imageSizes[1];
+		$heightRatio = $maximumHeight / $imageSizes[1];
 
 		switch($extension) {
-			case "jpeg":{
+			case "jpeg": {
 				$tempImage = imagecreatefromjpeg($imagePath);
 				break;
 			}
@@ -619,11 +621,12 @@ class Image implements \JsonSerializable {
 			$this->setImageType("image/jpeg");
 		}
 		$this->setImageFileName($fileLocation);
-		if ($savedImage === false) {
+		if($savedImage === false) {
 			throw(new \Exception("Something went wrong in uploading your image.", 400));
 		}
 
 	}
+
 	/**
 	 * Formats the state variables for JSON serialization
 	 *
@@ -633,6 +636,6 @@ class Image implements \JsonSerializable {
 		$fields = get_object_vars($this);
 		$fields["imageDate"] = intval($this->imageDate->format("U")) * 1000;
 		$fields["imageFileName"] = str_replace("/var/www/html/public_html", "", $this->imageFileName);
-		return($fields);
+		return ($fields);
 	}
 }

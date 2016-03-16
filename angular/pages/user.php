@@ -22,8 +22,13 @@
 </div><!--End Row-->
 
 <div class="row contentRow contentImageRow">
-	<div class="col-xs-6 col-sm-4 col-md-3" ng-repeat="image in images">
-		<div><a href="#"><img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="img-responsive contentImage"></a>
+	<div class="col-xs-6 col-sm-4 col-md-3 homeRow" ng-repeat="image in images | orderBy: image.imageDate:true">
+		<div>
+			<a href="image/{{image.imageId}}">
+				<div class="thumbnail homeImage">
+					<img src="{{image.imageFileName}}" alt="{{image.imageText}}" class="img-responsive contentImage">
+				</div>
+			</a>
 		</div>
 		<div class="upDownVote text-center">
 			<div class="btn-group btn-group-xs" role="group" aria-label="Up and Down Votes">
@@ -33,4 +38,3 @@
 		</div>
 	</div>
 </div>
-

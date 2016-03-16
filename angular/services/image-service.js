@@ -16,6 +16,6 @@ app.service('imageService', function($http) {
 		return ($http.get('php/api/image' + "?id=" + imageId));
 	};
 	this.fetchByProfileId = function(profileId) {
-		return ($http.get('php/api/image/' + "?imageProfileId=" + profileId));
+		return ($http.get('php/api/image/' + "?profileId=" + profileId));
 	};
 });
