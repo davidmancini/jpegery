@@ -13,23 +13,20 @@
 		<!--Empty; to align with above-->
 	</div>
 	<div class="col-sm-9"><!--Upload Image-->
-		<h2>Upload Image</h2>
+		<h1 class="text-center">Post an Image</h1>
 		<form ng-controller="uploadController" name="form" id="form">
 			<div class="form-group">
-				<!--									<label for="image" class="col-sm-2 control-label">Select Image&nbsp;<i class="fa fa-file-image-o"></i></label>-->
+				<label for="file" class="control-label"><i class="fa fa-file-image-o"></i>&nbsp;Select Image</label>
 				<button class="form-control" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
 						  ngf-accept="'image/*'">Select Image&nbsp;<i class="fa fa-file-image-o"></i></button>
 			</div>
 			<div class="form-group">
-				<label for="caption" class="col-sm-2 control-label">Caption&nbsp;<i class="fa fa-commenting-o"></i></label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption" ng-model="caption">
-				</div>
+				<label for="caption" class="control-label"><i class="fa fa-commenting-o"></i>&nbsp;Caption</label>
+				<input type="text" class="form-control" id="caption" name="caption" placeholder="Caption" ng-model="caption">
 			</div>
 			<div class="form-group">
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="tags" name="tags" placeholder="Please separate your tags with # and spaces" ng-model="tags">
-				</div>
+				<label for="tags" class="control-label"><i class="fa fa-tags">&nbsp;</i>Tags</label>
+				<input type="text" class="form-control" id="tags" name="tags" placeholder="Please separate your tags with # and spaces" ng-model="tags">
 			</div>
 			<button type="submit" ng-click="submit()" class="btn btn-default pull-right"><i class="fa fa-cloud-upload"></i>&nbsp;Post</button>
 		</form>
