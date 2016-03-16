@@ -1,7 +1,8 @@
 <div class="row aboveRow">
 	<ng-include src="'angular/templates/content-search.php'"></ng-include>
 	<div class="pull-left col-sm-3">
-		<img src="images/placeholder.png" alt="Placeholder Image" width="150">
+		<!--User's Avatar-->
+<!--		<img src="images/placeholder.png" alt="Placeholder Image" width="150">-->
 	</div>
 	<div class="col-sm-9 userInfo">
 		<h2>{{profile.profileNameF}} {{profile.profileNameL}}</h2>
