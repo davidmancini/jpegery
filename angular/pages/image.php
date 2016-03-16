@@ -4,17 +4,21 @@
 		<h3 class="text-center">Next Images</h3>
 		<div class="nextImageGroup">
 
-<!--			<div class="col-sm-6">-->
-				<div ng-repeat="nextImage in images |orderBy:'-imageDate'" class="col-sm-6">
-					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}" class="center-block img-responsive">
+			<!--			<div class="col-sm-6">-->
+			<div ng-repeat="nextImage in images |orderBy:'-imageDate'" class="col-sm-6">
+				<div class="thumbnail">
+					<img ng-click="changeImage(nextImage)" ng-src="{{nextImage.imageFileName}}"
+						  class="center-block img-responsive">
 				</div>
-<!--			</div>-->
+			</div>
+			<!--			</div>-->
 		</div><!--/nextImageGroup-->
 	</div><!--/nextImageColumn-->
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
 		<h2 class="text-center">Image</h2>
-		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a> {{image.imageDate | date : 'short' }}</p>
+		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a>
+			{{image.imageDate | date : 'short' }}</p>
 		<div>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
@@ -45,25 +49,28 @@
 		<div class="submit-comment">
 			<form name="commentForm" id="commentForm" ng-submit="submit(commentData, commentForm.$valid);" novalidate>
 				<div class="input-group">
-					<input type="text" class="form-control" name="comment" id="comment" cols="30" rows="3" ng-minlength="2" ng-maxlength="1024" ng-required="true" placeholder="Comment" ng-model="commentData.commentText">
-					<span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="fa fa-comment"></i>&nbsp;Comment</button></span>
+					<input type="text" class="form-control" name="comment" id="comment" cols="30" rows="3" ng-minlength="2"
+							 ng-maxlength="1024" ng-required="true" placeholder="Comment" ng-model="commentData.commentText">
+					<span class="input-group-btn"><button type="submit" class="btn btn-default"><i class="fa fa-comment"></i>&nbsp;Comment
+						</button></span>
 				</div>
 			</form>
 		</div>
 		<div class="commentSection">
 			<div class="row">
 				<div class="col-md-12">
-					<div ng-repeat = "nextComment in comments | orderBy:'-commentDate'">
-						<p>getProfileByProfileId({{nextComment.commentProfileId}}).profileHandle said: {{nextComment.commentText}}</p>
+					<div ng-repeat="nextComment in comments | orderBy:'-commentDate'">
+						<p>{{nextComment.commentProfile}} said:
+							{{nextComment.commentText}}</p>
 						{{comment.commentDate | date : 'short'}}
 					</div>
 				</div>
 			</div>
-<!--			<div class="comment">-->
-<!--				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>-->
-<!--				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.-->
-<!--				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>-->
-<!--			</div>-->
+			<!--			<div class="comment">-->
+			<!--				<a href="#"><img src="images/placeholder.png" alt="Placeholder Image" width="100"></a>-->
+			<!--				<a href="#">{{User Name}}</a>&nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti deserunt fugit harum rem tempore. Adipisci aspernatur culpa, facere impedit maxime nemo nihil officia optio quidem reprehenderit suscipit velit veritatis voluptatum.-->
+			<!--				<p class="pull-right commentTime"><i class="fa fa-comment-o"></i>&nbsp;{{Comment Time}}</p>-->
+			<!--			</div>-->
 
 		</div><!--/commentSection-->
 	</div><!--/commentGroup-->

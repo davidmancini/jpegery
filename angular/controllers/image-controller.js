@@ -84,10 +84,14 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 		$scope.profile = $scope.getCurrentProfile();
 	}
 	$scope.getCurrentImage = function() {
-		profileService.fetchCurrent(true)
+		imageService.fetchByImageId($scope.currentImageId)
 			.then(function(result) {
+				console.log("Getting current image");
+				console.log(result);
+				console.log("Got current image");
 				if(result.data.status === 200) {
 					$scope.image = result.data.data;
+					$scope.comments = $scope.getCommentsByImageId()
 				} else {
 					$scope.alerts[0] = {
 						type: "danger",
@@ -96,10 +100,10 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 				}
 			});
 	};
-
 	if($scope.image === null) {
 		$scope.image = $scope.getCurrentImage();
 	}
+
 	$scope.submit = function(commentData, validated) {
 		if(validated === true) {
 			commentData.commentProfileId = $scope.profile.profileId;
