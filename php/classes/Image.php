@@ -601,9 +601,9 @@ class Image implements \JsonSerializable {
 
 		if(!($imageSizes[0] <= $maximumWidth && $imageSizes[1] <= $maximumHeight)) {
 			if(($heightRatio * $imageSizes[0]) < $maximumWidth) {
-				$tempImage = imagescale($_FILES, $heightRatio * $imageSizes[0], $maximumHeight);
+				$tempImage = imagescale($tempImage, $heightRatio * $imageSizes[0], $maximumHeight);
 			} else {
-				$tempImage = imagescale($_FILES, $maximumWidth, $widthRatio * $imageSizes[1]);
+				$tempImage = imagescale($tempImage, $maximumWidth, $widthRatio * $imageSizes[1]);
 			}
 		}
 
