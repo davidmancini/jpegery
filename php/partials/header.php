@@ -22,8 +22,9 @@
 						<li><a href="register"><i class="fa fa-user"></i>&nbsp;Register</a></li>
 					<?php }
 					if(!empty($_SESSION["profile"])) {?>
-						<li><a href="logout"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
+						<li><a href="profile"><i class="fa fa-user"></i>&nbsp;My Profile</a></li>
 						<li><a href="settings"><i class="fa fa-cog"></i>&nbsp;Settings</a></li>
+						<li><a href="logout"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
 					<?php } ?>
 				</ul>
 				<form class="navbar-form navbar-right hidden-xs" role="search"><!--Search box is hidden when nav bar collapses-->
