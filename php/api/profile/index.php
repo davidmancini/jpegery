@@ -167,8 +167,9 @@ try {
 		$hash = hash_pbkdf2("sha512", $password, $salt, 262144);
 		$profileVerify = bin2hex(openssl_random_pseudo_bytes(8));
 		//create new Profile
-		$profile = new Profile(null, false, null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, 4407, $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $salt, $profileVerify);
+		$profile = new Profile(null, false, null, $requestObject->profileEmail, $requestObject->profileHandle, $hash, 4414, $requestObject->profileNameF, $requestObject->profileNameL, $requestObject->profilePhone, $salt, $profileVerify);
 		$profile->insert($pdo);
+		$_SESSION["profile"] = $profile;
 		$reply->message = "Profile has been created";
 		//compose and send the email for confirmation and setting a new password
 		// create Swift message
