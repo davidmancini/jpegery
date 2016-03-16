@@ -14,7 +14,7 @@
 		<!--Empty; to align with above-->
 	</div>
 	<div class="col-sm-9"><!--Upload Image-->
-		<h1 class="text-center">Post an Image<br>STOP UPLOADING STUPID SHIT</h1>
+		<h1 class="text-center">Post an Image<br>STOP UPLOADING STUPID STUFF</h1>
 		<form ng-controller="uploadController" name="form" id="form">
 			<div class="form-group">
 				<label for="file" class="control-label"><i class="fa fa-file-image-o"></i>&nbsp;Select Image</label>
