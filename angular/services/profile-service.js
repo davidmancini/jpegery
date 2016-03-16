@@ -32,6 +32,6 @@ app.service("profileService", function($http, PROFILE_ENDPOINT) {
 		return($http.delete(getUrlForId(profileId)));
 	};
 	this.fetchByProfileId = function(profId) {
-		return(($http.get('php/api/profile/' + profId)));
+		return(($http.get('php/api/profile/' + "?profileId=" + profId)));
 	};
 });

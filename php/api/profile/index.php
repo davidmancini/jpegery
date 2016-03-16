@@ -35,7 +35,7 @@ try {
 	}
 
 	//sanitize inputs
-	$profileId = filter_input(INPUT_GET, "profile", FILTER_VALIDATE_INT);
+	$profileId = filter_input(INPUT_GET, "profileId", FILTER_VALIDATE_INT);
 	//make sure the id is valid for methods that require it
 	if(($method === "DELETE" || $method === "PUT") && (empty($profileId) === true || $profileId < 0)) {
 		throw(new InvalidArgumentException("id cannot be empty or negative", 405));
@@ -62,10 +62,13 @@ try {
 		setXsrfCookie("/");
 		//get the profile based on the given field
 		if(empty($profileId) === false) {
+//			$profile = Profile::getProfileByProfileId($pdo, $profileId);
+//			if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
+//				$reply->data = $profile;
+//			}
+
 			$profile = Profile::getProfileByProfileId($pdo, $profileId);
-			if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {
-				$reply->data = $profile;
-			}
+			$reply->data = $profile;
 		} else if(empty($profileEmail) === false) {
 			$profile = Profile::getProfileByProfileEmail($pdo, $profileEmail);
 			if($profile !== null && $profile->getProfileId() === $_SESSION["profile"]->getProfileId()) {

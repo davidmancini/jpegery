@@ -17,7 +17,7 @@
 
 	<div class="col-sm-6 col-xs-12"><!--Image-->
 		<h2 class="text-center">{{image.imageText}}</h2>
-		<!--		<p class="text-center"><a href="#">{{getProfileByProfileId(image.imageProfileId).profileHandle}}</a></p>-->
+				<p class="text-center"><a href="#">{{handle.profileHandle}}</a></p>
 		<div>
 			<img ng-src="{{image.imageFileName}}" alt="{{image.imageText}}" class="center-block img-responsive">
 		</div>
