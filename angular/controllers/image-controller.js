@@ -7,6 +7,7 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	$scope.image = null;
 	$scope.profile = null;
 	$scope.imgId = null;
+	//$scope.handle = null;
 
 	$scope.getAllImages = function() {
 		imageService.all()
@@ -53,18 +54,22 @@ app.controller('imageController', ['$scope', '$http', '$window', 'imageService',
 	};
 
 	//$scope.getProfileHandleByProfileId = function(profileId) {
-	//	profileService.fetchHandleById(profileId)
-	//		.then(function(results) {
-	//			if(result.data.status === 200) {
-	//				return result.data.data;
-	//			} else {
-	//				$scope.alerts[0] = {
-	//					type: "danger",
-	//					msg: "We could not find the handle of the user who posted this comment"
-	//				};
-	//			}
-	//		});
+	//	return profileService.fetchHandleById(profileId)
 	//};
+	//
+	$scope.getProfileByProfileId = function(profileId) {
+		profileService.fetchByProfileId(7720)
+			.then(function(result) {
+				if (result.data.status === 200) {
+					$scope.handle = result.data.data;
+				} else {
+					$scope.alerts[0] = {
+						type: "danger",
+						msg: "Could not find user."
+					};
+				}
+			});
+	};
 
 	$scope.getCurrentProfile = function() {
 		profileService.fetchCurrent(true)
